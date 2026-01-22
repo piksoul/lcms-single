@@ -2,7 +2,7 @@
 /**
  * Tailwind Demo Page Template
  *
- * Example page demonstrating Tailwind + DaisyUI partials.
+ * Comprehensive demo of Tailwind + DaisyUI partials and components.
  * To use: Create a page with slug "tailwind-demo" and select "LeanCMS Full Page" template.
  *
  * @filepath templates/pages/slug-tailwind-demo.php
@@ -26,18 +26,51 @@ get_header();
 // HERO SECTION
 // ============================================
 $hero = [
-    'badge'    => 'Tailwind + DaisyUI',
-    'title'    => 'Modern Styling Made Simple',
-    'subtitle' => 'This page demonstrates the new Tailwind CSS partial system with DaisyUI components.',
-    'buttons'  => [
-        ['text' => 'Get Started', 'url' => '/contact', 'style' => 'primary'],
-        ['text' => 'Learn More', 'url' => '/about', 'style' => 'outline'],
+    'badge'      => 'Tailwind + DaisyUI',
+    'title'      => 'Modern Styling Made Simple',
+    'subtitle'   => 'Build beautiful, responsive interfaces with utility-first CSS and pre-built components.',
+    'buttons'    => [
+        ['text' => 'Get Started', 'url' => '#features', 'style' => 'primary'],
+        ['text' => 'View Components', 'url' => '/demo-ui-components', 'style' => 'outline'],
     ],
     'dark'       => false,
     'min_height' => '70vh',
 ];
 
 partial('hero', $hero, 'tailwind');
+
+// ============================================
+// STATS SECTION
+// ============================================
+$stats = [
+    'id'    => 'stats',
+    'label' => 'By the Numbers',
+    'title' => 'Trusted by Developers',
+    'stats' => [
+        [
+            'value' => '50+',
+            'label' => 'Components',
+            'desc'  => 'Ready to use',
+        ],
+        [
+            'value' => '10+',
+            'label' => 'Theme Colors',
+            'desc'  => 'Fully customizable',
+        ],
+        [
+            'value' => '< 30KB',
+            'label' => 'Bundle Size',
+            'desc'  => 'Gzipped CSS',
+        ],
+        [
+            'value' => '100%',
+            'label' => 'Responsive',
+            'desc'  => 'Mobile-first',
+        ],
+    ],
+];
+
+partial('stats', $stats, 'tailwind');
 
 // ============================================
 // FEATURES GRID
@@ -85,19 +118,88 @@ $features = [
 partial('card-grid', $features, 'tailwind');
 
 // ============================================
-// CONTENT SECTION
+// STEPS / PROCESS SECTION
+// ============================================
+$process = [
+    'id'       => 'process',
+    'label'    => 'Getting Started',
+    'title'    => 'Simple Setup Process',
+    'subtitle' => 'Get up and running in minutes with our streamlined workflow.',
+    'steps'    => [
+        [
+            'title'   => 'Install',
+            'content' => 'npm install tailwindcss daisyui',
+            'status'  => 'primary',
+        ],
+        [
+            'title'   => 'Configure',
+            'content' => 'Add DaisyUI to your config',
+            'status'  => 'primary',
+        ],
+        [
+            'title'   => 'Build',
+            'content' => 'Run npm run build',
+            'status'  => 'primary',
+        ],
+        [
+            'title'   => 'Create',
+            'content' => 'Start building components',
+            'status'  => '',
+        ],
+    ],
+];
+
+partial('steps', $process, 'tailwind');
+
+// ============================================
+// TESTIMONIALS SECTION
+// ============================================
+$testimonials = [
+    'id'           => 'testimonials',
+    'label'        => 'Testimonials',
+    'title'        => 'What Developers Say',
+    'subtitle'     => 'Join thousands of developers building with Tailwind + DaisyUI.',
+    'testimonials' => [
+        [
+            'quote'  => 'Tailwind completely changed how I build interfaces. The utility-first approach just clicks once you try it.',
+            'name'   => 'Sarah Chen',
+            'role'   => 'Frontend Developer',
+            'avatar' => 'https://picsum.photos/seed/sarah/100',
+            'rating' => 5,
+        ],
+        [
+            'quote'  => 'DaisyUI gives you beautiful components without the bloat. It\'s the perfect complement to Tailwind.',
+            'name'   => 'Marcus Johnson',
+            'role'   => 'Full Stack Engineer',
+            'avatar' => 'https://picsum.photos/seed/marcus/100',
+            'rating' => 5,
+        ],
+        [
+            'quote'  => 'I shipped my last project in half the time. The pre-built components handle 90% of what I need.',
+            'name'   => 'Emily Rodriguez',
+            'role'   => 'Product Designer',
+            'avatar' => 'https://picsum.photos/seed/emily/100',
+            'rating' => 5,
+        ],
+    ],
+];
+
+partial('testimonials', $testimonials, 'tailwind');
+
+// ============================================
+// HOW IT WORKS SECTION
 // ============================================
 $about = [
     'id'       => 'about',
-    'label'    => 'How It Works',
+    'label'    => 'Architecture',
     'title'    => 'Two Partial Systems, One Plugin',
     'content'  => '
-        <p>LeanCMS now supports two parallel styling systems:</p>
+        <p>LeanCMS supports two parallel styling systems:</p>
         <ul>
             <li><strong>Pro-Sites (BEM)</strong> - The original custom CSS system with CSS variables</li>
             <li><strong>Tailwind</strong> - Modern utility-first CSS with DaisyUI components</li>
         </ul>
-        <p>Templates can choose which system to use. Both work with the same partial() function - just specify the folder:</p>
+        <p>Templates can choose which system to use. Both work with the same <code>partial()</code> function:</p>
         <pre><code>partial(\'hero\', $config, \'pro-sites\');  // BEM CSS
 partial(\'hero\', $config, \'tailwind\');   // Tailwind + DaisyUI</code></pre>
         <p>Migrate gradually or use both systems on different pages. Full flexibility.</p>
@@ -108,6 +210,21 @@ partial(\'hero\', $config, \'tailwind\');   // Tailwind + DaisyUI</code></pre>
 
 partial('section', $about, 'tailwind');
 ?>
+
+<!-- CTA Section with custom markup -->
+<section class="lcms-section bg-primary text-primary-content">
+    <div class="lcms-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build?</h2>
+        <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Explore our component demos and start creating beautiful interfaces today.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/demo-ui-components" class="btn btn-secondary">UI Components</a>
+            <a href="/demo-forms" class="btn btn-outline btn-secondary">Form Elements</a>
+            <a href="/demo-data-display" class="btn btn-outline btn-secondary">Data Display</a>
+        </div>
+    </div>
+</section>
 
 </div><!-- end data-theme -->
 
