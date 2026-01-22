@@ -87,21 +87,7 @@ $contact_section = [
                     'html' => '
                         <div style="background: #f8fafc; border-radius: 16px; padding: 32px;">
                             <h3 style="margin: 0 0 24px; font-size: 20px;">Send us a Message</h3>
-                            <form action="#" method="post" style="display: flex; flex-direction: column; gap: 20px;">
-                                <div>
-                                    <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your name" style="width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
-                                </div>
-                                <div>
-                                    <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="your@email.com" style="width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 16px; box-sizing: border-box;">
-                                </div>
-                                <div>
-                                    <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px;">Message</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="How can we help?" style="width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 16px; resize: vertical; box-sizing: border-box;"></textarea>
-                                </div>
-                                <button type="submit" class="lcms-button lcms-button--primary" style="align-self: flex-start;">Send Message</button>
-                            </form>
+                            ' . do_shortcode('[gravityform id="1" title="false" description="false" ajax="true"]') . '
                         </div>
                     ',
                 ],
