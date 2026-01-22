@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Brand Hub - Client CMS
- * Plugin URI: https://github.com/piksoul/lcms-brandhub-client
- * Description: Agentic CMS for Brand Hub client development and content management.
- * Version: 2.1.35
+ * Plugin Name: LeanCMS Single
+ * Plugin URI: https://github.com/piksoul/lcms-single
+ * Description: Streamlined CMS for single-client Brand Hub installations.
+ * Version: 1.0.0
  * Author: Piksoul
  * Author URI: https://piksoul.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: brandhub-client-cms
+ * Text Domain: lcms-single
  * Domain Path: /languages
  * Requires at least: 6.8
  * Requires PHP: 8.0
@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'LEANCMS_VERSION', '2.1.35' );
+define( 'LEANCMS_VERSION', '1.0.0' );
 
 /**
  * Plugin directory path.
@@ -84,9 +84,9 @@ require LEANCMS_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $leancms_update_checker = PucFactory::buildUpdateChecker(
-    'https://github.com/piksoul/lcms-brandhub-client/',
+    'https://github.com/piksoul/lcms-single/',
     __FILE__,
-    'brandhub-client-cms'
+    'lcms-single'
 );
 
 // Stable branch
@@ -108,7 +108,7 @@ register_deactivation_hook( __FILE__, array( 'LeanCMS_Installer', 'deactivate' )
  */
 function leancms_plugin_init() {
     // i18n
-    load_plugin_textdomain( 'brandhub-client-cms', false, dirname( LEANCMS_PLUGIN_BASENAME ) . '/languages' );
+    load_plugin_textdomain( 'lcms-single', false, dirname( LEANCMS_PLUGIN_BASENAME ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'leancms_plugin_init' );
 
