@@ -45,7 +45,9 @@ $content_classes = $narrow ? 'max-w-3xl mx-auto' : '';
     <div class="<?php echo esc_attr($container_classes); ?>">
 
         <?php if ($label): ?>
-            <span class="badge badge-primary badge-outline mb-4"><?php echo esc_html($label); ?></span>
+            <div class="mb-4">
+                <span class="badge badge-primary badge-outline"><?php echo esc_html($label); ?></span>
+            </div>
         <?php endif; ?>
 
         <?php if ($title): ?>
