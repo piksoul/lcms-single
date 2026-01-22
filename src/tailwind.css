@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component classes for LeanCMS */
+@layer components {
+  /* Content container - matches pro-sites max-width */
+  .lcms-container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  /* Section spacing */
+  .lcms-section {
+    @apply py-16 md:py-24;
+  }
+
+  /* Card enhancements */
+  .lcms-card {
+    @apply card bg-base-100 shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+}
