@@ -1,0 +1,13 @@
+{
+  "name": "lcms-single",
+  "version": "1.0.4",
+  "description": "Tailwind CSS build for LeanCMS Single",
+  "scripts": {
+    "build": "tailwindcss -i ./src/tailwind.css -o ./templates/assets/tailwind/tailwind.css --minify",
+    "watch": "tailwindcss -i ./src/tailwind.css -o ./templates/assets/tailwind/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "daisyui": "^4.12.0"
+  }
+}

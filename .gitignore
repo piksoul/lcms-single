@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build artifacts (keep compiled CSS, ignore temp files)
+*.log
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
