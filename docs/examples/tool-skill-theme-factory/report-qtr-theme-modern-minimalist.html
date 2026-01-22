@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 2025 Quarterly Business Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #36454f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 60px;
+            position: relative;
+        }
+
+        .report-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .report-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .report-period {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 40px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Executive Summary Banner */
+        .exec-summary-banner {
+            background: #36454f;
+            color: white;
+            padding: 40px 60px;
+        }
+
+        .exec-summary-banner h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .exec-summary-banner p {
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Key Metrics Section */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            border-bottom: 2px solid #d3d3d3;
+        }
+
+        .metric-card {
+            padding: 40px;
+            text-align: center;
+            border-right: 1px solid #d3d3d3;
+            border-bottom: 1px solid #d3d3d3;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .metric-card:hover {
+            background: #f8f8f8;
+            transform: translateY(-5px);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #708090;
+            margin-bottom: 15px;
+        }
+
+        .metric-value {
+            font-size: 42px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .metric-change {
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .metric-change.positive {
+            color: #2e7d32;
+        }
+
+        .metric-change.negative {
+            color: #c62828;
+        }
+
+        .metric-change.neutral {
+            color: #708090;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 60px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 3px solid #d3d3d3;
+            padding-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #708090;
+        }
+
+        /* Content Blocks */
+        .content-block {
+            margin-bottom: 40px;
+        }
+
+        .content-block h3 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .content-block p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .content-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-block li {
+            font-size: 16px;
+            line-height: 1.8;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .content-block li:before {
+            content: "▪";
+            color: #708090;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: #f8f8f8;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .chart-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Simple Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 100%;
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, #36454f, #708090);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            min-height: 20px;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+            transform: translateY(-5px);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: #708090;
+            white-space: nowrap;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+            color: #36454f;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table thead {
+            background: #36454f;
+            color: white;
+        }
+
+        .data-table th {
+            padding: 18px;
+            text-align: left;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 18px;
+            border-bottom: 1px solid #d3d3d3;
+            font-size: 15px;
+        }
+
+        .data-table tbody tr:hover {
+            background: #f8f8f8;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #f8f8f8;
+            border-left: 5px solid #36454f;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h4 {
+            font-size: 20px;
+            color: #36454f;
+            margin-bottom: 12px;
+        }
+
+        .highlight-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #36454f;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        /* Action Items */
+        .action-items {
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .action-items h3 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 20px;
+        }
+
+        .action-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #708090;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .action-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-item h4 {
+            font-size: 18px;
+            color: #36454f;
+            margin-bottom: 8px;
+        }
+
+        .action-item p {
+            font-size: 14px;
+            color: #708090;
+            margin-bottom: 8px;
+        }
+
+        .action-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: #708090;
+        }
+
+        /* Footer */
+        .report-footer {
+            background: #36454f;
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .report-footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Print Button */
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #708090;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #36454f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        @media print {
+            .print-button {
+                display: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .report-header,
+            .exec-summary-banner,
+            .section {
+                padding: 40px 30px;
+            }
+
+            .report-title {
+                font-size: 32px;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-card {
+                border-right: none;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                font-size: 13px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="report-header">
+            <div class="report-label">Quarterly Business Review</div>
+            <h1 class="report-title">Q4 2025 Performance Report</h1>
+            <div class="report-period">October - December 2025</div>
+            <div class="report-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Report Date: January 15, 2026</span>
+                </div>
+                <div class="meta-item">
+                    <span>👤</span>
+                    <span>Prepared by: Finance & Operations Team</span>
+                </div>
+                <div class="meta-item">
+                    <span>🔒</span>
+                    <span>Confidential - Internal Use Only</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="exec-summary-banner">
+            <h2>Executive Summary</h2>
+            <p>Q4 2025 marked a strong finish to the year, with revenue exceeding targets by 12% and customer acquisition growing 28% quarter-over-quarter. Strategic investments in AI infrastructure and product development positioned us well for 2026 growth. While operational costs increased due to expansion, overall profitability remained healthy with improved margins across key business segments.</p>
+        </section>
+
+        <!-- Key Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">Total Revenue</div>
+                <div class="metric-value">$24.8M</div>
+                <div class="metric-change positive">
+                    <span>↑</span>
+                    <span>12% vs Q3</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">New Customers</div>
+                <div class="metric-value">1,247</div>
+                <div class="metric-change positive">
+                    <span>↑</span>
+                    <span>28% vs Q3</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Operating Margin</div>
+                <div class="metric-value">18.5%</div>
+                <div class="metric-change positive">
+                    <span>↑</span>
+                    <span>2.3pp vs Q3</span>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-label">Customer Retention</div>
+                <div class="metric-value">94.2%</div>
+                <div class="metric-change neutral">
+                    <span>→</span>
+                    <span>Stable</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Performance -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Financial Performance</h2>
+                <p class="section-subtitle">Revenue growth driven by enterprise segment expansion</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Revenue Analysis</h3>
+                <p>Q4 revenue of $24.8M represents 12% growth over Q3 and 45% year-over-year growth. The enterprise segment contributed 62% of total revenue, growing 38% quarter-over-quarter, while the mid-market and SMB segments showed steady 8% and 5% growth respectively.</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Quarterly Revenue Trend (Millions USD)</div>
+                <div class="chart-placeholder">
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 55%;">
+                            <div class="bar-value">$16.2M</div>
+                            <div class="bar-label">Q1</div>
+                        </div>
+                        <div class="bar" style="height: 70%;">
+                            <div class="bar-value">$18.9M</div>
+                            <div class="bar-label">Q2</div>
+                        </div>
+                        <div class="bar" style="height: 82%;">
+                            <div class="bar-value">$22.1M</div>
+                            <div class="bar-label">Q3</div>
+                        </div>
+                        <div class="bar" style="height: 100%;">
+                            <div class="bar-value">$24.8M</div>
+                            <div class="bar-label">Q4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-column">
+                <div class="content-block">
+                    <h3>Key Drivers</h3>
+                    <ul>
+                        <li>Enterprise contract renewals ahead of schedule</li>
+                        <li>Successful product launch in October</li>
+                        <li>Geographic expansion into APAC markets</li>
+                        <li>Strategic partnerships with major distributors</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <h3>Challenges</h3>
+                    <ul>
+                        <li>Increased customer acquisition costs</li>
+                        <li>Currency headwinds in European markets</li>
+                        <li>Extended sales cycles for enterprise deals</li>
+                        <li>Competition intensifying in core segments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Revenue Stream</th>
+                        <th>Q4 2025</th>
+                        <th>Q3 2025</th>
+                        <th>Change</th>
+                        <th>% of Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Enterprise</td>
+                        <td>$15.4M</td>
+                        <td>$11.2M</td>
+                        <td style="color: #2e7d32; font-weight: bold;">+38%</td>
+                        <td>62%</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Market</td>
+                        <td>$6.2M</td>
+                        <td>$5.7M</td>
+                        <td style="color: #2e7d32; font-weight: bold;">+8%</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>SMB</td>
+                        <td>$3.2M</td>
+                        <td>$3.0M</td>
+                        <td style="color: #2e7d32; font-weight: bold;">+5%</td>
+                        <td>13%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Customer Metrics -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="section-header">
+                <h2 class="section-title">Customer Success Metrics</h2>
+                <p class="section-subtitle">Strong retention with accelerating acquisition</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Customer Acquisition</h3>
+                <p>Q4 saw record customer acquisition with 1,247 new customers, a 28% increase over Q3. The average customer acquisition cost decreased by 15% due to improved marketing efficiency and organic growth channels. Enterprise segment contributed 340 new logos, representing our strongest quarter in this category.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>Customer Satisfaction Score: 8.7/10</h4>
+                <p>Net Promoter Score increased to 68, up from 62 in Q3, reflecting improved product stability and enhanced customer support initiatives. Customer support response times improved by 32%, with 94% of tickets resolved within SLA.</p>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Customer Growth by Segment</div>
+                <div class="chart-placeholder">
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 85%;">
+                            <div class="bar-value">340</div>
+                            <div class="bar-label">Enterprise</div>
+                        </div>
+                        <div class="bar" style="height: 70%;">
+                            <div class="bar-value">482</div>
+                            <div class="bar-label">Mid-Market</div>
+                        </div>
+                        <div class="bar" style="height: 60%;">
+                            <div class="bar-value">425</div>
+                            <div class="bar-label">SMB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operations & Product -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Operations & Product Development</h2>
+                <p class="section-subtitle">Infrastructure investments delivering results</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Product Updates</h3>
+                <p>Q4 delivered three major product releases including the highly anticipated AI-powered analytics dashboard, which achieved 78% adoption among enterprise customers within 60 days. Platform uptime improved to 99.97%, exceeding our 99.9% SLA commitment.</p>
+            </div>
+
+            <div class="two-column">
+                <div class="highlight-box">
+                    <h4>Team Growth</h4>
+                    <p>Headcount increased by 45 positions in Q4, with strategic hires in engineering (24), sales (12), and customer success (9). Employee satisfaction scores remained strong at 4.2/5.0.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Infrastructure</h4>
+                    <p>Completed migration to multi-region cloud architecture, reducing latency by 40% for APAC customers. Security certifications expanded to include ISO 27001 and SOC 2 Type II.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Initiatives -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="section-header">
+                <h2 class="section-title">Strategic Initiatives</h2>
+                <p class="section-subtitle">Positioning for 2026 growth</p>
+            </div>
+
+            <div class="action-items">
+                <h3>Q1 2026 Priorities</h3>
+                
+                <div class="action-item">
+                    <h4>Market Expansion</h4>
+                    <p>Launch operations in three new APAC markets with localized product offerings</p>
+                    <div class="action-meta">
+                        <span>Owner: VP International</span>
+                        <span>Target: March 2026</span>
+                    </div>
+                </div>
+
+                <div class="action-item">
+                    <h4>Product Innovation</h4>
+                    <p>Release mobile application and enhanced API capabilities for developer ecosystem</p>
+                    <div class="action-meta">
+                        <span>Owner: Chief Product Officer</span>
+                        <span>Target: February 2026</span>
+                    </div>
+                </div>
+
+                <div class="action-item">
+                    <h4>Partnership Development</h4>
+                    <p>Finalize strategic partnerships with three major technology platforms</p>
+                    <div class="action-meta">
+                        <span>Owner: VP Business Development</span>
+                        <span>Target: January 2026</span>
+                    </div>
+                </div>
+
+                <div class="action-item">
+                    <h4>Operational Efficiency</h4>
+                    <p>Implement AI-driven customer support automation to improve response times</p>
+                    <div class="action-meta">
+                        <span>Owner: VP Operations</span>
+                        <span>Target: March 2026</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outlook -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Q1 2026 Outlook</h2>
+                <p class="section-subtitle">Confident momentum heading into new year</p>
+            </div>
+
+            <div class="content-block">
+                <p>We enter 2026 with strong momentum across all key metrics. Q1 pipeline stands at $32M, representing 48% year-over-year growth. Strategic initiatives around international expansion and product innovation position us to capture increasing market demand.</p>
+                
+                <p>We anticipate Q1 2026 revenue of $26-28M, reflecting continued enterprise segment strength and successful geographic expansion. Operating margins are expected to stabilize at 17-19% as we balance growth investments with operational efficiency.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>2026 Annual Targets</h4>
+                <p>Revenue: $115-120M | Customer Growth: 5,000+ new customers | Operating Margin: 20%+ | International Revenue: 35% of total</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+            <p>Q4 2025 Quarterly Business Review | Confidential - Internal Use Only</p>
+            <p style="margin-top: 10px; font-size: 12px;">For questions or additional analysis, contact finance@company.com</p>
+        </footer>
+    </div>
+
+    <button class="print-button" onclick="window.print()">📄 Print Report</button>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effect to metric cards
+        document.querySelectorAll('.metric-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.background = this.style.background === 'rgb(248, 248, 248)' ? '' : '#f8f8f8';
+            });
+        });
+
+        // Animate bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.chart-container').forEach(chart => {
+            chart.style.opacity = '0';
+            chart.style.transform = 'translateY(20px)';
+            chart.style.transition = 'all 0.6s ease';
+            observer.observe(chart);
+        });
+    </script>
+</body>
+</html>

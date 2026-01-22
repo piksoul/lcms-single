@@ -1,0 +1,65 @@
+name: Auto release on #release merge
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  auto-release:
+    # Only run if the commit message includes "#release"
+    if: contains(github.event.head_commit.message, '#release')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Get plugin version from main file
+        id: get_version
+        run: |
+          # Set this to your actual main plugin file:
+          PLUGIN_FILE="leancms.php"
+
+          if [ ! -f "$PLUGIN_FILE" ]; then
+            echo "Plugin file $PLUGIN_FILE not found"; exit 1
+          fi
+
+          VERSION_LINE=$(grep -i "Version:" "$PLUGIN_FILE" | head -1)
+          if [ -z "$VERSION_LINE" ]; then
+            echo "No Version: header found in $PLUGIN_FILE"; exit 1
+          fi
+
+          VERSION=$(echo "$VERSION_LINE" | awk '{print $2}')
+          if [ -z "$VERSION" ]; then
+            echo "Could not parse version from: $VERSION_LINE"; exit 1
+          fi
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: $VERSION"
+
+      - name: Create git tag
+        run: |
+          VERSION="${{ steps.get_version.outputs.version }}"
+          TAG="v${VERSION}"
+
+          echo "Creating tag $TAG"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Only create tag if it doesn't already exist
+          if git ls-remote --tags origin | grep -q "refs/tags/${TAG}$"; then
+            echo "Tag $TAG already exists. Skipping tag creation."
+          else
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.get_version.outputs.version }}"
+          name: "v${{ steps.get_version.outputs.version }}"
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

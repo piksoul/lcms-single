@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "id": "faq-list",
+    "name": "FAQ List (Simple)",
+    "category": "pattern",
+    "tier": 2,
+    "description": "Simple, static FAQ section with question-answer pairs in vertical stack format",
+    "use_cases": [
+      "Frequently Asked Questions sections",
+      "Q&A content",
+      "Common concerns addressing",
+      "Product information",
+      "Support documentation",
+      "Pricing questions"
+    ]
+  },
+  "structure": {
+    "container": "lcms-stack with gap-16 for spacing between Q&A pairs",
+    "item": "lcms-stack with gap-8 for question + answer pairing",
+    "question": "h4 or strong tag for emphasis",
+    "answer": "p tag for response text"
+  },
+  "html_structure": "<div class=\"lcms-stack gap-16\">\n    <div class=\"lcms-stack gap-8\">\n        <h4>{{QUESTION}}</h4>\n        <p>{{ANSWER}}</p>\n    </div>\n    <!-- Repeat for each FAQ item -->\n</div>",
+  "partial_implementation": {
+    "partial": "column",
+    "namespace": "pro-sites",
+    "typical_wrapper": "lcms-container--thin for readability"
+  },
+  "placeholders": {
+    "QUESTION": {
+      "type": "text",
+      "required": true,
+      "description": "Question text (start with Who/What/When/Where/Why/How or Is/Can/Do)"
+    },
+    "ANSWER": {
+      "type": "text",
+      "required": true,
+      "description": "Answer text (1-3 sentences, concise and helpful)"
+    }
+  },
+  "usage_guidelines": {
+    "item_count": {
+      "optimal": "5-8 FAQs",
+      "minimum": 3,
+      "maximum": 12,
+      "note": "More than 12 FAQs should be split into categories or use accordion"
+    },
+    "question_format": {
+      "style": "Natural language questions users would ask",
+      "examples": [
+        "Is sustainable packaging more expensive?",
+        "How long does biodegradable packaging take to decompose?",
+        "Can sustainable packaging protect products as well?",
+        "What is the minimum order quantity?"
+      ]
+    },
+    "answer_length": {
+      "optimal": "1-2 sentences",
+      "maximum": "3 sentences or ~75 words",
+      "note": "Keep answers concise and actionable"
+    },
+    "heading": {
+      "use": "h4 for questions (maintains hierarchy after section h2/h3)",
+      "alternative": "strong tag for simpler styling"
+    }
+  },
+  "seo_benefits": {
+    "static_content": "All content visible to search engines (unlike accordions)",
+    "schema_markup": "Easy to add FAQPage schema for rich results",
+    "keyword_targeting": "Questions naturally include long-tail keywords",
+    "readability": "Clear, scannable format for users and bots"
+  },
+  "ai_generation_instructions": {
+    "when_to_use": "User mentions FAQ, questions, common concerns, or support content",
+    "content_generation": {
+      "questions": "Anticipate actual user questions based on page content",
+      "answers": "Provide helpful, honest answers that build trust",
+      "order": "Arrange most common/important questions first"
+    },
+    "quantity": "Generate 5-7 FAQs by default, adjust based on page complexity",
+    "tone": "Professional but friendly, address user directly"
+  },
+  "components_used": {
+    "layout": ".lcms-stack with gap-16 (outer), gap-8 (inner)",
+    "headings": "h4 for questions",
+    "text": "p tag for answers",
+    "container": ".lcms-container--thin for optimal reading width"
+  },
+  "enhancement_options": {
+    "future_phase_2": "Can be enhanced to accordion with JavaScript",
+    "schema_markup": "Add FAQPage structured data for SEO",
+    "links": "Include inline links to related content",
+    "categories": "Group FAQs by topic for long lists"
+  },
+  "discovered_in": "templates/pages/brhu/slug-packaging-campaign.php (lines 357-396)",
+  "date_added": "2025-11-18",
+  "notes": "Simple static list is intentionally chosen over accordion for SEO benefits and accessibility. Enhancement to accordion can be done in Phase 2 workflow."
+}

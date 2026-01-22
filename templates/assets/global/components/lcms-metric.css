@@ -1,0 +1,205 @@
+/**
+ * Metric Component
+ *
+ * Displays numeric metrics, scores, statistics, and KPIs.
+ * Used for dashboards, scorecards, and data visualization.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-metric.css
+ */
+
+/* ============================================
+   BLOCK: Metric
+   ============================================ */
+
+.lcms-metric {
+    text-align: center;
+    background: var(--color-background-light, #ffffff);
+    padding: 40px 20px;
+    border-radius: var(--border-radius, 10px);
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-metric__value {
+    font-size: 56px;
+    font-weight: 700;
+    font-family: var(--font-heading, inherit);
+    color: var(--color-brand-secondary, #161617);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.lcms-metric__label {
+    font-size: 16px;
+    color: var(--color-text-secondary, #666666);
+    line-height: 1.6;
+}
+
+.lcms-metric__description {
+    font-size: 14px;
+    color: var(--color-text-tertiary, #999);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-metric--small {
+    padding: 25px 15px;
+}
+
+.lcms-metric--small .lcms-metric__value {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.lcms-metric--small .lcms-metric__label {
+    font-size: 14px;
+}
+
+.lcms-metric--large {
+    padding: 60px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.lcms-metric--large .lcms-metric__value {
+    font-size: 96px;
+    margin-bottom: 20px;
+}
+
+.lcms-metric--large .lcms-metric__label {
+    font-size: 24px;
+}
+
+/* ============================================
+   MODIFIERS: Style Variants
+   ============================================ */
+
+.lcms-metric--dark {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.lcms-metric--transparent {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lcms-metric--transparent .lcms-metric__value {
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-metric--transparent .lcms-metric__label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.lcms-metric--gradient {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-metric--primary .lcms-metric__value {
+    color: var(--color-brand-primary, #161617);
+}
+
+.lcms-metric--accent .lcms-metric__value {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-metric--success .lcms-metric__value {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-metric--warning .lcms-metric__value {
+    color: var(--color-warning, #FFA726);
+}
+
+.lcms-metric--danger .lcms-metric__value {
+    color: var(--color-danger, #EF5350);
+}
+
+/* ============================================
+   MODIFIERS: Interactive States
+   ============================================ */
+
+.lcms-metric--interactive {
+    cursor: pointer;
+}
+
+.lcms-metric--interactive:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-brand-secondary, #161617);
+}
+
+.lcms-metric--transparent.lcms-metric--interactive:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   MODIFIERS: With Icon
+   ============================================ */
+
+.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-metric--small.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.lcms-metric--large.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-metric {
+        padding: 30px 15px;
+    }
+
+    .lcms-metric__value {
+        font-size: 42px;
+        margin-bottom: 12px;
+    }
+
+    .lcms-metric__label {
+        font-size: 14px;
+    }
+
+    .lcms-metric--large {
+        padding: 40px 20px;
+    }
+
+    .lcms-metric--large .lcms-metric__value {
+        font-size: 72px;
+        margin-bottom: 15px;
+    }
+
+    .lcms-metric--large .lcms-metric__label {
+        font-size: 18px;
+    }
+
+    .lcms-metric--small .lcms-metric__value {
+        font-size: 32px;
+    }
+}

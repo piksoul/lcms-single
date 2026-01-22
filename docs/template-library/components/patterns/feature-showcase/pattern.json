@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "id": "feature-showcase",
+    "name": "Image-Text Feature Showcase",
+    "category": "pattern",
+    "tier": 2,
+    "description": "Alternating image-text layout for product/service feature demonstrations",
+    "use_cases": [
+      "Product feature highlights",
+      "Service capability demonstrations",
+      "Platform functionality walkthroughs",
+      "Visual storytelling sections",
+      "Before/after comparisons"
+    ]
+  },
+  "composition": {
+    "wrapper": "lcms-feature-block",
+    "layout": "grid-2col with lcms-grid--align-center",
+    "gap": "60px",
+    "structure": "Image side (figure) + Content side (stack)"
+  },
+  "variants": {
+    "image_left": {
+      "description": "Image on left, content on right (default)",
+      "column_order": ["image", "content"]
+    },
+    "image_right": {
+      "description": "Content on left, image on right (reversed)",
+      "column_order": ["content", "image"]
+    }
+  },
+  "components_used": {
+    "image_side": {
+      "element": "lcms-figure",
+      "contains": [
+        "img with lcms-image--responsive and lcms-image--rounded modifiers",
+        "figcaption with lcms-figure__caption (optional)"
+      ]
+    },
+    "content_side": {
+      "element": "lcms-stack with gap-16",
+      "contains": [
+        "h3 heading",
+        "p.lcms-text--large description paragraph",
+        "ul.lcms-list.lcms-list--check benefits list"
+      ]
+    }
+  },
+  "html_structure": "<div class=\"lcms-feature-block\">\n    <div class=\"grid-2col lcms-grid--align-center\" style=\"gap: 60px;\">\n        <figure class=\"lcms-figure\">\n            <img src=\"{{IMAGE_URL}}\" alt=\"{{IMAGE_ALT}}\"\n                 class=\"lcms-image lcms-image--responsive lcms-image--rounded\"\n                 loading=\"lazy\" width=\"600\" height=\"400\" />\n            <figcaption class=\"lcms-figure__caption\">{{CAPTION}}</figcaption>\n        </figure>\n        <div class=\"lcms-stack gap-16\">\n            <h3>{{FEATURE_TITLE}}</h3>\n            <p class=\"lcms-text--large\">{{DESCRIPTION}}</p>\n            <ul class=\"lcms-list lcms-list--check\">\n                <li class=\"lcms-list__item\">{{BENEFIT_1}}</li>\n                <li class=\"lcms-list__item\">{{BENEFIT_2}}</li>\n                <li class=\"lcms-list__item\">{{BENEFIT_3}}</li>\n            </ul>\n        </div>\n    </div>\n</div>",
+  "placeholders": {
+    "IMAGE_URL": {
+      "type": "url",
+      "required": true,
+      "description": "Full URL to feature image"
+    },
+    "IMAGE_ALT": {
+      "type": "text",
+      "required": true,
+      "description": "Accessible alt text for image"
+    },
+    "CAPTION": {
+      "type": "text",
+      "required": false,
+      "description": "Optional caption for context"
+    },
+    "FEATURE_TITLE": {
+      "type": "text",
+      "required": true,
+      "description": "Feature heading (h3)"
+    },
+    "DESCRIPTION": {
+      "type": "text",
+      "required": true,
+      "description": "Feature description paragraph"
+    },
+    "BENEFIT_1": {
+      "type": "text",
+      "required": false,
+      "description": "First benefit point"
+    },
+    "BENEFIT_2": {
+      "type": "text",
+      "required": false,
+      "description": "Second benefit point"
+    },
+    "BENEFIT_3": {
+      "type": "text",
+      "required": false,
+      "description": "Third benefit point"
+    }
+  },
+  "usage": {
+    "typical_count": "3-4 features per page",
+    "alternation": {
+      "recommended": true,
+      "description": "Alternate image_left and image_right for visual rhythm"
+    },
+    "dark_mode_alternation": {
+      "recommended": true,
+      "description": "Alternate background colors (light/dark) for each feature section"
+    },
+    "accessibility": {
+      "image_alt": "Always provide descriptive alt text",
+      "loading": "Use lazy loading for images below the fold",
+      "dimensions": "Specify width and height attributes for CLS prevention"
+    }
+  },
+  "partial_implementation": {
+    "wrapper": "column",
+    "namespace": "pro-sites",
+    "settings": {
+      "dark_mode": "{{DARK_MODE}}",
+      "custom_classes": "lcms-feature-block"
+    },
+    "content": {
+      "type": "html",
+      "html": "{{HTML_STRUCTURE}}"
+    }
+  },
+  "visual_rhythm_pattern": {
+    "page_sequence": [
+      {
+        "order": 1,
+        "variant": "image_left",
+        "dark_mode": false,
+        "description": "First feature with light background"
+      },
+      {
+        "order": 2,
+        "variant": "image_right",
+        "dark_mode": true,
+        "description": "Second feature with dark background"
+      },
+      {
+        "order": 3,
+        "variant": "image_left",
+        "dark_mode": false,
+        "description": "Third feature with light background"
+      }
+    ]
+  },
+  "ai_generation_instructions": {
+    "component_selection": "Use feature-showcase pattern when demonstrating 3+ product/service capabilities",
+    "image_requirements": "Require actual image URLs, prefer diagrams/screenshots over stock photos",
+    "content_balance": "Keep feature titles short (3-7 words), descriptions concise (1-2 sentences)",
+    "benefit_count": "2-4 benefit points per feature, use check-list style",
+    "alternation_rule": "Automatically alternate image position and background color for visual rhythm"
+  },
+  "discovered_in": "templates/pages/brhu/slug-landing-page-03.php",
+  "promoted_from": "Tier 3 (ad-hoc composition)",
+  "date_added": "2025-11-18"
+}

@@ -1,0 +1,471 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pro-Sites Partials Schema",
+  "description": "Schema for the three main pro-sites partial layouts",
+  "version": "1.0.0",
+  "partials": {
+    "column": {
+      "description": "Single-column section for any content type - the most flexible partial",
+      "file": "column-section.php",
+      "usage": "partial('column', $config, 'pro-sites')",
+      "bestFor": [
+        "Hero sections",
+        "Text-heavy content",
+        "Vertically stacked layouts",
+        "Single focal content",
+        "Complex nested content (stack/row/grid)"
+      ],
+      "structure": {
+        "settings": {
+          "type": "object",
+          "required": false,
+          "description": "Section styling and behavior options",
+          "properties": {
+            "custom_id": {
+              "type": "string",
+              "description": "HTML id attribute for the section"
+            },
+            "custom_classes": {
+              "type": "string",
+              "description": "Additional CSS classes"
+            },
+            "custom_css": {
+              "type": "string",
+              "description": "Inline CSS styles"
+            },
+            "dark_mode": {
+              "type": "boolean",
+              "default": false,
+              "description": "Enable dark mode styling"
+            },
+            "spacing_top": {
+              "type": "string",
+              "default": "60px",
+              "description": "Top padding"
+            },
+            "spacing_bottom": {
+              "type": "string",
+              "default": "60px",
+              "description": "Bottom padding"
+            },
+            "container_width": {
+              "type": "string",
+              "description": "Max container width (overrides default)"
+            }
+          }
+        },
+        "pre_html": {
+          "type": "string",
+          "required": false,
+          "description": "Raw HTML before header"
+        },
+        "header": {
+          "type": "object",
+          "required": false,
+          "description": "Section header with heading",
+          "properties": {
+            "heading": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "description": "Small label above title"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Main section title"
+                },
+                "subtitle": {
+                  "type": "string",
+                  "description": "Subtitle below title"
+                },
+                "align": {
+                  "type": "enum",
+                  "values": ["left", "center", "right"],
+                  "default": "left"
+                }
+              }
+            }
+          }
+        },
+        "content": {
+          "type": "object",
+          "required": true,
+          "description": "Main content - can be any content type",
+          "structure": {
+            "type": "string (content type name)",
+            "content OR direct properties": "varies by content type"
+          },
+          "examples": [
+            {"type": "text", "content": {"text": "...", "format": "standard"}},
+            {"type": "stack", "content": {"items": [...], "gap": "30px"}},
+            {"type": "row", "content": {"items": [...], "gap": "40px"}},
+            {"type": "grid", "content": {"items": [...], "columns": 3}}
+          ]
+        },
+        "footer": {
+          "type": "object",
+          "required": false,
+          "description": "Section footer (typically buttons)",
+          "properties": {
+            "buttons": {
+              "type": "array",
+              "description": "Array of button objects"
+            }
+          }
+        },
+        "post_html": {
+          "type": "string",
+          "required": false,
+          "description": "Raw HTML after footer"
+        }
+      },
+      "example": {
+        "settings": {
+          "custom_id": "hero-section",
+          "dark_mode": false,
+          "spacing_top": "80px",
+          "spacing_bottom": "80px"
+        },
+        "header": {
+          "heading": {
+            "label": "Welcome",
+            "title": "Build Amazing Layouts",
+            "subtitle": "With pro-sites partials",
+            "align": "center"
+          }
+        },
+        "content": {
+          "type": "text",
+          "content": {
+            "text": "<p>Your content here</p>",
+            "format": "lead"
+          }
+        },
+        "footer": {
+          "buttons": [
+            {
+              "text": "Get Started",
+              "url": "/start",
+              "style": "primary"
+            }
+          ]
+        }
+      }
+    },
+    "2-column": {
+      "description": "Two-column side-by-side layout with flexible width control",
+      "file": "2-column-section.php",
+      "usage": "partial('2-column', $config, 'pro-sites')",
+      "bestFor": [
+        "Text + image combinations",
+        "Feature showcases",
+        "Comparison layouts",
+        "Asymmetric content (60/40, 70/30 splits)",
+        "Desktop side-by-side, mobile stacked"
+      ],
+      "structure": {
+        "settings": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial settings"
+        },
+        "pre_html": {
+          "type": "string",
+          "required": false
+        },
+        "header": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial header"
+        },
+        "content": {
+          "type": "object",
+          "required": true,
+          "description": "Two-column content configuration",
+          "properties": {
+            "columns": {
+              "type": "array",
+              "required": true,
+              "minItems": 2,
+              "maxItems": 2,
+              "description": "Array of exactly 2 column objects",
+              "items": {
+                "type": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Content type for this column"
+                },
+                "content": {
+                  "type": "object",
+                  "required": true,
+                  "description": "Type-specific content properties"
+                },
+                "width": {
+                  "type": "string",
+                  "required": false,
+                  "default": "50%",
+                  "description": "Column width (%, fr, px)",
+                  "examples": ["50%", "60%", "1fr", "2fr", "400px"]
+                },
+                "custom_id": {
+                  "type": "string",
+                  "required": false
+                },
+                "custom_classes": {
+                  "type": "string",
+                  "required": false
+                },
+                "custom_css": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            },
+            "gap": {
+              "type": "string",
+              "default": "40px",
+              "required": false,
+              "description": "Spacing between columns"
+            },
+            "reverse": {
+              "type": "boolean",
+              "default": false,
+              "required": false,
+              "description": "Reverse column order on mobile"
+            }
+          }
+        },
+        "footer": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial footer"
+        },
+        "post_html": {
+          "type": "string",
+          "required": false
+        }
+      },
+      "example": {
+        "settings": {
+          "custom_id": "feature-section"
+        },
+        "header": {
+          "heading": {
+            "title": "Key Features",
+            "align": "left"
+          }
+        },
+        "content": {
+          "columns": [
+            {
+              "type": "text",
+              "content": {
+                "text": "<h3>Feature Title</h3><p>Description here</p>",
+                "format": "standard"
+              },
+              "width": "60%"
+            },
+            {
+              "type": "image",
+              "content": {
+                "src": "/feature.jpg",
+                "alt": "Feature image"
+              },
+              "width": "40%"
+            }
+          ],
+          "gap": "50px",
+          "reverse": true
+        }
+      }
+    },
+    "grid": {
+      "description": "Multi-item grid layout with responsive column options",
+      "file": "grid-section.php",
+      "usage": "partial('grid', $config, 'pro-sites')",
+      "bestFor": [
+        "Product grids",
+        "Portfolio galleries",
+        "Team member cards",
+        "Feature icon grids",
+        "3-6 similar items",
+        "Responsive layouts that reflow automatically"
+      ],
+      "structure": {
+        "settings": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial settings"
+        },
+        "pre_html": {
+          "type": "string",
+          "required": false
+        },
+        "header": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial header"
+        },
+        "content": {
+          "type": "object",
+          "required": true,
+          "description": "Grid content configuration",
+          "properties": {
+            "items": {
+              "type": "array",
+              "required": true,
+              "minItems": 1,
+              "description": "Array of grid items (any content type)",
+              "items": {
+                "type": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Content type for this item"
+                },
+                "content": {
+                  "type": "object",
+                  "required": true,
+                  "description": "Type-specific content properties"
+                },
+                "custom_id": {
+                  "type": "string",
+                  "required": false
+                },
+                "custom_classes": {
+                  "type": "string",
+                  "required": false
+                },
+                "custom_css": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            },
+            "columns": {
+              "type": "number|string",
+              "default": "auto-fit",
+              "required": false,
+              "description": "Fixed column count (2, 3, 4, 5) or 'auto-fit'/'auto-fill'",
+              "examples": [2, 3, 4, "auto-fit", "auto-fill"]
+            },
+            "min-width": {
+              "type": "string",
+              "default": "250px",
+              "required": false,
+              "description": "Minimum column width for responsive grids"
+            },
+            "gap": {
+              "type": "string",
+              "default": "30px",
+              "required": false,
+              "description": "Grid gap spacing"
+            }
+          }
+        },
+        "footer": {
+          "type": "object",
+          "required": false,
+          "description": "Same as column partial footer"
+        },
+        "post_html": {
+          "type": "string",
+          "required": false
+        }
+      },
+      "example": {
+        "settings": {
+          "custom_id": "products-grid",
+          "spacing_top": "80px",
+          "spacing_bottom": "80px"
+        },
+        "header": {
+          "heading": {
+            "title": "Our Products",
+            "align": "center"
+          }
+        },
+        "content": {
+          "items": [
+            {
+              "type": "card",
+              "content": {
+                "media": {
+                  "type": "image",
+                  "content": {
+                    "src": "/product1.jpg",
+                    "alt": "Product 1"
+                  }
+                },
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<h3>Product 1</h3><p>Description</p>"
+                  }
+                },
+                "footer": {
+                  "type": "buttons",
+                  "content": {
+                    "buttons": [
+                      {"text": "View", "url": "#", "style": "primary"}
+                    ]
+                  }
+                },
+                "shadow": true
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<h3>Product 2</h3>"
+                  }
+                }
+              }
+            }
+          ],
+          "columns": 3,
+          "gap": "30px"
+        }
+      }
+    }
+  },
+  "commonSettings": {
+    "description": "Settings common to all three partials",
+    "customization": {
+      "custom_id": "Unique HTML id for the section",
+      "custom_classes": "Space-separated CSS classes",
+      "custom_css": "Inline CSS (use sparingly)"
+    },
+    "spacing": {
+      "spacing_top": "Top padding (default: 60px)",
+      "spacing_bottom": "Bottom padding (default: 60px)"
+    },
+    "themes": {
+      "dark_mode": "Enable dark background with light text"
+    }
+  },
+  "usageNotes": {
+    "choosing": {
+      "column": "Use when content is naturally vertical or you need maximum flexibility",
+      "2-column": "Use for side-by-side desktop layouts that stack on mobile",
+      "grid": "Use for multiple similar items that should display in rows/columns"
+    },
+    "nesting": {
+      "column": "Can contain stack/row/grid content types for complex layouts",
+      "2-column": "Columns can contain any content type, including nested grids",
+      "grid": "Grid items can be cards containing stacks, enabling deep nesting"
+    },
+    "responsive": {
+      "column": "Always single column",
+      "2-column": "Side-by-side on desktop, stacked on mobile (reverse option available)",
+      "grid": "Auto-reflows based on columns and min-width settings"
+    },
+    "performance": {
+      "recommendation": "Use lazy loading for images in grids",
+      "consideration": "Deeply nested layouts may impact initial render time"
+    }
+  }
+}

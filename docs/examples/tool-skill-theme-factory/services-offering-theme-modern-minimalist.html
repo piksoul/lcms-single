@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise AI Solutions - Service Offerings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2a2a2a 0%, #36454f 100%);
+            color: #36454f;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .company-name {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .header .tagline {
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Introduction */
+        .intro-section {
+            padding: 60px;
+            text-align: center;
+            background: #f8f8f8;
+        }
+
+        .intro-section h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 20px;
+        }
+
+        .intro-section p {
+            font-size: 18px;
+            color: #708090;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Service Categories */
+        .services-section {
+            padding: 60px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #36454f;
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d3d3d3;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: #f8f8f8;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(112, 128, 144, 0.3);
+            border-color: #708090;
+            background: white;
+        }
+
+        .service-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .service-features li {
+            font-size: 15px;
+            color: #36454f;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #708090;
+            font-weight: bold;
+        }
+
+        .service-link {
+            display: inline-block;
+            color: #36454f;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid #708090;
+            transition: all 0.3s ease;
+        }
+
+        .service-link:hover {
+            color: #708090;
+            border-bottom-color: #36454f;
+        }
+
+        /* Pricing Tiers */
+        .pricing-section {
+            padding: 60px;
+            background: #f8f8f8;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(112, 128, 144, 0.3);
+            border-color: #36454f;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #36454f;
+            background: #36454f;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #708090;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-tier {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .pricing-card.featured .pricing-tier {
+            color: #d3d3d3;
+        }
+
+        .pricing-amount {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card.featured .pricing-amount {
+            color: white;
+        }
+
+        .pricing-period {
+            font-size: 16px;
+            color: #708090;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card.featured .pricing-period {
+            color: #d3d3d3;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            font-size: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .pricing-button {
+            display: inline-block;
+            background: #36454f;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #36454f;
+        }
+
+        .pricing-button:hover {
+            background: #708090;
+            border-color: #708090;
+            transform: translateY(-2px);
+        }
+
+        .pricing-card.featured .pricing-button {
+            background: white;
+            color: #36454f;
+            border-color: white;
+        }
+
+        .pricing-card.featured .pricing-button:hover {
+            background: #f0f0f0;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 60px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            top: 40px;
+            right: -30px;
+            font-size: 32px;
+            color: #d3d3d3;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            border: 4px solid #d3d3d3;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            font-size: 15px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        /* Add-ons Section */
+        .addons-section {
+            padding: 60px;
+            background: #f8f8f8;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .addon-item {
+            background: white;
+            border: 2px solid #d3d3d3;
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .addon-item:hover {
+            border-color: #708090;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .addon-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+
+        .addon-content h4 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 8px;
+        }
+
+        .addon-content p {
+            font-size: 14px;
+            color: #708090;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .addon-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #36454f;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .cta-button.primary {
+            background: white;
+            color: #36454f;
+        }
+
+        .cta-button.primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 60px;
+            background: #36454f;
+            color: white;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            margin-top: 20px;
+            opacity: 0.9;
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header,
+            .intro-section,
+            .services-section,
+            .pricing-section,
+            .process-section,
+            .addons-section {
+                padding: 40px 30px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .process-step:not(:last-child)::after {
+                content: "↓";
+                right: auto;
+                top: auto;
+                bottom: -30px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .cta-section {
+                padding: 60px 30px;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="company-name">TechCorp Solutions</div>
+            <h1>Enterprise AI Solutions</h1>
+            <div class="tagline">Transforming businesses through intelligent automation and advanced analytics</div>
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro-section">
+            <h2>Comprehensive AI Services</h2>
+            <p>Our enterprise-grade AI solutions help organizations harness the power of artificial intelligence to drive innovation, improve efficiency, and unlock new revenue streams. From strategic consulting to full-scale implementation, we partner with you every step of the way.</p>
+        </section>
+
+        <!-- Core Services -->
+        <section class="services-section">
+            <h2 class="section-title">Core Service Offerings</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3 class="service-title">AI Strategy Consulting</h3>
+                    <p class="service-description">Expert guidance to identify AI opportunities, develop implementation roadmaps, and align technology with business objectives.</p>
+                    <ul class="service-features">
+                        <li>Current state assessment</li>
+                        <li>AI readiness evaluation</li>
+                        <li>Strategic roadmap development</li>
+                        <li>ROI analysis & business case</li>
+                        <li>Change management planning</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3 class="service-title">Custom AI Development</h3>
+                    <p class="service-description">Build tailored AI solutions designed specifically for your unique business challenges and operational requirements.</p>
+                    <ul class="service-features">
+                        <li>Machine learning models</li>
+                        <li>Natural language processing</li>
+                        <li>Computer vision systems</li>
+                        <li>Predictive analytics</li>
+                        <li>Recommendation engines</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">AI Integration Services</h3>
+                    <p class="service-description">Seamlessly integrate AI capabilities into your existing systems and workflows with minimal disruption.</p>
+                    <ul class="service-features">
+                        <li>API development & integration</li>
+                        <li>Legacy system modernization</li>
+                        <li>Data pipeline engineering</li>
+                        <li>Cloud infrastructure setup</li>
+                        <li>Testing & quality assurance</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Analytics & Insights</h3>
+                    <p class="service-description">Transform raw data into actionable intelligence with advanced analytics and visualization platforms.</p>
+                    <ul class="service-features">
+                        <li>Data warehouse architecture</li>
+                        <li>Real-time dashboards</li>
+                        <li>Predictive modeling</li>
+                        <li>Business intelligence tools</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3 class="service-title">AI Governance & Security</h3>
+                    <p class="service-description">Ensure ethical AI deployment with comprehensive governance frameworks and security protocols.</p>
+                    <ul class="service-features">
+                        <li>Compliance & regulatory advisory</li>
+                        <li>Bias detection & mitigation</li>
+                        <li>Security audits & testing</li>
+                        <li>Privacy protection measures</li>
+                        <li>Model monitoring & maintenance</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Training & Enablement</h3>
+                    <p class="service-description">Empower your team with the knowledge and skills needed to leverage AI effectively.</p>
+                    <ul class="service-features">
+                        <li>Executive workshops</li>
+                        <li>Technical training programs</li>
+                        <li>User adoption initiatives</li>
+                        <li>Documentation & resources</li>
+                        <li>Ongoing support & mentoring</li>
+                    </ul>
+                    <a href="#pricing" class="service-link">View Pricing →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Tiers -->
+        <section class="pricing-section" id="pricing">
+            <h2 class="section-title">Flexible Pricing Plans</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-tier">Starter</div>
+                    <div class="pricing-amount">$15K</div>
+                    <div class="pricing-period">per project</div>
+                    <ul class="pricing-features">
+                        <li>AI readiness assessment</li>
+                        <li>Strategic roadmap</li>
+                        <li>Up to 3 use case evaluations</li>
+                        <li>Executive presentation</li>
+                        <li>30-day email support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-tier">Professional</div>
+                    <div class="pricing-amount">$50K</div>
+                    <div class="pricing-period">per project</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Starter</li>
+                        <li>Custom AI model development</li>
+                        <li>System integration</li>
+                        <li>3 months implementation</li>
+                        <li>Training for up to 20 users</li>
+                        <li>90-day priority support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-tier">Enterprise</div>
+                    <div class="pricing-amount">Custom</div>
+                    <div class="pricing-period">contact for quote</div>
+                    <ul class="pricing-features">
+                        <li>Everything in Professional</li>
+                        <li>Multi-project engagement</li>
+                        <li>Dedicated team</li>
+                        <li>Advanced customization</li>
+                        <li>Unlimited training</li>
+                        <li>24/7 enterprise support</li>
+                    </ul>
+                    <a href="#contact" class="pricing-button">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Process -->
+        <section class="process-section">
+            <h2 class="section-title">Our Implementation Process</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Discovery</h3>
+                    <p class="step-description">Understand your business challenges, goals, and technical landscape through comprehensive workshops and assessments.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Design</h3>
+                    <p class="step-description">Develop detailed solution architecture, data models, and implementation plans tailored to your requirements.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Development</h3>
+                    <p class="step-description">Build and train AI models using agile methodologies with regular checkpoints and iterative refinement.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Deployment</h3>
+                    <p class="step-description">Launch your AI solution with comprehensive testing, user training, and change management support.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add-ons -->
+        <section class="addons-section">
+            <h2 class="section-title">Additional Services & Add-ons</h2>
+            
+            <div class="addons-grid">
+                <div class="addon-item">
+                    <div class="addon-icon">🔧</div>
+                    <div class="addon-content">
+                        <h4>Extended Support</h4>
+                        <p>Priority support with 4-hour response time, dedicated success manager, and quarterly business reviews.</p>
+                        <div class="addon-price">$5K/month</div>
+                    </div>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-icon">📈</div>
+                    <div class="addon-content">
+                        <h4>Model Optimization</h4>
+                        <p>Continuous model retraining, performance tuning, and accuracy improvements based on production data.</p>
+                        <div class="addon-price">$3K/month</div>
+                    </div>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-icon">🔒</div>
+                    <div class="addon-content">
+                        <h4>Security Audit</h4>
+                        <p>Comprehensive security assessment, penetration testing, and compliance verification for AI systems.</p>
+                        <div class="addon-price">$8K one-time</div>
+                    </div>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-icon">🎯</div>
+                    <div class="addon-content">
+                        <h4>Custom Training</h4>
+                        <p>Tailored training programs for specific teams or departments with hands-on exercises and certification.</p>
+                        <div class="addon-price">$2K per session</div>
+                    </div>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-icon">📊</div>
+                    <div class="addon-content">
+                        <h4>Advanced Analytics</h4>
+                        <p>Enhanced reporting dashboards, predictive analytics capabilities, and real-time monitoring tools.</p>
+                        <div class="addon-price">$4K/month</div>
+                    </div>
+                </div>
+
+                <div class="addon-item">
+                    <div class="addon-icon">🌐</div>
+                    <div class="addon-content">
+                        <h4>Multi-Region Deployment</h4>
+                        <p>Deploy AI solutions across multiple geographic regions with local compliance and data residency.</p>
+                        <div class="addon-price">$10K per region</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" id="contact">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how our AI solutions can drive measurable results for your organization.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:sales@techcorp.com" class="cta-button primary">Schedule Consultation</a>
+                <a href="tel:+1-555-0100" class="cta-button secondary">Call: +1 (555) 0100</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#process">Process</a>
+                    <a href="#case-studies">Case Studies</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <p><strong>TechCorp Solutions</strong></p>
+                    <p>123 Innovation Drive, San Francisco, CA 94105</p>
+                    <p>Email: info@techcorp.com | Phone: +1 (555) 0100</p>
+                </div>
+                
+                <div class="footer-copyright">
+                    © 2026 TechCorp Solutions. All rights reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate service cards
+        document.querySelectorAll('.service-card, .pricing-card, .addon-item, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Highlight featured pricing on load
+        setTimeout(() => {
+            const featured = document.querySelector('.pricing-card.featured');
+            if (featured) {
+                featured.style.animation = 'pulse 1s ease-in-out';
+            }
+        }, 500);
+    </script>
+</body>
+</html>

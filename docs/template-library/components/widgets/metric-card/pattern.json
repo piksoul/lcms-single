@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "id": "metric-card",
+    "name": "Metric Display Card",
+    "category": "widget",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["metric", "kpi", "statistics", "data", "card"]
+  },
+
+  "description": {
+    "summary": "Card for displaying a single key metric with label, value, and description",
+    "use_cases": [
+      "KPI dashboards",
+      "Statistics display",
+      "Project metrics",
+      "Performance indicators"
+    ],
+    "visual_weight": "medium",
+    "content_density": "low-to-medium",
+    "typical_grouping": "Grid of 2-4 metrics"
+  },
+
+  "bem": {
+    "block": "lcms-metric",
+    "modifiers": ["--transparent"],
+    "elements": ["__label", "__value", "__description"],
+    "full_classes": [
+      "lcms-metric",
+      "lcms-metric--transparent",
+      "lcms-metric__label",
+      "lcms-metric__value",
+      "lcms-metric__description"
+    ]
+  },
+
+  "html_structure": "<div class=\"lcms-metric lcms-metric--transparent\">\n  <div class=\"lcms-metric__label\">{{LABEL}}</div>\n  <div class=\"lcms-metric__value\">{{VALUE}}</div>\n  <div class=\"lcms-metric__description\">{{DESCRIPTION}}</div>\n  {{OPTIONAL_SECONDARY_DESCRIPTION}}\n</div>",
+
+  "placeholders": {
+    "LABEL": {
+      "type": "text",
+      "required": true,
+      "description": "Metric category or name",
+      "example": "Completion Rate",
+      "max_length": 30
+    },
+    "VALUE": {
+      "type": "text",
+      "required": true,
+      "description": "Metric value (number, percentage, or short text)",
+      "example": "75%",
+      "max_length": 20
+    },
+    "DESCRIPTION": {
+      "type": "text",
+      "required": true,
+      "description": "Brief explanation of the metric",
+      "example": "Project progress to date",
+      "max_length": 100
+    },
+    "SECONDARY_DESCRIPTION": {
+      "type": "text",
+      "required": false,
+      "description": "Optional additional context",
+      "example": "Target: 90% by Q2 2025",
+      "max_length": 100,
+      "html_wrapper": "<div class=\"lcms-metric__description\" style=\"margin-top: 20px; opacity: 0.7;\">{{CONTENT}}</div>"
+    }
+  },
+
+  "styling_notes": {
+    "background": "Transparent (--transparent modifier)",
+    "label": "Small text, uppercase or sentence case",
+    "value": "Large, bold display text",
+    "description": "Regular text, medium size",
+    "secondary_description": "Slightly transparent, spaced from primary"
+  },
+
+  "usage_in_partial": {
+    "type": "inline_html",
+    "note": "Typically used within metrics-grid pattern, inside column partial HTML content",
+    "typical_container": "grid-4col or grid-3col wrapper"
+  },
+
+  "ai_instructions": "Use for displaying quantitative or qualitative metrics. Keep LABEL concise (1-3 words). VALUE should be the standout element (number, percentage, or very short text). DESCRIPTION provides context. Use SECONDARY_DESCRIPTION for additional notes or targets. Best used in groups of 2-4 metrics.",
+
+  "variations": {
+    "standard": "With label, value, and description",
+    "with_secondary": "Includes secondary description for extra context",
+    "minimal": "Label and value only (omit descriptions)"
+  },
+
+  "related_components": [
+    "metrics-grid-4col",
+    "metrics-grid-3col"
+  ]
+}

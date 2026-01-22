@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "id": "metrics-grid-4col",
+    "name": "4-Column Metrics Grid",
+    "category": "pattern",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["metrics", "grid", "kpi", "dashboard", "statistics"]
+  },
+
+  "description": {
+    "summary": "Dark mode section displaying 4 key metrics in a grid layout with optional header",
+    "use_cases": [
+      "KPI dashboards",
+      "Project statistics sections",
+      "Performance metrics display",
+      "Data overview sections"
+    ],
+    "visual_weight": "medium-heavy",
+    "content_density": "medium",
+    "typical_position": "Mid-page, after intro content"
+  },
+
+  "partial_call": {
+    "name": "column",
+    "namespace": "pro-sites",
+    "function": "partial('column', [...], 'pro-sites');"
+  },
+
+  "structure": {
+    "settings": {
+      "dark_mode": true
+    },
+    "header": "Optional section header with title and subtitle",
+    "content": "HTML with grid-4col wrapper containing 4 metric-card widgets"
+  },
+
+  "parameters": {
+    "settings": {
+      "dark_mode": {
+        "type": "boolean",
+        "required": true,
+        "default": true,
+        "description": "Enable dark mode styling"
+      }
+    },
+    "header": {
+      "heading": {
+        "title": {
+          "type": "text",
+          "required": false,
+          "placeholder": "{{SECTION_TITLE}}",
+          "description": "Section heading",
+          "example": "Key Metrics"
+        },
+        "subtitle": {
+          "type": "text",
+          "required": false,
+          "placeholder": "{{SECTION_SUBTITLE}}",
+          "description": "Section subheading",
+          "example": "Current project statistics"
+        },
+        "align": {
+          "type": "select",
+          "required": false,
+          "default": "center",
+          "options": ["left", "center", "right"],
+          "description": "Header text alignment"
+        }
+      }
+    },
+    "content": {
+      "type": {
+        "value": "html",
+        "locked": true
+      },
+      "html": {
+        "type": "html",
+        "required": true,
+        "description": "Grid container with 4 metric-card components"
+      }
+    }
+  },
+
+  "php_template": "partial('column', [\n    'settings' => ['dark_mode' => true],\n    'header' => [\n        'heading' => [\n            'title' => '{{SECTION_TITLE}}',\n            'subtitle' => '{{SECTION_SUBTITLE}}',\n            'align' => 'center',\n        ],\n    ],\n    'content' => [\n        'type' => 'html',\n        'html' => '\n            <div class=\"grid-4col\">\n                {{REPEAT:METRIC_CARD}}\n            </div>\n        ',\n    ],\n], 'pro-sites');",
+
+  "repeatable_content": {
+    "METRIC_CARD": {
+      "component": "metric-card",
+      "count": 4,
+      "description": "Four metric cards in the grid",
+      "placeholders_per_item": ["LABEL", "VALUE", "DESCRIPTION", "SECONDARY_DESCRIPTION (optional)"]
+    }
+  },
+
+  "placeholders": {
+    "SECTION_TITLE": {
+      "type": "text",
+      "required": false,
+      "description": "Section heading",
+      "example": "Key Performance Indicators"
+    },
+    "SECTION_SUBTITLE": {
+      "type": "text",
+      "required": false,
+      "description": "Section subheading",
+      "example": "Current project metrics"
+    },
+    "METRICS": {
+      "type": "array",
+      "required": true,
+      "count": 4,
+      "description": "Array of 4 metric objects",
+      "item_structure": {
+        "LABEL": "Metric name",
+        "VALUE": "Metric value",
+        "DESCRIPTION": "Primary description",
+        "SECONDARY_DESCRIPTION": "Optional additional context"
+      }
+    }
+  },
+
+  "html_structure": "<div class=\"grid-4col\">\n  <div class=\"lcms-metric lcms-metric--transparent\">\n    <div class=\"lcms-metric__label\">{{LABEL_1}}</div>\n    <div class=\"lcms-metric__value\">{{VALUE_1}}</div>\n    <div class=\"lcms-metric__description\">{{DESCRIPTION_1}}</div>\n  </div>\n  <div class=\"lcms-metric lcms-metric--transparent\">\n    <div class=\"lcms-metric__label\">{{LABEL_2}}</div>\n    <div class=\"lcms-metric__value\">{{VALUE_2}}</div>\n    <div class=\"lcms-metric__description\">{{DESCRIPTION_2}}</div>\n  </div>\n  <div class=\"lcms-metric lcms-metric--transparent\">\n    <div class=\"lcms-metric__label\">{{LABEL_3}}</div>\n    <div class=\"lcms-metric__value\">{{VALUE_3}}</div>\n    <div class=\"lcms-metric__description\">{{DESCRIPTION_3}}</div>\n  </div>\n  <div class=\"lcms-metric lcms-metric--transparent\">\n    <div class=\"lcms-metric__label\">{{LABEL_4}}</div>\n    <div class=\"lcms-metric__value\">{{VALUE_4}}</div>\n    <div class=\"lcms-metric__description\">{{DESCRIPTION_4}}</div>\n  </div>\n</div>",
+
+  "styling_notes": {
+    "background": "Dark mode enabled",
+    "grid": "4 equal columns, responsive",
+    "spacing": "gap-medium between items",
+    "alignment": "Header center-aligned by default"
+  },
+
+  "ai_instructions": "Use for displaying 4 related metrics or KPIs. Always use dark_mode: true. Metrics should be comparable or related. Keep labels concise (1-3 words). Values should stand out. Use secondary descriptions sparingly for important context only.",
+
+  "variations": {
+    "with_header": "Includes section title and subtitle",
+    "metrics_only": "Just the 4 metrics without header",
+    "with_secondary": "Some metrics include secondary descriptions"
+  },
+
+  "required_components": [
+    "metric-card (4x)"
+  ],
+
+  "related_components": [
+    "metric-card",
+    "metrics-grid-3col",
+    "progress-bar-large"
+  ]
+}

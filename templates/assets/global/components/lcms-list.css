@@ -1,0 +1,220 @@
+/**
+ * List Component
+ *
+ * Flexible list component with various marker/icon styles.
+ * Supports check lists, cross lists, arrow lists, icon lists, and more.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-list.css
+ */
+
+/* ============================================
+   BLOCK: List
+   ============================================ */
+
+.lcms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-list__item {
+    padding-left: 30px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-primary, #161617);
+}
+
+/* ============================================
+   MODIFIERS: Check List ()
+   ============================================ */
+
+.lcms-list--check .lcms-list__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: var(--color-success, #28a745);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Cross List ()
+   ============================================ */
+
+.lcms-list--cross .lcms-list__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    color: var(--color-danger, #dc3545);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Arrow List (’)
+   ============================================ */
+
+.lcms-list--arrow .lcms-list__item::before {
+    content: "’";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Bullet List (")
+   ============================================ */
+
+.lcms-list--bullet .lcms-list__item::before {
+    content: """;
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Numbered List
+   ============================================ */
+
+.lcms-list--numbered {
+    counter-reset: list-counter;
+}
+
+.lcms-list--numbered .lcms-list__item::before {
+    counter-increment: list-counter;
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+}
+
+/* ============================================
+   MODIFIERS: Icon List (Custom Icons)
+   ============================================ */
+
+.lcms-list--icon {
+    gap: 15px;
+}
+
+.lcms-list--icon .lcms-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding-left: 0;
+}
+
+.lcms-list__icon {
+    font-size: 20px;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    flex-shrink: 0;
+    min-width: 20px;
+    text-align: center;
+}
+
+.lcms-list__text {
+    flex: 1;
+}
+
+/* ============================================
+   MODIFIERS: Card Style
+   ============================================ */
+
+.lcms-list--card .lcms-list__item {
+    background: var(--color-background-light, #ffffff);
+    padding: 20px;
+    padding-left: 50px;
+    border-radius: var(--border-radius, 8px);
+    border: 2px solid var(--color-border-light, #e0e0e0);
+}
+
+.lcms-list--card.lcms-list--icon .lcms-list__item {
+    padding: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Compact
+   ============================================ */
+
+.lcms-list--compact {
+    gap: 8px;
+}
+
+.lcms-list--compact .lcms-list__item {
+    padding-left: 25px;
+    font-size: 14px;
+}
+
+.lcms-list--compact .lcms-list__item::before {
+    font-size: 16px;
+}
+
+/* ============================================
+   MODIFIERS: Spacious
+   ============================================ */
+
+.lcms-list--spacious {
+    gap: 20px;
+}
+
+.lcms-list--spacious .lcms-list__item {
+    padding-left: 35px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* ============================================
+   MODIFIERS: No Marker
+   ============================================ */
+
+.lcms-list--none .lcms-list__item {
+    padding-left: 0;
+}
+
+.lcms-list--none .lcms-list__item::before {
+    display: none;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-list__item {
+        padding-left: 25px;
+        font-size: 14px;
+    }
+
+    .lcms-list__item::before {
+        font-size: 16px;
+    }
+
+    .lcms-list--card .lcms-list__item {
+        padding: 15px;
+        padding-left: 40px;
+    }
+
+    .lcms-list--card.lcms-list--icon .lcms-list__item {
+        padding: 15px;
+    }
+
+    .lcms-list__icon {
+        font-size: 18px;
+        min-width: 18px;
+    }
+}

@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "name": "Template Composition Rules",
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "description": "Guidelines and constraints for AI-driven template composition"
+  },
+
+  "composition_tiers": {
+    "tier_1": {
+      "name": "Recipe Mode (Strict)",
+      "description": "Follow pre-defined component sequences exactly",
+      "use_for": ["Type 1: Well-structured content"],
+      "flexibility": "none",
+      "ai_behavior": "Execute recipe, fill placeholders, no improvisation"
+    },
+    "tier_2": {
+      "name": "Selection Mode (Guided)",
+      "description": "Select and arrange components based on content analysis",
+      "use_for": ["Type 2: Supplied content with directions"],
+      "flexibility": "medium",
+      "ai_behavior": "Analyze content, select matching components, arrange logically"
+    },
+    "tier_3": {
+      "name": "Composition Mode (Creative)",
+      "description": "Create templates with creative freedom within constraints",
+      "use_for": ["Type 3: Content built from scratch or AI-written"],
+      "flexibility": "high",
+      "ai_behavior": "Interpret brief, compose from components, follow rules"
+    }
+  },
+
+  "universal_rules": {
+    "must_have": [
+      {
+        "rule": "Every page must start with a hero/header section",
+        "rationale": "Establishes page context and hierarchy"
+      },
+      {
+        "rule": "Every page must include at least one CTA",
+        "rationale": "Guides user to next action"
+      },
+      {
+        "rule": "Use only components from the library",
+        "rationale": "Ensures BEM compliance and brand consistency"
+      }
+    ],
+    "forbidden": [
+      {
+        "rule": "Do not create custom HTML unless extending framework",
+        "rationale": "Prevents non-BEM markup"
+      },
+      {
+        "rule": "Do not use non-BEM CSS classes",
+        "rationale": "Maintains design system integrity",
+        "exceptions": ["grid-Ncol", "flex", "standard utility classes"]
+      },
+      {
+        "rule": "Do not skip security checks (ABSPATH, escaping)",
+        "rationale": "WordPress security standards"
+      }
+    ]
+  },
+
+  "layout_rules": {
+    "visual_rhythm": {
+      "description": "Alternate content density and visual weight",
+      "pattern": "heavy → light → medium → light (repeat)",
+      "example": "Hero (heavy) → Text (light) → Metrics (medium) → List (light)"
+    },
+    "dark_light_alternation": {
+      "description": "Alternate dark and light sections",
+      "recommended": true,
+      "pattern": "light → dark → light → dark",
+      "note": "Hero typically light, alternates after"
+    },
+    "max_consecutive_text": {
+      "description": "Maximum consecutive text-heavy sections",
+      "value": 2,
+      "rationale": "Prevent reader fatigue, add visual breaks"
+    },
+    "section_spacing": {
+      "description": "Consistent spacing between sections",
+      "handled_by": "partial namespace (pro-sites, top-section)",
+      "ai_action": "Use correct namespace, spacing is automatic"
+    }
+  },
+
+  "component_selection_guidance": {
+    "decision_tree": [
+      {
+        "if": "Content is quantitative data (numbers, percentages)",
+        "then": "Use metric-card or metrics-grid pattern"
+      },
+      {
+        "if": "Content is sequential steps or timeline",
+        "then": "Use timeline or next-steps-timeline pattern"
+      },
+      {
+        "if": "Content is list of items or features",
+        "then": "Use list pattern (lcms-list with appropriate modifier)"
+      },
+      {
+        "if": "Content is call-to-action or conversion point",
+        "then": "Use cta-with-buttons section"
+      },
+      {
+        "if": "Content is general text/paragraphs",
+        "then": "Use column partial with text content type"
+      }
+    ],
+    "when_uncertain": "Choose simpler component, can always enhance later"
+  },
+
+  "bem_framework_extension": {
+    "when_to_extend": [
+      "Component doesn't exist in library",
+      "Guided patterns don't fit the use case",
+      "Integrating external design system (Material Design)"
+    ],
+    "naming_convention": {
+      "prefix": "lcms-",
+      "block": "lcms-{component-name}",
+      "element": "lcms-{component-name}__{element}",
+      "modifier": "lcms-{component-name}--{modifier}",
+      "example": "lcms-accordion, lcms-accordion__header, lcms-accordion--expanded"
+    },
+    "documentation_requirement": "Document new component for library promotion",
+    "validation": "AI should flag for human review"
+  },
+
+  "material_design_integration": {
+    "allowed": true,
+    "approach": "Wrap Material components in BEM containers",
+    "example": "<div class=\"lcms-card-material\">\n  <div class=\"mdc-card\">...</div>\n</div>",
+    "namespace_prefix": "mdc- allowed for Material components",
+    "note": "Ensure Material CDN/dependencies are loaded"
+  },
+
+  "quality_assurance": {
+    "validation_checks": [
+      "All components exist in library or are properly extended",
+      "BEM naming conventions followed",
+      "Required placeholders filled",
+      "Security checks present (ABSPATH, escaping)",
+      "Proper partial namespace used"
+    ],
+    "warning_triggers": [
+      "New component created (flag for review)",
+      "External framework used (verify dependencies)",
+      "Inline styles present (consider extracting)",
+      "More than 2 consecutive text sections"
+    ]
+  },
+
+  "placeholder_conventions": {
+    "format": "{{PLACEHOLDER_NAME}}",
+    "casing_rules": {
+      "UPPERCASE": "For content values ({{PAGE_TITLE}})",
+      "lowercase": "For technical values (not commonly used)",
+      "PascalCase": "For class names (not commonly used in templates)"
+    },
+    "naming_patterns": {
+      "section_level": "{{SECTION_TITLE}}, {{SECTION_SUBTITLE}}",
+      "content_level": "{{DESCRIPTION}}, {{TEXT}}, {{VALUE}}",
+      "action_level": "{{BUTTON_TEXT}}, {{BUTTON_URL}}"
+    }
+  },
+
+  "content_type_workflows": {
+    "type_1_structured": {
+      "process": "Load recipe → Validate data → Fill placeholders → Generate PHP",
+      "ai_freedom": "None (strict recipe following)",
+      "example": "Project documentation pages"
+    },
+    "type_2_supplied": {
+      "process": "Analyze content → Select components → Arrange logically → Generate PHP",
+      "ai_freedom": "Component selection and ordering",
+      "example": "Marketing collateral refresh"
+    },
+    "type_3_creative": {
+      "process": "Interpret brief → Compose from components → Validate rules → Generate PHP",
+      "ai_freedom": "Full composition within rules",
+      "example": "Landing page from topic brief"
+    }
+  },
+
+  "output_requirements": {
+    "file_header": {
+      "required": true,
+      "format": "WordPress template header with filepath",
+      "must_include": ["@package", "@subpackage", "@filepath"]
+    },
+    "security": {
+      "abspath_check": "defined('ABSPATH') || exit;",
+      "escaping": "Use esc_html(), esc_url(), etc. for dynamic content"
+    },
+    "wordpress_integration": {
+      "header": "get_header();",
+      "footer": "get_footer();",
+      "partial_calls": "partial('name', [...], 'namespace');"
+    }
+  }
+}

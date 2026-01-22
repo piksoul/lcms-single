@@ -1,0 +1,545 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pro-Sites Common Patterns",
+  "description": "Library of common layout patterns for quick generation",
+  "version": "1.0.0",
+  "patterns": {
+    "hero-section": {
+      "name": "Hero Section",
+      "description": "Centered hero with heading, text, and CTA buttons",
+      "partial": "column",
+      "useCase": "Landing page hero, section intro",
+      "code": {
+        "settings": {
+          "custom_id": "hero",
+          "spacing_top": "100px",
+          "spacing_bottom": "100px"
+        },
+        "content": {
+          "type": "stack",
+          "content": {
+            "items": [
+              {
+                "type": "heading",
+                "content": {
+                  "text": "Your Hero Title",
+                  "size": "h1",
+                  "align": "center"
+                }
+              },
+              {
+                "type": "text",
+                "content": {
+                  "text": "<p>Compelling hero description that explains your value proposition.</p>",
+                  "format": "lead"
+                }
+              },
+              {
+                "type": "buttons",
+                "content": {
+                  "buttons": [
+                    {"text": "Primary Action", "url": "#", "style": "primary"},
+                    {"text": "Secondary Action", "url": "#", "style": "secondary"}
+                  ]
+                }
+              }
+            ],
+            "gap": "30px",
+            "align": "center"
+          }
+        }
+      }
+    },
+    "text-image-split": {
+      "name": "Text + Image Split",
+      "description": "Side-by-side text and image with 60/40 split",
+      "partial": "2-column",
+      "useCase": "Feature sections, about sections, product showcases",
+      "code": {
+        "settings": {
+          "custom_id": "feature"
+        },
+        "header": {
+          "heading": {
+            "title": "Feature Title",
+            "align": "left"
+          }
+        },
+        "content": {
+          "columns": [
+            {
+              "type": "text",
+              "content": {
+                "text": "<h3>Feature Heading</h3><p>Detailed description of the feature with benefits and use cases.</p>",
+                "format": "standard"
+              },
+              "width": "60%"
+            },
+            {
+              "type": "image",
+              "content": {
+                "src": "/path/to/image.jpg",
+                "alt": "Feature visual",
+                "lazy": true
+              },
+              "width": "40%"
+            }
+          ],
+          "gap": "50px",
+          "reverse": true
+        }
+      }
+    },
+    "feature-grid-3col": {
+      "name": "3-Column Feature Grid",
+      "description": "Three feature cards with icons/images",
+      "partial": "grid",
+      "useCase": "Service offerings, key features, benefits",
+      "code": {
+        "settings": {
+          "custom_id": "features",
+          "spacing_top": "80px",
+          "spacing_bottom": "80px"
+        },
+        "header": {
+          "heading": {
+            "title": "Key Features",
+            "subtitle": "Everything you need to succeed",
+            "align": "center"
+          }
+        },
+        "content": {
+          "items": [
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<div style='font-size: 48px; text-align: center; margin-bottom: 20px;'>🚀</div><h3 style='text-align: center;'>Fast Performance</h3><p style='text-align: center;'>Lightning-fast load times for optimal user experience.</p>"
+                  }
+                },
+                "padding": "32px",
+                "shadow": true
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<div style='font-size: 48px; text-align: center; margin-bottom: 20px;'>🎨</div><h3 style='text-align: center;'>Beautiful Design</h3><p style='text-align: center;'>Stunning visuals that capture attention.</p>"
+                  }
+                },
+                "padding": "32px",
+                "shadow": true
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<div style='font-size: 48px; text-align: center; margin-bottom: 20px;'>🔒</div><h3 style='text-align: center;'>Secure & Reliable</h3><p style='text-align: center;'>Enterprise-grade security you can trust.</p>"
+                  }
+                },
+                "padding": "32px",
+                "shadow": true
+              }
+            }
+          ],
+          "columns": 3,
+          "gap": "30px"
+        }
+      }
+    },
+    "product-grid-4col": {
+      "name": "4-Column Product Grid",
+      "description": "Product showcase with images and CTAs",
+      "partial": "grid",
+      "useCase": "Product catalogs, portfolio items, team members",
+      "code": {
+        "settings": {
+          "custom_id": "products"
+        },
+        "header": {
+          "heading": {
+            "title": "Our Products",
+            "align": "center"
+          }
+        },
+        "content": {
+          "items": [
+            {
+              "type": "card",
+              "content": {
+                "media": {
+                  "type": "image",
+                  "content": {
+                    "src": "/product1.jpg",
+                    "alt": "Product 1",
+                    "lazy": true
+                  }
+                },
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<h3>Product Name</h3><p>Brief product description highlighting key benefits.</p>"
+                  }
+                },
+                "footer": {
+                  "type": "buttons",
+                  "content": {
+                    "buttons": [
+                      {"text": "Learn More", "url": "#", "style": "primary"}
+                    ]
+                  }
+                },
+                "padding": "20px",
+                "shadow": true
+              }
+            }
+          ],
+          "columns": 4,
+          "gap": "24px"
+        },
+        "footer": {
+          "buttons": [
+            {"text": "View All Products", "url": "/products", "style": "secondary"}
+          ]
+        }
+      }
+    },
+    "text-with-nested-grid": {
+      "name": "Text + Nested 2x2 Grid",
+      "description": "Intro text followed by 4-item grid (like BICWA opportunities)",
+      "partial": "column",
+      "useCase": "Complex sections with intro and multiple items",
+      "code": {
+        "settings": {
+          "custom_id": "opportunities"
+        },
+        "header": {
+          "heading": {
+            "label": "1. Premium Products",
+            "title": "Section Title",
+            "subtitle": "Section subtitle"
+          }
+        },
+        "content": {
+          "type": "stack",
+          "content": {
+            "items": [
+              {
+                "type": "text",
+                "content": {
+                  "text": "<p>Introductory paragraph explaining the section context and setting up the items below.</p>",
+                  "format": "standard"
+                }
+              },
+              {
+                "type": "grid",
+                "content": {
+                  "items": [
+                    {
+                      "type": "html",
+                      "content": {
+                        "html": "<div style='padding: 30px; background: #f5f5f5; border-radius: 8px;'><h3>Item 1</h3><p>Item description</p></div>"
+                      }
+                    },
+                    {
+                      "type": "html",
+                      "content": {
+                        "html": "<div style='padding: 30px; background: #f5f5f5; border-radius: 8px;'><h3>Item 2</h3><p>Item description</p></div>"
+                      }
+                    },
+                    {
+                      "type": "html",
+                      "content": {
+                        "html": "<div style='padding: 30px; background: #f5f5f5; border-radius: 8px;'><h3>Item 3</h3><p>Item description</p></div>"
+                      }
+                    },
+                    {
+                      "type": "html",
+                      "content": {
+                        "html": "<div style='padding: 30px; background: #f5f5f5; border-radius: 8px;'><h3>Item 4</h3><p>Item description</p></div>"
+                      }
+                    }
+                  ],
+                  "columns": 2,
+                  "gap": "24px"
+                }
+              }
+            ],
+            "gap": "40px"
+          }
+        }
+      }
+    },
+    "row-text-card": {
+      "name": "Text + Card in Row",
+      "description": "Horizontal layout with text and highlighted card",
+      "partial": "column",
+      "useCase": "Call-outs, highlighted content, takeaways",
+      "code": {
+        "settings": {
+          "custom_id": "takeaways",
+          "custom_css": "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;"
+        },
+        "header": {
+          "heading": {
+            "title": "Key Takeaways",
+            "align": "center"
+          }
+        },
+        "content": {
+          "type": "row",
+          "content": {
+            "items": [
+              {
+                "type": "text",
+                "content": {
+                  "text": "<p style='font-size: 19px; line-height: 1.8;'>Summary text highlighting the main points and context.</p>",
+                  "format": "standard"
+                },
+                "width": "45%"
+              },
+              {
+                "type": "card",
+                "content": {
+                  "body": {
+                    "type": "html",
+                    "content": {
+                      "html": "<h3>Action Items:</h3><ul><li>First priority</li><li>Second priority</li><li>Third priority</li></ul>"
+                    }
+                  },
+                  "padding": "32px",
+                  "shadow": true
+                },
+                "width": "55%",
+                "custom_css": "background: rgba(255,255,255,0.1); border-left: 5px solid white;"
+              }
+            ],
+            "gap": "30px",
+            "align": "stretch"
+          }
+        }
+      }
+    },
+    "cta-section": {
+      "name": "Call-to-Action Section",
+      "description": "Centered CTA with gradient background",
+      "partial": "column",
+      "useCase": "End-of-page CTAs, conversion sections",
+      "code": {
+        "settings": {
+          "custom_id": "cta",
+          "custom_css": "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;",
+          "spacing_top": "80px",
+          "spacing_bottom": "80px"
+        },
+        "content": {
+          "type": "stack",
+          "content": {
+            "items": [
+              {
+                "type": "heading",
+                "content": {
+                  "text": "Ready to Get Started?",
+                  "size": "h2",
+                  "align": "center"
+                }
+              },
+              {
+                "type": "text",
+                "content": {
+                  "text": "<p style='font-size: 20px; opacity: 0.95; text-align: center;'>Join thousands of satisfied customers today.</p>",
+                  "format": "lead"
+                }
+              },
+              {
+                "type": "buttons",
+                "content": {
+                  "buttons": [
+                    {"text": "Start Free Trial", "url": "/signup", "style": "primary"},
+                    {"text": "Schedule Demo", "url": "/demo", "style": "outline"}
+                  ]
+                }
+              }
+            ],
+            "gap": "25px",
+            "align": "center"
+          }
+        }
+      }
+    },
+    "stats-row": {
+      "name": "Statistics Row",
+      "description": "Horizontal row of key statistics/metrics",
+      "partial": "column",
+      "useCase": "Company metrics, achievements, social proof",
+      "code": {
+        "settings": {
+          "custom_id": "stats",
+          "dark_mode": true
+        },
+        "content": {
+          "type": "row",
+          "content": {
+            "items": [
+              {
+                "type": "html",
+                "content": {
+                  "html": "<div style='text-align: center;'><div style='font-size: 48px; font-weight: 700; color: var(--color-primary);'>10K+</div><div style='margin-top: 8px;'>Active Users</div></div>"
+                }
+              },
+              {
+                "type": "html",
+                "content": {
+                  "html": "<div style='text-align: center;'><div style='font-size: 48px; font-weight: 700; color: var(--color-primary);'>99.9%</div><div style='margin-top: 8px;'>Uptime</div></div>"
+                }
+              },
+              {
+                "type": "html",
+                "content": {
+                  "html": "<div style='text-align: center;'><div style='font-size: 48px; font-weight: 700; color: var(--color-primary);'>24/7</div><div style='margin-top: 8px;'>Support</div></div>"
+                }
+              },
+              {
+                "type": "html",
+                "content": {
+                  "html": "<div style='text-align: center;'><div style='font-size: 48px; font-weight: 700; color: var(--color-primary);'>5★</div><div style='margin-top: 8px;'>Rating</div></div>"
+                }
+              }
+            ],
+            "gap": "40px",
+            "justify": "space-between"
+          }
+        }
+      }
+    },
+    "video-showcase": {
+      "name": "Video Showcase",
+      "description": "Centered video with intro text",
+      "partial": "column",
+      "useCase": "Product demos, explainer videos, testimonials",
+      "code": {
+        "settings": {
+          "custom_id": "video-demo"
+        },
+        "header": {
+          "heading": {
+            "title": "See It In Action",
+            "subtitle": "Watch our 2-minute product demo",
+            "align": "center"
+          }
+        },
+        "content": {
+          "type": "stack",
+          "content": {
+            "items": [
+              {
+                "type": "text",
+                "content": {
+                  "text": "<p style='text-align: center;'>Brief intro to the video content and what viewers will learn.</p>",
+                  "format": "standard"
+                }
+              },
+              {
+                "type": "video",
+                "content": {
+                  "type": "youtube",
+                  "src": "VIDEO_ID_HERE",
+                  "width": "100%",
+                  "height": "auto"
+                }
+              }
+            ],
+            "gap": "30px",
+            "align": "center"
+          }
+        }
+      }
+    },
+    "testimonial-grid": {
+      "name": "Testimonial Grid",
+      "description": "Customer testimonials in card format",
+      "partial": "grid",
+      "useCase": "Social proof, customer quotes, reviews",
+      "code": {
+        "settings": {
+          "custom_id": "testimonials",
+          "spacing_top": "80px",
+          "spacing_bottom": "80px"
+        },
+        "header": {
+          "heading": {
+            "title": "What Our Customers Say",
+            "align": "center"
+          }
+        },
+        "content": {
+          "items": [
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<p style='font-style: italic; margin-bottom: 20px;'>\"This product has transformed how we work. Highly recommended!\"</p><div style='font-weight: 600;'>— Jane Smith, CEO at Company</div>"
+                  }
+                },
+                "padding": "32px",
+                "border": true
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<p style='font-style: italic; margin-bottom: 20px;'>\"Outstanding support and amazing features. Worth every penny.\"</p><div style='font-weight: 600;'>— John Doe, Founder at Startup</div>"
+                  }
+                },
+                "padding": "32px",
+                "border": true
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {
+                    "html": "<p style='font-style: italic; margin-bottom: 20px;'>\"Simple, powerful, and reliable. Exactly what we needed.\"</p><div style='font-weight: 600;'>— Sarah Johnson, Director at Enterprise</div>"
+                  }
+                },
+                "padding": "32px",
+                "border": true
+              }
+            }
+          ],
+          "columns": 3,
+          "gap": "30px"
+        }
+      }
+    }
+  },
+  "patternsByUseCase": {
+    "landing-page": ["hero-section", "feature-grid-3col", "text-image-split", "testimonial-grid", "cta-section"],
+    "product-showcase": ["text-image-split", "product-grid-4col", "video-showcase", "stats-row"],
+    "about-page": ["hero-section", "text-image-split", "stats-row", "cta-section"],
+    "features-page": ["feature-grid-3col", "text-image-split", "video-showcase"],
+    "portfolio": ["product-grid-4col", "text-image-split"],
+    "content-heavy": ["text-with-nested-grid", "row-text-card", "text-image-split"]
+  },
+  "notes": {
+    "customization": "All patterns should be customized with actual content, images, and URLs",
+    "styling": "Adjust colors, fonts, and spacing to match your brand",
+    "responsive": "All patterns are mobile-responsive by default",
+    "mixing": "Combine multiple patterns on the same page for rich layouts"
+  }
+}

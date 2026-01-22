@@ -1,0 +1,137 @@
+/**
+ * Section Heading Component
+ *
+ * Displays section headings with optional label, title, and subtitle.
+ * Used across all partials for consistent heading structure.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-section-heading.css
+ */
+
+/* ============================================
+   BLOCK: Section Heading
+   ============================================ */
+
+.lcms-section-heading {
+    margin-bottom: var(--spacing-heading-bottom, 40px);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-section-heading__label {
+    font-size: var(--font-size-small, 14px);
+    font-weight: var(--font-weight-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide, 0.05em);
+    color: var(--color-brand-accent, #0066cc);
+    margin: 0 0 var(--spacing-label-margin, 12px);
+    display: block;
+}
+
+.lcms-section-heading__title {
+    font-family: var(--font-heading, inherit);
+    font-size: var(--font-size-h2, 42px);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: var(--line-height-heading, 1.2);
+    color: var(--color-text-primary, #161617);
+    margin: 0 0 var(--spacing-title-margin, 16px);
+    text-transform: uppercase;
+}
+
+.lcms-section-heading__subtitle {
+    font-size: var(--font-size-large, 18px);
+    line-height: var(--line-height-body, 1.65);
+    color: var(--color-text-secondary, #666666);
+    margin: 0;
+    max-width: 900px;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-section-heading--align-left {
+    text-align: left;
+}
+
+.lcms-section-heading--align-left .lcms-section-heading__subtitle {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.lcms-section-heading--align-center {
+    text-align: center;
+}
+
+.lcms-section-heading--align-center .lcms-section-heading__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lcms-section-heading--align-right {
+    text-align: right;
+}
+
+.lcms-section-heading--align-right .lcms-section-heading__subtitle {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-section-heading--dark .lcms-section-heading__label {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.8));
+}
+
+.lcms-section-heading--dark .lcms-section-heading__title {
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-section-heading--dark .lcms-section-heading__subtitle {
+    color: var(--color-text-light-secondary, rgba(255, 255, 255, 0.8));
+}
+
+/* ============================================
+   MODIFIERS: Status States
+   ============================================ */
+
+.lcms-section-heading--completed .lcms-section-heading__title {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-section-heading--in-progress .lcms-section-heading__title {
+    color: var(--color-brand-primary);
+}
+
+.lcms-section-heading--upcoming .lcms-section-heading__title {
+    color: var(--color-text-tertiary, #999);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-section-heading {
+        margin-bottom: var(--spacing-heading-bottom-mobile, 30px);
+    }
+
+    .lcms-section-heading__title {
+        font-size: var(--font-size-h2-mobile, 32px);
+    }
+
+    .lcms-section-heading__subtitle {
+        font-size: var(--font-size-body, 16px);
+    }
+}
+
+@media (max-width: 480px) {
+    .lcms-section-heading__title {
+        font-size: var(--font-size-h2-small, 28px);
+    }
+}

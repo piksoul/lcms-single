@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "id": "cta-with-buttons",
+    "name": "Call-to-Action Section with Buttons",
+    "category": "section",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["cta", "call-to-action", "buttons", "conversion"]
+  },
+
+  "description": {
+    "summary": "Centered CTA section with heading, body text, and action buttons",
+    "use_cases": [
+      "Page conclusions",
+      "Conversion points",
+      "Lead generation",
+      "Contact sections",
+      "Next action prompts"
+    ],
+    "visual_weight": "heavy",
+    "content_density": "low",
+    "typical_position": "Near end of page, before footer"
+  },
+
+  "partial_call": {
+    "name": "column",
+    "namespace": "pro-sites",
+    "function": "partial('column', [...], 'pro-sites');"
+  },
+
+  "structure": {
+    "settings": {
+      "custom_classes": "gradient-light align-center lcms-container--thin"
+    },
+    "header": "Section heading with title and subtitle",
+    "content": "Lead paragraph or CTA body text",
+    "footer": "Buttons array (primary and optional secondary)"
+  },
+
+  "parameters": {
+    "settings": {
+      "custom_classes": {
+        "type": "string",
+        "required": false,
+        "default": "gradient-light align-center lcms-container--thin",
+        "description": "Container styling classes"
+      }
+    },
+    "header": {
+      "heading": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "placeholder": "{{CTA_TITLE}}",
+          "description": "CTA heading",
+          "example": "Get Involved"
+        },
+        "subtitle": {
+          "type": "text",
+          "required": false,
+          "placeholder": "{{CTA_SUBTITLE}}",
+          "description": "CTA subheading",
+          "example": "Join us in revolutionizing..."
+        },
+        "align": {
+          "type": "select",
+          "default": "center",
+          "options": ["center"],
+          "description": "Text alignment (always center for CTA)"
+        }
+      }
+    },
+    "content": {
+      "type": {
+        "value": "text",
+        "locked": true
+      },
+      "text": {
+        "type": "text",
+        "required": true,
+        "placeholder": "{{CTA_BODY_TEXT}}",
+        "description": "CTA body paragraph"
+      },
+      "format": {
+        "value": "lead",
+        "locked": true,
+        "description": "Lead text format for prominence"
+      }
+    },
+    "footer": {
+      "buttons": {
+        "type": "array",
+        "required": true,
+        "min_items": 1,
+        "max_items": 2,
+        "description": "Action buttons (1-2 buttons)",
+        "item_structure": {
+          "text": "Button label",
+          "url": "Button link",
+          "style": "primary|outline",
+          "target": "_self|_blank"
+        }
+      }
+    }
+  },
+
+  "php_template": "partial('column', [\n    'settings' => [\n        'custom_classes' => 'gradient-light align-center lcms-container--thin',\n    ],\n    'header' => [\n        'heading' => [\n            'title' => '{{CTA_TITLE}}',\n            'subtitle' => '{{CTA_SUBTITLE}}',\n            'align' => 'center'\n        ],\n    ],\n    'content' => [\n        'type' => 'text',\n        'text' => '<p>{{CTA_BODY_TEXT}}</p>',\n        'format' => 'lead',\n    ],\n    'footer' => [\n        'buttons' => [\n            [\n                'text' => '{{PRIMARY_BUTTON_TEXT}}',\n                'url' => '{{PRIMARY_BUTTON_URL}}',\n                'style' => 'primary',\n                'target' => '_blank',\n            ],\n            [\n                'text' => '{{SECONDARY_BUTTON_TEXT}}',\n                'url' => '{{SECONDARY_BUTTON_URL}}',\n                'style' => 'outline',\n            ],\n        ],\n    ],\n], 'pro-sites');",
+
+  "placeholders": {
+    "CTA_TITLE": {
+      "type": "text",
+      "required": true,
+      "description": "Main CTA heading",
+      "example": "Get Involved"
+    },
+    "CTA_SUBTITLE": {
+      "type": "text",
+      "required": false,
+      "description": "CTA subheading",
+      "example": "Join us in making a difference"
+    },
+    "CTA_BODY_TEXT": {
+      "type": "text",
+      "required": true,
+      "description": "CTA paragraph text",
+      "example": "With your support, we can bring this vision to life"
+    },
+    "PRIMARY_BUTTON_TEXT": {
+      "type": "text",
+      "required": true,
+      "description": "Primary action button label",
+      "example": "Get Started"
+    },
+    "PRIMARY_BUTTON_URL": {
+      "type": "url",
+      "required": true,
+      "description": "Primary button destination",
+      "example": "https://example.com/signup"
+    },
+    "SECONDARY_BUTTON_TEXT": {
+      "type": "text",
+      "required": false,
+      "description": "Secondary action button label",
+      "example": "Learn More"
+    },
+    "SECONDARY_BUTTON_URL": {
+      "type": "url",
+      "required": false,
+      "description": "Secondary button destination",
+      "example": "#contact"
+    }
+  },
+
+  "variations": {
+    "single_button": "CTA with only primary button",
+    "dual_button": "CTA with primary and secondary buttons",
+    "no_subtitle": "CTA with title and body only"
+  },
+
+  "styling_notes": {
+    "background": "gradient-light class applies brand gradient",
+    "alignment": "Center-aligned for focus",
+    "container": "lcms-container--thin for narrow, focused layout",
+    "text_format": "lead format for larger, prominent body text"
+  },
+
+  "ai_instructions": "Use as the primary conversion section near the end of a page. Always include compelling CTA_TITLE and CTA_BODY_TEXT. Primary button should be the main action (sign up, get started, contact). Secondary button is optional for alternative actions (learn more, view docs). Keep text concise and action-oriented.",
+
+  "required_components": [],
+
+  "related_components": [
+    "hero-with-badge",
+    "footer-info"
+  ]
+}

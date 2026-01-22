@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "id": "list-variants",
+    "name": "List with BEM Modifiers",
+    "category": "widget",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["list", "checklist", "bullets", "todo"]
+  },
+
+  "description": {
+    "summary": "Styled lists using BEM modifiers for different visual treatments",
+    "use_cases": [
+      "Feature lists",
+      "Task lists",
+      "Completed items",
+      "Navigation links",
+      "Resource lists"
+    ],
+    "visual_weight": "light",
+    "content_density": "low-to-medium"
+  },
+
+  "bem": {
+    "block": "lcms-list",
+    "modifiers": ["--check", "--todo", "--arrow", "--spacious", "--3col"],
+    "elements": ["__item", "__icon", "__text"],
+    "full_classes": [
+      "lcms-list",
+      "lcms-list--check",
+      "lcms-list--todo",
+      "lcms-list--arrow",
+      "lcms-list--spacious",
+      "lcms-list--3col",
+      "lcms-list__item"
+    ]
+  },
+
+  "modifiers": {
+    "check": {
+      "description": "Checkmark/completed items list",
+      "icon": "✓",
+      "use_for": "Completed tasks, features included, benefits"
+    },
+    "todo": {
+      "description": "Todo/pending items list",
+      "icon": "○",
+      "use_for": "Upcoming tasks, pending items, future features"
+    },
+    "arrow": {
+      "description": "Arrow bullet list",
+      "icon": "→",
+      "use_for": "Navigation, directional items, callouts"
+    },
+    "spacious": {
+      "description": "Extra spacing between items",
+      "use_for": "Long list items, improved readability"
+    },
+    "3col": {
+      "description": "Three-column grid layout",
+      "use_for": "Many short items in compact space"
+    }
+  },
+
+  "html_structure": "<ul class=\"lcms-list lcms-list--{{MODIFIER}}\">\n  <li class=\"lcms-list__item\">{{ITEM_TEXT}}</li>\n  <li class=\"lcms-list__item\">{{ITEM_TEXT}}</li>\n</ul>",
+
+  "placeholders": {
+    "MODIFIER": {
+      "type": "select",
+      "required": false,
+      "default": "check",
+      "options": ["check", "todo", "arrow", "spacious", "3col"],
+      "description": "List style modifier"
+    },
+    "ITEMS": {
+      "type": "array",
+      "required": true,
+      "description": "Array of list item texts"
+    }
+  },
+
+  "variations": {
+    "check_list": "<ul class=\"lcms-list lcms-list--check\">\n  <li class=\"lcms-list__item\">Completed item 1</li>\n  <li class=\"lcms-list__item\">Completed item 2</li>\n</ul>",
+
+    "todo_list": "<ul class=\"lcms-list lcms-list--todo\">\n  <li class=\"lcms-list__item\">Pending item 1</li>\n  <li class=\"lcms-list__item\">Pending item 2</li>\n</ul>",
+
+    "arrow_spacious": "<ul class=\"lcms-list lcms-list--arrow lcms-list--spacious\">\n  <li class=\"lcms-list__item\">Key point with extra spacing</li>\n  <li class=\"lcms-list__item\">Another important point</li>\n</ul>",
+
+    "three_column": "<ul class=\"lcms-list lcms-list--check lcms-list--3col\">\n  <li class=\"lcms-list__item\">Item 1</li>\n  <li class=\"lcms-list__item\">Item 2</li>\n  <li class=\"lcms-list__item\">Item 3</li>\n  <li class=\"lcms-list__item\">Item 4</li>\n  <li class=\"lcms-list__item\">Item 5</li>\n  <li class=\"lcms-list__item\">Item 6</li>\n</ul>"
+  },
+
+  "ai_instructions": "Use for lists of items, features, tasks, or benefits. Choose modifier based on semantic meaning: check (completed/included), todo (pending/upcoming), arrow (navigation/links). Use spacious modifier for longer text items. Use 3col for many short items.",
+
+  "related_components": [
+    "icon-card",
+    "text-section"
+  ]
+}

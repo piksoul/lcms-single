@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCorp Brand Style Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #36454f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cover Page */
+        .cover {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 120px 60px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cover-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .cover h1 {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .cover .version {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 60px;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            font-size: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #36454f;
+            padding: 20px 60px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 60px;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #708090;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #708090;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        /* Logo Section */
+        .logo-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .logo-box {
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 60px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo-box:hover {
+            border-color: #708090;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-box.dark {
+            background: #36454f;
+        }
+
+        .logo-placeholder {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo-box.dark .logo-placeholder {
+            color: white;
+        }
+
+        .logo-label {
+            font-size: 14px;
+            color: #708090;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-box.dark .logo-label {
+            color: #d3d3d3;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .color-card {
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .color-swatch {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .color-hex {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #36454f;
+        }
+
+        .color-info {
+            padding: 25px;
+            background: white;
+        }
+
+        .color-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .color-usage {
+            font-size: 14px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        .color-values {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .color-values div {
+            font-size: 13px;
+            color: #708090;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Typography */
+        .type-specimen {
+            margin: 40px 0;
+        }
+
+        .type-family {
+            background: #f8f8f8;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .type-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 30px;
+        }
+
+        .type-sample {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .type-sample:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .type-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #708090;
+            margin-bottom: 10px;
+        }
+
+        .type-display {
+            margin-bottom: 10px;
+        }
+
+        .type-specs {
+            font-size: 13px;
+            color: #708090;
+            font-family: 'Courier New', monospace;
+        }
+
+        .heading-1 {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .heading-2 {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1.3;
+        }
+
+        .heading-3 {
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .body-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Spacing System */
+        .spacing-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .spacing-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 25px;
+            background: #f8f8f8;
+            border-radius: 8px;
+        }
+
+        .spacing-visual {
+            width: 120px;
+            height: 60px;
+            background: #36454f;
+            border-radius: 5px;
+        }
+
+        .spacing-label {
+            flex: 1;
+        }
+
+        .spacing-label h4 {
+            font-size: 18px;
+            color: #36454f;
+            margin-bottom: 5px;
+        }
+
+        .spacing-label p {
+            font-size: 14px;
+            color: #708090;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Components */
+        .component-showcase {
+            margin-top: 40px;
+        }
+
+        .component-group {
+            margin-bottom: 50px;
+        }
+
+        .component-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #d3d3d3;
+        }
+
+        .component-demo {
+            background: #f8f8f8;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 20px;
+        }
+
+        .button-primary {
+            background: #36454f;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .button-primary:hover {
+            background: #708090;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #36454f;
+            padding: 15px 40px;
+            border: 2px solid #36454f;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .button-secondary:hover {
+            background: #36454f;
+            color: white;
+        }
+
+        .card-demo {
+            background: white;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .card-demo:hover {
+            border-color: #708090;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-demo h3 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .card-demo p {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        /* Usage Guidelines */
+        .guideline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .guideline-box {
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .guideline-box.do {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+
+        .guideline-box.dont {
+            background: #ffebee;
+            border: 2px solid #f44336;
+        }
+
+        .guideline-box h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .guideline-box.do h4 {
+            color: #2e7d32;
+        }
+
+        .guideline-box.dont h4 {
+            color: #c62828;
+        }
+
+        .guideline-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .guideline-box li {
+            font-size: 15px;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .guideline-box.do li:before {
+            content: "✓";
+            color: #4caf50;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .guideline-box.dont li:before {
+            content: "✗";
+            color: #f44336;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: #f8f8f8;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .download-card {
+            background: white;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .download-card:hover {
+            border-color: #36454f;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .download-card h4 {
+            font-size: 20px;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .download-card p {
+            font-size: 14px;
+            color: #708090;
+            margin-bottom: 20px;
+        }
+
+        .download-button {
+            background: #36454f;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: #708090;
+        }
+
+        /* Footer */
+        .footer {
+            background: #36454f;
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 42px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .nav {
+                padding: 20px 30px;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .guideline-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="cover">
+        <div class="cover-label">Brand Identity Guidelines</div>
+        <h1>TechCorp<br>Style Guide</h1>
+        <div class="version">Version 2.0 | January 2026</div>
+        <div class="cover-meta">
+            <div>Modern Minimalist Theme</div>
+            <div>•</div>
+            <div>For Internal & External Use</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#logo">Logo</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#spacing">Spacing</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#guidelines">Guidelines</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+            </ul>
+        </nav>
+
+        <!-- Logo Section -->
+        <section class="section" id="logo">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Logo Usage</h2>
+                <p class="section-description">Our logo is the cornerstone of our brand identity. Use it consistently across all touchpoints to build recognition and trust.</p>
+            </div>
+
+            <div class="logo-showcase">
+                <div class="logo-box">
+                    <div class="logo-placeholder" style="color: #36454f;">TECHCORP</div>
+                    <div class="logo-label">Primary Logo</div>
+                </div>
+
+                <div class="logo-box dark">
+                    <div class="logo-placeholder">TECHCORP</div>
+                    <div class="logo-label">Logo on Dark</div>
+                </div>
+
+                <div class="logo-box" style="background: #f8f8f8;">
+                    <div class="logo-placeholder" style="color: #708090;">TECHCORP</div>
+                    <div class="logo-label">Secondary Gray</div>
+                </div>
+            </div>
+
+            <div class="guideline-grid" style="margin-top: 50px;">
+                <div class="guideline-box do">
+                    <h4>✓ Do</h4>
+                    <ul>
+                        <li>Use approved logo versions only</li>
+                        <li>Maintain minimum clear space around logo</li>
+                        <li>Use on approved background colors</li>
+                        <li>Scale proportionally</li>
+                    </ul>
+                </div>
+
+                <div class="guideline-box dont">
+                    <h4>✗ Don't</h4>
+                    <ul>
+                        <li>Distort, stretch, or rotate the logo</li>
+                        <li>Change logo colors</li>
+                        <li>Add effects like shadows or gradients</li>
+                        <li>Place on busy backgrounds</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="section" id="colors" style="background: #f8f8f8;">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Color Palette</h2>
+                <p class="section-description">Our Modern Minimalist color palette conveys professionalism, clarity, and sophistication through a carefully balanced grayscale system.</p>
+            </div>
+
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #36454f;">
+                        <div class="color-hex">#36454F</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Charcoal</div>
+                        <div class="color-usage">Primary brand color for headers, buttons, and key elements</div>
+                        <div class="color-values">
+                            <div>RGB: 54, 69, 79</div>
+                            <div>CMYK: 32, 13, 0, 69</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #708090;">
+                        <div class="color-hex">#708090</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Slate Gray</div>
+                        <div class="color-usage">Secondary color for accents, hover states, and supporting elements</div>
+                        <div class="color-values">
+                            <div>RGB: 112, 128, 144</div>
+                            <div>CMYK: 22, 11, 0, 44</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #d3d3d3;">
+                        <div class="color-hex">#D3D3D3</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Light Gray</div>
+                        <div class="color-usage">Borders, dividers, and subtle backgrounds</div>
+                        <div class="color-values">
+                            <div>RGB: 211, 211, 211</div>
+                            <div>CMYK: 0, 0, 0, 17</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #ffffff; border: 1px solid #d3d3d3;">
+                        <div class="color-hex" style="background: #36454f; color: white;">#FFFFFF</div>
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">White</div>
+                        <div class="color-usage">Clean backgrounds, text on dark surfaces, maximum contrast</div>
+                        <div class="color-values">
+                            <div>RGB: 255, 255, 255</div>
+                            <div>CMYK: 0, 0, 0, 0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="section" id="typography">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Typography</h2>
+                <p class="section-description">Clear, readable typography is essential to our brand. DejaVu Sans provides excellent legibility across all mediums.</p>
+            </div>
+
+            <div class="type-specimen">
+                <div class="type-family">
+                    <div class="type-name">DejaVu Sans Bold</div>
+                    
+                    <div class="type-sample">
+                        <div class="type-label">Heading 1</div>
+                        <div class="type-display heading-1">The Future of Innovation</div>
+                        <div class="type-specs">48px / Bold / Line Height 1.2 / Letter Spacing 0</div>
+                    </div>
+
+                    <div class="type-sample">
+                        <div class="type-label">Heading 2</div>
+                        <div class="type-display heading-2">Building Better Solutions</div>
+                        <div class="type-specs">36px / Bold / Line Height 1.3 / Letter Spacing 0</div>
+                    </div>
+
+                    <div class="type-sample">
+                        <div class="type-label">Heading 3</div>
+                        <div class="type-display heading-3">Transform Your Business</div>
+                        <div class="type-specs">28px / Bold / Line Height 1.4 / Letter Spacing 0</div>
+                    </div>
+                </div>
+
+                <div class="type-family">
+                    <div class="type-name">DejaVu Sans Regular</div>
+                    
+                    <div class="type-sample">
+                        <div class="type-label">Body Text</div>
+                        <div class="type-display body-text">Our commitment to excellence drives everything we do. Through innovative thinking and meticulous execution, we deliver solutions that exceed expectations and create lasting value for our clients.</div>
+                        <div class="type-specs">16px / Regular / Line Height 1.6 / Letter Spacing 0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing System -->
+        <section class="section" id="spacing" style="background: #f8f8f8;">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Spacing System</h2>
+                <p class="section-description">Consistent spacing creates visual harmony and improves readability. Use our 8px base unit system.</p>
+            </div>
+
+            <div class="spacing-grid">
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 40px;"></div>
+                    <div class="spacing-label">
+                        <h4>XS - 8px</h4>
+                        <p>Tight spacing for related elements</p>
+                    </div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 64px;"></div>
+                    <div class="spacing-label">
+                        <h4>Small - 16px</h4>
+                        <p>Default element spacing</p>
+                    </div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 96px;"></div>
+                    <div class="spacing-label">
+                        <h4>Medium - 24px</h4>
+                        <p>Spacing between components</p>
+                    </div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 128px;"></div>
+                    <div class="spacing-label">
+                        <h4>Large - 32px</h4>
+                        <p>Section spacing</p>
+                    </div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 192px;"></div>
+                    <div class="spacing-label">
+                        <h4>XL - 48px</h4>
+                        <p>Major section breaks</p>
+                    </div>
+                </div>
+
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 256px;"></div>
+                    <div class="spacing-label">
+                        <h4>XXL - 64px</h4>
+                        <p>Page-level spacing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components -->
+        <section class="section" id="components">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2 class="section-title">UI Components</h2>
+                <p class="section-description">Reusable components ensure consistency across all digital properties.</p>
+            </div>
+
+            <div class="component-showcase">
+                <div class="component-group">
+                    <h3 class="component-title">Buttons</h3>
+                    <div class="component-demo">
+                        <button class="button-primary">Primary Button</button>
+                        <button class="button-secondary">Secondary Button</button>
+                    </div>
+                </div>
+
+                <div class="component-group">
+                    <h3 class="component-title">Cards</h3>
+                    <div class="component-demo">
+                        <div class="card-demo">
+                            <h3>Card Component</h3>
+                            <p>Cards are used to group related information and create visual hierarchy. They include subtle borders and hover effects for interactivity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Guidelines -->
+        <section class="section" id="guidelines" style="background: #f8f8f8;">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2 class="section-title">Brand Guidelines</h2>
+                <p class="section-description">Follow these principles to maintain brand consistency and professionalism.</p>
+            </div>
+
+            <div class="guideline-grid">
+                <div class="guideline-box do">
+                    <h4>✓ Visual Design Do's</h4>
+                    <ul>
+                        <li>Use ample white space</li>
+                        <li>Maintain consistent alignment</li>
+                        <li>Follow the color palette strictly</li>
+                        <li>Use approved typography only</li>
+                        <li>Ensure proper contrast ratios</li>
+                    </ul>
+                </div>
+
+                <div class="guideline-box dont">
+                    <h4>✗ Visual Design Don'ts</h4>
+                    <ul>
+                        <li>Overcrowd layouts</li>
+                        <li>Use non-brand colors</li>
+                        <li>Mix different font families</li>
+                        <li>Create busy backgrounds</li>
+                        <li>Ignore accessibility standards</li>
+                    </ul>
+                </div>
+
+                <div class="guideline-box do">
+                    <h4>✓ Content Do's</h4>
+                    <ul>
+                        <li>Write in clear, concise language</li>
+                        <li>Use active voice</li>
+                        <li>Be professional yet approachable</li>
+                        <li>Proofread carefully</li>
+                        <li>Focus on benefits for users</li>
+                    </ul>
+                </div>
+
+                <div class="guideline-box dont">
+                    <h4>✗ Content Don'ts</h4>
+                    <ul>
+                        <li>Use jargon or technical terms unnecessarily</li>
+                        <li>Write long, complex sentences</li>
+                        <li>Be overly casual or formal</li>
+                        <li>Make unsubstantiated claims</li>
+                        <li>Ignore tone of voice guidelines</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="download-section" id="downloads">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2 class="section-title">Brand Assets</h2>
+                <p class="section-description">Download logo files, templates, and resources to implement our brand correctly.</p>
+            </div>
+
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="download-icon">📦</div>
+                    <h4>Logo Package</h4>
+                    <p>All logo variations in SVG, PNG, and EPS formats</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+
+                <div class="download-card">
+                    <div class="download-icon">🎨</div>
+                    <h4>Color Swatches</h4>
+                    <p>Adobe CC and Sketch color libraries</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+
+                <div class="download-card">
+                    <div class="download-icon">📄</div>
+                    <h4>Templates</h4>
+                    <p>Presentation and document templates</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+
+                <div class="download-card">
+                    <div class="download-icon">📐</div>
+                    <h4>Design System</h4>
+                    <p>Figma and Sketch UI component libraries</p>
+                    <a href="#" class="download-button">Download</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>TechCorp Brand Style Guide v2.0 | For questions, contact: brand@techcorp.com</p>
+            <p style="margin-top: 10px; font-size: 12px;">© 2026 TechCorp. All Rights Reserved. Confidential - Internal Use Only</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Copy color hex codes on click
+        document.querySelectorAll('.color-hex').forEach(hex => {
+            hex.addEventListener('click', function() {
+                const text = this.textContent;
+                navigator.clipboard.writeText(text).then(() => {
+                    const original = this.textContent;
+                    this.textContent = 'Copied!';
+                    setTimeout(() => {
+                        this.textContent = original;
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

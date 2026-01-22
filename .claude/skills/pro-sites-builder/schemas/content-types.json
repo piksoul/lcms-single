@@ -1,0 +1,491 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pro-Sites Content Types Schema",
+  "description": "Complete schema for all 10 pro-sites content renderers",
+  "version": "1.0.0",
+  "contentTypes": {
+    "text": {
+      "description": "Text content with format options (standard, lead, small)",
+      "file": "_lib/content/text.php",
+      "properties": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "HTML text content"
+        },
+        "format": {
+          "type": "enum",
+          "values": ["standard", "lead", "small"],
+          "default": "standard",
+          "required": false,
+          "description": "Text formatting style"
+        }
+      },
+      "example": {
+        "type": "text",
+        "content": {
+          "text": "<p>Your text content here with <strong>HTML</strong> formatting.</p>",
+          "format": "standard"
+        }
+      }
+    },
+    "html": {
+      "description": "Raw HTML content with sanitization",
+      "file": "_lib/content/html.php",
+      "properties": {
+        "html": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML markup"
+        }
+      },
+      "example": {
+        "type": "html",
+        "content": {
+          "html": "<div class=\"custom-content\"><h3>Custom HTML</h3></div>"
+        }
+      }
+    },
+    "image": {
+      "description": "Image with optional caption and lazy loading",
+      "file": "_lib/content/image.php",
+      "properties": {
+        "src": {
+          "type": "string",
+          "required": true,
+          "description": "Image URL or path"
+        },
+        "alt": {
+          "type": "string",
+          "required": true,
+          "description": "Alt text for accessibility"
+        },
+        "caption": {
+          "type": "string",
+          "required": false,
+          "description": "Image caption text"
+        },
+        "width": {
+          "type": "string|number",
+          "required": false,
+          "description": "Image width (px or %)"
+        },
+        "height": {
+          "type": "string|number",
+          "required": false,
+          "description": "Image height (px or %)"
+        },
+        "lazy": {
+          "type": "boolean",
+          "default": true,
+          "required": false,
+          "description": "Enable lazy loading"
+        }
+      },
+      "example": {
+        "type": "image",
+        "content": {
+          "src": "/path/to/image.jpg",
+          "alt": "Description of image",
+          "caption": "Optional caption text",
+          "lazy": true
+        }
+      }
+    },
+    "video": {
+      "description": "Video embeds (YouTube, Vimeo, HTML5)",
+      "file": "_lib/content/video.php",
+      "properties": {
+        "type": {
+          "type": "enum",
+          "values": ["youtube", "vimeo", "html5"],
+          "required": true,
+          "description": "Video platform type"
+        },
+        "src": {
+          "type": "string",
+          "required": true,
+          "description": "Video URL or embed ID"
+        },
+        "width": {
+          "type": "string",
+          "default": "100%",
+          "required": false,
+          "description": "Video width"
+        },
+        "height": {
+          "type": "string",
+          "default": "auto",
+          "required": false,
+          "description": "Video height"
+        },
+        "autoplay": {
+          "type": "boolean",
+          "default": false,
+          "required": false,
+          "description": "Auto-play video"
+        },
+        "controls": {
+          "type": "boolean",
+          "default": true,
+          "required": false,
+          "description": "Show video controls"
+        }
+      },
+      "example": {
+        "type": "video",
+        "content": {
+          "type": "youtube",
+          "src": "dQw4w9WgXcQ",
+          "width": "100%",
+          "height": "auto"
+        }
+      }
+    },
+    "heading": {
+      "description": "Standalone heading element (h1-h6)",
+      "file": "_lib/content/heading.php",
+      "properties": {
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "Heading text"
+        },
+        "size": {
+          "type": "enum",
+          "values": ["h1", "h2", "h3", "h4", "h5", "h6"],
+          "default": "h2",
+          "required": false,
+          "description": "Heading level"
+        },
+        "align": {
+          "type": "enum",
+          "values": ["left", "center", "right"],
+          "default": "left",
+          "required": false,
+          "description": "Text alignment"
+        },
+        "class": {
+          "type": "string",
+          "required": false,
+          "description": "Additional CSS classes"
+        }
+      },
+      "example": {
+        "type": "heading",
+        "content": {
+          "text": "Section Heading",
+          "size": "h2",
+          "align": "center"
+        }
+      }
+    },
+    "buttons": {
+      "description": "Button groups for CTAs",
+      "file": "_lib/content/buttons.php",
+      "properties": {
+        "buttons": {
+          "type": "array",
+          "required": true,
+          "description": "Array of button objects",
+          "items": {
+            "text": {
+              "type": "string",
+              "required": true,
+              "description": "Button label"
+            },
+            "url": {
+              "type": "string",
+              "required": true,
+              "description": "Button link URL"
+            },
+            "style": {
+              "type": "enum",
+              "values": ["primary", "secondary", "outline"],
+              "default": "primary",
+              "required": false,
+              "description": "Button style"
+            },
+            "target": {
+              "type": "enum",
+              "values": ["_self", "_blank"],
+              "default": "_self",
+              "required": false,
+              "description": "Link target"
+            }
+          }
+        }
+      },
+      "example": {
+        "type": "buttons",
+        "content": {
+          "buttons": [
+            {
+              "text": "Get Started",
+              "url": "/contact",
+              "style": "primary"
+            },
+            {
+              "text": "Learn More",
+              "url": "/about",
+              "style": "secondary"
+            }
+          ]
+        }
+      }
+    },
+    "card": {
+      "description": "Structured card layout (media/body/footer sections)",
+      "file": "_lib/content/card.php",
+      "properties": {
+        "media": {
+          "type": "object",
+          "required": false,
+          "description": "Optional media section (image or video)",
+          "structure": {
+            "type": "enum (image|video)",
+            "content": "object (type-specific properties)"
+          }
+        },
+        "body": {
+          "type": "object",
+          "required": false,
+          "description": "Card body content",
+          "structure": {
+            "type": "enum (text|html)",
+            "content": "object (type-specific properties)"
+          }
+        },
+        "footer": {
+          "type": "object",
+          "required": false,
+          "description": "Card footer (usually buttons)",
+          "structure": {
+            "type": "enum (buttons|text)",
+            "content": "object (type-specific properties)"
+          }
+        },
+        "padding": {
+          "type": "string",
+          "default": "20px",
+          "required": false,
+          "description": "Card content padding"
+        },
+        "border": {
+          "type": "boolean",
+          "default": false,
+          "required": false,
+          "description": "Show card border"
+        },
+        "shadow": {
+          "type": "boolean",
+          "default": false,
+          "required": false,
+          "description": "Show card shadow"
+        }
+      },
+      "example": {
+        "type": "card",
+        "content": {
+          "body": {
+            "type": "html",
+            "content": {
+              "html": "<h3>Card Title</h3><p>Card content here</p>"
+            }
+          },
+          "footer": {
+            "type": "buttons",
+            "content": {
+              "buttons": [
+                {"text": "Action", "url": "#", "style": "primary"}
+              ]
+            }
+          },
+          "padding": "32px",
+          "shadow": true
+        }
+      }
+    },
+    "stack": {
+      "description": "Vertical stacking of multiple content items",
+      "file": "_lib/content/stack.php",
+      "properties": {
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "Array of content items to stack",
+          "items": {
+            "type": "object (any content type)",
+            "structure": {
+              "type": "string (content type name)",
+              "content": "object (type-specific properties)"
+            }
+          }
+        },
+        "gap": {
+          "type": "string",
+          "default": "20px",
+          "required": false,
+          "description": "Spacing between items"
+        },
+        "align": {
+          "type": "enum",
+          "values": ["left", "center", "right"],
+          "default": "left",
+          "required": false,
+          "description": "Horizontal alignment"
+        }
+      },
+      "example": {
+        "type": "stack",
+        "content": {
+          "items": [
+            {
+              "type": "heading",
+              "content": {"text": "Stack Title", "size": "h2"}
+            },
+            {
+              "type": "text",
+              "content": {"text": "<p>Stack description</p>", "format": "standard"}
+            }
+          ],
+          "gap": "30px",
+          "align": "center"
+        }
+      }
+    },
+    "row": {
+      "description": "Horizontal arrangement of content items",
+      "file": "_lib/content/row.php",
+      "properties": {
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "Array of content items in row",
+          "items": {
+            "type": "object (any content type)",
+            "structure": {
+              "type": "string (content type name)",
+              "content": "object (type-specific properties)",
+              "width": "string (%, px, or flex value) - optional"
+            }
+          }
+        },
+        "gap": {
+          "type": "string",
+          "default": "30px",
+          "required": false,
+          "description": "Spacing between items"
+        },
+        "align": {
+          "type": "enum",
+          "values": ["flex-start", "center", "flex-end", "stretch"],
+          "default": "flex-start",
+          "required": false,
+          "description": "Vertical alignment"
+        },
+        "justify": {
+          "type": "enum",
+          "values": ["flex-start", "center", "flex-end", "space-between"],
+          "default": "flex-start",
+          "required": false,
+          "description": "Horizontal justification"
+        },
+        "wrap": {
+          "type": "boolean",
+          "default": true,
+          "required": false,
+          "description": "Allow items to wrap on mobile"
+        }
+      },
+      "example": {
+        "type": "row",
+        "content": {
+          "items": [
+            {
+              "type": "text",
+              "content": {"text": "<p>Left content</p>"},
+              "width": "60%"
+            },
+            {
+              "type": "image",
+              "content": {"src": "/image.jpg", "alt": "Image"},
+              "width": "40%"
+            }
+          ],
+          "gap": "40px",
+          "align": "center"
+        }
+      }
+    },
+    "grid": {
+      "description": "Nested grid layout within content (CSS Grid)",
+      "file": "_lib/content/grid.php",
+      "properties": {
+        "items": {
+          "type": "array",
+          "required": true,
+          "description": "Array of content items for grid",
+          "items": {
+            "type": "object (any content type)",
+            "structure": {
+              "type": "string (content type name)",
+              "content": "object (type-specific properties)"
+            }
+          }
+        },
+        "columns": {
+          "type": "number|string",
+          "default": "auto-fit",
+          "required": false,
+          "description": "Fixed column count (2, 3, 4) or 'auto-fit'/'auto-fill'"
+        },
+        "min-width": {
+          "type": "string",
+          "default": "250px",
+          "required": false,
+          "description": "Minimum column width for responsive grids"
+        },
+        "gap": {
+          "type": "string",
+          "default": "30px",
+          "required": false,
+          "description": "Grid gap spacing"
+        }
+      },
+      "example": {
+        "type": "grid",
+        "content": {
+          "items": [
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {"html": "<h3>Item 1</h3>"}
+                }
+              }
+            },
+            {
+              "type": "card",
+              "content": {
+                "body": {
+                  "type": "html",
+                  "content": {"html": "<h3>Item 2</h3>"}
+                }
+              }
+            }
+          ],
+          "columns": 2,
+          "gap": "24px"
+        }
+      }
+    }
+  },
+  "notes": {
+    "nesting": "Stack, row, and grid content types can contain other content types, enabling complex nested layouts",
+    "validation": "Always check that required properties are present before generating config",
+    "defaults": "Optional properties will use default values if not specified",
+    "escaping": "HTML content should be properly escaped in the actual PHP implementation"
+  }
+}

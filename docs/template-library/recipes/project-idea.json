@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "id": "project-idea-page",
+    "name": "Project Idea Page Recipe",
+    "type": "recipe",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "description": "Standard layout for project documentation and idea presentations",
+    "tags": ["project", "documentation", "planning", "full-page"],
+    "reference_file": "templates/pages/proj/slug-project-idea.php"
+  },
+
+  "use_cases": [
+    "Project pitches and proposals",
+    "Internal project documentation",
+    "Funding presentations",
+    "Project phase tracking"
+  ],
+
+  "content_type": "Type 1: Well-structured content",
+  "assembly_mode": "Fixed sequence (recipe)",
+
+  "sequence": [
+    {
+      "order": 1,
+      "component": "hero-with-badge",
+      "required": true,
+      "description": "Opening section with project title and status badge",
+      "placeholders": {
+        "BADGE_TEXT": "{{PROJECT_STATUS}}",
+        "BADGE_MODIFIER": "warning",
+        "PAGE_TITLE": "{{PROJECT_NAME}}",
+        "PAGE_SUBTITLE": "{{PROJECT_TAGLINE}}"
+      },
+      "client_notes": "Displays project name prominently with current phase indicator"
+    },
+
+    {
+      "order": 2,
+      "component": "project-summary-card",
+      "required": true,
+      "description": "Planning phase summary with progress and task breakdown",
+      "placeholders": {
+        "PROJECT_STATUS": "{{CURRENT_PHASE}}",
+        "PROGRESS_PERCENTAGE": "{{COMPLETION_PCT}}",
+        "MILESTONE": "{{NEXT_MILESTONE}}",
+        "COMPLETED_TASKS": "{{COMPLETED_TASK_LIST}}",
+        "INPROGRESS_TASKS": "{{INPROGRESS_TASK_LIST}}",
+        "UPCOMING_TASKS": "{{UPCOMING_TASK_LIST}}"
+      },
+      "client_notes": "Shows current progress and task status across three categories"
+    },
+
+    {
+      "order": 3,
+      "component": "idea-statement-section",
+      "required": false,
+      "description": "Core idea statement with key features or benefits",
+      "placeholders": {
+        "SECTION_TITLE": "{{IDEA_TITLE}}",
+        "SECTION_SUBTITLE": "{{IDEA_SUBTITLE}}",
+        "FEATURE_LIST": "{{KEY_FEATURES_ARRAY}}"
+      },
+      "client_notes": "Articulates the core project concept and value proposition"
+    },
+
+    {
+      "order": 4,
+      "component": "metrics-grid-4col",
+      "required": false,
+      "description": "Key project metrics or KPIs",
+      "placeholders": {
+        "SECTION_TITLE": "Key Metrics",
+        "SECTION_SUBTITLE": "Project performance indicators",
+        "METRICS": "{{METRICS_ARRAY}}"
+      },
+      "metrics_structure": {
+        "count": 4,
+        "per_metric": ["LABEL", "VALUE", "DESCRIPTION", "SECONDARY_DESCRIPTION"]
+      },
+      "client_notes": "Displays 4 important project statistics or targets"
+    },
+
+    {
+      "order": 5,
+      "component": "resources-list",
+      "required": false,
+      "description": "Project resources, dependencies, or links",
+      "placeholders": {
+        "SECTION_TITLE": "{{RESOURCES_TITLE}}",
+        "SECTION_SUBTITLE": "{{RESOURCES_SUBTITLE}}",
+        "RESOURCE_ITEMS": "{{RESOURCE_LIST}}"
+      },
+      "client_notes": "Lists key resources, documentation, or external links"
+    },
+
+    {
+      "order": 6,
+      "component": "next-steps-timeline",
+      "required": true,
+      "description": "Roadmap with immediate, short-term, and long-term phases",
+      "placeholders": {
+        "SECTION_TITLE": "Next Steps",
+        "SECTION_SUBTITLE": "Roadmap for moving forward",
+        "IMMEDIATE_TASKS": "{{IMMEDIATE_TASK_LIST}}",
+        "SHORTTERM_TASKS": "{{SHORTTERM_TASK_LIST}}",
+        "LONGTERM_TASKS": "{{LONGTERM_TASK_LIST}}"
+      },
+      "timeline_structure": {
+        "immediate": "2 weeks",
+        "short_term": "1-3 months",
+        "long_term": "6-12 months"
+      },
+      "client_notes": "Three-phase timeline showing project roadmap"
+    },
+
+    {
+      "order": 7,
+      "component": "cta-with-buttons",
+      "required": true,
+      "description": "Call-to-action section with action buttons",
+      "placeholders": {
+        "SECTION_TITLE": "Get Involved",
+        "SECTION_SUBTITLE": "{{CTA_SUBTITLE}}",
+        "BODY_TEXT": "{{CTA_TEXT}}",
+        "PRIMARY_BUTTON_TEXT": "{{PRIMARY_ACTION}}",
+        "PRIMARY_BUTTON_URL": "{{PRIMARY_URL}}",
+        "SECONDARY_BUTTON_TEXT": "{{SECONDARY_ACTION}}",
+        "SECONDARY_BUTTON_URL": "{{SECONDARY_URL}}"
+      },
+      "client_notes": "Concluding section with clear next actions"
+    },
+
+    {
+      "order": 8,
+      "component": "footer-info",
+      "required": false,
+      "description": "Page footer with status and update information",
+      "placeholders": {
+        "PROJECT_STATUS_TEXT": "{{STATUS_DESCRIPTION}}",
+        "LAST_UPDATED": "{{LAST_UPDATE_DATE}}"
+      },
+      "client_notes": "Shows project status and last update timestamp"
+    }
+  ],
+
+  "required_data": {
+    "project_info": {
+      "PROJECT_NAME": "string (required)",
+      "PROJECT_TAGLINE": "string (required)",
+      "PROJECT_STATUS": "string (required) - e.g., 'Planning Phase', 'In Development'",
+      "COMPLETION_PCT": "number (required) - 0-100",
+      "NEXT_MILESTONE": "string (required)"
+    },
+    "tasks": {
+      "COMPLETED_TASK_LIST": "array (required) - completed task items",
+      "INPROGRESS_TASK_LIST": "array (required) - current tasks",
+      "UPCOMING_TASK_LIST": "array (required) - future tasks"
+    },
+    "metrics": {
+      "METRICS_ARRAY": "array (optional) - 4 metric objects with LABEL, VALUE, DESCRIPTION"
+    },
+    "timeline": {
+      "IMMEDIATE_TASK_LIST": "array (required) - 2-week tasks",
+      "SHORTTERM_TASK_LIST": "array (required) - 1-3 month tasks",
+      "LONGTERM_TASK_LIST": "array (required) - 6-12 month tasks"
+    },
+    "cta": {
+      "CTA_TEXT": "string (required) - call to action body text",
+      "PRIMARY_ACTION": "string (required) - primary button text",
+      "PRIMARY_URL": "string (required) - primary button link",
+      "SECONDARY_ACTION": "string (optional) - secondary button text",
+      "SECONDARY_URL": "string (optional) - secondary button link"
+    }
+  },
+
+  "validation_rules": {
+    "required_sections": ["hero-with-badge", "project-summary-card", "next-steps-timeline", "cta-with-buttons"],
+    "recommended_sections": ["metrics-grid-4col", "resources-list"],
+    "section_order": "sequential",
+    "dark_light_alternation": true
+  },
+
+  "ai_generation_instructions": {
+    "mode": "recipe_follow",
+    "steps": [
+      "1. Load all required project data",
+      "2. Validate required fields are present",
+      "3. Generate each section in sequence order",
+      "4. Use exact component specifications",
+      "5. Fill all placeholders with provided data",
+      "6. Alternate dark/light sections for visual rhythm",
+      "7. Generate PHP template with proper partial() calls"
+    ],
+    "strict_mode": true,
+    "allow_reordering": false,
+    "allow_component_substitution": false,
+    "component_preference": "use_exactly_as_specified"
+  },
+
+  "output_format": {
+    "file_type": "PHP template",
+    "header": "Standard WordPress template header with filepath",
+    "structure": "Sequential partial() calls as per recipe",
+    "namespace_usage": "top-section for hero, pro-sites for all others",
+    "footer": "Standard get_footer() call"
+  },
+
+  "client_review_format": {
+    "format": "markdown",
+    "structure": "Section-by-section breakdown with placeholder values",
+    "purpose": "Client reviews content before PHP generation"
+  }
+}

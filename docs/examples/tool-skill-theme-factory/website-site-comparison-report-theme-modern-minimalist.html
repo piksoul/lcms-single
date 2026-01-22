@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Comparison Report - Modern Minimalist</title>
+    <style>
+        /* Modern Minimalist Theme Colors */
+        :root {
+            --charcoal: #36454f;
+            --slate-gray: #708090;
+            --light-gray: #d3d3d3;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        .report {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--slate-gray) 100%);
+            color: var(--white);
+            padding: 100px 80px;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .cover-header {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .report-type {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+        
+        .report-subtitle {
+            font-size: 22px;
+            color: var(--light-gray);
+            line-height: 1.4;
+            max-width: 700px;
+        }
+        
+        .websites-list {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        
+        .websites-list-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--light-gray);
+            margin-bottom: 15px;
+        }
+        
+        .website-item {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .website-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cover-footer {
+            border-top: 1px solid var(--slate-gray);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .cover-info {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+        
+        .cover-info-label {
+            color: var(--slate-gray);
+            margin-bottom: 3px;
+        }
+        
+        .cover-info-value {
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 60px 80px;
+        }
+        
+        .page-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 36px;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--slate-gray);
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            color: var(--charcoal);
+            margin-top: 45px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 3px solid var(--light-gray);
+        }
+        
+        h2:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+        
+        h3 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--charcoal);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 15px;
+            color: var(--slate-gray);
+            margin-bottom: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Executive Summary */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 35px 0;
+        }
+        
+        .summary-card {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .summary-card.winner {
+            border-color: var(--charcoal);
+            border-width: 3px;
+            position: relative;
+        }
+        
+        .winner-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .site-name {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        
+        .site-url {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--slate-gray);
+            margin-bottom: 20px;
+        }
+        
+        .overall-score {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 48px;
+            color: var(--charcoal);
+            line-height: 1;
+        }
+        
+        .score-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--slate-gray);
+            margin-top: 8px;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+        
+        .comparison-table thead {
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+        
+        .comparison-table th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .comparison-table th:first-child {
+            width: 25%;
+        }
+        
+        .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--light-gray);
+            vertical-align: top;
+        }
+        
+        .comparison-table tbody tr:hover {
+            background-color: rgba(211, 211, 211, 0.2);
+        }
+        
+        .criterion-cell {
+            font-weight: bold;
+            color: var(--charcoal);
+        }
+        
+        .score-cell {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--charcoal);
+        }
+        
+        .site-column {
+            color: var(--slate-gray);
+            line-height: 1.7;
+        }
+        
+        /* Score Badge */
+        .score-badge {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .score-badge.high {
+            background-color: var(--charcoal);
+        }
+        
+        .score-badge.medium {
+            background-color: var(--slate-gray);
+        }
+        
+        .score-badge.low {
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+        }
+        
+        /* Strengths/Weaknesses */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .analysis-card {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+        }
+        
+        .analysis-card-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .strength-list,
+        .weakness-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .strength-list li {
+            padding-left: 25px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 13px;
+            color: var(--slate-gray);
+        }
+        
+        .strength-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .weakness-list li {
+            padding-left: 25px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 13px;
+            color: var(--slate-gray);
+        }
+        
+        .weakness-list li:before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            background-color: var(--slate-gray);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        /* Recommendations */
+        .recommendations {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 35px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+        
+        .recommendations-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .recommendations p {
+            color: var(--light-gray);
+            margin-bottom: 15px;
+        }
+        
+        .recommendations ul {
+            margin-top: 20px;
+            padding-left: 25px;
+        }
+        
+        .recommendations li {
+            color: var(--light-gray);
+            margin-bottom: 12px;
+        }
+        
+        /* Radar Chart Placeholder */
+        .chart-container {
+            margin: 35px 0;
+        }
+        
+        .chart-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .chart-placeholder {
+            height: 450px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            border: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-gray);
+            font-size: 16px;
+            border-radius: 8px;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        li {
+            font-size: 15px;
+            color: var(--slate-gray);
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        .report-footer {
+            padding: 40px 80px;
+            background-color: var(--charcoal);
+            color: var(--light-gray);
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .footer-company {
+            font-weight: bold;
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: var(--white);
+            }
+            
+            .report {
+                box-shadow: none;
+            }
+            
+            .cover-page,
+            .content-page {
+                page-break-after: always;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-page,
+            .content-page,
+            .report-footer {
+                padding: 50px 40px;
+            }
+            
+            .report-title {
+                font-size: 40px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .summary-grid,
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 12px;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-header">
+                <div class="report-type">Competitive Website Analysis</div>
+                <h1 class="report-title">Website Comparison Report</h1>
+                <div class="report-subtitle">
+                    Comprehensive analysis of three competing websites across 10 strategic criteria including personality, authority, messaging, and AI disruption risk
+                </div>
+                
+                <div class="websites-list">
+                    <div class="websites-list-title">Websites Analyzed</div>
+                    <div class="website-item">Site A: www.engagementpro.com</div>
+                    <div class="website-item">Site B: www.peopleculture.io</div>
+                    <div class="website-item">Site C: www.workforceinsights.com</div>
+                </div>
+            </div>
+            
+            <div class="cover-footer">
+                <div class="cover-info">
+                    <div class="cover-info-label">Analysis Date</div>
+                    <div class="cover-info-value">November 2, 2025</div>
+                </div>
+                <div class="cover-info">
+                    <div class="cover-info-label">Conducted By</div>
+                    <div class="cover-info-value">Strategic Analysis Team</div>
+                </div>
+                <div class="cover-info">
+                    <div class="cover-info-label">Report Version</div>
+                    <div class="cover-info-value">1.0</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Executive Summary -->
+        <div class="content-page">
+            <h1 class="page-title">Executive Summary</h1>
+            <p class="page-subtitle">Overall assessment and winner determination</p>
+            
+            <p>
+                This comprehensive analysis evaluates three competing websites in the employee engagement and organizational culture space. Each site was scored across 10 critical criteria including personality presentation, authority establishment, messaging effectiveness, and AI disruption vulnerability.
+            </p>
+            
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="site-name">Site A</div>
+                    <div class="site-url">engagementpro.com</div>
+                    <div class="overall-score">78</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+                
+                <div class="summary-card winner">
+                    <div class="winner-badge">Winner</div>
+                    <div class="site-name">Site B</div>
+                    <div class="site-url">peopleculture.io</div>
+                    <div class="overall-score">84</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="site-name">Site C</div>
+                    <div class="site-url">workforceinsights.com</div>
+                    <div class="overall-score">71</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+            </div>
+            
+            <p>
+                <strong>Winner: Site B (PeopleCulture.io)</strong> emerged as the strongest performer with a score of 84/100. This site excels in personality presentation, video testimonials, and core offer strength while maintaining strong AI defensibility through its emphasis on human connection and personalized consulting approaches.
+            </p>
+            
+            <p>
+                Site A follows closely with 78/100, demonstrating strong authority presentation and sales workflow optimization. Site C scored 71/100, showing capabilities but lacking in personality presentation and video testimonial integration.
+            </p>
+            
+            <div class="chart-container">
+                <div class="chart-title">Comparative Performance Across 10 Criteria</div>
+                <div class="chart-placeholder">
+                    [Radar Chart: 10 criteria scores for Sites A, B, and C]
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Comparison -->
+        <div class="content-page">
+            <h1 class="page-title">Detailed Comparison Matrix</h1>
+            <p class="page-subtitle">Side-by-side analysis across all criteria</p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Site A<br>EngagementPro</th>
+                        <th>Site B<br>PeopleCulture</th>
+                        <th>Site C<br>WorkforceInsights</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="criterion-cell">1. Personality vs Organization</td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Moderate focus on founder story. About page features team with brief bios but limited personal "why" narrative. Organization-focused with some personality elements.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Strong personal narrative from founder Sarah Chen. Homepage features her story and clear "why I do what I do" centered on transforming toxic work cultures. Excellent balance.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge low">5</div>
+                            <p style="margin-top: 10px;">Primarily organization-focused. Generic corporate messaging. Minimal founder visibility or personal story. Lacks emotional connection.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">2. Authority Presentation</td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Excellent credibility markers: 200+ client logos, Harvard certification, published research, speaking engagements. Strong trust indicators throughout.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Good authority with Forbes features, McKinsey background, 15-year track record. Case studies with quantified results. Could enhance with more certifications.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Decent authority from technology platform and data analytics. Some client testimonials but lacks personal credentials and third-party validation.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">3. Hook, Story & Offer</td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Clear hook: "Transform disengagement into productivity." Decent story arc but offer could be clearer. Multiple CTAs may dilute focus.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Compelling hook: "Where employees thrive, businesses grow." Strong narrative journey from problem to transformation. Clear signature offer with defined outcomes.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">6</div>
+                            <p style="margin-top: 10px;">Weak hook focused on data rather than outcomes. Story element missing. Offer is platform-centric rather than transformation-focused.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">4. Video Testimonials</td>
+                        <td class="site-column">
+                            <div class="score-badge medium">6</div>
+                            <p style="margin-top: 10px;">3 written testimonials only. No video content. Testimonials are generic and lack specificity about transformation or results achieved.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">10</div>
+                            <p style="margin-top: 10px;">Excellent use of video testimonials. 7 client videos prominently featured. Before/after stories with specific metrics. Professional production quality.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge low">4</div>
+                            <p style="margin-top: 10px;">Written case studies only, no video. Testimonials buried in separate page. Limited social proof visibility on main pages.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">5. Messaging Themes</td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Strong consistent themes: "employee engagement," "productivity," "culture transformation." Headlines aligned. Some repetition but generally effective.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Excellent thematic consistency: "people thrive," "engagement drives profit," "culture of excellence." Emotionally resonant language throughout. Very cohesive.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Consistent technical themes: "workforce analytics," "data-driven insights." Less emotional resonance. Professional but may lack connection.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">6. Audience Segmentation</td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Three clear segments: Small Business, Enterprise, and Nonprofit. Dedicated landing pages for each with tailored messaging and pricing.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Well-defined segments: HR Leaders, C-Suite, and Managers. Content and solutions customized per audience. Clear pathways for each persona.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">6</div>
+                            <p style="margin-top: 10px;">Generic "Enterprise" focus. Minimal segmentation. One-size-fits-all approach may miss specific audience needs and nuances.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">7. Sales Workflow</td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Clear multi-path workflow: Free assessment → Strategy call → Proposal → Engagement. Also offers self-serve resources and membership tier.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Clean consulting funnel: Discovery call → Assessment → Custom program. Additional workshop and training product lines. Well-structured.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Platform trial → Demo → Subscription. Product-led growth model. Effective for software but lacks high-touch consulting option.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">8. Current Strengths</td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Strong authority signals, comprehensive service offerings, professional presentation. Excels at credibility building and structured approach.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Outstanding personality-driven brand, excellent video testimonials, compelling narrative. Human-centered approach with proven methodology.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">6</div>
+                            <p style="margin-top: 10px;">Solid technology platform, data analytics capabilities. Good for enterprises wanting scalable solutions. Professional execution.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">9. Core Offer Strength</td>
+                        <td class="site-column">
+                            <div class="score-badge high">8</div>
+                            <p style="margin-top: 10px;">Strong consulting + implementation model. "Culture Transformation System" with 6-month program. Clear deliverables but could emphasize outcomes more.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">Exceptional core offer: "Engagement Accelerator" 90-day intensive with guaranteed outcomes. Clear transformation promise with measurable KPIs.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Platform subscription as core offer. Good features but lacks human transformation element. May commoditize over time.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="criterion-cell">10. AI Defensibility</td>
+                        <td class="site-column">
+                            <div class="score-badge medium">7</div>
+                            <p style="margin-top: 10px;">Moderate AI risk. Consulting model provides some protection but survey tools and reporting could be automated. Needs to emphasize human insight.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge high">9</div>
+                            <p style="margin-top: 10px;">High AI defensibility. Personal brand, relationship-driven consulting, customized transformation programs. Emotional intelligence and nuance are core value.</p>
+                        </td>
+                        <td class="site-column">
+                            <div class="score-badge low">5</div>
+                            <p style="margin-top: 10px;">High AI disruption risk. Platform features (surveys, dashboards, analytics) highly automatable. Limited human differentiation or relationship element.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Individual Site Analysis - Site A -->
+        <div class="content-page">
+            <h1 class="page-title">Site A: EngagementPro.com</h1>
+            <p class="page-subtitle">Detailed analysis and recommendations</p>
+            
+            <div class="summary-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="summary-card">
+                    <div class="overall-score">78/100</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+                <div class="summary-card">
+                    <div class="overall-score">#2</div>
+                    <div class="score-label">Ranking</div>
+                </div>
+            </div>
+            
+            <h2>What They Do Well</h2>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Strengths</div>
+                    <ul class="strength-list">
+                        <li>Exceptional authority presentation with impressive client roster</li>
+                        <li>Well-structured sales workflow with multiple entry points</li>
+                        <li>Strong thematic consistency in messaging</li>
+                        <li>Excellent audience segmentation strategy</li>
+                        <li>Comprehensive service offerings</li>
+                        <li>Professional website design and user experience</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Weaknesses</div>
+                    <ul class="weakness-list">
+                        <li>Limited personality and founder story visibility</li>
+                        <li>No video testimonials - relies on written only</li>
+                        <li>Hook and offer could be more compelling</li>
+                        <li>Moderate AI defensibility - some automation risk</li>
+                        <li>Multiple CTAs may dilute conversion focus</li>
+                        <li>Generic team bios lack personal connection</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Opportunities</div>
+                    <ul class="strength-list">
+                        <li>Add video testimonials to boost credibility</li>
+                        <li>Strengthen founder story and personal narrative</li>
+                        <li>Refine core offer messaging for clarity</li>
+                        <li>Emphasize human insight vs. AI automation</li>
+                        <li>Create signature methodology brand</li>
+                        <li>Develop thought leadership content</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <div class="recommendations-title">Key Recommendations for Site A</div>
+                <p>
+                    To improve competitive positioning and increase from 78 to potentially 85+, Site A should focus on three priority areas:
+                </p>
+                <ul>
+                    <li><strong>Humanize the Brand:</strong> Feature founder story prominently with personal "why" narrative. Add team videos showing personality and passion.</li>
+                    <li><strong>Implement Video Testimonials:</strong> Create 5-7 professionally produced client video testimonials showing before/after transformations.</li>
+                    <li><strong>Sharpen Core Offer:</strong> Consolidate multiple services into one signature "transformation system" with clear outcomes and guaranteed results.</li>
+                    <li><strong>Enhance AI Defensibility:</strong> Emphasize proprietary methodology, emotional intelligence, and relationship-driven approach that AI cannot replicate.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Individual Site Analysis - Site B -->
+        <div class="content-page">
+            <h1 class="page-title">Site B: PeopleCulture.io</h1>
+            <p class="page-subtitle">Detailed analysis and recommendations</p>
+            
+            <div class="summary-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="summary-card winner">
+                    <div class="winner-badge">Winner</div>
+                    <div class="overall-score">84/100</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+                <div class="summary-card">
+                    <div class="overall-score">#1</div>
+                    <div class="score-label">Ranking</div>
+                </div>
+            </div>
+            
+            <h2>What They Do Well</h2>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Strengths</div>
+                    <ul class="strength-list">
+                        <li>Outstanding personality-driven brand with compelling founder story</li>
+                        <li>Exceptional video testimonials (10/10 score)</li>
+                        <li>Strong hook, story, and offer alignment</li>
+                        <li>Excellent thematic consistency and emotional messaging</li>
+                        <li>High AI defensibility through human-centered approach</li>
+                        <li>Powerful core offer with clear transformation promise</li>
+                        <li>Well-defined audience segments</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Weaknesses</div>
+                    <ul class="weakness-list">
+                        <li>Could enhance authority markers with more certifications</li>
+                        <li>Sales workflow slightly less structured than competitors</li>
+                        <li>Limited self-serve options for smaller budgets</li>
+                        <li>Website could use minor UX improvements</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Opportunities</div>
+                    <ul class="strength-list">
+                        <li>Add more third-party authority markers</li>
+                        <li>Develop lower-price-point digital products</li>
+                        <li>Create certification program to expand reach</li>
+                        <li>Launch podcast or video series for thought leadership</li>
+                        <li>Optimize mobile experience</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <div class="recommendations-title">Key Recommendations for Site B</div>
+                <p>
+                    Site B is already the strongest performer. To move from 84 to 90+, focus on:
+                </p>
+                <ul>
+                    <li><strong>Amplify Authority:</strong> Pursue speaking opportunities at major conferences, publish research, obtain additional certifications or credentials.</li>
+                    <li><strong>Expand Offerings:</strong> Create mid-tier digital product (online course or membership) to serve clients with smaller budgets without diluting premium consulting.</li>
+                    <li><strong>Systematize Sales Workflow:</strong> Document and optimize the consulting sales process with clear stages, automated follow-ups, and conversion tracking.</li>
+                    <li><strong>Scale Video Content:</strong> Leverage existing video testimonial success by creating more content - client success stories, methodology explainers, founder vision videos.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Individual Site Analysis - Site C -->
+        <div class="content-page">
+            <h1 class="page-title">Site C: WorkforceInsights.com</h1>
+            <p class="page-subtitle">Detailed analysis and recommendations</p>
+            
+            <div class="summary-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="summary-card">
+                    <div class="overall-score">71/100</div>
+                    <div class="score-label">Overall Score</div>
+                </div>
+                <div class="summary-card">
+                    <div class="overall-score">#3</div>
+                    <div class="score-label">Ranking</div>
+                </div>
+            </div>
+            
+            <h2>What They Do Well</h2>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Strengths</div>
+                    <ul class="strength-list">
+                        <li>Strong technology platform with robust features</li>
+                        <li>Clear product-led growth workflow</li>
+                        <li>Consistent technical messaging and themes</li>
+                        <li>Good data analytics and reporting capabilities</li>
+                        <li>Professional website execution</li>
+                        <li>Scalable software model</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Weaknesses</div>
+                    <ul class="weakness-list">
+                        <li>Weak personality presentation - corporate and generic</li>
+                        <li>Limited authority establishment beyond platform</li>
+                        <li>Poor video testimonial integration</li>
+                        <li>Hook lacks emotional resonance</li>
+                        <li>Minimal audience segmentation</li>
+                        <li>High AI disruption risk (5/10 score)</li>
+                        <li>Platform-centric vs. outcome-centric positioning</li>
+                    </ul>
+                </div>
+                
+                <div class="analysis-card">
+                    <div class="analysis-card-title">Opportunities</div>
+                    <ul class="strength-list">
+                        <li>Introduce human consulting element</li>
+                        <li>Feature customer success stories with video</li>
+                        <li>Develop founder or leadership thought leadership</li>
+                        <li>Create industry-specific solutions</li>
+                        <li>Add high-touch premium tier</li>
+                        <li>Build community or certification program</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <div class="recommendations-title">Key Recommendations for Site C</div>
+                <p>
+                    Site C faces the highest AI disruption risk and lowest human connection. To improve from 71 to 80+, requires fundamental repositioning:
+                </p>
+                <ul>
+                    <li><strong>Humanize the Platform:</strong> Feature real people (founder, customer success team, clients). Tell the story behind the technology and why it matters.</li>
+                    <li><strong>Add Consulting Layer:</strong> Introduce "Success Services" tier with human experts who interpret data and guide transformation - not just provide software.</li>
+                    <li><strong>Create Video Testimonials:</strong> Produce 5+ client video testimonials focusing on transformation stories, not just platform features.</li>
+                    <li><strong>Reposition Core Offer:</strong> Shift from "workforce analytics platform" to "transformation system powered by insights" - emphasize outcomes over features.</li>
+                    <li><strong>Build AI Defensibility:</strong> Develop proprietary methodology, certification program, or community that creates stickiness beyond the software itself.</li>
+                </ul>
+                <p>
+                    <strong>Critical Alert:</strong> Without these changes, Site C is highly vulnerable to AI disruption as competitors or AI tools could replicate platform features within 12-18 months.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Strategic Insights -->
+        <div class="content-page">
+            <h1 class="page-title">Strategic Insights & Patterns</h1>
+            <p class="page-subtitle">Cross-site learnings and industry implications</p>
+            
+            <h2>Key Success Patterns</h2>
+            
+            <p>
+                Analysis of the winning site (Site B) and comparative scoring reveals several critical success factors that separate high performers from average competitors:
+            </p>
+            
+            <h3>1. Personality Trumps Organization</h3>
+            
+            <p>
+                Sites emphasizing personal narrative and founder story significantly outperformed corporate/organization-focused positioning. Site B's personal brand approach scored 9/10 vs. Site C's organizational approach at 5/10. In the consulting and transformation space, buyers seek human connection and proven expertise from named individuals, not faceless corporations.
+            </p>
+            
+            <h3>2. Video Testimonials Are Non-Negotiable</h3>
+            
+            <p>
+                The correlation between video testimonial quality and overall performance was striking. Site B's exceptional video testimonial strategy (10/10) contributed significantly to its #1 ranking. Video provides authenticity, emotional connection, and specificity that written testimonials cannot match. This is increasingly essential as AI-generated content makes written reviews less trustworthy.
+            </p>
+            
+            <h3>3. Clear Core Offer vs. Multiple Services</h3>
+            
+            <p>
+                Sites with a clearly defined "signature offer" outperformed those offering multiple disparate services. Site B's "Engagement Accelerator" 90-day program scored 9/10 while Site A's multiple service options scored 8/10. A focused transformation promise is more compelling than a service menu.
+            </p>
+            
+            <h3>4. AI Defensibility Requires Human Differentiation</h3>
+            
+            <p>
+                The most vulnerable sites (Site C at 5/10) positioned themselves primarily around deliverables that AI could automate: data collection, analysis, reporting. The most defensible (Site B at 9/10) emphasized relationship, emotional intelligence, customization, and transformation - inherently human elements.
+            </p>
+            
+            <h2>Industry Implications</h2>
+            
+            <p>
+                This analysis reveals broader trends affecting the employee engagement and organizational consulting industry:
+            </p>
+            
+            <ul>
+                <li><strong>Commoditization of Technology:</strong> Survey tools, dashboards, and analytics are becoming commoditized. Differentiation must come from methodology, relationships, and transformation capabilities.</li>
+                <li><strong>Trust Through Transparency:</strong> Video testimonials, behind-the-scenes content, and personal storytelling build trust in an era of AI-generated content and fake reviews.</li>
+                <li><strong>Outcome-Based Positioning:</strong> Generic service descriptions are losing effectiveness. Clients respond to specific, guaranteed transformation promises with measurable outcomes.</li>
+                <li><strong>Premium Positioning Wins:</strong> Race-to-the-bottom pricing strategies are failing. Sites commanding premium prices through authority, personality, and proven methodology are thriving.</li>
+            </ul>
+            
+            <h2>AI Disruption Threat Analysis</h2>
+            
+            <p>
+                AI poses varying levels of threat to different business models in this space:
+            </p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Business Model</th>
+                        <th>AI Disruption Risk</th>
+                        <th>Defensibility Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Software Platform Only</strong></td>
+                        <td style="color: var(--slate-gray); font-weight: bold;">High Risk</td>
+                        <td>Add human consulting layer, proprietary methodology, community/certification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generic Consulting</strong></td>
+                        <td style="color: var(--slate-gray); font-weight: bold;">Medium Risk</td>
+                        <td>Develop signature system, build personal brand, emphasize relationships</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Methodology + Personal Brand</strong></td>
+                        <td style="color: var(--charcoal); font-weight: bold;">Low Risk</td>
+                        <td>Continue emphasizing transformation, emotional intelligence, customization</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="recommendations">
+                <div class="recommendations-title">Universal Recommendations</div>
+                <p>
+                    Regardless of current position, all sites in this space should prioritize:
+                </p>
+                <ul>
+                    <li><strong>Invest in Video Content:</strong> Produce high-quality video testimonials, founder story videos, methodology explainers, and client transformation stories</li>
+                    <li><strong>Build Personal Brand:</strong> Position named experts as industry thought leaders through speaking, publishing, and consistent content creation</li>
+                    <li><strong>Create Signature Methodology:</strong> Develop and trademark a unique transformation system that becomes synonymous with your brand</li>
+                    <li><strong>Emphasize Human Elements:</strong> Highlight aspects of your service that require emotional intelligence, nuance, relationship, and customization - things AI cannot replicate</li>
+                    <li><strong>Measure Transformation:</strong> Shift from activity-based metrics to outcome-based results. Guarantee specific improvements and showcase them prominently</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Conclusion -->
+        <div class="content-page">
+            <h1 class="page-title">Conclusion & Action Items</h1>
+            <p class="page-subtitle">Final recommendations and implementation priorities</p>
+            
+            <h2>Final Rankings</h2>
+            
+            <div class="summary-grid">
+                <div class="summary-card winner">
+                    <div class="winner-badge">1st Place</div>
+                    <div class="site-name">Site B</div>
+                    <div class="site-url">peopleculture.io</div>
+                    <div class="overall-score">84/100</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="site-name">Site A</div>
+                    <div class="site-url">engagementpro.com</div>
+                    <div class="overall-score">78/100</div>
+                    <div class="score-label">2nd Place</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="site-name">Site C</div>
+                    <div class="site-url">workforceinsights.com</div>
+                    <div class="overall-score">71/100</div>
+                    <div class="score-label">3rd Place</div>
+                </div>
+            </div>
+            
+            <h2>Summary</h2>
+            
+            <p>
+                This comprehensive analysis evaluated three competing websites across 10 strategic criteria. Site B (PeopleCulture.io) emerged as the clear winner with a score of 84/100, excelling in personality presentation, video testimonials, core offer strength, and AI defensibility.
+            </p>
+            
+            <p>
+                The winning formula combines: (1) strong personal brand and founder story, (2) exceptional video testimonials showing real transformation, (3) clear signature methodology and core offer, (4) high-touch human elements that AI cannot replicate, and (5) outcome-focused positioning rather than service listing.
+            </p>
+            
+            <p>
+                Sites that position themselves as technology platforms or generic consultancies face increasing AI disruption risk. The sustainable competitive advantage lies in building personal brands, creating proprietary methodologies, and emphasizing the irreplaceable human elements of transformation work.
+            </p>
+            
+            <h2>Priority Actions by Site</h2>
+            
+            <h3>For Site A (Score: 78/100)</h3>
+            <ul>
+                <li>Add 5-7 professional video testimonials within 60 days</li>
+                <li>Feature founder story prominently on homepage with personal "why"</li>
+                <li>Consolidate services into one signature transformation system</li>
+                <li>Emphasize emotional intelligence and relationship elements</li>
+                <li><strong>Potential to reach 85+ with these changes</strong></li>
+            </ul>
+            
+            <h3>For Site B (Score: 84/100) - Current Winner</h3>
+            <ul>
+                <li>Add more third-party authority markers (certifications, awards, publications)</li>
+                <li>Create mid-tier digital product for broader market access</li>
+                <li>Systematize and document sales workflow for consistency</li>
+                <li>Expand video content library with methodology deep-dives</li>
+                <li><strong>Potential to reach 90+ with these refinements</strong></li>
+            </ul>
+            
+            <h3>For Site C (Score: 71/100)</h3>
+            <ul>
+                <li><strong>URGENT:</strong> Address AI disruption risk through fundamental repositioning</li>
+                <li>Add human consulting/success services layer immediately</li>
+                <li>Produce 5+ client video testimonials focused on transformation</li>
+                <li>Feature leadership team and develop personal thought leadership</li>
+                <li>Shift positioning from "platform" to "transformation system"</li>
+                <li><strong>Without action, faces significant disruption risk within 12-18 months</strong></li>
+            </ul>
+            
+            <h2>Market Outlook</h2>
+            
+            <p>
+                The employee engagement and organizational consulting market is at an inflection point. AI will commoditize data collection, analysis, and generic advisory services. Winners in this space will be those who:
+            </p>
+            
+            <ul>
+                <li>Build strong personal brands that command premium prices</li>
+                <li>Create proprietary methodologies that become industry standards</li>
+                <li>Emphasize human connection, emotional intelligence, and relationship</li>
+                <li>Prove transformation through video testimonials and case studies</li>
+                <li>Position as outcome guarantors, not service providers</li>
+            </ul>
+            
+            <p>
+                The sites that implement these recommendations will strengthen their competitive position and build sustainable businesses resistant to AI disruption. Those that continue with generic, technology-only, or organization-focused approaches risk commoditization and irrelevance.
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="report-footer">
+            <div class="footer-company">Strategic Analysis Team</div>
+            <div>Confidential Website Comparison Report • © 2025 All Rights Reserved</div>
+            <div style="margin-top: 10px;">For questions or follow-up analysis, contact: analysis@strategic.com</div>
+        </div>
+    </div>
+</body>
+</html>

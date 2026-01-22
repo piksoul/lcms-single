@@ -1,0 +1,75 @@
+/**
+ * Content Row Component
+ *
+ * Horizontal row layout for content items.
+ * Flex row wrapper with vertical and horizontal alignment options.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-content-row.css
+ */
+
+/* ============================================
+   BLOCK: Content Row
+   ============================================ */
+
+.lcms-content-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* gap handled via inline style */
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-content-row__item {
+    width: 100%;
+}
+
+/* ============================================
+   MODIFIERS: Vertical Alignment
+   ============================================ */
+
+.lcms-content-row--align-top {
+    align-items: flex-start;
+}
+
+.lcms-content-row--align-center {
+    align-items: center;
+}
+
+.lcms-content-row--align-bottom {
+    align-items: flex-end;
+}
+
+/* ============================================
+   MODIFIERS: Horizontal Alignment
+   ============================================ */
+
+.lcms-content-row--justify-start {
+    justify-content: flex-start;
+}
+
+.lcms-content-row--justify-center {
+    justify-content: center;
+}
+
+.lcms-content-row--justify-end {
+    justify-content: flex-end;
+}
+
+.lcms-content-row--justify-space-between {
+    justify-content: space-between;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-content-row {
+        flex-direction: column;
+    }
+}

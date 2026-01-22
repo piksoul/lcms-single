@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume - Modern Minimalist</title>
+    <style>
+        /* Modern Minimalist Theme Colors */
+        :root {
+            --charcoal: #36454f;
+            --slate-gray: #708090;
+            --light-gray: #d3d3d3;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .page {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header Section */
+        .header {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 60px 60px 50px 60px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 48px;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .header .title {
+            font-size: 22px;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            background-color: var(--slate-gray);
+            border-radius: 3px;
+        }
+        
+        /* Main Content */
+        .content {
+            padding: 50px 60px;
+        }
+        
+        /* Profile Summary */
+        .profile-summary {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--charcoal);
+        }
+        
+        .profile-text {
+            font-size: 16px;
+            color: var(--slate-gray);
+            line-height: 1.8;
+        }
+        
+        /* Skills Section */
+        .skills-section {
+            margin-bottom: 50px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .skill-category h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        /* Experience Section */
+        .experience-section {
+            margin-bottom: 50px;
+        }
+        
+        .experience-item {
+            margin-bottom: 35px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .experience-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--charcoal);
+            border-radius: 50%;
+        }
+        
+        .experience-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 15px);
+            background-color: var(--light-gray);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .experience-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--charcoal);
+        }
+        
+        .experience-date {
+            font-size: 14px;
+            color: var(--slate-gray);
+            font-weight: 500;
+        }
+        
+        .experience-company {
+            font-size: 16px;
+            color: var(--slate-gray);
+            margin-bottom: 12px;
+        }
+        
+        .experience-description {
+            font-size: 15px;
+            color: var(--slate-gray);
+            margin-bottom: 10px;
+        }
+        
+        .experience-highlights {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .experience-highlights li {
+            font-size: 14px;
+            color: var(--slate-gray);
+            padding-left: 20px;
+            margin-bottom: 6px;
+            position: relative;
+        }
+        
+        .experience-highlights li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--slate-gray);
+            font-weight: bold;
+        }
+        
+        /* Education Section */
+        .education-section {
+            margin-bottom: 50px;
+        }
+        
+        .education-item {
+            margin-bottom: 25px;
+        }
+        
+        .education-degree {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--charcoal);
+            margin-bottom: 5px;
+        }
+        
+        .education-school {
+            font-size: 16px;
+            color: var(--slate-gray);
+            margin-bottom: 5px;
+        }
+        
+        .education-details {
+            font-size: 14px;
+            color: var(--slate-gray);
+        }
+        
+        /* Certifications */
+        .certifications-section {
+            margin-bottom: 30px;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .cert-item {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--charcoal);
+        }
+        
+        .cert-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--charcoal);
+            margin-bottom: 3px;
+        }
+        
+        .cert-issuer {
+            font-size: 13px;
+            color: var(--slate-gray);
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: var(--white);
+            }
+            
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .experience-item:not(:last-child):after {
+                background-color: var(--charcoal);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 30px 30px 30px;
+            }
+            
+            .header h1 {
+                font-size: 36px;
+            }
+            
+            .content {
+                padding: 40px 30px;
+            }
+            
+            .skills-grid,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <h1>Alex Chen</h1>
+            <div class="title">Senior Product Manager</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"></div>
+                    <span>alex.chen@email.com</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"></div>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"></div>
+                    <span>San Francisco, CA</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"></div>
+                    <span>linkedin.com/in/alexchen</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Profile Summary -->
+            <div class="profile-summary">
+                <h2 class="section-title">Profile</h2>
+                <p class="profile-text">
+                    Results-driven Product Manager with 8+ years of experience leading cross-functional teams to deliver innovative SaaS products. Proven track record of launching successful products that drive user growth and revenue. Expert in agile methodologies, user-centered design, and data-driven decision making. Passionate about building products that solve real customer problems and create meaningful business impact.
+                </p>
+            </div>
+            
+            <!-- Skills -->
+            <div class="skills-section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Product Management</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Product Strategy</span>
+                            <span class="skill-tag">Roadmap Planning</span>
+                            <span class="skill-tag">User Research</span>
+                            <span class="skill-tag">A/B Testing</span>
+                            <span class="skill-tag">Analytics</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">APIs</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Jira</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Leadership</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Team Management</span>
+                            <span class="skill-tag">Stakeholder Communication</span>
+                            <span class="skill-tag">Agile/Scrum</span>
+                            <span class="skill-tag">OKRs</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Business Acumen</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">P&L Management</span>
+                            <span class="skill-tag">Go-to-Market</span>
+                            <span class="skill-tag">Pricing Strategy</span>
+                            <span class="skill-tag">Market Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Experience -->
+            <div class="experience-section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">Senior Product Manager</div>
+                        <div class="experience-date">Jan 2021 - Present</div>
+                    </div>
+                    <div class="experience-company">TechCorp Inc. • San Francisco, CA</div>
+                    <p class="experience-description">
+                        Leading product strategy and execution for enterprise analytics platform serving 500+ customers.
+                    </p>
+                    <ul class="experience-highlights">
+                        <li>Launched AI-powered insights feature that increased user engagement by 45% and drove $2M in new ARR</li>
+                        <li>Led cross-functional team of 12 engineers, designers, and analysts through full product lifecycle</li>
+                        <li>Established product analytics framework resulting in 30% improvement in feature adoption rates</li>
+                        <li>Implemented customer feedback loop that reduced churn by 18% over 6 months</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">Product Manager</div>
+                        <div class="experience-date">Mar 2019 - Dec 2020</div>
+                    </div>
+                    <div class="experience-company">DataFlow Solutions • Seattle, WA</div>
+                    <p class="experience-description">
+                        Managed B2B SaaS product portfolio focused on data integration and workflow automation.
+                    </p>
+                    <ul class="experience-highlights">
+                        <li>Drove product vision and roadmap for flagship integration platform used by 200+ enterprise clients</li>
+                        <li>Increased MRR by 35% through successful launch of premium tier with advanced features</li>
+                        <li>Reduced customer onboarding time by 50% through improved UX and documentation</li>
+                        <li>Collaborated with sales team to close 15 major accounts worth $1.5M in total contract value</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-title">Associate Product Manager</div>
+                        <div class="experience-date">Jun 2017 - Feb 2019</div>
+                    </div>
+                    <div class="experience-company">StartupXYZ • San Francisco, CA</div>
+                    <p class="experience-description">
+                        Supported senior PM in developing mobile-first collaboration tools for remote teams.
+                    </p>
+                    <ul class="experience-highlights">
+                        <li>Conducted user research with 100+ customers to identify pain points and feature opportunities</li>
+                        <li>Managed backlog of 200+ items and prioritized features based on business impact and user value</li>
+                        <li>Launched mobile app achieving 4.7-star rating and 50K+ downloads in first 3 months</li>
+                        <li>Created product documentation and training materials for sales and support teams</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="education-section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="education-degree">Master of Business Administration (MBA)</div>
+                    <div class="education-school">Stanford Graduate School of Business</div>
+                    <div class="education-details">2015 - 2017 • GPA: 3.8/4.0 • Focus: Product Management & Entrepreneurship</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-degree">Bachelor of Science in Computer Science</div>
+                    <div class="education-school">University of California, Berkeley</div>
+                    <div class="education-details">2011 - 2015 • GPA: 3.7/4.0 • Dean's List</div>
+                </div>
+            </div>
+            
+            <!-- Certifications -->
+            <div class="certifications-section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-name">Certified Scrum Product Owner (CSPO)</div>
+                        <div class="cert-issuer">Scrum Alliance • 2020</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Google Analytics Certification</div>
+                        <div class="cert-issuer">Google • 2021</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Product Management Certificate</div>
+                        <div class="cert-issuer">General Assembly • 2017</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">AWS Cloud Practitioner</div>
+                        <div class="cert-issuer">Amazon Web Services • 2022</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "id": "numbered-timeline",
+    "name": "Numbered Timeline",
+    "category": "pattern",
+    "tier": 2,
+    "description": "Sequential numbered steps for processes, how-it-works sections, and implementation timelines",
+    "use_cases": [
+      "How It Works sections",
+      "Process flows (consultation, design, testing, implementation)",
+      "Getting Started guides",
+      "Implementation timelines",
+      "Sequential feature rollouts",
+      "Onboarding steps"
+    ]
+  },
+  "variants": {
+    "horizontal": {
+      "description": "Grid layout (2-4 columns) with numbers above each step",
+      "layout": "grid-4col, grid-3col, or grid-2col",
+      "best_for": "Desktop-first, visual parity between steps",
+      "mobile_behavior": "Stacks vertically on mobile"
+    },
+    "vertical": {
+      "description": "Stacked layout with connector lines between steps",
+      "layout": "lcms-stack with connector elements",
+      "best_for": "Mobile-first, detailed steps, progressive disclosure",
+      "mobile_behavior": "Natural vertical flow"
+    }
+  },
+  "components_used": {
+    "step_number": {
+      "component": "lcms-step-number",
+      "modifiers": ["--primary (default)", "--accent", "--circle", "--filled"],
+      "description": "Large numbered indicator for each step"
+    },
+    "layout": {
+      "horizontal": "grid-4col, grid-3col, grid-2col utility classes",
+      "vertical": "lcms-stack with gap control"
+    },
+    "content": {
+      "heading": "h3 or h4 for step title",
+      "description": "p tag for step description",
+      "optional_list": "lcms-list for sub-steps or details"
+    }
+  },
+  "html_structure_horizontal": "<div class=\"grid-4col\">\n    <div class=\"lcms-stack gap-8 text-center\">\n        <div class=\"lcms-step-number\">{{NUMBER}}</div>\n        <h4>{{STEP_TITLE}}</h4>\n        <p>{{STEP_DESCRIPTION}}</p>\n    </div>\n    <!-- Repeat for each step -->\n</div>",
+  "html_structure_vertical": "<div class=\"lcms-stack gap-32\">\n    <div class=\"lcms-timeline-step\">\n        <div class=\"lcms-timeline-step__marker\">\n            <div class=\"lcms-step-number lcms-step-number--circle\">{{NUMBER}}</div>\n        </div>\n        <div class=\"lcms-timeline-step__content\">\n            <h4>{{STEP_TITLE}}</h4>\n            <p>{{STEP_DESCRIPTION}}</p>\n        </div>\n    </div>\n    <!-- Repeat for each step -->\n</div>",
+  "partial_implementation_horizontal": {
+    "partial": "column",
+    "namespace": "pro-sites",
+    "example": "See horizontal-example.php"
+  },
+  "partial_implementation_vertical": {
+    "partial": "column",
+    "namespace": "pro-sites",
+    "example": "See vertical-example.php",
+    "note": "Vertical variant requires custom CSS for connector lines"
+  },
+  "placeholders": {
+    "NUMBER": {
+      "type": "number",
+      "required": true,
+      "description": "Step number (1, 2, 3, 4)"
+    },
+    "STEP_TITLE": {
+      "type": "text",
+      "required": true,
+      "description": "Short step title (3-7 words)"
+    },
+    "STEP_DESCRIPTION": {
+      "type": "text",
+      "required": true,
+      "description": "Brief step description (1-2 sentences)"
+    }
+  },
+  "usage_guidelines": {
+    "step_count": {
+      "optimal": "3-5 steps",
+      "minimum": 2,
+      "maximum": 6,
+      "note": "More than 6 steps becomes overwhelming"
+    },
+    "content_length": {
+      "title": "Keep under 7 words for scanability",
+      "description": "1-2 sentences maximum per step"
+    },
+    "alignment": {
+      "horizontal": "text-center for each step",
+      "vertical": "text-left for readability"
+    },
+    "number_style": {
+      "simple": "lcms-step-number (default, clean)",
+      "circle": "lcms-step-number--circle (outlined)",
+      "filled": "lcms-step-number--filled (bold, high contrast)"
+    }
+  },
+  "ai_generation_instructions": {
+    "when_to_use": "User mentions process, steps, how it works, implementation, or sequential workflow",
+    "variant_selection": {
+      "horizontal": "Default choice for 3-4 equal-weight steps, landing pages",
+      "vertical": "Choose for detailed steps, mobile-first layouts, or storytelling flow"
+    },
+    "content_generation": "Create concise, action-oriented step titles with supportive descriptions",
+    "dark_mode": "Works well in both light and dark sections - alternate for visual rhythm"
+  },
+  "discovered_in": "templates/pages/brhu/slug-packaging-campaign.php (lines 200-238)",
+  "date_added": "2025-11-18"
+}

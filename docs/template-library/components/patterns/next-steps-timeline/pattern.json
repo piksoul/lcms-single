@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "id": "next-steps-timeline",
+    "name": "Three-Phase Roadmap Timeline",
+    "category": "pattern",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["timeline", "roadmap", "phases", "planning", "next-steps"]
+  },
+
+  "description": {
+    "summary": "Three-column timeline showing immediate, short-term, and long-term phases with tasks",
+    "use_cases": [
+      "Project roadmaps",
+      "Implementation plans",
+      "Future planning sections",
+      "Product roadmaps",
+      "Strategic timelines"
+    ],
+    "visual_weight": "medium-heavy",
+    "content_density": "medium",
+    "typical_position": "Near end of page, before CTA"
+  },
+
+  "partial_call": {
+    "name": "column",
+    "namespace": "pro-sites",
+    "function": "partial('column', [...], 'pro-sites');"
+  },
+
+  "structure": {
+    "settings": {
+      "dark_mode": true
+    },
+    "header": {
+      "title": "Next Steps",
+      "subtitle": "Roadmap for moving forward"
+    },
+    "content": "3-column grid with cards for each phase"
+  },
+
+  "timeline_phases": {
+    "immediate": {
+      "label": "⚡ Immediate",
+      "timeframe": "2 weeks",
+      "description": "Quick wins and immediate actions"
+    },
+    "short_term": {
+      "label": "🎯 Short-Term",
+      "timeframe": "1-3 months",
+      "description": "Near-term milestones"
+    },
+    "long_term": {
+      "label": "🚀 Long-Term",
+      "timeframe": "6-12 months",
+      "description": "Strategic goals"
+    }
+  },
+
+  "parameters": {
+    "settings": {
+      "dark_mode": {
+        "type": "boolean",
+        "required": true,
+        "default": true,
+        "description": "Enable dark mode (recommended for visual impact)"
+      }
+    },
+    "header": {
+      "heading": {
+        "title": {
+          "type": "text",
+          "required": false,
+          "default": "Next Steps",
+          "description": "Section heading"
+        },
+        "subtitle": {
+          "type": "text",
+          "required": false,
+          "default": "Roadmap for moving forward",
+          "description": "Section subheading"
+        },
+        "align": {
+          "type": "select",
+          "default": "center",
+          "options": ["center"],
+          "description": "Text alignment"
+        }
+      }
+    },
+    "content": {
+      "type": {
+        "value": "html",
+        "locked": true
+      },
+      "html": {
+        "description": "3-column grid with phase cards"
+      }
+    }
+  },
+
+  "php_template": "partial('column', [\n    'settings' => ['dark_mode' => true],\n    'header' => [\n        'heading' => [\n            'title' => 'Next Steps',\n            'subtitle' => 'Roadmap for moving forward',\n            'align' => 'center',\n        ],\n    ],\n    'content' => [\n        'type' => 'html',\n        'html' => '\n            <div class=\"grid-3col\">\n                <div class=\"lcms-card\">\n                    <h4>⚡ Immediate </h4>\n                    <p>(2 weeks)</p>\n                    <ul class=\"lcms-list lcms-list--check\">\n                        <li class=\"lcms-list__item\">{{IMMEDIATE_TASK}}</li>\n                    </ul>\n                </div>\n                <div class=\"lcms-card\">\n                    <h4>🎯 Short-Term </h4>\n                    <p>(1-3 months)</p>\n                    <ul class=\"lcms-list lcms-list--check\">\n                        <li class=\"lcms-list__item\">{{SHORTTERM_TASK}}</li>\n                    </ul>\n                </div>\n                <div class=\"lcms-card\">\n                    <h4>🚀 Long-Term</h4>\n                    <p>(6-12 months)</p>\n                    <ul class=\"lcms-list lcms-list--check\">\n                        <li class=\"lcms-list__item\">{{LONGTERM_TASK}}</li>\n                    </ul>\n                </div>\n            </div>\n        ',\n    ],\n], 'pro-sites');",
+
+  "placeholders": {
+    "SECTION_TITLE": {
+      "type": "text",
+      "required": false,
+      "default": "Next Steps",
+      "description": "Timeline section heading"
+    },
+    "SECTION_SUBTITLE": {
+      "type": "text",
+      "required": false,
+      "default": "Roadmap for moving forward",
+      "description": "Timeline section subheading"
+    },
+    "IMMEDIATE_TASKS": {
+      "type": "array",
+      "required": true,
+      "description": "Array of immediate tasks (2 weeks)",
+      "recommended_count": "2-4 tasks"
+    },
+    "SHORTTERM_TASKS": {
+      "type": "array",
+      "required": true,
+      "description": "Array of short-term tasks (1-3 months)",
+      "recommended_count": "2-4 tasks"
+    },
+    "LONGTERM_TASKS": {
+      "type": "array",
+      "required": true,
+      "description": "Array of long-term tasks (6-12 months)",
+      "recommended_count": "2-4 tasks"
+    }
+  },
+
+  "styling_notes": {
+    "background": "Dark mode for visual impact",
+    "grid": "3 equal columns with cards",
+    "cards": "lcms-card class for consistent styling",
+    "lists": "Check-list modifier for completed/planned items"
+  },
+
+  "ai_instructions": "Use for showing project or product roadmap across three time horizons. Immediate tasks are quick wins (2 weeks), short-term are near milestones (1-3 months), long-term are strategic goals (6-12 months). Keep task lists concise (2-4 items per phase). Always use dark_mode: true for this pattern.",
+
+  "required_components": [
+    "list-variants (lcms-list--check)"
+  ],
+
+  "related_components": [
+    "cta-with-buttons",
+    "metrics-grid-4col"
+  ]
+}

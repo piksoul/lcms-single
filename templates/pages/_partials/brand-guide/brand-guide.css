@@ -1,0 +1,298 @@
+/**
+ * Brand Guide Partial Styles - Theming Only
+ *
+ * Brand-specific theming for brand-guide partial system.
+ * Structural styles moved to lcms-design-system.css.
+ * Auto-loads when any brand-guide partial renders.
+ *
+ * @filepath templates/pages/_partials/brand-guide/brand-guide.css
+ * @since 1.4.3
+ * @updated 1.4.9 - Cleaned up for BEM migration (structural styles moved to design system)
+ */
+
+/* ============================================
+   BEM COMPONENT USAGE NOTES
+   ============================================ */
+
+/**
+ * Structural styles now in design system:
+ * - Section headings: .lcms-section-heading, .lcms-section-heading__label, .lcms-section-heading__title
+ * - Grids: .lcms-grid, .lcms-grid--2col, .lcms-grid--3col, .lcms-grid--4col
+ * - Cards: .lcms-card, .lcms-card__header, .lcms-card__body
+ * - Color swatches: .lcms-color-swatch, .lcms-color-swatch__display, .lcms-color-swatch__name
+ * - CTA Sections: .lcms-cta-section, .lcms-cta-section__title, .lcms-cta-section__button
+ *
+ * This file contains ONLY brand-guide-specific display elements and theming.
+ */
+
+/* ============================================
+   Section Framework - Theming
+   ============================================ */
+
+section.lcms-brand-guide {
+    width: 100%;
+    padding: var(--spacing-section, 80px) var(--spacing-horizontal, 20px);
+}
+
+/* Container handled by global .lcms-container BEM utility (in design system) */
+
+/* ============================================
+   Typography Specimen Display Component (BEM)
+   (Brand Guide Specific)
+   ============================================ */
+
+.lcms-type-specimen {
+    margin-top: 40px;
+    padding: 30px;
+    background: white;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    border-radius: 10px;
+}
+
+.lcms-type-specimen__label {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--color-brand-accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.lcms-type-specimen__display {
+    margin-bottom: 20px;
+    color: var(--color-brand-secondary);
+}
+
+.lcms-type-specimen__info {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+/* Typography display modifiers (applied to __display element) */
+.heading-xl {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.heading-lg {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.heading-md {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+.body-lg {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--color-text-primary);
+}
+
+.body-md {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--color-text-primary);
+}
+
+/* ============================================
+   Logo Display Card Component (BEM)
+   (Brand Guide Specific)
+   ============================================ */
+
+.lcms-logo-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    text-align: center;
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+.lcms-logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--color-brand-secondary);
+}
+
+.lcms-logo-card__image {
+    max-width: 100%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 30px;
+}
+
+.lcms-logo-card__title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-brand-secondary);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.lcms-logo-card__description {
+    font-size: 15px;
+    color: var(--color-text-primary);
+    line-height: 1.65;
+}
+
+/* ============================================
+   Guideline Card Component (Do's and Don'ts) - BEM
+   (Brand Guide Specific)
+   ============================================ */
+
+.lcms-guideline-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+}
+
+.lcms-guideline-card--do {
+    border-left: 5px solid #28a745;
+}
+
+.lcms-guideline-card--dont {
+    border-left: 5px solid #dc3545;
+}
+
+.lcms-guideline-card__icon {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.lcms-guideline-card--do .lcms-guideline-card__icon {
+    color: #28a745;
+}
+
+.lcms-guideline-card--dont .lcms-guideline-card__icon {
+    color: #dc3545;
+}
+
+.lcms-guideline-card__title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-brand-secondary);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.lcms-guideline-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lcms-guideline-card__list li {
+    padding-left: 30px;
+    margin-bottom: 12px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-primary);
+}
+
+.lcms-guideline-card--do .lcms-guideline-card__list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.lcms-guideline-card--dont .lcms-guideline-card__list li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   Spacing Card Component (BEM)
+   (Brand Guide Specific)
+   ============================================ */
+
+.lcms-spacing-card {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+}
+
+.lcms-spacing-card__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    margin-bottom: 20px;
+}
+
+.lcms-spacing-card__box {
+    width: 100%;
+    max-width: 60px;
+    background: var(--color-brand-accent);
+    border-radius: 5px;
+}
+
+.lcms-spacing-card__label {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-brand-secondary);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.lcms-spacing-card__value {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-brand-accent);
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+    section.lcms-brand-guide {
+        padding: var(--spacing-section-mobile, 60px) var(--spacing-horizontal-mobile, 20px);
+    }
+
+    .heading-xl {
+        font-size: 36px;
+    }
+
+    .heading-lg {
+        font-size: 32px;
+    }
+
+    .heading-md {
+        font-size: 24px;
+    }
+}

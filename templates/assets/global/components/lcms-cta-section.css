@@ -1,0 +1,297 @@
+/**
+ * LeanCMS Design System
+ * Component: CTA Section
+ *
+ * Call-to-action section with heading, description, and action button.
+ * Typically used at the bottom of pages to drive user actions.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Design_System
+ * @since      1.4.9
+ * @filepath   templates/assets/global/components/lcms-cta-section.css
+ */
+
+/* ============================================
+   BLOCK: CTA Section
+   ============================================ */
+
+.lcms-cta-section {
+    background: linear-gradient(135deg, var(--color-brand-primary) 0%, #0A0C4F 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 60px;
+    position: relative;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-cta-section__title {
+    font-size: 42px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.lcms-cta-section__description {
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.lcms-cta-section__button {
+    display: inline-block;
+    background: var(--color-brand-accent);
+    color: white;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    transition: var(--transition-standard);
+    border: none;
+    cursor: pointer;
+}
+
+.lcms-cta-section__button:hover {
+    background: var(--color-brand-accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lcms-cta-section__button:active {
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   MODIFIERS: Background Variants
+   ============================================ */
+
+.lcms-cta-section--primary {
+    background: var(--color-brand-primary);
+}
+
+.lcms-cta-section--secondary {
+    background: var(--color-brand-secondary);
+}
+
+.lcms-cta-section--accent {
+    background: var(--color-brand-accent);
+}
+
+.lcms-cta-section--dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+}
+
+.lcms-cta-section--light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: var(--color-text-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__title {
+    color: var(--color-brand-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__button {
+    background: var(--color-brand-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__button:hover {
+    background: var(--color-brand-secondary);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-cta-section--small {
+    padding: 60px 40px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__title {
+    font-size: 32px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__description {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__button {
+    padding: 14px 40px;
+    font-size: 16px;
+}
+
+.lcms-cta-section--large {
+    padding: 140px 80px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__title {
+    font-size: 56px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__description {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__button {
+    padding: 22px 60px;
+    font-size: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-cta-section--left {
+    text-align: left;
+}
+
+.lcms-cta-section--left .lcms-cta-section__description {
+    margin-left: 0;
+}
+
+.lcms-cta-section--right {
+    text-align: right;
+}
+
+.lcms-cta-section--right .lcms-cta-section__description {
+    margin-right: 0;
+}
+
+/* ============================================
+   MODIFIERS: Button Variants
+   ============================================ */
+
+.lcms-cta-section__button--outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.lcms-cta-section__button--outline:hover {
+    background: white;
+    color: var(--color-brand-primary);
+    transform: translateY(-3px);
+}
+
+.lcms-cta-section__button--ghost {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.lcms-cta-section__button--ghost:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lcms-cta-section__button--squared {
+    border-radius: 8px;
+}
+
+.lcms-cta-section__button--sharp {
+    border-radius: 0;
+}
+
+/* ============================================
+   MODIFIERS: Multiple Buttons
+   ============================================ */
+
+.lcms-cta-section__buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lcms-cta-section--left .lcms-cta-section__buttons {
+    justify-content: flex-start;
+}
+
+.lcms-cta-section--right .lcms-cta-section__buttons {
+    justify-content: flex-end;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-cta-section {
+        padding: 60px 30px;
+    }
+
+    .lcms-cta-section__title {
+        font-size: 32px;
+    }
+
+    .lcms-cta-section__description {
+        font-size: 16px;
+    }
+
+    .lcms-cta-section__button {
+        padding: 14px 40px;
+        font-size: 16px;
+    }
+
+    .lcms-cta-section--small {
+        padding: 40px 20px;
+    }
+
+    .lcms-cta-section--small .lcms-cta-section__title {
+        font-size: 24px;
+    }
+
+    .lcms-cta-section--small .lcms-cta-section__description {
+        font-size: 14px;
+    }
+
+    .lcms-cta-section--large {
+        padding: 80px 40px;
+    }
+
+    .lcms-cta-section--large .lcms-cta-section__title {
+        font-size: 36px;
+    }
+
+    .lcms-cta-section--large .lcms-cta-section__description {
+        font-size: 18px;
+    }
+
+    /* Force center alignment on mobile */
+    .lcms-cta-section--left,
+    .lcms-cta-section--right {
+        text-align: center;
+    }
+
+    .lcms-cta-section--left .lcms-cta-section__description,
+    .lcms-cta-section--right .lcms-cta-section__description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lcms-cta-section--left .lcms-cta-section__buttons,
+    .lcms-cta-section--right .lcms-cta-section__buttons {
+        justify-content: center;
+    }
+
+    .lcms-cta-section__buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .lcms-cta-section__button {
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annual Technology Summit 2026 - Event Announcement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #2a2a2a 0%, #36454f 100%);
+            color: #36454f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .meta-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #36454f;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 60px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #708090;
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #36454f;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .highlight-card {
+            background: #f5f5f5;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(112, 128, 144, 0.3);
+            border-color: #708090;
+        }
+
+        .highlight-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .highlight-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .highlight-description {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        /* Schedule Section */
+        .schedule-bg {
+            background: #f8f8f8;
+        }
+
+        .schedule-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-left: 4px solid #36454f;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-time {
+            flex-shrink: 0;
+            width: 120px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #36454f;
+        }
+
+        .schedule-content h3 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .schedule-content p {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        .schedule-speaker {
+            font-size: 14px;
+            color: #708090;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .speaker-card {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .speaker-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: white;
+            border: 4px solid #d3d3d3;
+        }
+
+        .speaker-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 5px;
+        }
+
+        .speaker-title {
+            font-size: 16px;
+            color: #708090;
+            margin-bottom: 15px;
+        }
+
+        .speaker-bio {
+            font-size: 14px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        /* Registration Section */
+        .registration-bg {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .registration-bg .section-title {
+            color: white;
+        }
+
+        .registration-bg .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .registration-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #36454f;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: white;
+        }
+
+        .registration-note {
+            font-size: 14px;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 35px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .countdown-number {
+            font-size: 48px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        .footer {
+            background: #36454f;
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 30px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .tagline {
+                font-size: 18px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .event-meta {
+                gap: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .countdown-item {
+                padding: 20px 25px;
+            }
+
+            .countdown-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="event-label">Annual Event</div>
+                <h1>Technology Summit 2026</h1>
+                <div class="tagline">Shaping the Future of Innovation</div>
+
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-label">Date</div>
+                        <div class="meta-value">June 15-17, 2026</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">📍</div>
+                        <div class="meta-label">Location</div>
+                        <div class="meta-value">San Francisco, CA</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-icon">👥</div>
+                        <div class="meta-label">Attendees</div>
+                        <div class="meta-value">2,000+ Expected</div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="scrollToRegistration()">Register Now</button>
+                    <button class="btn btn-secondary" onclick="scrollToSchedule()">View Schedule</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="section registration-bg">
+            <div class="section-title">Event Starts In</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <h2 class="section-title">About the Summit</h2>
+            <p class="section-subtitle">Three days of innovation, inspiration, and networking</p>
+            
+            <div class="about-content">
+                <p>Join us for the premier technology conference of 2026, where industry leaders, innovators, and visionaries converge to explore the cutting edge of artificial intelligence, cloud computing, and digital transformation.</p>
+                
+                <p>The Technology Summit brings together over 2,000 professionals from around the globe for an immersive experience featuring keynote presentations, hands-on workshops, and unparalleled networking opportunities.</p>
+                
+                <p>Whether you're a seasoned executive, an emerging entrepreneur, or a technology enthusiast, this event offers insights and connections that will shape the future of your organization.</p>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="section" style="background: #f8f8f8;">
+            <h2 class="section-title">Event Highlights</h2>
+            <p class="section-subtitle">What makes this summit unmissable</p>
+
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎤</div>
+                    <div class="highlight-title">Keynote Speakers</div>
+                    <div class="highlight-description">World-renowned experts sharing breakthrough insights on AI, cloud, and innovation</div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🛠️</div>
+                    <div class="highlight-title">Hands-On Workshops</div>
+                    <div class="highlight-description">Interactive sessions covering latest tools, frameworks, and methodologies</div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🤝</div>
+                    <div class="highlight-title">Networking Events</div>
+                    <div class="highlight-description">Connect with peers, partners, and potential collaborators</div>
+                </div>
+
+                <div class="highlight-card">
+                    <div class="highlight-icon">🏆</div>
+                    <div class="highlight-title">Innovation Showcase</div>
+                    <div class="highlight-description">Discover cutting-edge products and solutions from leading companies</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="section schedule-bg" id="schedule">
+            <h2 class="section-title">Event Schedule</h2>
+            <p class="section-subtitle">Three days packed with insights and inspiration</p>
+
+            <div class="schedule-timeline">
+                <div class="schedule-item">
+                    <div class="schedule-time">Day 1<br>9:00 AM</div>
+                    <div class="schedule-content">
+                        <h3>Opening Keynote: The AI Revolution</h3>
+                        <p>Explore how artificial intelligence is reshaping industries and creating unprecedented opportunities for innovation and growth.</p>
+                        <div class="schedule-speaker">Dr. Sarah Chen, Chief AI Officer, TechCorp Global</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">Day 1<br>2:00 PM</div>
+                    <div class="schedule-content">
+                        <h3>Workshop: Cloud Architecture Patterns</h3>
+                        <p>Hands-on workshop covering modern cloud architecture, microservices, and scalability best practices.</p>
+                        <div class="schedule-speaker">Michael Torres, Senior Solutions Architect</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">Day 2<br>10:00 AM</div>
+                    <div class="schedule-content">
+                        <h3>Panel: Future of Work in the AI Era</h3>
+                        <p>Industry leaders discuss how organizations can adapt workforce strategies for an AI-driven future.</p>
+                        <div class="schedule-speaker">Moderated by Jennifer Liu, HR Innovation Lead</div>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">Day 3<br>11:00 AM</div>
+                    <div class="schedule-content">
+                        <h3>Closing Session: Innovation Roadmap 2027</h3>
+                        <p>Looking ahead at emerging technologies and strategic imperatives for the coming year.</p>
+                        <div class="schedule-speaker">Executive Leadership Panel</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Speakers Section -->
+        <section class="section">
+            <h2 class="section-title">Featured Speakers</h2>
+            <p class="section-subtitle">Learn from the best minds in technology</p>
+
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-avatar">SC</div>
+                    <div class="speaker-name">Dr. Sarah Chen</div>
+                    <div class="speaker-title">Chief AI Officer, TechCorp Global</div>
+                    <div class="speaker-bio">Leading AI researcher with 15+ years driving innovation in machine learning and neural networks.</div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-avatar">MT</div>
+                    <div class="speaker-name">Michael Torres</div>
+                    <div class="speaker-title">Senior Solutions Architect</div>
+                    <div class="speaker-bio">Cloud architecture expert specializing in scalable enterprise systems and distributed computing.</div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-avatar">JL</div>
+                    <div class="speaker-name">Jennifer Liu</div>
+                    <div class="speaker-title">HR Innovation Lead</div>
+                    <div class="speaker-bio">Pioneering the integration of AI in workforce development and organizational transformation.</div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-avatar">RP</div>
+                    <div class="speaker-name">Robert Park</div>
+                    <div class="speaker-title">CEO, Innovation Labs</div>
+                    <div class="speaker-bio">Serial entrepreneur and venture capitalist focused on disruptive technology startups.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Section -->
+        <section class="section registration-bg" id="registration">
+            <h2 class="section-title">Secure Your Spot</h2>
+            <p class="section-subtitle">Limited seats available - register today</p>
+
+            <div class="registration-form">
+                <form onsubmit="handleRegistration(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticket">Ticket Type *</label>
+                        <select id="ticket" name="ticket" required>
+                            <option value="">Select ticket type</option>
+                            <option value="general">General Admission - $499</option>
+                            <option value="vip">VIP Pass - $999</option>
+                            <option value="virtual">Virtual Access - $199</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Complete Registration</button>
+                </form>
+
+                <div class="registration-note">
+                    * Early bird pricing ends May 1, 2026
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#registration">Register</a>
+                <a href="#contact">Contact</a>
+                <a href="#sponsors">Sponsors</a>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Technology Summit. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('June 15, 2026 09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="countdown-item"><span class="countdown-number">Event Started!</span></div>';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll functions
+        function scrollToRegistration() {
+            document.getElementById('registration').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToSchedule() {
+            document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Registration form handler
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            alert(`Thank you for registering, ${data.name}!\n\nWe'll send confirmation details to ${data.email} shortly.`);
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

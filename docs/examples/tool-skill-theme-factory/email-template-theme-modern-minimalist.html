@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template - Modern Minimalist</title>
+    <style>
+        /* Modern Minimalist Theme Colors */
+        :root {
+            --charcoal: #36454f;
+            --slate-gray: #708090;
+            --light-gray: #d3d3d3;
+            --white: #ffffff;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            background-color: var(--light-gray);
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+        }
+        
+        .header {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            color: var(--charcoal);
+        }
+        
+        .content h2 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            color: var(--charcoal);
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        .content p {
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: var(--slate-gray);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .feature-section {
+            background-color: var(--light-gray);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        
+        .feature-grid {
+            display: table;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            display: table-row;
+        }
+        
+        .feature-icon {
+            display: table-cell;
+            width: 60px;
+            vertical-align: top;
+            padding: 10px;
+        }
+        
+        .feature-icon-circle {
+            width: 40px;
+            height: 40px;
+            background-color: var(--slate-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+        }
+        
+        .feature-text {
+            display: table-cell;
+            vertical-align: top;
+            padding: 10px;
+        }
+        
+        .feature-text h3 {
+            margin: 0 0 8px 0;
+            color: var(--charcoal);
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .feature-text p {
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .divider {
+            border: none;
+            border-top: 2px solid var(--light-gray);
+            margin: 30px 0;
+        }
+        
+        .footer {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            color: var(--light-gray);
+        }
+        
+        .footer a {
+            color: var(--white);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .feature-section {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>ACME STUDIOS</h1>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <h2>Welcome to Our Community</h2>
+            
+            <p>Hi there,</p>
+            
+            <p>Thank you for joining us. We're excited to have you as part of our community and look forward to helping you achieve your goals.</p>
+            
+            <p>Our platform is designed with simplicity and efficiency in mind, giving you the tools you need without unnecessary complexity.</p>
+            
+            <center>
+                <a href="#" class="cta-button">Get Started</a>
+            </center>
+            
+            <hr class="divider">
+            
+            <!-- Feature Section -->
+            <div class="feature-section">
+                <h2 style="margin-top: 0;">What You Can Expect</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <div class="feature-icon-circle">1</div>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Clean Design</h3>
+                            <p>A minimalist interface that puts your content first, with no distractions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <div class="feature-icon-circle">2</div>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Powerful Tools</h3>
+                            <p>Everything you need to create, collaborate, and deliver exceptional results.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <div class="feature-icon-circle">3</div>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Expert Support</h3>
+                            <p>Our team is here to help you succeed, every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="divider">
+            
+            <p>If you have any questions, feel free to reach out. We're here to help.</p>
+            
+            <p>Best regards,<br>
+            <strong>The ACME Team</strong></p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="social-links">
+                <a href="#">Twitter</a> | 
+                <a href="#">LinkedIn</a> | 
+                <a href="#">Instagram</a>
+            </div>
+            
+            <p>&copy; 2025 ACME Studios. All rights reserved.</p>
+            <p>123 Design Street, Creative City, CC 12345</p>
+            <p><a href="#">Unsubscribe</a> | <a href="#">Update Preferences</a></p>
+        </div>
+    </div>
+</body>
+</html>

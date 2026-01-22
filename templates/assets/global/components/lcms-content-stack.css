@@ -1,0 +1,48 @@
+/**
+ * Content Stack Component
+ *
+ * Vertical stacking layout for content items.
+ * Simple flex column wrapper with alignment options.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-content-stack.css
+ */
+
+/* ============================================
+   BLOCK: Content Stack
+   ============================================ */
+
+.lcms-content-stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* gap handled via inline style */
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-content-stack__item {
+    width: 100%;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-content-stack--align-left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.lcms-content-stack--align-center {
+    align-items: center;
+    text-align: center;
+}
+
+.lcms-content-stack--align-right {
+    align-items: flex-end;
+    text-align: right;
+}

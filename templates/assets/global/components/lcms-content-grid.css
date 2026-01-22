@@ -1,0 +1,29 @@
+/**
+ * Content Grid Component (Semantic)
+ *
+ * Grid layout for content items within content types.
+ * Note: This is different from lcms-grid.css (which is for section layouts).
+ * This component is used inside content blocks.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-content-grid.css
+ */
+
+/* ============================================
+   BLOCK: Content Grid
+   ============================================ */
+
+.lcms-content-grid {
+    display: grid;
+    width: 100%;
+    /* grid-template-columns and gap handled via inline style */
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-content-grid__item {
+    width: 100%;
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "progress-bar-large",
+    "name": "Large Progress Bar with Label",
+    "category": "widget",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["progress", "indicator", "tracking", "percentage"]
+  },
+
+  "description": {
+    "summary": "Large progress bar with centered percentage label overlay",
+    "use_cases": [
+      "Project completion tracking",
+      "Goal progress indicators",
+      "Phase completion status",
+      "Loading/processing states"
+    ],
+    "visual_weight": "medium",
+    "content_density": "low"
+  },
+
+  "bem": {
+    "block": "lcms-progress",
+    "modifiers": ["--large"],
+    "elements": ["__bar", "__label"],
+    "full_classes": [
+      "lcms-progress",
+      "lcms-progress--large",
+      "lcms-progress__bar",
+      "lcms-progress__label"
+    ]
+  },
+
+  "html_structure": "<div class=\"lcms-progress lcms-progress--large\">\n  <div class=\"lcms-progress__bar\" style=\"width: {{PERCENTAGE}}%;\">\n    <span class=\"lcms-progress__label\">{{PERCENTAGE}}%</span>\n  </div>\n</div>",
+
+  "placeholders": {
+    "PERCENTAGE": {
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "required": true,
+      "description": "Completion percentage (0-100)",
+      "example": "65"
+    }
+  },
+
+  "styling_notes": {
+    "height": "Uses --large modifier for increased height",
+    "label_visibility": "Label always visible, centered in bar",
+    "colors": "Uses CSS variable overrides from client config",
+    "responsive": "Width auto-adjusts to container"
+  },
+
+  "usage_in_partial": {
+    "type": "inline_html",
+    "note": "Typically used within column partial's HTML content",
+    "example": "Used in project-summary-card component"
+  },
+
+  "ai_instructions": "Use for displaying numerical progress or completion status. Always provide PERCENTAGE as integer 0-100. Do not use for binary states (use badge instead).",
+
+  "related_components": [
+    "badge",
+    "metric-card",
+    "project-summary-card"
+  ]
+}

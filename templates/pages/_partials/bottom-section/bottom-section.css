@@ -1,0 +1,36 @@
+/**
+ * Bottom Section Partial Styles - Theming Only
+ *
+ * Brand-specific theming for bottom-section partials (CTA sections).
+ * Structural styles moved to lcms-design-system.css (lcms-cta-section component).
+ * Auto-loads when any bottom-section partial renders.
+ *
+ * @filepath templates/pages/_partials/bottom-section/bottom-section.css
+ * @since 1.4.4
+ * @updated 1.4.9 - Cleaned up for BEM migration (Phase 5 complete)
+ */
+
+/* ============================================
+   CTA SECTION - THEMING OVERRIDES
+   ============================================ */
+
+/**
+ * Note: All structural styles for CTA sections are now in:
+ * templates/assets/global/components/lcms-cta-section.css
+ *
+ * Use BEM classes: .lcms-cta-section, .lcms-cta-section__title,
+ * .lcms-cta-section__description, .lcms-cta-section__button
+ *
+ * This file is reserved for brand-specific color/spacing overrides only.
+ * Currently empty - add theming overrides as needed.
+ */
+
+/* Example theming override (commented out):
+.bottom-section .lcms-cta-section {
+    background: custom-gradient or brand-specific background;
+}
+
+.bottom-section .lcms-cta-section__button {
+    background: brand-specific-color;
+}
+*/

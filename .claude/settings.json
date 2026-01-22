@@ -1,0 +1,42 @@
+{
+  "project": {
+    "name": "Brand Hub - Client CMS",
+    "type": "wordpress-plugin",
+    "description": "Agentic CMS for Brand Hub client development and content management",
+    "repository": "https://github.com/piksoul/lcms-brandhub-client"
+  },
+  "paths": {
+    "main_file": "leancms.php",
+    "directives": "docs/START-HERE.md",
+    "readme_wp": "readme.txt",
+    "readme_github": "README.md"
+  },
+  "coding_standards": {
+    "style": "WordPress",
+    "php_version": "8.0",
+    "wordpress_version": "6.8"
+  },
+  "version_control": {
+    "main_branch": "master",
+    "commit_template": "Type: Brief description\n\n- Detailed changes\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>"
+  },
+  "workflows": {
+    "before_commit": [
+      "Check version consistency",
+      "Verify no syntax errors",
+      "Update changelog if needed"
+    ],
+    "before_release": [
+      "Run /check-versions",
+      "Update all version numbers",
+      "Update changelog",
+      "Update directives",
+      "Test plugin activation/deactivation"
+    ]
+  },
+  "preferences": {
+    "auto_update_directives": true,
+    "require_changelog": true,
+    "semantic_versioning": true
+  }
+}

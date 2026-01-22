@@ -1,0 +1,108 @@
+name: Release (when PR labeled "release")
+
+on:
+  pull_request:
+    types: [closed]
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show PR merge + labels
+        run: |
+          echo "merged: ${{ github.event.pull_request.merged }}"
+          echo "base ref: ${{ github.event.pull_request.base.ref }}"
+          echo "labels: ${{ join(github.event.pull_request.labels.*.name, ', ') }}"
+
+  tag_and_release:
+    needs: debug
+    if: >
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Extract version from leancms.php plugin header
+        id: ver
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PLUGIN_FILE="leancms.php"
+          if [ ! -f "$PLUGIN_FILE" ]; then
+            echo "Expected plugin main file '$PLUGIN_FILE' not found at repo root."
+            exit 1
+          fi
+
+          VERSION="$(awk '
+            BEGIN{IGNORECASE=1}
+            /^\s*\*\s*Version:\s*/{
+              sub(/^\s*\*\s*Version:\s*/,"")
+              gsub(/\r/,"")
+              gsub(/[[:space:]]+$/,"")
+              print
+              exit
+            }' "$PLUGIN_FILE")"
+
+          if [ -z "${VERSION:-}" ]; then
+            echo "Could not extract 'Version:' from plugin header in $PLUGIN_FILE"
+            exit 1
+          fi
+
+          if ! echo "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Version '$VERSION' is not strict semver (X.Y.Z)."
+            exit 1
+          fi
+
+          TAG="v$VERSION"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Tag to create: $TAG"
+
+      - name: Fetch tags (belt and braces)
+        run: git fetch --tags --force
+
+      - name: Check if tag exists on remote
+        id: tagcheck
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.ver.outputs.tag }}"
+          if git ls-remote --tags origin "refs/tags/$TAG" | grep -q "$TAG"; then
+            echo "Remote tag $TAG already exists. Skipping tag/release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create and push annotated tag
+        if: steps.tagcheck.outputs.exists == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.ver.outputs.tag }}"
+          git tag -a "$TAG" -m "Release $TAG"
+          # Explicit ref push
+          git push origin "refs/tags/$TAG"
+
+      - name: Create GitHub Release
+        if: steps.tagcheck.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.ver.outputs.tag }}
+          name: Release ${{ steps.ver.outputs.tag }}
+          generate_release_notes: true

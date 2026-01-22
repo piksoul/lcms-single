@@ -1,0 +1,86 @@
+/**
+ * Content Grid Component
+ *
+ * Semantic grid layout for displaying multiple content items.
+ * Used by grid-section.php for displaying cards, features, etc.
+ *
+ * Note: Simple grid utilities (.grid-2col, .grid-3col) are in utilities.css
+ * This component is for semantic content grids with grid items.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-grid.css
+ */
+
+/* ============================================
+   BLOCK: Content Grid
+   ============================================ */
+
+.lcms-content-grid {
+    display: grid;
+    width: 100%;
+    align-items: start;
+    /* grid-template-columns set via inline style for flexibility */
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-content-grid__item {
+    width: 100%;
+}
+
+/* ============================================
+   MODIFIERS: Column Count
+   ============================================ */
+
+.lcms-content-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap, 30px);
+}
+
+.lcms-content-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap, 30px);
+}
+
+.lcms-content-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap-medium, 30px);
+}
+
+/* ============================================
+   MODIFIERS: Gap Sizes
+   ============================================ */
+
+.lcms-content-grid--gap-small {
+    gap: 20px;
+}
+
+.lcms-content-grid--gap-medium {
+    gap: 30px;
+}
+
+.lcms-content-grid--gap-large {
+    gap: 40px;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .lcms-content-grid--3col,
+    .lcms-content-grid--4col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lcms-content-grid--2col,
+    .lcms-content-grid--3col,
+    .lcms-content-grid--4col {
+        grid-template-columns: 1fr !important;
+    }
+}

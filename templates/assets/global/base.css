@@ -1,0 +1,100 @@
+/**
+ * Base CSS - Resets and Foundation
+ *
+ * Brand-agnostic foundation: resets, base typography, core layout containers.
+ * NO components, NO utilities, NO brand-specific values.
+ * CSS variables are injected via config.php.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Global
+ * @filepath   templates/assets/global/base.css
+ */
+
+/* ============================================
+   CSS RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    color: var(--color-text-primary, #161617);
+    line-height: 1.65;
+    font-size: 16px;
+}
+
+/* ============================================
+   BASE TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading, inherit);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   CORE LAYOUT CONTAINERS
+   ============================================ */
+
+.content-container {
+    max-width: var(--doc-max-width, 1200px);
+    margin: 0 auto;
+    padding: 0;
+}
+
+.content-container.width-thin {
+    max-width: var(--doc-max-width-thin, 900px);
+}
+
+.content-container.width-wide {
+    max-width: var(--doc-max-width-wide, 1400px);
+}
+
+.content-container.width-full {
+    max-width: 100%;
+}
+
+/* Password section (specific page type) */
+.password-section {
+    max-width: var(--doc-max-width, 1200px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .content-container,
+    .password-section {
+        padding: 0 var(--spacing-horizontal-mobile, 20px);
+    }
+}

@@ -1,0 +1,3927 @@
+/**
+ * LeanCMS Design System - Complete Component Library + Foundation Package
+ *
+ * Combined CSS file containing all BEM components + foundational systems:
+ * - Base CSS (resets, foundation)
+ * - Utility classes
+ * - Phase 1: Foundation components
+ * - Phase 2: Core components (Section Heading, Button, Grid, Column)
+ * - Phase 3: Content components (Card, Content Stack/Row/Grid)
+ * - Phase 4: Specialized components (Color Swatch, Metric, List, Progress, Badge)
+ * - Phase 5: Section wrappers (Hero, CTA Section)
+ * - Foundation Package: Theme System, Content Area, Enhanced Utilities, Accessibility
+ * - Phase 6: PHP Template Migration (3 core templates migrated, 23 remaining)
+ *
+ * Version: 2.0.0 (BEM Migration Complete + Pro-Sites Migrated!)
+ * 100% of CSS migration complete - 20 components + foundation systems, 3,200 lines
+ * PHP templates: 7 partials migrated to BEM (hero, cta, color-palette, header, footer, 2-column, content renderers)
+ *
+ * Components: Section Heading, Button, Button Group, Grid, Image, Video, Card, Content Stack/Row/Grid,
+ *             Column Layout, Color Swatch, Metric, List, Progress, Badge, Hero, CTA Section,
+ *             Content Area, Theme System (20 total)
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Global
+ * @filepath   templates/assets/global/lcms-design-system.css
+ * @since      2.0.0 - PHP template migration to BEM naming convention
+ */
+
+/* ============================================
+   BASE CSS - RESETS & FOUNDATION
+   ============================================ */
+
+/**
+ * Base CSS - Resets and Foundation
+ *
+ * Brand-agnostic foundation: resets, base typography, core layout containers.
+ * NO components, NO utilities, NO brand-specific values.
+ * CSS variables are injected via config.php.
+ */
+
+/* CSS RESET & BASE STYLES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    color: var(--color-text-primary, #161617);
+    line-height: 1.65;
+    font-size: 16px;
+}
+
+/* BASE TYPOGRAPHY */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading, inherit);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* CORE LAYOUT CONTAINERS - BEM */
+
+/* Container Utility - Universal max-width container */
+.lcms-container {
+    max-width: var(--doc-max-width, 1200px);
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--container-gap, 30px);
+}
+
+/* MODIFIERS: Width Variants */
+
+.lcms-container--thin .lcms-container,
+.lcms-container--thin.lcms-container  {
+    max-width: var(--doc-max-width-thin, 900px);
+}
+
+.lcms-container--wide .lcms-container,
+.lcms-container--wide.lcms-container {
+    max-width: var(--doc-max-width-wide, 1400px);
+}
+
+.lcms-container--full .lcms-container,
+.lcms-container--full.lcms-container {
+    max-width: 100%;
+}
+
+/* Password section (specific page type) */
+.password-section {
+    max-width: var(--doc-max-width, 1200px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* ============================================
+   COMPONENT: SECTION HEADING
+   ============================================ */
+
+/**
+ * Section Heading Component
+ *
+ * Displays section headings with optional label, title, and subtitle.
+ * Used across all partials for consistent heading structure.
+ */
+
+/* BLOCK: Section Heading */
+
+.lcms-section-heading {
+    margin-bottom: var(--spacing-heading-bottom, 40px);
+}
+
+/* ELEMENTS */
+
+.lcms-section-heading__label {
+    font-size: var(--font-size-small, 14px);
+    font-weight: var(--font-weight-semibold, 600);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide, 0.05em);
+    color: var(--color-brand-accent, #0066cc);
+    margin: 0 0 var(--spacing-label-margin, 12px);
+    display: block;
+}
+
+.lcms-section-heading__title {
+    font-family: var(--font-heading, inherit);
+    font-size: var(--font-size-h2, 42px);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: var(--line-height-heading, 1.2);
+    color: var(--color-text-primary, #161617);
+    margin: 0 0 var(--spacing-title-margin, 16px);
+    text-transform: uppercase;
+}
+
+.lcms-section-heading__subtitle {
+    font-size: var(--font-size-large, 18px);
+    line-height: var(--line-height-body, 1.65);
+    color: var(--color-text-secondary, #666666);
+    margin: 0;
+    max-width: 900px;
+}
+
+/* MODIFIERS: Alignment */
+
+.lcms-section-heading--align-left {
+    text-align: left;
+}
+
+.lcms-section-heading--align-left .lcms-section-heading__subtitle {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.lcms-section-heading--align-center {
+    text-align: center;
+}
+
+.lcms-section-heading--align-center .lcms-section-heading__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lcms-section-heading--align-right {
+    text-align: right;
+}
+
+.lcms-section-heading--align-right .lcms-section-heading__subtitle {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* MODIFIERS: Color Variants */
+
+.lcms-section-heading--dark .lcms-section-heading__label {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.8));
+}
+
+.lcms-section-heading--dark .lcms-section-heading__title {
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-section-heading--dark .lcms-section-heading__subtitle {
+    color: var(--color-text-light-secondary, rgba(255, 255, 255, 0.8));
+}
+
+/* MODIFIERS: Status States */
+
+.lcms-section-heading--completed .lcms-section-heading__title {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-section-heading--in-progress .lcms-section-heading__title {
+    color: var(--color-brand-primary);
+}
+
+.lcms-section-heading--upcoming .lcms-section-heading__title {
+    color: var(--color-text-tertiary, #999);
+}
+
+/* ============================================
+   COMPONENT: BUTTON
+   ============================================ */
+
+/**
+ * Button Component
+ *
+ * Interactive buttons with multiple style variants.
+ * Includes button group container for managing multiple buttons.
+ */
+
+/* BLOCK: Button */
+
+.lcms-button {
+    display: inline-block;
+    padding: var(--button-padding, 12px 28px);
+    font-family: var(--font-heading, inherit);
+    font-size: var(--button-font-size, 16px);
+    font-weight: var(--font-weight-semibold, 600);
+    text-decoration: none;
+    text-align: center;
+    border-radius: var(--border-radius, 8px);
+    transition: var(--transition-standard, all 0.3s ease);
+    cursor: pointer;
+    border: 2px solid transparent;
+    line-height: 1.2;
+}
+
+/* MODIFIERS: Style Variants */
+
+.lcms-button--primary {
+    background: var(--color-brand-accent, #0066cc);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-button--primary:hover {
+    background: var(--color-brand-accent-hover, #0052a3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.lcms-button--secondary {
+    background: var(--color-background-light, #f5f5f5);
+    color: var(--color-text-primary, #161617);
+}
+
+.lcms-button--secondary:hover {
+    background: var(--color-background-medium, #e0e0e0);
+}
+
+.lcms-button--outline {
+    background: transparent;
+    color: var(--color-brand-accent, #0066cc);
+    border-color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-button--outline:hover {
+    background: var(--color-brand-accent, #0066cc);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-button--cta {
+    background: var(--color-brand-accent, #0066cc);
+    color: var(--color-text-light, #ffffff);
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.lcms-button--cta:hover {
+    background: var(--color-brand-accent-hover, #0052a3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* MODIFIERS: Size Variants */
+
+.lcms-button--small {
+    padding: var(--button-padding-small, 8px 20px);
+    font-size: var(--button-font-size-small, 14px);
+}
+
+.lcms-button--large {
+    padding: var(--button-padding-large, 16px 40px);
+    font-size: var(--button-font-size-large, 18px);
+}
+
+/* MODIFIERS: Width Variants */
+
+.lcms-button--full-width {
+    width: 100%;
+    display: block;
+}
+
+/* MODIFIERS: State Variants */
+
+.lcms-button--disabled,
+.lcms-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* DARK MODE VARIANTS */
+
+/* Base dark mode - section background and text */
+.dark-mode,
+.lcms-section--dark,
+.lcms-pro-sites--dark {
+    background: var(--color-brand-primary, #1a1a1a);
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+/* Dark mode headings */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.lcms-section--dark h1,
+.lcms-section--dark h2,
+.lcms-section--dark h3,
+.lcms-section--dark h4,
+.lcms-section--dark h5,
+.lcms-section--dark h6,
+.lcms-pro-sites--dark h1,
+.lcms-pro-sites--dark h2,
+.lcms-pro-sites--dark h3,
+.lcms-pro-sites--dark h4,
+.lcms-pro-sites--dark h5,
+.lcms-pro-sites--dark h6 {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+/* Dark mode section heading component */
+.dark-mode .lcms-section-heading__title,
+.dark-mode .lcms-section-heading__description,
+.dark-mode .lcms-section-heading__label,
+.lcms-section--dark .lcms-section-heading__title,
+.lcms-section--dark .lcms-section-heading__description,
+.lcms-section--dark .lcms-section-heading__label,
+.lcms-pro-sites--dark .lcms-section-heading__title,
+.lcms-pro-sites--dark .lcms-section-heading__description,
+.lcms-pro-sites--dark .lcms-section-heading__label {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+/* Dark mode body text and content */
+.dark-mode p,
+.dark-mode .lcms-content,
+.dark-mode li,
+.lcms-section--dark p,
+.lcms-section--dark .lcms-content,
+.lcms-section--dark li,
+.lcms-pro-sites--dark p,
+.lcms-pro-sites--dark .lcms-content,
+.lcms-pro-sites--dark li {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+/* Dark mode content typography */
+.lcms-pro-sites--dark .lcms-content h1,
+.lcms-pro-sites--dark .lcms-content h2,
+.lcms-pro-sites--dark .lcms-content h3,
+.lcms-pro-sites--dark .lcms-content h4,
+.lcms-pro-sites--dark .lcms-content h5,
+.lcms-pro-sites--dark .lcms-content h6 {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+.lcms-pro-sites--dark .lcms-content p {
+    color: var(--color-text-light, rgba(255, 255, 255, 0.95));
+}
+
+/* Dark mode links */
+.dark-mode a,
+.lcms-section--dark a,
+.lcms-pro-sites--dark a {
+    color: var(--color-brand-accent, #ff6b35);
+}
+
+.dark-mode a:hover,
+.lcms-section--dark a:hover,
+.lcms-pro-sites--dark a:hover {
+    color: var(--color-brand-accent-hover, #ff8c5a);
+}
+
+/* Dark mode secondary */
+.dark-mode .lcms-button--secondary,
+.lcms-section--dark .lcms-button--secondary,
+.lcms-pro-sites--dark .lcms-button--secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light, #ffffff);
+}
+
+.dark-mode .lcms-button--secondary:hover,
+.lcms-section--dark .lcms-button--secondary:hover,
+.lcms-pro-sites--dark .lcms-button--secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode outline */
+.dark-mode .lcms-button--outline,
+.lcms-section--dark .lcms-button--outline,
+.lcms-pro-sites--dark .lcms-button--outline,
+.lcms-cta-section .lcms-button--outline {
+    background: transparent;
+    color: var(--color-text-light, #ffffff);
+    border-color: var(--color-text-light, #ffffff);
+}
+
+.dark-mode .lcms-button--outline:hover,
+.lcms-section--dark .lcms-button--outline:hover,
+.lcms-pro-sites--dark .lcms-button--outline:hover,
+.lcms-cta-section .lcms-button--outline:hover {
+    background: var(--color-text-light, #ffffff);
+    color: var(--color-text-primary, #161617);
+}
+
+/* BLOCK: Button Group */
+
+.lcms-button-group {
+    display: flex;
+    gap: var(--button-gap, 16px);
+    flex-wrap: wrap;
+}
+
+.align-left .lcms-button-group,
+.lcms-button-group.align-left {
+    justify-content: flex-start;
+}
+
+.align-center .lcms-button-group,
+.lcms-button-group.align-center {
+    justify-content: center;
+}
+
+.align-right .lcms-button-group,
+.lcms-button-group.align-right {
+    justify-content: flex-end;
+}
+
+/* BUTTON GROUP MODIFIERS: Alignment */
+
+.lcms-button-group--align-left {
+    justify-content: flex-start;
+}
+
+.lcms-button-group--align-center {
+    justify-content: center;
+}
+
+.lcms-button-group--align-right {
+    justify-content: flex-end;
+}
+
+/* BUTTON GROUP MODIFIERS: Layout */
+
+.lcms-button-group--stacked {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.lcms-button-group--stacked.lcms-button-group--align-center {
+    align-items: center;
+}
+
+.lcms-button-group--stacked.lcms-button-group--align-right {
+    align-items: flex-end;
+}
+
+.lcms-button-group--stacked .lcms-button {
+    width: 100%;
+}
+
+/* ============================================
+   COMPONENT: GRID
+   ============================================ */
+
+/**
+ * Grid Component
+ *
+ * BEM-compliant grid layout component for displaying items in columns.
+ * Used for color swatches, cards, features, and other grid-based layouts.
+ *
+ * Note: Simple grid utilities (.grid-2col, .grid-3col) exist in utilities section.
+ * This component provides BEM naming for semantic grid layouts in templates.
+ */
+
+/* BLOCK: Grid */
+
+.lcms-grid {
+    display: grid;
+    width: 100%;
+    gap: var(--grid-gap, 30px);
+}
+
+/* MODIFIERS: Column Count */
+
+.lcms-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.lcms-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.lcms-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* MODIFIERS: Gap Sizes */
+
+.lcms-grid--gap-small {
+    gap: 20px;
+}
+
+.lcms-grid--gap-medium {
+    gap: 30px;
+}
+
+.lcms-grid--gap-large {
+    gap: 40px;
+}
+
+/* MODIFIERS: Responsive Variants */
+
+.lcms-grid--responsive-2col {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.lcms-grid--responsive-3col {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.lcms-grid--responsive-4col {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* RESPONSIVE BEHAVIOR */
+
+@media (max-width: 768px) {
+    .lcms-grid--2col,
+    .lcms-grid--3col,
+    .lcms-grid--4col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ============================================
+   COMPONENT: IMAGE
+   ============================================ */
+
+/**
+ * Image Component
+ *
+ * Semantic image display with optional caption.
+ * Used in pro-sites content renderers and other layouts.
+ */
+
+/* BLOCK: Image */
+
+.lcms-image {
+    width: 100%;
+    margin: 0;
+}
+
+/* ELEMENTS */
+
+.lcms-image__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius, 8px);
+}
+
+.lcms-image__caption {
+    margin-top: var(--spacing-small, 12px);
+    font-size: var(--font-size-small, 14px);
+    color: var(--color-text-secondary, #666);
+    text-align: center;
+    font-style: italic;
+}
+
+/* MODIFIERS */
+
+.lcms-image--responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lcms-image--rounded {
+    border-radius: var(--border-radius-large, 12px);
+    overflow: hidden;
+}
+
+/* ============================================
+   COMPONENT: FIGURE
+   ============================================ */
+
+/**
+ * Figure Component
+ *
+ * Semantic wrapper for images with captions.
+ * Used for content images with descriptive text.
+ */
+
+/* BLOCK: Figure */
+
+.lcms-figure {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* ELEMENTS */
+
+.lcms-figure__caption {
+    margin-top: var(--spacing-small, 12px);
+    font-size: var(--font-size-small, 14px);
+    color: var(--color-text-secondary, #666);
+    text-align: center;
+    font-style: italic;
+}
+
+/* ============================================
+   COMPONENT: VIDEO
+   ============================================ */
+
+/**
+ * Video Component
+ *
+ * Responsive video embeds (YouTube, Vimeo, HTML5).
+ * Used in pro-sites content renderers and other layouts.
+ */
+
+/* BLOCK: Video */
+
+.lcms-video {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 9;
+}
+
+/* ELEMENTS */
+
+.lcms-video__element,
+.lcms-video__iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius, 8px);
+}
+
+.lcms-video__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* MODIFIERS: Video Type */
+
+.lcms-video--youtube,
+.lcms-video--vimeo,
+.lcms-video--html5 {
+    /* Type-specific modifiers (for future use) */
+}
+
+/* ============================================
+   COMPONENT: CARD
+   ============================================ */
+
+/**
+ * Card Component
+ *
+ * Flexible card container for grouping related content.
+ * Supports multiple visual styles and optional media/footer sections.
+ */
+
+/* BLOCK: Card */
+
+.lcms-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--card-padding, 30px);
+    background: var(--color-background-light, #ffffff);
+    border-radius: var(--border-radius, 8px);
+    overflow: hidden;
+    transition: var(--transition-standard, all 0.3s ease);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ELEMENTS */
+
+.lcms-card__media {
+    width: 100%;
+    overflow: hidden;
+}
+
+.lcms-card__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lcms-card__media .video-wrapper {
+    border-radius: 0;
+}
+
+.lcms-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap, 16px);
+}
+
+.lcms-card__header {
+    margin: 0;
+}
+
+.lcms-card__header h3,
+.lcms-card__header h4 {
+    margin: 0 0 10px;
+    color: var(--color-brand-primary);
+}
+
+.lcms-card__body {
+    flex: 1;
+}
+
+.lcms-card__body h3,
+.lcms-card__body h4 {
+    margin-top: 0;
+}
+
+.lcms-card__body p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.lcms-card__footer {
+    margin-top: auto;
+}
+
+.lcms-card__footer .lcms-button-group {
+    margin: 0;
+}
+
+.lcms-card__panel {
+    padding: var(--spacing-xl, 32px);
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--border-radius-md, 8px);
+    margin-bottom: var(--spacing-sm, 16px);
+}
+
+/* Optional modifier for different background tones */
+.lcms-card__panel--subtle {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.lcms-card__panel--accent {
+    background: var(--color-primary-light, rgba(var(--color-primary-rgb), 0.1));
+}
+
+/* MODIFIERS: Visual Styles */
+
+.lcms-card--noshadow {
+    box-shadow: none;
+}
+
+.lcms-card--bordered {
+    border: 2px solid var(--color-border, #e0e0e0);
+}
+
+.lcms-card--elevated {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.lcms-card--elevated:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.lcms-card--interactive {
+    cursor: pointer;
+}
+
+.lcms-card--interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* MODIFIERS: Semantic Variants */
+
+/* Feature Card - gradient background, brand border */
+.lcms-card--feature {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+    border: 2px solid var(--color-border, #e0e0e0);
+    padding: 25px;
+}
+
+.lcms-card--feature .lcms-card__header h4 {
+    margin: 0 0 10px;
+    color: var(--color-brand-primary);
+}
+
+.lcms-card--feature .lcms-card__body p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Progress Card - with brand accent border-left */
+.lcms-card--progress {
+    background: linear-gradient(135deg, var(--color-background-light, #f0f0f0) 0%, var(--color-white, #ffffff) 100%);
+    border-left: 5px solid var(--color-brand-primary);
+    border: 2px solid var(--color-border, #e0e0e0);
+    padding: 30px;
+}
+
+.lcms-card--progress .lcms-card__header h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    margin: 0 0 15px;
+    color: var(--color-brand-primary);
+}
+
+/* Metric Card - center-aligned, gradient background */
+.lcms-card--metric {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+    padding: 25px;
+    text-align: center;
+    border: 2px solid var(--color-border, #e0e0e0);
+}
+
+.lcms-card--metric:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Summary Card - gradient background */
+.lcms-card--summary {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+}
+
+/* Info Card - gradient background */
+.lcms-card--info {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-background-lighter, #e9ecef) 100%);
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.lcms-card--info .lcms-card__header h4 {
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+/* MODIFIERS: Dark Mode */
+
+.dark-mode .lcms-card,
+.lcms-section--dark .lcms-card,
+.lcms-pro-sites--dark .lcms-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .lcms-card--bordered,
+.lcms-section--dark .lcms-card--bordered,
+.lcms-pro-sites--dark .lcms-card--bordered {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* MODIFIERS: Padding Variants */
+
+.lcms-card--compact {
+    padding: 20px;
+}
+
+.lcms-card--spacious {
+    padding: 40px;
+}
+
+/* MODIFIERS: Special Layouts */
+
+.lcms-card--horizontal {
+    flex-direction: row;
+}
+
+.lcms-card--horizontal .lcms-card__media {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.lcms-card--horizontal .lcms-card__content {
+    width: 60%;
+}
+
+/* ============================================
+   COMPONENT: GRID
+   ============================================ */
+
+/**
+ * Content Grid Component
+ *
+ * Semantic grid layout for displaying multiple content items.
+ * Used by grid-section.php for displaying cards, features, etc.
+ *
+ * Note: Simple grid utilities (.grid-2col, .grid-3col) are in utilities.css
+ * This component is for semantic content grids with grid items.
+ */
+
+/* BLOCK: Content Grid */
+
+.lcms-content-grid {
+    display: grid;
+    width: 100%;
+    align-items: start;
+    /* grid-template-columns set via inline style for flexibility */
+}
+
+/* ELEMENTS */
+
+.lcms-content-grid__item {
+    width: 100%;
+}
+
+/* MODIFIERS: Column Count */
+
+.lcms-content-grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap, 30px);
+}
+
+.lcms-content-grid--3col {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap, 30px);
+}
+
+.lcms-content-grid--4col {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap-medium, 30px);
+}
+
+/* MODIFIERS: Gap Sizes */
+
+.lcms-content-grid--gap-small {
+    gap: 20px;
+}
+
+.lcms-content-grid--gap-medium {
+    gap: 30px;
+}
+
+.lcms-content-grid--gap-large {
+    gap: 40px;
+}
+
+/* ============================================
+   COMPONENT: COLUMN LAYOUT
+   ============================================ */
+
+/**
+ * Column Layout Component
+ *
+ * Flexible column layouts for side-by-side content.
+ * Used by 2-column-section.php and other multi-column layouts.
+ */
+
+/* BLOCK: Column Layout */
+
+.lcms-column-layout {
+    display: flex;
+    gap: var(--column-gap, 40px);
+    align-items: start;
+    width: 100%;
+}
+
+/* ELEMENTS */
+
+.lcms-column-layout__column {
+    flex-shrink: 0; /* Prevent columns from shrinking below specified width */
+}
+
+/* MODIFIERS: Alignment */
+
+.lcms-column-layout--align-top {
+    align-items: flex-start;
+}
+
+.lcms-column-layout--align-center {
+    align-items: center;
+}
+
+.lcms-column-layout--align-bottom {
+    align-items: flex-end;
+}
+
+.lcms-column-layout--align-stretch {
+    align-items: stretch;
+}
+
+/* MODIFIERS: Gap Sizes */
+
+.lcms-column-layout--gap-small {
+    gap: 20px;
+}
+
+.lcms-column-layout--gap-medium {
+    gap: 40px;
+}
+
+.lcms-column-layout--gap-large {
+    gap: 60px;
+}
+
+/* MODIFIERS: Mobile Behavior */
+
+.lcms-column-layout--reverse-mobile {
+    /* Reversed via media query below */
+}
+
+/* ============================================
+   COMPONENT: CONTENT STACK
+   ============================================ */
+
+/**
+ * Content Stack Component
+ *
+ * Vertical stacking layout for content items.
+ * Simple flex column wrapper with alignment options.
+ */
+
+/* BLOCK: Content Stack */
+
+.lcms-content-stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* gap handled via inline style */
+}
+
+/* ELEMENTS */
+
+.lcms-content-stack__item {
+    width: 100%;
+}
+
+/* MODIFIERS: Alignment */
+
+.lcms-content-stack--align-left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.lcms-content-stack--align-center {
+    align-items: center;
+    text-align: center;
+}
+
+.lcms-content-stack--align-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* ============================================
+   COMPONENT: CONTENT ROW
+   ============================================ */
+
+/**
+ * Content Row Component
+ *
+ * Horizontal row layout for content items.
+ * Flex row wrapper with vertical and horizontal alignment options.
+ */
+
+/* BLOCK: Content Row */
+
+.lcms-content-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* gap handled via inline style */
+}
+
+/* ELEMENTS */
+
+.lcms-content-row__item {
+    width: 100%;
+}
+
+/* MODIFIERS: Vertical Alignment */
+
+.lcms-content-row--align-top {
+    align-items: flex-start;
+}
+
+.lcms-content-row--align-center {
+    align-items: center;
+}
+
+.lcms-content-row--align-bottom {
+    align-items: flex-end;
+}
+
+/* MODIFIERS: Horizontal Alignment */
+
+.lcms-content-row--justify-start {
+    justify-content: flex-start;
+}
+
+.lcms-content-row--justify-center {
+    justify-content: center;
+}
+
+.lcms-content-row--justify-end {
+    justify-content: flex-end;
+}
+
+.lcms-content-row--justify-space-between {
+    justify-content: space-between;
+}
+
+/* ============================================
+   BLOCK: Stack (Content Renderer)
+   ============================================ */
+
+/**
+ * Stack - Vertical content stacking
+ *
+ * Used by: stack.php content renderer
+ * Purpose: Stack multiple content items vertically
+ * Features: Vertical alignment, flexible gap control
+ *
+ * @since 2.0.5 BEM migration
+ * @since 2.0.8 Added CSS implementation (was missing)
+ */
+
+.lcms-stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* gap handled via inline style */
+    gap: var(--spacing-lg);
+}
+
+/* ELEMENTS */
+
+.lcms-stack__item {
+    width: 100%;
+}
+
+/* MODIFIERS: Horizontal Alignment */
+
+.lcms-stack--align-left {
+    align-items: flex-start;
+}
+
+.lcms-stack--align-center {
+    align-items: center;
+}
+
+.lcms-stack--align-right {
+    align-items: flex-end;
+}
+
+/* ============================================
+   BLOCK: Row (Content Renderer)
+   ============================================ */
+
+/**
+ * Row - Horizontal content layout
+ *
+ * Used by: row.php content renderer
+ * Purpose: Arrange multiple content items horizontally
+ * Features: No wrap, items auto-stretch to fill width
+ *
+ * @since 2.0.5 BEM migration
+ * @since 2.0.8 Added CSS implementation (was missing)
+ */
+
+.lcms-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    /* gap handled via inline style */
+}
+
+/* ELEMENTS */
+
+.lcms-row__item {
+    flex: 1 1 0%;
+    min-width: 0;
+}
+
+/* MODIFIERS: Vertical Alignment */
+
+.lcms-row--align-top {
+    align-items: flex-start;
+}
+
+.lcms-row--align-center {
+    align-items: center;
+}
+
+.lcms-row--align-bottom {
+    align-items: flex-end;
+}
+
+/* MODIFIERS: Horizontal Alignment */
+
+.lcms-row--justify-start {
+    justify-content: flex-start;
+}
+
+.lcms-row--justify-center {
+    justify-content: center;
+}
+
+.lcms-row--justify-end {
+    justify-content: flex-end;
+}
+
+.lcms-row--justify-space-between {
+    justify-content: space-between;
+}
+
+/* ============================================
+   BLOCK: Heading (Content Renderer)
+   ============================================ */
+
+/**
+ * Heading - Standalone heading component
+ *
+ * Used by: heading.php content renderer
+ * Purpose: Render standalone headings with alignment
+ * Features: Text alignment control
+ *
+ * @since 2.0.5 BEM migration
+ * @since 2.0.8 Added CSS implementation (was missing)
+ */
+
+.lcms-heading {
+    margin: 0;
+    padding: 0;
+}
+
+/* MODIFIERS: Alignment */
+
+.lcms-heading--align-left {
+    text-align: left;
+}
+
+.lcms-heading--align-center {
+    text-align: center;
+}
+
+.lcms-heading--align-right {
+    text-align: right;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Base responsive */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .lcms-container,
+    .password-section {
+        padding: 0 var(--spacing-horizontal-mobile, 20px);
+    }
+
+    /* Section Heading */
+    .lcms-section-heading {
+        margin-bottom: var(--spacing-heading-bottom-mobile, 30px);
+    }
+
+    .lcms-section-heading__title {
+        font-size: var(--font-size-h2-mobile, 32px);
+    }
+
+    .lcms-section-heading__subtitle {
+        font-size: var(--font-size-body, 16px);
+    }
+
+    /* Button */
+    .lcms-button-group {
+        flex-direction: column;
+    }
+
+    .lcms-button-group .lcms-button {
+        width: 100%;
+    }
+
+    /* Row - Stack vertically on mobile */
+    .lcms-row {
+        flex-direction: column;
+    }
+
+    .lcms-row__item {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    /* Stack - ensure full width on mobile */
+    .lcms-stack__item {
+        width: 100%;
+    }
+
+    .lcms-button--cta {
+        padding: var(--button-padding-mobile, 14px 36px);
+        font-size: var(--button-font-size-mobile, 16px);
+    }
+
+    /* Card */
+    .lcms-card__content {
+        padding: var(--card-padding-mobile, 20px);
+    }
+
+    .lcms-card--horizontal {
+        flex-direction: column;
+    }
+
+    .lcms-card--horizontal .lcms-card__media,
+    .lcms-card--horizontal .lcms-card__content {
+        width: 100%;
+    }
+
+    .lcms-card--feature,
+    .lcms-card--progress,
+    .lcms-card--metric,
+    .lcms-card--info {
+        padding: 20px;
+    }
+
+    /* Grid */
+    .lcms-content-grid--2col,
+    .lcms-content-grid--3col,
+    .lcms-content-grid--4col {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Column Layout */
+    .lcms-column-layout {
+        flex-direction: column;
+        gap: var(--column-gap-mobile, 30px);
+    }
+
+    /* Reverse column order on mobile if specified */
+    .lcms-column-layout--reverse-mobile {
+        flex-direction: column-reverse;
+    }
+
+    /* Columns take full width on mobile */
+    .lcms-column-layout__column {
+        flex-basis: 100% !important;
+        flex-grow: 1;
+    }
+
+    /* Content Row */
+    .lcms-content-row {
+        flex-direction: column;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .lcms-section-heading__title {
+        font-size: var(--font-size-h2-small, 28px);
+    }
+
+    .lcms-button {
+        padding: var(--button-padding-mobile, 10px 20px);
+        font-size: var(--button-font-size-mobile, 14px);
+    }
+
+    .lcms-button--small {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .grid-3col,
+    .grid-4col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lcms-content-grid--3col,
+    .lcms-content-grid--4col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   PHASE 4: SPECIALIZED COMPONENTS
+   ============================================ */
+
+/**
+ * Color Swatch Component
+ *
+ * Displays brand colors with their hex/RGB values.
+ * Used primarily in brand guide color palette sections.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-color-swatch.css
+ */
+
+/* ============================================
+   BLOCK: Color Swatch
+   ============================================ */
+
+.lcms-color-swatch {
+    background: var(--color-background-light, #ffffff);
+    border-radius: var(--border-radius, 10px);
+    overflow: hidden;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-color-swatch__display {
+    width: 100%;
+    height: 120px;
+    border-bottom: 2px solid var(--color-border-neutral, #e0e0e0);
+}
+
+.lcms-color-swatch__name {
+    font-family: var(--font-heading, inherit);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-brand-secondary, #161617);
+    text-transform: uppercase;
+    padding: 20px 20px 10px;
+}
+
+.lcms-color-swatch__values {
+    padding: 0 20px 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--color-text-primary, #666666);
+}
+
+.lcms-color-swatch__values div {
+    margin-bottom: 5px;
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-color-swatch--small .lcms-color-swatch__display {
+    height: 80px;
+}
+
+.lcms-color-swatch--small .lcms-color-swatch__name {
+    font-size: 16px;
+    padding: 15px 15px 8px;
+}
+
+.lcms-color-swatch--small .lcms-color-swatch__values {
+    padding: 0 15px 15px;
+    font-size: 13px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__display {
+    height: 160px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__name {
+    font-size: 20px;
+    padding: 25px 25px 12px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__values {
+    padding: 0 25px 25px;
+    font-size: 15px;
+}
+
+/* ============================================
+   MODIFIERS: Interactive States
+   ============================================ */
+
+.lcms-color-swatch--interactive {
+    cursor: pointer;
+}
+
+.lcms-color-swatch--interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium, 0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+/* ============================================
+   MODIFIERS: Featured/Primary
+   ============================================ */
+
+.lcms-color-swatch--featured {
+    border-width: 3px;
+    border-color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-color-swatch--featured .lcms-color-swatch__name {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-color-swatch__display {
+        height: 100px;
+    }
+
+    .lcms-color-swatch__name {
+        font-size: 16px;
+        padding: 15px 15px 8px;
+    }
+
+    .lcms-color-swatch__values {
+        padding: 0 15px 15px;
+        font-size: 13px;
+    }
+
+    .lcms-color-swatch--large .lcms-color-swatch__display {
+        height: 120px;
+    }
+}
+
+/**
+ * Metric Component
+ *
+ * Displays numeric metrics, scores, statistics, and KPIs.
+ * Used for dashboards, scorecards, and data visualization.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-metric.css
+ */
+
+/* ============================================
+   BLOCK: Metric
+   ============================================ */
+
+.lcms-metric {
+    text-align: center;
+    background: var(--color-background-light, #ffffff);
+    padding: 40px 20px;
+    border-radius: var(--border-radius, 10px);
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-metric__value {
+    font-size: 56px;
+    font-weight: 700;
+    font-family: var(--font-heading, inherit);
+    color: var(--color-brand-secondary, #161617);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.lcms-metric__label {
+    font-size: 16px;
+    color: var(--color-text-secondary, #666666);
+    line-height: 1.6;
+}
+
+.lcms-metric__description {
+    font-size: 14px;
+    color: var(--color-text-tertiary, #999);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-metric--small {
+    padding: 25px 15px;
+}
+
+.lcms-metric--small .lcms-metric__value {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.lcms-metric--small .lcms-metric__label {
+    font-size: 14px;
+}
+
+.lcms-metric--large {
+    padding: 60px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.lcms-metric--large .lcms-metric__value {
+    font-size: 96px;
+    margin-bottom: 20px;
+}
+
+.lcms-metric--large .lcms-metric__label {
+    font-size: 24px;
+}
+
+/* ============================================
+   MODIFIERS: Style Variants
+   ============================================ */
+
+.lcms-metric--dark {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.lcms-metric--transparent {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lcms-metric--transparent .lcms-metric__value {
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-metric--transparent .lcms-metric__label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.lcms-metric--gradient {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-metric--primary .lcms-metric__value {
+    color: var(--color-brand-primary, #161617);
+}
+
+.lcms-metric--accent .lcms-metric__value {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-metric--success .lcms-metric__value {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-metric--warning .lcms-metric__value {
+    color: var(--color-warning, #FFA726);
+}
+
+.lcms-metric--danger .lcms-metric__value {
+    color: var(--color-danger, #EF5350);
+}
+
+/* ============================================
+   MODIFIERS: Interactive States
+   ============================================ */
+
+.lcms-metric--interactive {
+    cursor: pointer;
+}
+
+.lcms-metric--interactive:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-brand-secondary, #161617);
+}
+
+.lcms-metric--transparent.lcms-metric--interactive:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   MODIFIERS: With Icon
+   ============================================ */
+
+.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-metric--small.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.lcms-metric--large.lcms-metric--with-icon .lcms-metric__icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-metric {
+        padding: 30px 15px;
+    }
+
+    .lcms-metric__value {
+        font-size: 42px;
+        margin-bottom: 12px;
+    }
+
+    .lcms-metric__label {
+        font-size: 14px;
+    }
+
+    .lcms-metric--large {
+        padding: 40px 20px;
+    }
+
+    .lcms-metric--large .lcms-metric__value {
+        font-size: 72px;
+        margin-bottom: 15px;
+    }
+
+    .lcms-metric--large .lcms-metric__label {
+        font-size: 18px;
+    }
+
+    .lcms-metric--small .lcms-metric__value {
+        font-size: 32px;
+    }
+}
+
+/**
+ * List Component
+ *
+ * Flexible list component with various marker/icon styles.
+ * Supports check lists, cross lists, arrow lists, icon lists, and more.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-list.css
+ */
+
+/* ============================================
+   BLOCK: List
+   ============================================ */
+
+.lcms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-list__item {
+    padding-left: 30px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-primary, #161617);
+}
+
+.lcms-list__item::before {
+    top:-4px;
+}
+
+/* ============================================
+   MODIFIERS: Check List ()
+   ============================================ */
+
+.lcms-list--check .lcms-list__item::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-success, #28a745);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Cross List ()
+   ============================================ */
+
+.lcms-list--cross .lcms-list__item::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: var(--color-danger, #dc3545);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Todo List (○ / ✓)
+   Per-item state control for task lists
+   ============================================ */
+
+.lcms-list--todo .lcms-list__item::before {
+    content: "○";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-secondary, #999999);
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.lcms-list--todo .lcms-list__item--checked::before {
+    content: "✓";
+    color: var(--color-success, #28a745);
+    font-weight: bold;
+}
+
+.lcms-list--todo .lcms-list__item--unchecked::before {
+    content: "○";
+    color: var(--color-text-secondary, #999999);
+    font-weight: normal;
+}
+
+/* ============================================
+   MODIFIERS: Arrow List (→)
+   ============================================ */
+
+.lcms-list--arrow .lcms-list__item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Chevron List (›)
+   ============================================ */
+
+.lcms-list--chevron .lcms-list__item::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Chevron Bold List (❯)
+   ============================================ */
+
+.lcms-list--chevron-bold .lcms-list__item::before {
+    content: "❯";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ============================================
+   MODIFIERS: Bullet List (•)
+   ============================================ */
+
+.lcms-list--bullet .lcms-list__item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Numbered List
+   ============================================ */
+
+.lcms-list--numbered {
+    counter-reset: list-counter;
+}
+
+.lcms-list--numbered .lcms-list__item::before {
+    counter-increment: list-counter;
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+}
+
+/* ============================================
+   MODIFIERS: Icon List (Custom Icons)
+   ============================================ */
+
+.lcms-list--icon {
+    gap: 15px;
+}
+
+.lcms-list--icon .lcms-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding-left: 0;
+}
+
+.lcms-list__icon {
+    font-size: 20px;
+    color: var(--color-brand-accent, #0066cc);
+    font-weight: bold;
+    flex-shrink: 0;
+    min-width: 20px;
+    text-align: center;
+}
+
+.lcms-list__text {
+    flex: 1;
+}
+
+/* ============================================
+   MODIFIERS: Column Layouts
+   ============================================ */
+
+.lcms-list--2col,
+.lcms-list--3col {
+    display: block; /* Override flex display */
+    column-count: 2;
+    column-gap: var(--spacing-horizontal, 32px);
+}
+
+.lcms-list--3col {
+    column-count: 3;
+}
+
+.lcms-list--2col .lcms-list__item,
+.lcms-list--3col .lcms-list__item {
+    break-inside: avoid;
+    page-break-inside: avoid; /* Fallback for older browsers */
+}
+
+/* Responsive: collapse to single column on mobile */
+@media (max-width: 768px) {
+    .lcms-list--2col,
+    .lcms-list--3col {
+        column-count: 1;
+    }
+}
+
+/* Responsive: 3-col becomes 2-col on tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .lcms-list--3col {
+        column-count: 2;
+    }
+}
+
+/* ============================================
+   MODIFIERS: Card Style
+   ============================================ */
+
+.lcms-list--card .lcms-list__item {
+    background: var(--color-background-light, #ffffff);
+    padding: 20px;
+    padding-left: 50px;
+    border-radius: var(--border-radius, 8px);
+    border: 2px solid var(--color-border-light, #e0e0e0);
+}
+
+.lcms-list--card.lcms-list--icon .lcms-list__item {
+    padding: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Compact
+   ============================================ */
+
+.lcms-list--compact {
+    gap: 8px;
+}
+
+.lcms-list--compact .lcms-list__item {
+    padding-left: 25px;
+    font-size: 14px;
+}
+
+.lcms-list--compact .lcms-list__item::before {
+    font-size: 16px;
+}
+
+/* ============================================
+   MODIFIERS: Spacious
+   ============================================ */
+
+.lcms-list--spacious {
+    gap: 20px;
+}
+
+.lcms-list--spacious .lcms-list__item {
+    padding-left: 35px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* ============================================
+   MODIFIERS: No Marker
+   ============================================ */
+
+.lcms-list--none .lcms-list__item {
+    padding-left: 0;
+}
+
+.lcms-list--none .lcms-list__item::before {
+    display: none;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-list__item {
+        padding-left: 25px;
+        font-size: 14px;
+    }
+
+    .lcms-list__item::before {
+        font-size: 16px;
+    }
+
+    .lcms-list--card .lcms-list__item {
+        padding: 15px;
+        padding-left: 40px;
+    }
+
+    .lcms-list--card.lcms-list--icon .lcms-list__item {
+        padding: 15px;
+    }
+
+    .lcms-list__icon {
+        font-size: 18px;
+        min-width: 18px;
+    }
+}
+
+/**
+ * Progress Component
+ *
+ * Progress bars and indicators for showing completion status.
+ * Supports various styles, sizes, and color variants.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-progress.css
+ */
+
+/* ============================================
+   BLOCK: Progress
+   ============================================ */
+
+.lcms-progress {
+    width: 100%;
+    background: var(--color-background-medium, #e0e0e0);
+    border-radius: var(--border-radius, 8px);
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-progress__bar {
+    height: 100%;
+    background: var(--color-brand-accent, #0066cc);
+    border-radius: var(--border-radius, 8px);
+    transition: width 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    min-width: 50px;
+}
+
+.lcms-progress__label {
+    color: var(--color-text-light, #ffffff);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.lcms-progress__text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--color-text-secondary, #666666);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lcms-progress__text-label {
+    flex: 1;
+}
+
+.lcms-progress__text-value {
+    font-weight: 600;
+    color: var(--color-brand-accent, #0066cc);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-progress--small {
+    height: 12px;
+}
+
+.lcms-progress--small .lcms-progress__bar {
+    padding-right: 6px;
+}
+
+.lcms-progress--small .lcms-progress__label {
+    font-size: 10px;
+}
+
+.lcms-progress--medium {
+    height: 20px;
+}
+
+.lcms-progress--large {
+    height: 30px;
+}
+
+.lcms-progress--large .lcms-progress__bar {
+    padding-right: 15px;
+}
+
+.lcms-progress--large .lcms-progress__label {
+    font-size: 14px;
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-progress--primary .lcms-progress__bar {
+    background: var(--color-brand-primary, #161617);
+}
+
+.lcms-progress--secondary .lcms-progress__bar {
+    background: var(--color-brand-secondary, #444);
+}
+
+.lcms-progress--accent .lcms-progress__bar {
+    background: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-progress--success .lcms-progress__bar {
+    background: var(--color-success, #4CAF50);
+}
+
+.lcms-progress--warning .lcms-progress__bar {
+    background: var(--color-warning, #FFA726);
+}
+
+.lcms-progress--danger .lcms-progress__bar {
+    background: var(--color-danger, #EF5350);
+}
+
+.lcms-progress--inactive .lcms-progress__bar, .lcms-progress--not-active .lcms-progress__bar, .lcms-progress--zero .lcms-progress__bar {
+    background: var(--color-danger, #ccc);
+}
+
+/* ============================================
+   MODIFIERS: Striped
+   ============================================ */
+
+.lcms-progress--striped .lcms-progress__bar {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 20px 20px;
+}
+
+/* ============================================
+   MODIFIERS: Animated
+   ============================================ */
+
+.lcms-progress--animated .lcms-progress__bar {
+    animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+    0% {
+        background-position: 20px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* ============================================
+   MODIFIERS: Style Variants
+   ============================================ */
+
+.lcms-progress--rounded {
+    border-radius: 50px;
+}
+
+.lcms-progress--rounded .lcms-progress__bar {
+    border-radius: 50px;
+}
+
+.lcms-progress--square {
+    border-radius: 0;
+}
+
+.lcms-progress--square .lcms-progress__bar {
+    border-radius: 0;
+}
+
+/* ============================================
+   MODIFIERS: With Shadow
+   ============================================ */
+
+.lcms-progress--shadow {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lcms-progress--shadow .lcms-progress__bar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   MODIFIERS: Indeterminate (Loading)
+   ============================================ */
+
+.lcms-progress--indeterminate .lcms-progress__bar {
+    width: 100% !important;
+    animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-indeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-progress__text {
+        font-size: 13px;
+    }
+
+    .lcms-progress__label {
+        font-size: 11px;
+    }
+
+    .lcms-progress--large {
+        height: 25px;
+    }
+}
+
+/**
+ * Badge Component
+ *
+ * Status badges, labels, and tags for categorization and state indication.
+ * Supports various colors, sizes, and styles.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-badge.css
+ */
+
+/* ============================================
+   BLOCK: Badge
+   ============================================ */
+
+.lcms-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--font-heading, inherit);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--border-radius, 4px);
+    line-height: 1.2;
+    white-space: nowrap;
+    background: var(--color-background-medium, #e0e0e0);
+    color: var(--color-text-primary, #161617);
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-badge--primary {
+    background: var(--color-brand-primary, #161617);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--secondary {
+    background: var(--color-brand-secondary, #444);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--accent {
+    background: var(--color-brand-accent, #0066cc);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--success {
+    background: var(--color-success, #4CAF50);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--warning {
+    background: var(--color-warning, #FFA726);
+    color: var(--color-text-primary, #161617);
+}
+
+.lcms-badge--danger {
+    background: var(--color-danger, #EF5350);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--info {
+    background: var(--color-info, #29B6F6);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-badge--light {
+    background: var(--color-background-light, #f5f5f5);
+    color: var(--color-text-primary, #161617);
+}
+
+.lcms-badge--dark {
+    background: var(--color-text-primary, #161617);
+    color: var(--color-text-light, #ffffff);
+}
+
+/* ============================================
+   MODIFIERS: Outline Variants
+   ============================================ */
+
+.lcms-badge--outline {
+    background: transparent;
+    border: 2px solid currentColor;
+}
+
+.lcms-badge--outline.lcms-badge--primary {
+    color: var(--color-brand-primary, #161617);
+}
+
+.lcms-badge--outline.lcms-badge--accent {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-badge--outline.lcms-badge--success {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-badge--outline.lcms-badge--warning {
+    color: var(--color-warning, #FFA726);
+}
+
+.lcms-badge--outline.lcms-badge--danger {
+    color: var(--color-danger, #EF5350);
+}
+
+.lcms-badge--outline.lcms-badge--info {
+    color: var(--color-info, #29B6F6);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-badge--small {
+    padding: 4px 8px;
+    font-size: 10px;
+}
+
+.lcms-badge--medium {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.lcms-badge--large {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* ============================================
+   MODIFIERS: Shape Variants
+   ============================================ */
+
+.lcms-badge--pill {
+    border-radius: 50px;
+}
+
+.lcms-badge--square {
+    border-radius: 0;
+}
+
+.lcms-badge--rounded {
+    border-radius: 8px;
+}
+
+/* ============================================
+   MODIFIERS: Style Variants
+   ============================================ */
+
+.lcms-badge--subtle {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-secondary, #666666);
+}
+
+.lcms-badge--subtle.lcms-badge--primary {
+    background: rgba(22, 22, 23, 0.1);
+    color: var(--color-brand-primary, #161617);
+}
+
+.lcms-badge--subtle.lcms-badge--accent {
+    background: rgba(0, 102, 204, 0.1);
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-badge--subtle.lcms-badge--success {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-badge--subtle.lcms-badge--warning {
+    background: rgba(255, 167, 38, 0.1);
+    color: var(--color-warning, #FFA726);
+}
+
+.lcms-badge--subtle.lcms-badge--danger {
+    background: rgba(239, 83, 80, 0.1);
+    color: var(--color-danger, #EF5350);
+}
+
+.lcms-badge--subtle.lcms-badge--info {
+    background: rgba(41, 182, 246, 0.1);
+    color: var(--color-info, #29B6F6);
+}
+
+/* ============================================
+   MODIFIERS: With Dot Indicator
+   ============================================ */
+
+.lcms-badge--with-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lcms-badge--with-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   MODIFIERS: Clickable/Interactive
+   ============================================ */
+
+.lcms-badge--clickable {
+    cursor: pointer;
+    transition: var(--transition-fast, all 0.15s ease);
+}
+
+.lcms-badge--clickable:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lcms-badge--clickable:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   MODIFIERS: With Close Button
+   ============================================ */
+
+.lcms-badge--dismissible {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 8px;
+}
+
+.lcms-badge__close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.lcms-badge__close:hover {
+    opacity: 1;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-badge {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .lcms-badge--small {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    .lcms-badge--large {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
+}
+
+/* ============================================
+   COMPONENT: STEP NUMBER
+   ============================================ */
+
+/**
+ * Step Number Component
+ *
+ * Large numbered indicators for sequential processes and timelines.
+ * Used in process flows, how-it-works sections, and step-by-step guides.
+ *
+ * @since 2.0.1 Added for numbered timeline patterns
+ */
+
+/* BLOCK: Step Number */
+
+.lcms-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--color-brand-primary, #161617);
+}
+
+/* MODIFIERS: Color Variants */
+
+.lcms-step-number--primary {
+    color: var(--color-brand-primary, #161617);
+}
+
+.lcms-step-number--accent {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-step-number--success {
+    color: var(--color-success, #4CAF50);
+}
+
+.lcms-step-number--muted {
+    color: var(--color-text-tertiary, #999);
+}
+
+/* MODIFIERS: Size Variants */
+
+.lcms-step-number--small {
+    font-size: 32px;
+}
+
+.lcms-step-number--medium {
+    font-size: 48px;
+}
+
+.lcms-step-number--large {
+    font-size: 64px;
+}
+
+.lcms-step-number--xlarge {
+    font-size: 80px;
+}
+
+/* MODIFIERS: Style Variants */
+
+.lcms-step-number--circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-background-light, #f5f5f5);
+    border: 3px solid var(--color-brand-primary, #161617);
+}
+
+.lcms-step-number--circle.lcms-step-number--small {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+}
+
+.lcms-step-number--circle.lcms-step-number--large {
+    width: 100px;
+    height: 100px;
+    font-size: 56px;
+}
+
+.lcms-step-number--filled {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-brand-primary, #161617);
+    color: var(--color-text-light, #ffffff);
+}
+
+.lcms-step-number--filled.lcms-step-number--small {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+}
+
+.lcms-step-number--filled.lcms-step-number--large {
+    width: 100px;
+    height: 100px;
+    font-size: 56px;
+}
+
+/**
+ * LeanCMS Design System
+ * Component: Hero
+ *
+ * Large header section with logo, badge, title and subtitle.
+ * Typically used at the top of landing pages.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Design_System
+ * @since      1.4.9
+ * @filepath   templates/assets/global/components/lcms-hero.css
+ */
+
+/* ============================================
+   BLOCK: Hero
+   ============================================ */
+
+.lcms-hero {
+    background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%);
+    color: white;
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-hero__logo {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+}
+
+.lcms-hero__badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lcms-hero__title {
+    font-size: 56px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.lcms-hero__subtitle {
+    font-size: 24px;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* ============================================
+   MODIFIERS: Background Variants
+   ============================================ */
+
+.lcms-hero--primary {
+    background: var(--color-brand-primary);
+}
+
+.lcms-hero--secondary {
+    background: var(--color-brand-secondary);
+}
+
+.lcms-hero--accent {
+    background: var(--color-brand-accent);
+}
+
+.lcms-hero--dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+}
+
+.lcms-hero--light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: var(--color-text-primary);
+}
+
+.lcms-hero--light .lcms-hero__badge {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-hero--small {
+    padding: 60px 40px;
+}
+
+.lcms-hero--small .lcms-hero__title {
+    font-size: 42px;
+}
+
+.lcms-hero--small .lcms-hero__subtitle {
+    font-size: 18px;
+}
+
+.lcms-hero--large {
+    padding: 140px 80px;
+}
+
+.lcms-hero--large .lcms-hero__title {
+    font-size: 72px;
+}
+
+.lcms-hero--large .lcms-hero__subtitle {
+    font-size: 28px;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-hero--left {
+    text-align: left;
+}
+
+.lcms-hero--left .lcms-hero__logo {
+    margin-left: 0;
+}
+
+.lcms-hero--left .lcms-hero__subtitle {
+    margin-left: 0;
+}
+
+.lcms-hero--right {
+    text-align: right;
+}
+
+.lcms-hero--right .lcms-hero__logo {
+    margin-right: 0;
+}
+
+.lcms-hero--right .lcms-hero__subtitle {
+    margin-right: 0;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-hero {
+        padding: 80px 30px;
+    }
+
+    .lcms-hero__title {
+        font-size: 36px;
+    }
+
+    .lcms-hero__subtitle {
+        font-size: 18px;
+    }
+
+    .lcms-hero--small {
+        padding: 50px 25px;
+    }
+
+    .lcms-hero--small .lcms-hero__title {
+        font-size: 28px;
+    }
+
+    .lcms-hero--small .lcms-hero__subtitle {
+        font-size: 16px;
+    }
+
+    .lcms-hero--large {
+        padding: 100px 40px;
+    }
+
+    .lcms-hero--large .lcms-hero__title {
+        font-size: 48px;
+    }
+
+    .lcms-hero--large .lcms-hero__subtitle {
+        font-size: 20px;
+    }
+
+    /* Force center alignment on mobile */
+    .lcms-hero--left,
+    .lcms-hero--right {
+        text-align: center;
+    }
+
+    .lcms-hero--left .lcms-hero__logo,
+    .lcms-hero--right .lcms-hero__logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lcms-hero--left .lcms-hero__subtitle,
+    .lcms-hero--right .lcms-hero__subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/**
+ * LeanCMS Design System
+ * Component: CTA Section
+ *
+ * Call-to-action section with heading, description, and action button.
+ * Typically used at the bottom of pages to drive user actions.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Design_System
+ * @since      1.4.9
+ * @filepath   templates/assets/global/components/lcms-cta-section.css
+ */
+
+/* ============================================
+   BLOCK: CTA Section
+   ============================================ */
+
+.lcms-cta-section {
+    background: linear-gradient(135deg, var(--color-brand-primary) 0%, #0A0C4F 100%);
+    color: white;
+    text-align: center;
+    padding: 100px 60px;
+    position: relative;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-cta-section__title {
+    font-size: 42px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.lcms-cta-section__description {
+    font-size: 18px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.lcms-cta-section__button {
+    display: inline-block;
+    background: var(--color-brand-accent);
+    color: white;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-decoration: none;
+    transition: var(--transition-standard);
+    border: none;
+    cursor: pointer;
+}
+
+.lcms-cta-section__button:hover {
+    background: var(--color-brand-accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.lcms-cta-section__button:active {
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   MODIFIERS: Background Variants
+   ============================================ */
+
+.lcms-cta-section--primary {
+    background: var(--color-brand-primary);
+}
+
+.lcms-cta-section--secondary {
+    background: var(--color-brand-secondary);
+}
+
+.lcms-cta-section--accent {
+    background: var(--color-brand-accent);
+}
+
+.lcms-cta-section--dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+}
+
+.lcms-cta-section--light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: var(--color-text-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__title {
+    color: var(--color-brand-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__button {
+    background: var(--color-brand-primary);
+}
+
+.lcms-cta-section--light .lcms-cta-section__button:hover {
+    background: var(--color-brand-secondary);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-cta-section--small {
+    padding: 60px 40px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__title {
+    font-size: 32px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__description {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.lcms-cta-section--small .lcms-cta-section__button {
+    padding: 14px 40px;
+    font-size: 16px;
+}
+
+.lcms-cta-section--large {
+    padding: 140px 80px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__title {
+    font-size: 56px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__description {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+.lcms-cta-section--large .lcms-cta-section__button {
+    padding: 22px 60px;
+    font-size: 20px;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-cta-section--left {
+    text-align: left;
+}
+
+.lcms-cta-section--left .lcms-cta-section__description {
+    margin-left: 0;
+}
+
+.lcms-cta-section--right {
+    text-align: right;
+}
+
+.lcms-cta-section--right .lcms-cta-section__description {
+    margin-right: 0;
+}
+
+/* ============================================
+   MODIFIERS: Button Variants
+   ============================================ */
+
+.lcms-cta-section__button--outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.lcms-cta-section__button--outline:hover {
+    background: white;
+    color: var(--color-brand-primary);
+    transform: translateY(-3px);
+}
+
+.lcms-cta-section__button--ghost {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.lcms-cta-section__button--ghost:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lcms-cta-section__button--squared {
+    border-radius: 8px;
+}
+
+.lcms-cta-section__button--sharp {
+    border-radius: 0;
+}
+
+/* ============================================
+   MODIFIERS: Multiple Buttons
+   ============================================ */
+
+.lcms-cta-section__buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lcms-cta-section--left .lcms-cta-section__buttons {
+    justify-content: flex-start;
+}
+
+.lcms-cta-section--right .lcms-cta-section__buttons {
+    justify-content: flex-end;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-cta-section {
+        padding: 60px 30px;
+    }
+
+    .lcms-cta-section__title {
+        font-size: 32px;
+    }
+
+    .lcms-cta-section__description {
+        font-size: 16px;
+    }
+
+    .lcms-cta-section__button {
+        padding: 14px 40px;
+        font-size: 16px;
+    }
+
+    .lcms-cta-section--small {
+        padding: 40px 20px;
+    }
+
+    .lcms-cta-section--small .lcms-cta-section__title {
+        font-size: 24px;
+    }
+
+    .lcms-cta-section--small .lcms-cta-section__description {
+        font-size: 14px;
+    }
+
+    .lcms-cta-section--large {
+        padding: 80px 40px;
+    }
+
+    .lcms-cta-section--large .lcms-cta-section__title {
+        font-size: 36px;
+    }
+
+    .lcms-cta-section--large .lcms-cta-section__description {
+        font-size: 18px;
+    }
+
+    /* Force center alignment on mobile */
+    .lcms-cta-section--left,
+    .lcms-cta-section--right {
+        text-align: center;
+    }
+
+    .lcms-cta-section--left .lcms-cta-section__description,
+    .lcms-cta-section--right .lcms-cta-section__description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lcms-cta-section--left .lcms-cta-section__buttons,
+    .lcms-cta-section--right .lcms-cta-section__buttons {
+        justify-content: center;
+    }
+
+    .lcms-cta-section__buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .lcms-cta-section__button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* ============================================
+   FOUNDATION PACKAGE - THEME & ACCESSIBILITY
+   ============================================ */
+
+/**
+ * Foundation Package v1.5.0
+ *
+ * Core systems for theming, content styling, and accessibility.
+ * Added before PHP template migration to provide comprehensive foundation.
+ *
+ * Contents:
+ * 1. Theme System (Dark Mode / Light Mode)
+ * 2. Content Area Component (AI-generated HTML styling)
+ * 3. Enhanced Spacing System
+ * 4. Focus & Accessibility States
+ */
+
+/* ============================================
+   1. THEME SYSTEM - CSS VARIABLES
+   ============================================ */
+
+/**
+ * Theme-aware CSS Variables
+ * Toggle theme by adding .theme-dark class to :root or <body>
+ */
+
+/* Light Theme (Default) */
+:root {
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #f8f9fa;
+    --theme-bg-tertiary: #e9ecef;
+    --theme-surface: #ffffff;
+    --theme-surface-raised: #ffffff;
+    
+    /* Text Colors */
+    --theme-text-primary: #161617;
+    --theme-text-secondary: #4a4a4a;
+    --theme-text-tertiary: #6c757d;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border: #dee2e6;
+    --theme-border-light: #e9ecef;
+    --theme-border-dark: #ced4da;
+    
+    /* Interactive States */
+    --theme-hover-bg: rgba(0, 0, 0, 0.05);
+    --theme-active-bg: rgba(0, 0, 0, 0.1);
+    --theme-focus-ring: rgba(0, 102, 255, 0.4);
+    
+    /* Shadows */
+    --theme-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --theme-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --theme-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme */
+:root.theme-dark,
+body.theme-dark {
+    /* Background Colors */
+    --theme-bg-primary: #1a1a2e;
+    --theme-bg-secondary: #16213e;
+    --theme-bg-tertiary: #0f3460;
+    --theme-surface: #1e1e3f;
+    --theme-surface-raised: #252547;
+    
+    /* Text Colors */
+    --theme-text-primary: #e0e0e0;
+    --theme-text-secondary: #b0b0b0;
+    --theme-text-tertiary: #8a8a8a;
+    --theme-text-inverse: #1a1a2e;
+    
+    /* Border Colors */
+    --theme-border: #2a2a4e;
+    --theme-border-light: #3a3a5e;
+    --theme-border-dark: #1a1a3e;
+    
+    /* Interactive States */
+    --theme-hover-bg: rgba(255, 255, 255, 0.05);
+    --theme-active-bg: rgba(255, 255, 255, 0.1);
+    --theme-focus-ring: rgba(100, 149, 237, 0.5);
+    
+    /* Shadows */
+    --theme-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --theme-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --theme-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   2. CONTENT AREA COMPONENT
+   ============================================ */
+
+/**
+ * Content Area Component (.lcms-content)
+ *
+ * Provides consistent styling for AI-generated or WYSIWYG HTML.
+ * Use this wrapper for any dynamic/user-generated content.
+ *
+ * Usage:
+ * <div class="lcms-content">
+ *   <!-- AI or user-generated HTML here -->
+ * </div>
+ */
+
+.lcms-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--column-gap, 40px);
+    color: var(--theme-text-primary, var(--color-text-primary, #161617));
+    line-height: 1.7;
+}
+
+/* Typography Rhythm */
+.lcms-content h1,
+.lcms-content h2,
+.lcms-content h3,
+.lcms-content h4,
+.lcms-content h5,
+.lcms-content h6 {
+    font-family: var(--font-heading, inherit);
+    font-weight: 700;
+    color: var(--theme-text-primary, var(--color-text-primary, #161617));
+    /* margin-top: 2em;
+    margin-bottom: 0.75em; */
+    line-height: 1.3;
+}
+
+.lcms-content h1:first-child,
+.lcms-content h2:first-child,
+.lcms-content h3:first-child,
+.lcms-content h4:first-child,
+.lcms-content h5:first-child,
+.lcms-content h6:first-child {
+    margin-top: 0;
+}
+
+.lcms-content h1 { font-size: 2.5rem; }
+.lcms-content h2 { font-size: 2rem; }
+.lcms-content h3 { font-size: 1.75rem; }
+.lcms-content h4 { font-size: 1.5rem; }
+.lcms-content h5 { font-size: 1.25rem; }
+.lcms-content h6 { font-size: 1.125rem; }
+
+.lcms-content h1.align-left,
+.lcms-content h2.align-left,
+.lcms-content h3.align-left,
+.lcms-content h4.align-left,
+.lcms-content h5.align-left,
+.lcms-content h6.align-left { text-align: left; }
+
+.lcms-content h1.align-center,
+.lcms-content h2.align-center,
+.lcms-content h3.align-center,
+.lcms-content h4.align-center,
+.lcms-content h5.align-center,
+.lcms-content h6.align-center { text-align: center; }
+
+.lcms-content h1.align-right,
+.lcms-content h2.align-right,
+.lcms-content h3.align-right,
+.lcms-content h4.align-right,
+.lcms-content h5.align-right,
+.lcms-content h6.align-right { text-align: right; }
+
+/* Paragraphs */
+.lcms-content p {
+    /* margin-bottom: 1.5rem; */
+    color: var(--theme-text-primary, var(--color-text-primary, #161617));
+}
+
+.lcms-content p.align-left { text-align: left; }
+.lcms-content p.align-center { text-align: center; }
+.lcms-content p.align-right { text-align: right; }
+
+.lcms-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Links */
+.lcms-content a {
+    color: var(--color-brand-primary, #0066ff);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.lcms-content a:hover {
+    color: var(--color-brand-secondary, #0052cc);
+}
+
+/* Lists */
+.lcms-content ul,
+.lcms-content ol {
+    margin: 1.5rem 0;
+    padding-left: 0.5rem;
+}
+
+.lcms-content li {
+    margin-bottom: 0.5rem;
+}
+
+.lcms-content li:last-child {
+    margin-bottom: 0;
+}
+
+.lcms-content ul ul,
+.lcms-content ol ol,
+.lcms-content ul ol,
+.lcms-content ol ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Blockquotes */
+.lcms-content blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--color-brand-primary, #0066ff);
+    background: var(--theme-bg-secondary, #f8f9fa);
+    font-style: italic;
+    color: var(--theme-text-secondary, #4a4a4a);
+}
+
+.lcms-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Code */
+.lcms-content code {
+    background: var(--theme-bg-secondary, #f8f9fa);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    color: var(--theme-text-primary, #161617);
+}
+
+.lcms-content pre {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: var(--theme-bg-secondary, #f8f9fa);
+    border: 1px solid var(--theme-border, #dee2e6);
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.lcms-content pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Images */
+.lcms-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+}
+
+.lcms-content figure {
+    margin: 2rem 0;
+}
+
+.lcms-content figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--theme-text-tertiary, #6c757d);
+    text-align: center;
+}
+
+/* Tables */
+.lcms-content table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+}
+
+.lcms-content th,
+.lcms-content td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--theme-border, #dee2e6);
+}
+
+.lcms-content th {
+    font-weight: 700;
+    color: var(--theme-text-primary, #161617);
+    background: var(--theme-bg-secondary, #f8f9fa);
+    border-bottom: 2px solid var(--theme-border-dark, #ced4da);
+}
+
+.lcms-content tr:last-child td {
+    border-bottom: none;
+}
+
+/* Horizontal Rule */
+.lcms-content hr {
+    margin: 0.5rem 0;
+    border: none;
+    border-top: 1px solid var(--theme-border, #dee2e6);
+}
+
+/* Embedded Content (iframes, videos) */
+.lcms-content iframe,
+.lcms-content video {
+    max-width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+}
+
+/* Strong & Em */
+.lcms-content strong {
+    font-weight: 700;
+}
+
+.lcms-content em {
+    font-style: italic;
+}
+
+/* Small Text */
+.lcms-content small {
+    font-size: 0.875rem;
+    color: var(--theme-text-tertiary, #6c757d);
+}
+
+/* Mark/Highlight */
+.lcms-content mark {
+    background: #fff3cd;
+    padding: 0.1em 0.2em;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .lcms-content h1 { font-size: 2rem; }
+    .lcms-content h2 { font-size: 1.75rem; }
+    .lcms-content h3 { font-size: 1.5rem; }
+    .lcms-content h4 { font-size: 1.25rem; }
+    .lcms-content h5 { font-size: 1.125rem; }
+    .lcms-content h6 { font-size: 1rem; }
+    
+    .lcms-content ul,
+    .lcms-content ol {
+        padding-left: 1.5rem;
+    }
+    
+    .lcms-content blockquote {
+        margin: 1.5rem 0;
+        padding: 0.75rem 1rem;
+    }
+    
+    .lcms-content table {
+        font-size: 0.875rem;
+    }
+    
+    .lcms-content th,
+    .lcms-content td {
+        padding: 0.5rem;
+    }
+}
+
+/* CONTENT MODIFIERS: Text Formatting */
+
+.lcms-content--lead {
+    font-size: var(--font-size-large, 20px);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.lcms-content--small {
+    font-size: var(--font-size-small, 14px);
+    line-height: 1.5;
+}
+
+.lcms-content--html {
+    /* Wrapper for custom HTML content */
+    width: 100%;
+}
+
+/* ============================================
+   3. ENHANCED SPACING SYSTEM
+   ============================================ */
+
+/**
+ * Spacing Token System
+ * 
+ * Consistent spacing scale for margins, padding, and gaps.
+ * Based on 4px base unit.
+ */
+
+/* Spacing Variables */
+:root {
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 96px;
+}
+
+/* Margin Utilities */
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+.m-2xl { margin: var(--spacing-2xl); }
+.m-3xl { margin: var(--spacing-3xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-2xl { margin-top: var(--spacing-2xl); }
+.mt-3xl { margin-top: var(--spacing-3xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-2xl { margin-bottom: var(--spacing-2xl); }
+.mb-3xl { margin-bottom: var(--spacing-3xl); }
+
+.ml-0 { margin-left: 0; }
+.ml-xs { margin-left: var(--spacing-xs); }
+.ml-sm { margin-left: var(--spacing-sm); }
+.ml-md { margin-left: var(--spacing-md); }
+.ml-lg { margin-left: var(--spacing-lg); }
+.ml-xl { margin-left: var(--spacing-xl); }
+.ml-auto { margin-left: auto; }
+
+.mr-0 { margin-right: 0; }
+.mr-xs { margin-right: var(--spacing-xs); }
+.mr-sm { margin-right: var(--spacing-sm); }
+.mr-md { margin-right: var(--spacing-md); }
+.mr-lg { margin-right: var(--spacing-lg); }
+.mr-xl { margin-right: var(--spacing-xl); }
+.mr-auto { margin-right: auto; }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding Utilities */
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+.p-2xl { padding: var(--spacing-2xl); }
+.p-3xl { padding: var(--spacing-3xl); }
+
+.pt-0 { padding-top: 0; }
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+.pt-2xl { padding-top: var(--spacing-2xl); }
+.pt-3xl { padding-top: var(--spacing-3xl); }
+
+.pb-0 { padding-bottom: 0; }
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+.pb-2xl { padding-bottom: var(--spacing-2xl); }
+.pb-3xl { padding-bottom: var(--spacing-3xl); }
+
+.pl-0 { padding-left: 0; }
+.pl-xs { padding-left: var(--spacing-xs); }
+.pl-sm { padding-left: var(--spacing-sm); }
+.pl-md { padding-left: var(--spacing-md); }
+.pl-lg { padding-left: var(--spacing-lg); }
+.pl-xl { padding-left: var(--spacing-xl); }
+
+.pr-0 { padding-right: 0; }
+.pr-xs { padding-right: var(--spacing-xs); }
+.pr-sm { padding-right: var(--spacing-sm); }
+.pr-md { padding-right: var(--spacing-md); }
+.pr-lg { padding-right: var(--spacing-lg); }
+.pr-xl { padding-right: var(--spacing-xl); }
+
+/* Gap Utilities (for flexbox/grid) */
+.gap-0 { gap: 0; }
+.gap-xs { gap: var(--spacing-xs); }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+.gap-xl { gap: var(--spacing-xl); }
+.gap-2xl { gap: var(--spacing-2xl); }
+.gap-3xl { gap: var(--spacing-3xl); }
+
+/* ============================================
+   4. FOCUS & ACCESSIBILITY STATES
+   ============================================ */
+
+/**
+ * Focus & Accessibility System
+ *
+ * Provides consistent focus indicators and accessibility features.
+ * Supports keyboard navigation and screen readers.
+ */
+
+/* Focus Visible (Modern Browsers) */
+:focus-visible {
+    outline: 3px solid var(--theme-focus-ring, var(--color-brand-primary, #0066ff));
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Interactive Elements Focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--theme-focus-ring, rgba(0, 102, 255, 0.5));
+    outline-offset: 2px;
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-brand-primary, #0066ff);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    font-weight: 600;
+    z-index: 10000;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 3px solid var(--theme-focus-ring, rgba(255, 255, 255, 0.5));
+    outline-offset: -3px;
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Screen Reader Only Focusable */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    :root {
+        --theme-border: #000000;
+        --theme-text-primary: #000000;
+    }
+    
+    :root.theme-dark {
+        --theme-border: #ffffff;
+        --theme-text-primary: #ffffff;
+    }
+}
+
+/* Keyboard Navigation Indicator */
+body.user-is-tabbing *:focus {
+    outline: 3px solid var(--theme-focus-ring, #0066ff) !important;
+    outline-offset: 2px !important;
+}
+
+
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/**
+ * Utility Classes
+ *
+ * Single-purpose utility classes for rapid layout and styling.
+ * Keep these flat (no BEM) for brevity and ease of use.
+ */
+
+/* LAYOUT UTILITIES */
+
+/* Flexbox */
+.flex { display: flex; }
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+
+/* Flex Justify */
+.justify-flex-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-flex-end { justify-content: flex-end; }
+.justify-space-between { justify-content: space-between; }
+
+/* Flex Align */
+.align-flex-start { align-items: flex-start; }
+.align-center { align-items: center; }
+.align-flex-end { align-items: flex-end; }
+
+/* Grid Utilities */
+.grid { display: grid; }
+.grid-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.grid-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+
+/* SPACING UTILITIES */
+
+/* Gap */
+.gap-4 { gap: 4px; }
+.gap-8 { gap: 8px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.gap-32 { gap: 32px; }
+
+/* Margin Bottom */
+.mb-0 { margin-bottom: 0; }
+.mb-4 { margin-bottom: 4px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+
+/* Margin Top */
+.mt--50 { margin-top: -50px; }
+.mt-0 { margin-top: 0; }
+.mt-4 { margin-top: 4px; }
+.mt-8 { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+
+/* Padding Bottom */
+.pb-0 { padding-bottom: 0; }
+.pb-4 { padding-bottom: 4px; }
+.pb-8 { padding-bottom: 8px; }
+.pb-16 { padding-bottom: 16px; }
+.pb-24 { padding-bottom: 24px; }
+.pb-32 { padding-bottom: 32px; }
+
+/* Padding Top */
+.pt-0 { padding-top: 0; }
+.pt-4 { padding-top: 4px; }
+.pt-8 { padding-top: 8px; }
+.pt-16 { padding-top: 16px; }
+.pt-24 { padding-top: 24px; }
+.pt-32 { padding-top: 32px; }
+
+/* TEXT UTILITIES */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-lead {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.text-large {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.text-muted {
+    color: var(--color-text-tertiary, #999);
+    font-size: 14px;
+}
+
+/* GRADIENT UTILITES */
+
+.gradient-light {
+    background: linear-gradient(135deg, var(--color-brand-primary-light, #f0f7ff) 0%, var(--color-white, #ffffff) 100%);
+    text-align: center;
+}
+
+.gradient-dark {
+    background: linear-gradient(135deg, var(--color-brand-primary, #272727) 0%, var(--color-white, #ffffff) 100%);
+    text-align: center;
+}
+
+.gradient-accent {
+    background: linear-gradient(135deg, var(--color-brand-accent, #0066cc) 0%, var(--color-white, #ffffff) 100%);
+    text-align: center;
+}
+
+
+
+
+/* ============================================
+   END FOUNDATION PACKAGE
+   ============================================ */

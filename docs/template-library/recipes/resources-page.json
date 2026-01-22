@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "id": "resources-page",
+    "name": "Resources Page Recipe",
+    "type": "recipe",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "description": "Content-rich resource page for documentation, guides, links, and reference materials",
+    "tags": ["resources", "documentation", "content", "reference"],
+    "reference_file": "templates/pages/4dli/slug-resources.php, brand-guide pages"
+  },
+
+  "use_cases": [
+    "Resource libraries",
+    "Documentation hubs",
+    "Brand guidelines",
+    "Link collections",
+    "Reference materials",
+    "Knowledge bases"
+  ],
+
+  "content_type": "Type 1: Well-structured content",
+  "assembly_mode": "Fixed sequence (recipe)",
+
+  "sequence": [
+    {
+      "order": 1,
+      "component": "hero-with-badge",
+      "required": true,
+      "description": "Page header with resource type identifier",
+      "placeholders": {
+        "BADGE_TEXT": "{{RESOURCE_TYPE}}",
+        "BADGE_MODIFIER": "info",
+        "PAGE_TITLE": "{{RESOURCE_TITLE}}",
+        "PAGE_SUBTITLE": "{{RESOURCE_TAGLINE}}"
+      },
+      "client_notes": "Identifies the type of resources (Guidelines, Documentation, etc.)"
+    },
+
+    {
+      "order": 2,
+      "component": "intro-text-section",
+      "required": false,
+      "description": "Overview of the resources and how to use them",
+      "placeholders": {
+        "INTRO_TEXT": "{{OVERVIEW_TEXT}}"
+      },
+      "client_notes": "Brief introduction to resource collection"
+    },
+
+    {
+      "order": 3,
+      "component": "resource-category-section",
+      "required": true,
+      "repeatable": true,
+      "description": "Resource category with items",
+      "placeholders": {
+        "SECTION_TITLE": "{{CATEGORY_TITLE}}",
+        "SECTION_SUBTITLE": "{{CATEGORY_DESCRIPTION}}",
+        "RESOURCE_ITEMS": "{{RESOURCE_LIST}}"
+      },
+      "variations": {
+        "list_style": "arrow list for links, check list for included items",
+        "dark_mode": "alternate dark/light for visual rhythm"
+      },
+      "client_notes": "Repeatable section for each resource category"
+    },
+
+    {
+      "order": 4,
+      "component": "download-section",
+      "required": false,
+      "description": "Downloadable files or assets",
+      "placeholders": {
+        "SECTION_TITLE": "Downloads",
+        "SECTION_SUBTITLE": "{{DOWNLOADS_SUBTITLE}}",
+        "DOWNLOAD_ITEMS": "{{DOWNLOADS_ARRAY}}"
+      },
+      "download_structure": {
+        "per_item": ["FILE_NAME", "FILE_TYPE", "FILE_SIZE", "DOWNLOAD_URL", "DESCRIPTION"]
+      },
+      "client_notes": "Available downloads (PDFs, assets, templates)"
+    },
+
+    {
+      "order": 5,
+      "component": "quick-links-grid",
+      "required": false,
+      "description": "Quick access grid to external resources or related pages",
+      "placeholders": {
+        "SECTION_TITLE": "Quick Links",
+        "SECTION_SUBTITLE": "{{LINKS_SUBTITLE}}",
+        "LINKS": "{{QUICK_LINKS_ARRAY}}"
+      },
+      "client_notes": "Grid of linked cards to related resources"
+    },
+
+    {
+      "order": 6,
+      "component": "faq-or-guidelines",
+      "required": false,
+      "description": "Frequently asked questions or usage guidelines",
+      "placeholders": {
+        "SECTION_TITLE": "{{FAQ_TITLE}}",
+        "SECTION_SUBTITLE": "{{FAQ_SUBTITLE}}",
+        "FAQ_ITEMS": "{{FAQ_ARRAY}}"
+      },
+      "client_notes": "Help users understand how to use resources"
+    },
+
+    {
+      "order": 7,
+      "component": "cta-with-buttons",
+      "required": false,
+      "description": "Call to action (contact for questions, request access, etc.)",
+      "placeholders": {
+        "CTA_TITLE": "{{CTA_HEADING}}",
+        "CTA_SUBTITLE": "{{CTA_SUBHEADING}}",
+        "CTA_BODY_TEXT": "{{CTA_TEXT}}",
+        "PRIMARY_BUTTON_TEXT": "{{PRIMARY_ACTION}}",
+        "PRIMARY_BUTTON_URL": "{{PRIMARY_URL}}",
+        "SECONDARY_BUTTON_TEXT": "{{SECONDARY_ACTION}}",
+        "SECONDARY_BUTTON_URL": "{{SECONDARY_URL}}"
+      },
+      "client_notes": "Optional CTA for questions or additional help"
+    },
+
+    {
+      "order": 8,
+      "component": "footer-info",
+      "required": true,
+      "description": "Last updated timestamp",
+      "placeholders": {
+        "STATUS_TEXT": "{{RESOURCE_STATUS}}",
+        "LAST_UPDATED": "{{UPDATE_DATE}}"
+      },
+      "client_notes": "Shows when resources were last updated"
+    }
+  ],
+
+  "required_data": {
+    "hero": {
+      "RESOURCE_TYPE": "string (required) - e.g., 'Brand Guidelines', 'Documentation', 'Resources'",
+      "RESOURCE_TITLE": "string (required)",
+      "RESOURCE_TAGLINE": "string (optional)"
+    },
+    "intro": {
+      "OVERVIEW_TEXT": "string (optional) - brief introduction"
+    },
+    "categories": {
+      "CATEGORIES_ARRAY": "array (required) - each with CATEGORY_TITLE, CATEGORY_DESCRIPTION, RESOURCE_LIST"
+    },
+    "downloads": {
+      "DOWNLOADS_SUBTITLE": "string (optional)",
+      "DOWNLOADS_ARRAY": "array (optional) - downloadable files with metadata"
+    },
+    "quick_links": {
+      "LINKS_SUBTITLE": "string (optional)",
+      "QUICK_LINKS_ARRAY": "array (optional) - external or internal links"
+    },
+    "footer": {
+      "RESOURCE_STATUS": "string (required)",
+      "UPDATE_DATE": "string (required)"
+    }
+  },
+
+  "validation_rules": {
+    "required_sections": ["hero-with-badge", "resource-category-section", "footer-info"],
+    "recommended_sections": ["intro-text-section", "download-section", "quick-links-grid"],
+    "section_order": "sequential",
+    "dark_light_alternation": true,
+    "allow_category_repetition": true
+  },
+
+  "ai_generation_instructions": {
+    "mode": "recipe_follow",
+    "steps": [
+      "1. Load resource page data",
+      "2. Generate hero with resource type badge",
+      "3. Add intro if provided",
+      "4. Generate resource categories in sequence",
+      "5. Add downloads section if files provided",
+      "6. Add quick links if provided",
+      "7. Add optional FAQ/guidelines",
+      "8. Add optional CTA",
+      "9. Add footer with last updated",
+      "10. Generate PHP template"
+    ],
+    "strict_mode": false,
+    "allow_reordering": false,
+    "allow_component_substitution": false,
+    "component_preference": "use_exactly_as_specified",
+    "content_focus": "clarity_and_accessibility"
+  },
+
+  "output_format": {
+    "file_type": "PHP template",
+    "header": "Standard WordPress template header with filepath",
+    "structure": "Sequential partial() calls as per recipe",
+    "namespace_usage": "top-section for hero, pro-sites for content, brand-guide for specialized sections",
+    "footer": "Standard get_footer() call"
+  },
+
+  "client_review_format": {
+    "format": "markdown",
+    "structure": "Category-by-category breakdown with resource lists",
+    "purpose": "Client verifies resource organization and links",
+    "focus_areas": ["category organization", "link accuracy", "download availability"]
+  },
+
+  "content_organization": {
+    "structure": "Hierarchical categories for easy navigation",
+    "list_types": "Arrow lists for links, check lists for included features",
+    "downloads": "Clear file metadata (type, size) with descriptions",
+    "visual_breaks": "Alternate dark/light between major categories",
+    "updates": "Always include last updated timestamp"
+  },
+
+  "variations": {
+    "brand_guidelines": "Color palettes, typography, logo usage",
+    "documentation_hub": "API docs, guides, tutorials, references",
+    "link_directory": "Curated external links organized by category",
+    "asset_library": "Downloadable templates, images, files",
+    "knowledge_base": "Articles, FAQs, how-tos organized by topic"
+  }
+}

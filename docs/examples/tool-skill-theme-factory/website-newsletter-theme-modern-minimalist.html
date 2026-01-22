@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Modern Minimalist</title>
+    <style>
+        /* Modern Minimalist Theme Colors */
+        :root {
+            --charcoal: #36454f;
+            --slate-gray: #708090;
+            --light-gray: #d3d3d3;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        .newsletter {
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .header {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 50px 50px 40px 50px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 36px;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .issue-info {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--slate-gray);
+            font-size: 13px;
+            color: var(--light-gray);
+        }
+        
+        /* Hero Article */
+        .hero-article {
+            padding: 50px;
+            border-bottom: 3px solid var(--light-gray);
+        }
+        
+        .hero-category {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--slate-gray);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .hero-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 36px;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .hero-excerpt {
+            font-size: 18px;
+            color: var(--slate-gray);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--slate-gray) 100%);
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--charcoal);
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid var(--charcoal);
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--slate-gray);
+            border-color: var(--slate-gray);
+        }
+        
+        /* Articles Grid */
+        .articles-section {
+            padding: 50px;
+        }
+        
+        .section-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--charcoal);
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--charcoal);
+        }
+        
+        .article-card {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .article-card:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .article-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--slate-gray);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .article-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .article-excerpt {
+            font-size: 15px;
+            color: var(--slate-gray);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .article-meta {
+            font-size: 13px;
+            color: var(--slate-gray);
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Quick Links Section */
+        .quick-links-section {
+            background-color: var(--light-gray);
+            padding: 40px 50px;
+        }
+        
+        .quick-links-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--charcoal);
+            margin-bottom: 25px;
+        }
+        
+        .quick-link-item {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .quick-link-bullet {
+            width: 6px;
+            height: 6px;
+            background-color: var(--charcoal);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+        
+        .quick-link-content {
+            flex: 1;
+        }
+        
+        .quick-link-title {
+            font-weight: bold;
+            color: var(--charcoal);
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        
+        .quick-link-description {
+            font-size: 14px;
+            color: var(--slate-gray);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 40px 50px;
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+        
+        .stats-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-value {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--light-gray);
+        }
+        
+        /* Events Section */
+        .events-section {
+            padding: 40px 50px;
+        }
+        
+        .event-card {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        
+        .event-date {
+            background-color: var(--charcoal);
+            color: var(--white);
+            display: inline-block;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .event-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+        
+        .event-details {
+            font-size: 14px;
+            color: var(--slate-gray);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--charcoal);
+            color: var(--light-gray);
+            padding: 40px 50px;
+            text-align: center;
+        }
+        
+        .footer-company {
+            font-weight: bold;
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-address {
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .social-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--white);
+        }
+        
+        .footer-legal {
+            font-size: 12px;
+            padding-top: 25px;
+            border-top: 1px solid var(--slate-gray);
+        }
+        
+        .footer-legal a {
+            color: var(--light-gray);
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header,
+            .hero-article,
+            .articles-section,
+            .quick-links-section,
+            .stats-section,
+            .events-section,
+            .footer {
+                padding: 30px 25px;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newsletter">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">TECH INSIGHTS</div>
+            <div class="tagline">Your Weekly Technology Newsletter</div>
+            <div class="issue-info">Issue #47 • November 2, 2025</div>
+        </div>
+        
+        <!-- Hero Article -->
+        <div class="hero-article">
+            <div class="hero-category">Featured Story</div>
+            <h1 class="hero-title">The Quantum Computing Breakthrough That Changes Everything</h1>
+            <p class="hero-excerpt">
+                Researchers at MIT have achieved a major milestone in quantum error correction, bringing practical quantum computers one step closer to reality. This breakthrough could revolutionize drug discovery, cryptography, and artificial intelligence within the next decade.
+            </p>
+            <div class="hero-image">[Quantum Computer Laboratory Image]</div>
+            <p class="hero-excerpt">
+                The new error correction technique reduces quantum bit error rates by 99.5%, solving one of the fundamental challenges that has prevented quantum computers from scaling. "This is the moment we've been working toward for 30 years," says Dr. Elena Rodriguez, lead researcher on the project.
+            </p>
+            <a href="#" class="read-more">Read Full Article →</a>
+        </div>
+        
+        <!-- Main Articles -->
+        <div class="articles-section">
+            <h2 class="section-title">This Week's Top Stories</h2>
+            
+            <div class="article-card">
+                <div class="article-category">Artificial Intelligence</div>
+                <h3 class="article-title">New AI Model Achieves Human-Level Performance in Medical Diagnosis</h3>
+                <p class="article-excerpt">
+                    A new AI system developed by Stanford researchers can diagnose rare diseases with 94% accuracy, matching the performance of experienced specialists. The model was trained on anonymized data from 10 million patient records and can identify patterns invisible to human doctors.
+                </p>
+                <div class="article-meta">
+                    <span>By Sarah Chen</span>
+                    <span>•</span>
+                    <span>5 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="article-card">
+                <div class="article-category">Cybersecurity</div>
+                <h3 class="article-title">Major Security Vulnerability Discovered in Popular IoT Devices</h3>
+                <p class="article-excerpt">
+                    Security researchers have identified a critical vulnerability affecting over 50 million smart home devices. Manufacturers are rushing to release patches, but experts warn that many devices may never receive updates. Here's what you need to know to protect your smart home.
+                </p>
+                <div class="article-meta">
+                    <span>By Marcus Johnson</span>
+                    <span>•</span>
+                    <span>4 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="article-card">
+                <div class="article-category">Green Technology</div>
+                <h3 class="article-title">Solar Panel Efficiency Reaches Record 40% in Laboratory Tests</h3>
+                <p class="article-excerpt">
+                    Scientists at the National Renewable Energy Laboratory have developed a new multi-junction solar cell that converts 40% of sunlight into electricity, surpassing the previous record of 39.5%. The technology could make solar power more competitive with fossil fuels in all climates.
+                </p>
+                <div class="article-meta">
+                    <span>By Alex Rivera</span>
+                    <span>•</span>
+                    <span>6 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            
+            <div class="article-card">
+                <div class="article-category">Space Exploration</div>
+                <h3 class="article-title">NASA Confirms Water Ice in Permanently Shadowed Moon Craters</h3>
+                <p class="article-excerpt">
+                    New data from the Lunar Reconnaissance Orbiter confirms significant deposits of water ice in craters near the moon's south pole. This discovery could provide crucial resources for future lunar bases and make Mars missions more feasible by reducing the need to transport water from Earth.
+                </p>
+                <div class="article-meta">
+                    <span>By David Kim</span>
+                    <span>•</span>
+                    <span>7 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="quick-links-section">
+            <h3 class="quick-links-title">Quick Reads</h3>
+            
+            <div class="quick-link-item">
+                <div class="quick-link-bullet"></div>
+                <div class="quick-link-content">
+                    <div class="quick-link-title">Apple Announces New M5 Chip with 50% Performance Boost</div>
+                    <div class="quick-link-description">The latest processor promises breakthrough performance for AI workloads</div>
+                </div>
+            </div>
+            
+            <div class="quick-link-item">
+                <div class="quick-link-bullet"></div>
+                <div class="quick-link-content">
+                    <div class="quick-link-title">GitHub Copilot Now Supports 20 Programming Languages</div>
+                    <div class="quick-link-description">AI coding assistant expands language support including Rust and Go</div>
+                </div>
+            </div>
+            
+            <div class="quick-link-item">
+                <div class="quick-link-bullet"></div>
+                <div class="quick-link-content">
+                    <div class="quick-link-title">Tesla's New Battery Technology Promises 500-Mile Range</div>
+                    <div class="quick-link-description">Revolutionary battery chemistry could transform electric vehicle adoption</div>
+                </div>
+            </div>
+            
+            <div class="quick-link-item">
+                <div class="quick-link-bullet"></div>
+                <div class="quick-link-content">
+                    <div class="quick-link-title">Meta Launches Metaverse Development Platform for Educators</div>
+                    <div class="quick-link-description">New tools enable teachers to create immersive learning experiences</div>
+                </div>
+            </div>
+            
+            <div class="quick-link-item">
+                <div class="quick-link-bullet"></div>
+                <div class="quick-link-content">
+                    <div class="quick-link-title">Breakthrough in Fusion Energy: Net Positive Output Achieved Again</div>
+                    <div class="quick-link-description">Second successful fusion experiment raises hopes for clean energy future</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <h3 class="stats-title">By the Numbers</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">45M</div>
+                    <div class="stat-label">Daily Active AI Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$2.8T</div>
+                    <div class="stat-label">Global Tech Market Cap</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">87%</div>
+                    <div class="stat-label">Cloud Adoption Rate</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Events Section -->
+        <div class="events-section">
+            <h2 class="section-title">Upcoming Events</h2>
+            
+            <div class="event-card">
+                <div class="event-date">Nov 15, 2025</div>
+                <div class="event-title">AI Summit 2025: The Future of Intelligence</div>
+                <div class="event-details">
+                    Virtual conference featuring keynotes from leading AI researchers and industry executives. Register now for early bird pricing.
+                </div>
+            </div>
+            
+            <div class="event-card">
+                <div class="event-date">Nov 20-22, 2025</div>
+                <div class="event-title">CyberSec World Conference</div>
+                <div class="event-details">
+                    Join 5,000+ security professionals in Las Vegas for the year's premier cybersecurity event. Workshops, exhibits, and networking.
+                </div>
+            </div>
+            
+            <div class="event-card">
+                <div class="event-date">Dec 5, 2025</div>
+                <div class="event-title">Quantum Computing Workshop: Hands-On Introduction</div>
+                <div class="event-details">
+                    Learn the fundamentals of quantum computing in this intensive one-day workshop. Limited spots available.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-company">TECH INSIGHTS</div>
+            <div class="footer-address">
+                123 Innovation Drive, Suite 400<br>
+                San Francisco, CA 94105
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">YouTube</a>
+            </div>
+            
+            <div class="footer-legal">
+                <p>© 2025 Tech Insights. All rights reserved.</p>
+                <p style="margin-top: 10px;">
+                    <a href="#">Unsubscribe</a> | 
+                    <a href="#">Update Preferences</a> | 
+                    <a href="#">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

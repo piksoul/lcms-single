@@ -1,0 +1,211 @@
+/**
+ * LeanCMS Design System
+ * Component: Hero
+ *
+ * Large header section with logo, badge, title and subtitle.
+ * Typically used at the top of landing pages.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Design_System
+ * @since      1.4.9
+ * @filepath   templates/assets/global/components/lcms-hero.css
+ */
+
+/* ============================================
+   BLOCK: Hero
+   ============================================ */
+
+.lcms-hero {
+    background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%);
+    color: white;
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-hero__logo {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+}
+
+.lcms-hero__badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lcms-hero__title {
+    font-size: 56px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.lcms-hero__subtitle {
+    font-size: 24px;
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+/* ============================================
+   MODIFIERS: Background Variants
+   ============================================ */
+
+.lcms-hero--primary {
+    background: var(--color-brand-primary);
+}
+
+.lcms-hero--secondary {
+    background: var(--color-brand-secondary);
+}
+
+.lcms-hero--accent {
+    background: var(--color-brand-accent);
+}
+
+.lcms-hero--dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+}
+
+.lcms-hero--light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: var(--color-text-primary);
+}
+
+.lcms-hero--light .lcms-hero__badge {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-hero--small {
+    padding: 60px 40px;
+}
+
+.lcms-hero--small .lcms-hero__title {
+    font-size: 42px;
+}
+
+.lcms-hero--small .lcms-hero__subtitle {
+    font-size: 18px;
+}
+
+.lcms-hero--large {
+    padding: 140px 80px;
+}
+
+.lcms-hero--large .lcms-hero__title {
+    font-size: 72px;
+}
+
+.lcms-hero--large .lcms-hero__subtitle {
+    font-size: 28px;
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-hero--left {
+    text-align: left;
+}
+
+.lcms-hero--left .lcms-hero__logo {
+    margin-left: 0;
+}
+
+.lcms-hero--left .lcms-hero__subtitle {
+    margin-left: 0;
+}
+
+.lcms-hero--right {
+    text-align: right;
+}
+
+.lcms-hero--right .lcms-hero__logo {
+    margin-right: 0;
+}
+
+.lcms-hero--right .lcms-hero__subtitle {
+    margin-right: 0;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-hero {
+        padding: 80px 30px;
+    }
+
+    .lcms-hero__title {
+        font-size: 36px;
+    }
+
+    .lcms-hero__subtitle {
+        font-size: 18px;
+    }
+
+    .lcms-hero--small {
+        padding: 50px 25px;
+    }
+
+    .lcms-hero--small .lcms-hero__title {
+        font-size: 28px;
+    }
+
+    .lcms-hero--small .lcms-hero__subtitle {
+        font-size: 16px;
+    }
+
+    .lcms-hero--large {
+        padding: 100px 40px;
+    }
+
+    .lcms-hero--large .lcms-hero__title {
+        font-size: 48px;
+    }
+
+    .lcms-hero--large .lcms-hero__subtitle {
+        font-size: 20px;
+    }
+
+    /* Force center alignment on mobile */
+    .lcms-hero--left,
+    .lcms-hero--right {
+        text-align: center;
+    }
+
+    .lcms-hero--left .lcms-hero__logo,
+    .lcms-hero--right .lcms-hero__logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lcms-hero--left .lcms-hero__subtitle,
+    .lcms-hero--right .lcms-hero__subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

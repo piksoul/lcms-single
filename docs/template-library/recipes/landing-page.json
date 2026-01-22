@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "id": "landing-page",
+    "name": "Landing Page Recipe",
+    "type": "recipe",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "description": "Comprehensive landing page for products, services, or projects with conversion focus",
+    "tags": ["landing", "conversion", "marketing", "full-page"],
+    "reference_file": "templates/pages/proj/slug-project-overview.php"
+  },
+
+  "use_cases": [
+    "Product launches",
+    "Service offerings",
+    "Project overviews",
+    "Marketing campaigns",
+    "Lead generation pages"
+  ],
+
+  "content_type": "Type 1: Well-structured content",
+  "assembly_mode": "Fixed sequence (recipe)",
+
+  "sequence": [
+    {
+      "order": 1,
+      "component": "hero-with-badge",
+      "required": true,
+      "description": "Opening hero with product/service name and tagline",
+      "placeholders": {
+        "BADGE_TEXT": "{{PAGE_BADGE}}",
+        "BADGE_MODIFIER": "primary",
+        "PAGE_TITLE": "{{PRODUCT_NAME}}",
+        "PAGE_SUBTITLE": "{{PRODUCT_TAGLINE}}"
+      },
+      "client_notes": "Main landing page hero - first impression"
+    },
+
+    {
+      "order": 2,
+      "component": "summary-text-2col",
+      "required": false,
+      "description": "Project/product summary with overview and key highlights",
+      "placeholders": {
+        "SUMMARY_TEXT": "{{OVERVIEW_TEXT}}",
+        "HIGHLIGHTS_LIST": "{{KEY_HIGHLIGHTS}}"
+      },
+      "client_notes": "Executive summary and key highlights"
+    },
+
+    {
+      "order": 3,
+      "component": "value-propositions",
+      "required": true,
+      "description": "What makes this unique or valuable",
+      "placeholders": {
+        "SECTION_TITLE": "{{VALUE_PROP_TITLE}}",
+        "SECTION_SUBTITLE": "{{VALUE_PROP_SUBTITLE}}",
+        "VALUE_POINTS": "{{VALUE_LIST}}"
+      },
+      "client_notes": "Core value propositions or unique selling points"
+    },
+
+    {
+      "order": 4,
+      "component": "target-audience-grid",
+      "required": false,
+      "description": "Who this is for - target market segments",
+      "placeholders": {
+        "SECTION_TITLE": "Target Market",
+        "SECTION_SUBTITLE": "{{TARGET_SUBTITLE}}",
+        "AUDIENCES": "{{TARGET_AUDIENCE_ARRAY}}"
+      },
+      "audience_structure": {
+        "count": 4,
+        "per_item": ["ICON", "TITLE", "DESCRIPTION"]
+      },
+      "client_notes": "4 target audience segments with icons and descriptions"
+    },
+
+    {
+      "order": 5,
+      "component": "metrics-grid-4col",
+      "required": false,
+      "description": "Key metrics, statistics, or KPIs",
+      "placeholders": {
+        "SECTION_TITLE": "Key Metrics",
+        "SECTION_SUBTITLE": "{{METRICS_SUBTITLE}}",
+        "METRICS": "{{METRICS_ARRAY}}"
+      },
+      "metrics_structure": {
+        "count": 4,
+        "per_metric": ["LABEL", "VALUE", "DESCRIPTION"]
+      },
+      "client_notes": "Showcase impressive numbers or achievements"
+    },
+
+    {
+      "order": 6,
+      "component": "benefits-or-features",
+      "required": true,
+      "description": "Core benefits or feature list",
+      "placeholders": {
+        "SECTION_TITLE": "{{BENEFITS_TITLE}}",
+        "SECTION_SUBTITLE": "{{BENEFITS_SUBTITLE}}",
+        "BENEFITS_LIST": "{{BENEFITS_ARRAY}}"
+      },
+      "client_notes": "Main benefits or features that drive value"
+    },
+
+    {
+      "order": 7,
+      "component": "social-proof-or-trust",
+      "required": false,
+      "description": "Competitive advantages, testimonials, or trust indicators",
+      "placeholders": {
+        "SECTION_TITLE": "{{TRUST_TITLE}}",
+        "SECTION_SUBTITLE": "{{TRUST_SUBTITLE}}",
+        "TRUST_ITEMS": "{{TRUST_INDICATORS}}"
+      },
+      "client_notes": "Build credibility and trust"
+    },
+
+    {
+      "order": 8,
+      "component": "next-steps-timeline",
+      "required": false,
+      "description": "Roadmap or implementation timeline",
+      "placeholders": {
+        "SECTION_TITLE": "Next Steps",
+        "SECTION_SUBTITLE": "How we move forward",
+        "IMMEDIATE_TASKS": "{{IMMEDIATE_STEPS}}",
+        "SHORTTERM_TASKS": "{{SHORTTERM_STEPS}}",
+        "LONGTERM_TASKS": "{{LONGTERM_STEPS}}"
+      },
+      "client_notes": "Show the path forward with clear phases"
+    },
+
+    {
+      "order": 9,
+      "component": "cta-with-buttons",
+      "required": true,
+      "description": "Primary conversion call-to-action",
+      "placeholders": {
+        "CTA_TITLE": "{{CTA_HEADING}}",
+        "CTA_SUBTITLE": "{{CTA_SUBHEADING}}",
+        "CTA_BODY_TEXT": "{{CTA_TEXT}}",
+        "PRIMARY_BUTTON_TEXT": "{{PRIMARY_ACTION}}",
+        "PRIMARY_BUTTON_URL": "{{PRIMARY_URL}}",
+        "SECONDARY_BUTTON_TEXT": "{{SECONDARY_ACTION}}",
+        "SECONDARY_BUTTON_URL": "{{SECONDARY_URL}}"
+      },
+      "client_notes": "Main conversion point - critical section"
+    },
+
+    {
+      "order": 10,
+      "component": "footer-info",
+      "required": false,
+      "description": "Page metadata and last updated",
+      "placeholders": {
+        "STATUS_TEXT": "{{PAGE_STATUS}}",
+        "LAST_UPDATED": "{{UPDATE_DATE}}"
+      },
+      "client_notes": "Footer information"
+    }
+  ],
+
+  "required_data": {
+    "hero": {
+      "PAGE_BADGE": "string (optional) - e.g., 'Overview', 'Launch 2025'",
+      "PRODUCT_NAME": "string (required)",
+      "PRODUCT_TAGLINE": "string (required)"
+    },
+    "value_props": {
+      "VALUE_PROP_TITLE": "string (required)",
+      "VALUE_PROP_SUBTITLE": "string (optional)",
+      "VALUE_LIST": "array (required) - 3-5 key value points"
+    },
+    "target_audience": {
+      "TARGET_SUBTITLE": "string (optional)",
+      "TARGET_AUDIENCE_ARRAY": "array (optional) - 4 audience segments with icon, title, description"
+    },
+    "metrics": {
+      "METRICS_SUBTITLE": "string (optional)",
+      "METRICS_ARRAY": "array (optional) - 4 metrics with label, value, description"
+    },
+    "benefits": {
+      "BENEFITS_TITLE": "string (required)",
+      "BENEFITS_SUBTITLE": "string (optional)",
+      "BENEFITS_ARRAY": "array (required)"
+    },
+    "cta": {
+      "CTA_HEADING": "string (required)",
+      "CTA_SUBHEADING": "string (optional)",
+      "CTA_TEXT": "string (required)",
+      "PRIMARY_ACTION": "string (required)",
+      "PRIMARY_URL": "string (required)",
+      "SECONDARY_ACTION": "string (optional)",
+      "SECONDARY_URL": "string (optional)"
+    }
+  },
+
+  "validation_rules": {
+    "required_sections": ["hero-with-badge", "value-propositions", "benefits-or-features", "cta-with-buttons"],
+    "recommended_sections": ["target-audience-grid", "metrics-grid-4col", "next-steps-timeline"],
+    "section_order": "sequential",
+    "dark_light_alternation": true
+  },
+
+  "ai_generation_instructions": {
+    "mode": "recipe_follow",
+    "steps": [
+      "1. Load required landing page data",
+      "2. Validate required sections have data",
+      "3. Generate sections in sequence",
+      "4. Alternate dark/light backgrounds",
+      "5. Focus on conversion optimization",
+      "6. Use compelling action-oriented copy",
+      "7. Generate PHP template"
+    ],
+    "strict_mode": false,
+    "allow_reordering": false,
+    "allow_component_substitution": false,
+    "component_preference": "use_exactly_as_specified",
+    "conversion_focus": true
+  },
+
+  "output_format": {
+    "file_type": "PHP template",
+    "header": "Standard WordPress template header with filepath",
+    "structure": "Sequential partial() calls as per recipe",
+    "namespace_usage": "top-section for hero, pro-sites for all others",
+    "footer": "Standard get_footer() call"
+  },
+
+  "client_review_format": {
+    "format": "markdown",
+    "structure": "Section-by-section breakdown with placeholder values",
+    "purpose": "Client reviews content before PHP generation",
+    "focus_areas": ["value propositions", "CTA copy", "key metrics"]
+  },
+
+  "conversion_optimization": {
+    "hero": "Strong value proposition immediately visible",
+    "flow": "Problem → Solution → Benefits → Proof → Action",
+    "cta_placement": "Primary CTA near end after building value",
+    "visual_rhythm": "Alternate content density to maintain engagement",
+    "social_proof": "Include trust indicators before final CTA"
+  }
+}

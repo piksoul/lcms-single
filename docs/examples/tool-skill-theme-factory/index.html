@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Factory - One Pager Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #444;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .theme-card {
+            background: #2a2a2a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .theme-header {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .theme-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-content {
+            padding: 25px;
+            background: #1a1a1a;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .theme-description {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #444;
+        }
+
+        .use-cases {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Individual theme colors */
+        .tech-innovation .theme-header { background: linear-gradient(135deg, #0066ff 0%, #00ffff 100%); }
+        .tech-innovation .theme-title { color: #00ffff; text-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+
+        .ocean-depths .theme-header { background: linear-gradient(135deg, #1a2332 0%, #2d8b8b 100%); }
+        .ocean-depths .theme-title { color: #a8dadc; }
+
+        .sunset-boulevard .theme-header { background: linear-gradient(135deg, #e76f51 0%, #f4a261 100%); }
+        .sunset-boulevard .theme-title { color: #264653; }
+
+        .forest-canopy .theme-header { background: linear-gradient(135deg, #2d4a2b 0%, #7d8471 100%); }
+        .forest-canopy .theme-title { color: #faf9f6; }
+
+        .modern-minimalist .theme-header { background: linear-gradient(135deg, #36454f 0%, #708090 100%); }
+        .modern-minimalist .theme-title { color: #ffffff; }
+
+        .golden-hour .theme-header { background: linear-gradient(135deg, #f4a900 0%, #c1666b 100%); }
+        .golden-hour .theme-title { color: #4a403a; }
+
+        .arctic-frost .theme-header { background: linear-gradient(135deg, #4a6fa5 0%, #d4e4f7 100%); }
+        .arctic-frost .theme-title { color: #fafafa; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+
+        .desert-rose .theme-header { background: linear-gradient(135deg, #d4a5a5 0%, #b87d6d 100%); }
+        .desert-rose .theme-title { color: #5d2e46; }
+
+        .botanical-garden .theme-header { background: linear-gradient(135deg, #4a7c59 0%, #f9a620 100%); }
+        .botanical-garden .theme-title { color: #f5f3ed; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+
+        .midnight-galaxy .theme-header { background: linear-gradient(135deg, #2b1e3e 0%, #4a4e8f 100%); }
+        .midnight-galaxy .theme-title { color: #a490c2; text-shadow: 0 0 20px rgba(164, 144, 194, 0.6); }
+
+        /* Demo Applications Section */
+        .section-header {
+            text-align: center;
+            margin: 80px 0 60px;
+            padding-top: 60px;
+            border-top: 3px solid #444;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #aaa;
+        }
+
+        .demo-card {
+            background: #2a2a2a;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #36454f;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(54, 69, 79, 0.5);
+            border-color: #708090;
+        }
+
+        .demo-header {
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .demo-icon {
+            font-size: 56px;
+            margin-bottom: 15px;
+        }
+
+        .demo-title {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .demo-type {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-content {
+            padding: 25px;
+            background: #1a1a1a;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .demo-description {
+            font-size: 15px;
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .demo-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .demo-features li {
+            font-size: 13px;
+            color: #999;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .demo-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #708090;
+            font-weight: bold;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: #36454f;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Theme Factory Gallery</h1>
+            <p>Explore 10 Professional One-Pager Themes</p>
+        </div>
+
+        <div class="grid">
+            <!-- Tech Innovation -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-tech-innovation.html" class="theme-card tech-innovation">
+                <div class="theme-header">
+                    <div class="theme-title">Tech Innovation</div>
+                    <div class="theme-subtitle">Bold & Modern</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A bold and modern theme with high-contrast colors perfect for cutting-edge technology presentations.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #0066ff;"></div>
+                        <div class="color-swatch" style="background: #00ffff;"></div>
+                        <div class="color-swatch" style="background: #1e1e1e;"></div>
+                        <div class="color-swatch" style="background: #ffffff;"></div>
+                    </div>
+                    <div class="use-cases">Tech startups, software launches, AI/ML presentations</div>
+                </div>
+            </a>
+
+            <!-- Ocean Depths -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-ocean-depths.html" class="theme-card ocean-depths">
+                <div class="theme-header">
+                    <div class="theme-title">Ocean Depths</div>
+                    <div class="theme-subtitle">Professional & Calming</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A professional and calming maritime theme that evokes the serenity of deep ocean waters.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #1a2332;"></div>
+                        <div class="color-swatch" style="background: #2d8b8b;"></div>
+                        <div class="color-swatch" style="background: #a8dadc;"></div>
+                        <div class="color-swatch" style="background: #f1faee;"></div>
+                    </div>
+                    <div class="use-cases">Corporate presentations, financial reports, consulting</div>
+                </div>
+            </a>
+
+            <!-- Sunset Boulevard -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-sunset-boulevard.html" class="theme-card sunset-boulevard">
+                <div class="theme-header">
+                    <div class="theme-title">Sunset Boulevard</div>
+                    <div class="theme-subtitle">Warm & Vibrant</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A warm and vibrant theme inspired by golden hour sunsets, perfect for energetic presentations.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #e76f51;"></div>
+                        <div class="color-swatch" style="background: #f4a261;"></div>
+                        <div class="color-swatch" style="background: #e9c46a;"></div>
+                        <div class="color-swatch" style="background: #264653;"></div>
+                    </div>
+                    <div class="use-cases">Creative pitches, marketing, lifestyle brands</div>
+                </div>
+            </a>
+
+            <!-- Forest Canopy -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-forest-canopy.html" class="theme-card forest-canopy">
+                <div class="theme-header">
+                    <div class="theme-title">Forest Canopy</div>
+                    <div class="theme-subtitle">Natural & Grounded</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A natural and grounded theme featuring earth tones inspired by dense forest environments.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #2d4a2b;"></div>
+                        <div class="color-swatch" style="background: #7d8471;"></div>
+                        <div class="color-swatch" style="background: #a4ac86;"></div>
+                        <div class="color-swatch" style="background: #faf9f6;"></div>
+                    </div>
+                    <div class="use-cases">Environmental, sustainability reports, wellness</div>
+                </div>
+            </a>
+
+            <!-- Modern Minimalist -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-modern-minimalist.html" class="theme-card modern-minimalist">
+                <div class="theme-header">
+                    <div class="theme-title">Modern Minimalist</div>
+                    <div class="theme-subtitle">Clean & Contemporary</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A clean and contemporary theme with a sophisticated grayscale palette for maximum versatility.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #36454f;"></div>
+                        <div class="color-swatch" style="background: #708090;"></div>
+                        <div class="color-swatch" style="background: #d3d3d3;"></div>
+                        <div class="color-swatch" style="background: #ffffff;"></div>
+                    </div>
+                    <div class="use-cases">Tech, architecture portfolios, modern business</div>
+                </div>
+            </a>
+
+            <!-- Golden Hour -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-golden-hour.html" class="theme-card golden-hour">
+                <div class="theme-header">
+                    <div class="theme-title">Golden Hour</div>
+                    <div class="theme-subtitle">Rich & Warm</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A rich and warm autumnal palette that creates an inviting and sophisticated atmosphere.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #f4a900;"></div>
+                        <div class="color-swatch" style="background: #c1666b;"></div>
+                        <div class="color-swatch" style="background: #d4b896;"></div>
+                        <div class="color-swatch" style="background: #4a403a;"></div>
+                    </div>
+                    <div class="use-cases">Restaurants, hospitality, artisan products</div>
+                </div>
+            </a>
+
+            <!-- Arctic Frost -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-arctic-frost.html" class="theme-card arctic-frost">
+                <div class="theme-header">
+                    <div class="theme-title">Arctic Frost</div>
+                    <div class="theme-subtitle">Cool & Crisp</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A cool and crisp winter-inspired theme that conveys clarity, precision, and professionalism.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #d4e4f7;"></div>
+                        <div class="color-swatch" style="background: #4a6fa5;"></div>
+                        <div class="color-swatch" style="background: #c0c0c0;"></div>
+                        <div class="color-swatch" style="background: #fafafa;"></div>
+                    </div>
+                    <div class="use-cases">Healthcare, technology solutions, clean tech</div>
+                </div>
+            </a>
+
+            <!-- Desert Rose -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-desert-rose.html" class="theme-card desert-rose">
+                <div class="theme-header">
+                    <div class="theme-title">Desert Rose</div>
+                    <div class="theme-subtitle">Soft & Sophisticated</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A soft and sophisticated theme with dusty, muted tones perfect for elegant presentations.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #d4a5a5;"></div>
+                        <div class="color-swatch" style="background: #b87d6d;"></div>
+                        <div class="color-swatch" style="background: #e8d5c4;"></div>
+                        <div class="color-swatch" style="background: #5d2e46;"></div>
+                    </div>
+                    <div class="use-cases">Fashion, beauty brands, interior design</div>
+                </div>
+            </a>
+
+            <!-- Botanical Garden -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-botanical-garden.html" class="theme-card botanical-garden">
+                <div class="theme-header">
+                    <div class="theme-title">Botanical Garden</div>
+                    <div class="theme-subtitle">Fresh & Organic</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A fresh and organic theme featuring vibrant garden-inspired colors for lively presentations.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #4a7c59;"></div>
+                        <div class="color-swatch" style="background: #f9a620;"></div>
+                        <div class="color-swatch" style="background: #b7472a;"></div>
+                        <div class="color-swatch" style="background: #f5f3ed;"></div>
+                    </div>
+                    <div class="use-cases">Garden centers, food, farm-to-table, natural products</div>
+                </div>
+            </a>
+
+            <!-- Midnight Galaxy -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/one-pager-theme-midnight-galaxy.html" class="theme-card midnight-galaxy">
+                <div class="theme-header">
+                    <div class="theme-title">Midnight Galaxy</div>
+                    <div class="theme-subtitle">Dramatic & Cosmic</div>
+                </div>
+                <div class="theme-content">
+                    <div class="theme-description">
+                        A dramatic and cosmic theme with deep purples and mystical tones for impactful presentations.
+                    </div>
+                    <div class="color-palette">
+                        <div class="color-swatch" style="background: #2b1e3e;"></div>
+                        <div class="color-swatch" style="background: #4a4e8f;"></div>
+                        <div class="color-swatch" style="background: #a490c2;"></div>
+                        <div class="color-swatch" style="background: #e6e6fa;"></div>
+                    </div>
+                    <div class="use-cases">Entertainment, gaming, nightlife, luxury brands</div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Demo Applications Section -->
+        <div class="section-header">
+            <h2>Modern Minimalist Demo Applications</h2>
+            <p>Explore different document types using the Modern Minimalist theme</p>
+        </div>
+
+        <div class="grid">
+            <!-- Presentation Demo -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/slide-pres-theme-modern-minmalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">🎤</div>
+                    <div class="demo-title">Interactive Presentation</div>
+                    <div class="demo-type">Slide Deck</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Full-featured presentation with 8 slides covering AI Platform Strategy. Includes keyboard navigation, progress tracking, and smooth transitions.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Keyboard & button navigation</li>
+                        <li>Progress bar indicator</li>
+                        <li>Two-column layouts</li>
+                        <li>Interactive stat boxes</li>
+                        <li>Professional slide templates</li>
+                    </ul>
+                    <span class="demo-badge">Interactive JS</span>
+                </div>
+            </a>
+
+            <!-- Event Announcement Demo -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/event-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📅</div>
+                    <div class="demo-title">Event Announcement</div>
+                    <div class="demo-type">Marketing Page</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Comprehensive event page for Technology Summit 2026 with live countdown timer, speaker profiles, and registration form.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Live countdown timer</li>
+                        <li>Interactive registration form</li>
+                        <li>Event schedule timeline</li>
+                        <li>Speaker profile cards</li>
+                        <li>Smooth scroll navigation</li>
+                    </ul>
+                    <span class="demo-badge">Live Data</span>
+                </div>
+            </a>
+
+            <!-- Quarterly Report Demo -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/report-qtr-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📊</div>
+                    <div class="demo-title">Quarterly Business Review</div>
+                    <div class="demo-type">Financial Report</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Professional Q4 2025 business report with financial data, charts, metrics dashboard, and strategic initiatives.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Interactive KPI dashboard</li>
+                        <li>Animated bar charts</li>
+                        <li>Data tables with hover effects</li>
+                        <li>Print-optimized layout</li>
+                        <li>Scroll-triggered animations</li>
+                    </ul>
+                    <span class="demo-badge">Data Viz</span>
+                </div>
+            </a>
+
+            <!-- Services Offering Demo -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/services-offering-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">⚙️</div>
+                    <div class="demo-title">Service Offerings</div>
+                    <div class="demo-type">Sales Sheet</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Complete service catalog for Enterprise AI Solutions with pricing tiers, service descriptions, and implementation process.
+                    </div>
+                    <ul class="demo-features">
+                        <li>6 core service categories</li>
+                        <li>3-tier pricing structure</li>
+                        <li>Add-on services grid</li>
+                        <li>Implementation process flow</li>
+                        <li>Featured pricing highlight</li>
+                    </ul>
+                    <span class="demo-badge">Sales Ready</span>
+                </div>
+            </a>
+
+            <!-- Brand Style Guide Demo -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/styleguide-brand-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">🎨</div>
+                    <div class="demo-title">Brand Style Guide</div>
+                    <div class="demo-type">Design Documentation</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Comprehensive brand guidelines covering logo usage, color palette, typography, spacing system, and UI components.
+                    </div>
+                    <ul class="demo-features">
+                        <li>7 detailed sections</li>
+                        <li>Interactive color swatches</li>
+                        <li>Typography specimens</li>
+                        <li>Component library</li>
+                        <li>Sticky navigation menu</li>
+                    </ul>
+                    <span class="demo-badge">Design System</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Website Demos Section -->
+        <div class="section-header">
+            <h2>Modern Minimalist Website Demos</h2>
+            <p>Complete website pages and templates using the Modern Minimalist theme</p>
+        </div>
+
+        <div class="grid">
+            <!-- Landing Page -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-landing-page-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">🏠</div>
+                    <div class="demo-title">Landing Page</div>
+                    <div class="demo-type">Homepage</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Modern landing page with hero section, features grid, testimonials, and clear call-to-action. Perfect for product launches.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Hero section with CTA</li>
+                        <li>Features showcase grid</li>
+                        <li>Social proof testimonials</li>
+                        <li>Responsive navigation</li>
+                        <li>Conversion-optimized layout</li>
+                    </ul>
+                    <span class="demo-badge">Marketing</span>
+                </div>
+            </a>
+
+            <!-- Product Page -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-product-page-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📦</div>
+                    <div class="demo-title">Product Page</div>
+                    <div class="demo-type">E-commerce</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Detailed product showcase with image gallery, specifications, pricing options, and customer reviews section.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Product image gallery</li>
+                        <li>Detailed specifications</li>
+                        <li>Pricing and variants</li>
+                        <li>Customer reviews</li>
+                        <li>Add to cart functionality</li>
+                    </ul>
+                    <span class="demo-badge">E-commerce</span>
+                </div>
+            </a>
+
+            <!-- Pricing Page -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-pricing-page-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">💰</div>
+                    <div class="demo-title">Pricing Comparison</div>
+                    <div class="demo-type">Sales Page</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Interactive pricing table with monthly/annual toggle, feature comparison matrix, and FAQ accordion section.
+                    </div>
+                    <ul class="demo-features">
+                        <li>3-tier pricing structure</li>
+                        <li>Monthly/Annual toggle</li>
+                        <li>Feature comparison table</li>
+                        <li>Interactive FAQ section</li>
+                        <li>Clear CTAs per plan</li>
+                    </ul>
+                    <span class="demo-badge">Interactive JS</span>
+                </div>
+            </a>
+
+            <!-- Case Study -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-casestudy-page-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📈</div>
+                    <div class="demo-title">Case Study</div>
+                    <div class="demo-type">Portfolio</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Professional case study template with problem-solution structure, metrics dashboard, and client testimonial.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Project overview section</li>
+                        <li>Challenge & solution blocks</li>
+                        <li>Results metrics dashboard</li>
+                        <li>Client testimonial</li>
+                        <li>Visual storytelling layout</li>
+                    </ul>
+                    <span class="demo-badge">Portfolio</span>
+                </div>
+            </a>
+
+            <!-- Blog Article -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-blog-page-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📝</div>
+                    <div class="demo-title">Blog Article</div>
+                    <div class="demo-type">Content Page</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Long-form blog post with sticky table of contents, code syntax highlighting, image captions, and related articles.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Sticky navigation TOC</li>
+                        <li>Code blocks with syntax</li>
+                        <li>Image captions</li>
+                        <li>Author bio section</li>
+                        <li>Related content grid</li>
+                    </ul>
+                    <span class="demo-badge">Content</span>
+                </div>
+            </a>
+
+            <!-- Admin Dashboard -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-admin-dashboard-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📊</div>
+                    <div class="demo-title">Admin Dashboard</div>
+                    <div class="demo-type">Application UI</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Full-featured admin panel with sidebar navigation, metrics cards, data visualizations, and transaction table.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Sidebar navigation menu</li>
+                        <li>KPI metrics cards</li>
+                        <li>Interactive charts</li>
+                        <li>Data tables</li>
+                        <li>Responsive grid layout</li>
+                    </ul>
+                    <span class="demo-badge">Dashboard</span>
+                </div>
+            </a>
+
+            <!-- Email Template -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/email-template-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">✉️</div>
+                    <div class="demo-title">Email Template</div>
+                    <div class="demo-type">HTML Email</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Responsive HTML email template with header, feature blocks, CTA button, and footer. Compatible with major email clients.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Mobile-responsive design</li>
+                        <li>Email client compatible</li>
+                        <li>Feature grid with icons</li>
+                        <li>Clear CTA buttons</li>
+                        <li>Professional footer</li>
+                    </ul>
+                    <span class="demo-badge">Email Marketing</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Professional Documents Section -->
+        <div class="section-header">
+            <h2>Modern Minimalist Professional Documents</h2>
+            <p>Business-ready templates for common professional documents</p>
+        </div>
+
+        <div class="grid">
+            <!-- Portfolio/Resume -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-portfolio-resume-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">👤</div>
+                    <div class="demo-title">Portfolio / Resume</div>
+                    <div class="demo-type">Professional CV</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Professional resume template with profile summary, skills grid, timeline experience, education, and certifications.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Profile summary section</li>
+                        <li>Skills categorization grid</li>
+                        <li>Timeline work experience</li>
+                        <li>Education & certifications</li>
+                        <li>Print-optimized layout</li>
+                    </ul>
+                    <span class="demo-badge">Career</span>
+                </div>
+            </a>
+
+            <!-- Business Proposal -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-business-proposal-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📋</div>
+                    <div class="demo-title">Business Proposal</div>
+                    <div class="demo-type">RFP Response</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Comprehensive proposal document with cover page, executive summary, methodology, timeline, deliverables, and pricing.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Professional cover page</li>
+                        <li>Executive summary</li>
+                        <li>Project timeline</li>
+                        <li>Deliverables table</li>
+                        <li>Signature section</li>
+                    </ul>
+                    <span class="demo-badge">Business</span>
+                </div>
+            </a>
+
+            <!-- Technical Whitepaper -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-technical-whitepaper-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📄</div>
+                    <div class="demo-title">Technical Whitepaper</div>
+                    <div class="demo-type">Research Document</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Academic-style whitepaper with abstract, multi-section content, figures, tables, code blocks, and references.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Abstract & introduction</li>
+                        <li>Multi-section content</li>
+                        <li>Tables and figures</li>
+                        <li>Code block examples</li>
+                        <li>Reference citations</li>
+                    </ul>
+                    <span class="demo-badge">Technical</span>
+                </div>
+            </a>
+
+            <!-- Newsletter -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-newsletter-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">📰</div>
+                    <div class="demo-title">Newsletter</div>
+                    <div class="demo-type">Email Publication</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Multi-article newsletter with hero story, featured articles, quick reads, stats section, and events calendar.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Hero article section</li>
+                        <li>Multiple article cards</li>
+                        <li>Quick links section</li>
+                        <li>Stats visualization</li>
+                        <li>Events calendar</li>
+                    </ul>
+                    <span class="demo-badge">Publishing</span>
+                </div>
+            </a>
+
+            <!-- Invoice -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-invoice-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">💳</div>
+                    <div class="demo-title">Invoice / Receipt</div>
+                    <div class="demo-type">Financial Document</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Professional invoice with itemized services, tax calculations, payment information, and terms & conditions.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Itemized line items</li>
+                        <li>Subtotals & tax calculation</li>
+                        <li>Payment details</li>
+                        <li>Terms & conditions</li>
+                        <li>Print-ready format</li>
+                    </ul>
+                    <span class="demo-badge">Finance</span>
+                </div>
+            </a>
+
+            <!-- Certificate -->
+            <a href="https://techteam01.com/agent-sandbox/tool-skill-theme-factory/website-certificate-theme-modern-minimalist.html" class="demo-card">
+                <div class="demo-header">
+                    <div class="demo-icon">🏆</div>
+                    <div class="demo-title">Certificate / Award</div>
+                    <div class="demo-type">Recognition Document</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-description">
+                        Landscape-oriented achievement certificate with decorative border, recipient name, signatures, seal, and certificate ID.
+                    </div>
+                    <ul class="demo-features">
+                        <li>Decorative border design</li>
+                        <li>Signature blocks</li>
+                        <li>Official seal element</li>
+                        <li>Certificate ID tracking</li>
+                        <li>Landscape orientation</li>
+                    </ul>
+                    <span class="demo-badge">Recognition</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Theme Factory © 2025 | 10 Professional Themes for Every Occasion</p>
+        </div>
+    </div>
+</body>
+</html>

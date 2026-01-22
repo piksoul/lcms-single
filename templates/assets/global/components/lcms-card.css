@@ -1,0 +1,242 @@
+/**
+ * Card Component
+ *
+ * Flexible card container for grouping related content.
+ * Supports multiple visual styles and optional media/footer sections.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-card.css
+ */
+
+/* ============================================
+   BLOCK: Card
+   ============================================ */
+
+.lcms-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--color-background-light, #ffffff);
+    border-radius: var(--border-radius, 8px);
+    overflow: hidden;
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-card__media {
+    width: 100%;
+    overflow: hidden;
+}
+
+.lcms-card__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lcms-card__media .video-wrapper {
+    border-radius: 0;
+}
+
+.lcms-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap, 16px);
+    padding: var(--card-padding, 30px);
+}
+
+.lcms-card__header {
+    margin: 0;
+}
+
+.lcms-card__header h3,
+.lcms-card__header h4 {
+    margin: 0 0 10px;
+    color: var(--color-brand-primary);
+}
+
+.lcms-card__body {
+    flex: 1;
+}
+
+.lcms-card__body h3,
+.lcms-card__body h4 {
+    margin-top: 0;
+}
+
+.lcms-card__body p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.lcms-card__footer {
+    margin-top: auto;
+}
+
+.lcms-card__footer .lcms-button-group {
+    margin: 0;
+}
+
+/* ============================================
+   MODIFIERS: Visual Styles
+   ============================================ */
+
+.lcms-card--bordered {
+    border: 2px solid var(--color-border, #e0e0e0);
+}
+
+.lcms-card--elevated {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+.lcms-card--elevated:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+}
+
+.lcms-card--interactive {
+    cursor: pointer;
+}
+
+.lcms-card--interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   MODIFIERS: Semantic Variants
+   ============================================ */
+
+/* Feature Card - gradient background, brand border */
+.lcms-card--feature {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+    border: 2px solid var(--color-border, #e0e0e0);
+    padding: 25px;
+}
+
+.lcms-card--feature .lcms-card__header h4 {
+    margin: 0 0 10px;
+    color: var(--color-brand-primary);
+}
+
+.lcms-card--feature .lcms-card__body p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Progress Card - with brand accent border-left */
+.lcms-card--progress {
+    background: linear-gradient(135deg, var(--color-background-light, #f0f0f0) 0%, var(--color-white, #ffffff) 100%);
+    border-left: 5px solid var(--color-brand-primary);
+    border: 2px solid var(--color-border, #e0e0e0);
+    padding: 30px;
+}
+
+.lcms-card--progress .lcms-card__header h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    margin: 0 0 15px;
+    color: var(--color-brand-primary);
+}
+
+/* Metric Card - center-aligned, gradient background */
+.lcms-card--metric {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+    padding: 25px;
+    text-align: center;
+    border: 2px solid var(--color-border, #e0e0e0);
+}
+
+.lcms-card--metric:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Summary Card - gradient background */
+.lcms-card--summary {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-white, #ffffff) 100%);
+}
+
+/* Info Card - gradient background */
+.lcms-card--info {
+    background: linear-gradient(135deg, var(--color-background-light, #f8f9fa) 0%, var(--color-background-lighter, #e9ecef) 100%);
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.lcms-card--info .lcms-card__header h4 {
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+/* ============================================
+   MODIFIERS: Dark Mode
+   ============================================ */
+
+.dark-mode .lcms-card,
+.lcms-section--dark .lcms-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .lcms-card--bordered,
+.lcms-section--dark .lcms-card--bordered {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   MODIFIERS: Padding Variants
+   ============================================ */
+
+.lcms-card--compact {
+    padding: 20px;
+}
+
+.lcms-card--spacious {
+    padding: 40px;
+}
+
+/* ============================================
+   MODIFIERS: Special Layouts
+   ============================================ */
+
+.lcms-card--horizontal {
+    flex-direction: row;
+}
+
+.lcms-card--horizontal .lcms-card__media {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.lcms-card--horizontal .lcms-card__content {
+    width: 60%;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-card__content {
+        padding: var(--card-padding-mobile, 20px);
+    }
+
+    .lcms-card--horizontal {
+        flex-direction: column;
+    }
+
+    .lcms-card--horizontal .lcms-card__media,
+    .lcms-card--horizontal .lcms-card__content {
+        width: 100%;
+    }
+
+    .lcms-card--feature,
+    .lcms-card--progress,
+    .lcms-card--metric,
+    .lcms-card--info {
+        padding: 20px;
+    }
+}

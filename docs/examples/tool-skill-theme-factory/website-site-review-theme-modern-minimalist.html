@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Review Report - Modern Minimalist</title>
+    <style>
+        /* Modern Minimalist Theme Colors */
+        :root {
+            --charcoal: #36454f;
+            --slate-gray: #708090;
+            --light-gray: #d3d3d3;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        .report {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: var(--white);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--slate-gray) 100%);
+            color: var(--white);
+            padding: 100px 80px;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .cover-header {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .report-type {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+        
+        .report-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+        
+        .report-subtitle {
+            font-size: 22px;
+            color: var(--light-gray);
+            line-height: 1.4;
+            max-width: 650px;
+        }
+        
+        .website-url {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+        
+        .cover-footer {
+            border-top: 1px solid var(--slate-gray);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .cover-info {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+        
+        .cover-info-label {
+            color: var(--slate-gray);
+            margin-bottom: 3px;
+        }
+        
+        .cover-info-value {
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 60px 80px;
+        }
+        
+        .page-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 36px;
+            color: var(--charcoal);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--slate-gray);
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 28px;
+            color: var(--charcoal);
+            margin-top: 45px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 3px solid var(--light-gray);
+        }
+        
+        h2:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+        
+        h3 {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--charcoal);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            font-size: 15px;
+            color: var(--slate-gray);
+            margin-bottom: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Score Card */
+        .score-card {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .overall-score {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 80px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .score-label {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-gray);
+        }
+        
+        .score-description {
+            margin-top: 20px;
+            font-size: 15px;
+            color: var(--light-gray);
+        }
+        
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 35px 0;
+        }
+        
+        .metric-card {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            padding: 30px;
+            text-align: center;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .metric-card:hover {
+            border-color: var(--charcoal);
+            transform: translateY(-3px);
+        }
+        
+        .metric-value {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 48px;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .metric-label {
+            font-size: 13px;
+            color: var(--slate-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-status {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        
+        .status-good {
+            color: var(--charcoal);
+        }
+        
+        .status-warning {
+            color: var(--slate-gray);
+        }
+        
+        /* Category Scores */
+        .category-scores {
+            margin: 35px 0;
+        }
+        
+        .category-item {
+            margin-bottom: 25px;
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .category-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--charcoal);
+        }
+        
+        .category-score {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--charcoal);
+        }
+        
+        .category-bar {
+            height: 12px;
+            background-color: var(--light-gray);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .category-bar-fill {
+            height: 100%;
+            background-color: var(--charcoal);
+            border-radius: 6px;
+            transition: width 0.5s;
+        }
+        
+        /* Issues List */
+        .issues-section {
+            margin: 35px 0;
+        }
+        
+        .issue-item {
+            background-color: var(--white);
+            border-left: 4px solid var(--charcoal);
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .issue-item.critical {
+            border-left-color: var(--charcoal);
+        }
+        
+        .issue-item.warning {
+            border-left-color: var(--slate-gray);
+        }
+        
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .issue-title {
+            font-weight: bold;
+            color: var(--charcoal);
+            font-size: 16px;
+        }
+        
+        .issue-severity {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .severity-critical {
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+        
+        .severity-warning {
+            background-color: var(--slate-gray);
+            color: var(--white);
+        }
+        
+        .severity-info {
+            background-color: var(--light-gray);
+            color: var(--charcoal);
+        }
+        
+        .issue-description {
+            font-size: 14px;
+            color: var(--slate-gray);
+            margin-bottom: 10px;
+        }
+        
+        .issue-recommendation {
+            font-size: 14px;
+            color: var(--charcoal);
+            font-weight: 500;
+            padding-left: 20px;
+            border-left: 2px solid var(--light-gray);
+        }
+        
+        /* Screenshot Placeholder */
+        .screenshot-container {
+            margin: 30px 0;
+        }
+        
+        .screenshot-title {
+            font-size: 14px;
+            color: var(--slate-gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .screenshot-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
+            border: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--slate-gray);
+            font-size: 16px;
+            border-radius: 4px;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+        
+        thead {
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+        
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--light-gray);
+            color: var(--slate-gray);
+        }
+        
+        tbody tr:hover {
+            background-color: rgba(211, 211, 211, 0.2);
+        }
+        
+        /* Recommendations Box */
+        .recommendations {
+            background-color: var(--white);
+            border: 3px solid var(--charcoal);
+            padding: 35px;
+            margin: 40px 0;
+        }
+        
+        .recommendations-title {
+            font-family: 'DejaVu Sans', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 22px;
+            color: var(--charcoal);
+            margin-bottom: 25px;
+        }
+        
+        .recommendation-item {
+            margin-bottom: 25px;
+        }
+        
+        .recommendation-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .recommendation-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+        
+        .recommendation-content {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 50px);
+        }
+        
+        .recommendation-title {
+            font-weight: bold;
+            color: var(--charcoal);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation-description {
+            color: var(--slate-gray);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        li {
+            font-size: 15px;
+            color: var(--slate-gray);
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding-left: 35px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .checklist li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .checklist li.incomplete:before {
+            content: '✗';
+            background-color: var(--slate-gray);
+        }
+        
+        /* Footer */
+        .report-footer {
+            padding: 40px 80px;
+            background-color: var(--charcoal);
+            color: var(--light-gray);
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .footer-company {
+            font-weight: bold;
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: var(--white);
+            }
+            
+            .report {
+                box-shadow: none;
+            }
+            
+            .cover-page,
+            .content-page {
+                page-break-after: always;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-page,
+            .content-page,
+            .report-footer {
+                padding: 50px 40px;
+            }
+            
+            .report-title {
+                font-size: 40px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .overall-score {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-header">
+                <div class="report-type">Website Review & Analysis Report</div>
+                <h1 class="report-title">Comprehensive Website Audit</h1>
+                <div class="report-subtitle">
+                    Performance analysis, UX evaluation, and strategic recommendations for optimization
+                </div>
+                <div class="website-url">www.acmecorporation.com</div>
+            </div>
+            
+            <div class="cover-footer">
+                <div class="cover-info">
+                    <div class="cover-info-label">Client</div>
+                    <div class="cover-info-value">Acme Corporation</div>
+                </div>
+                <div class="cover-info">
+                    <div class="cover-info-label">Audited By</div>
+                    <div class="cover-info-value">Digital Solutions Team</div>
+                </div>
+                <div class="cover-info">
+                    <div class="cover-info-label">Report Date</div>
+                    <div class="cover-info-value">November 2, 2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Executive Summary -->
+        <div class="content-page">
+            <h1 class="page-title">Executive Summary</h1>
+            <p class="page-subtitle">Overall assessment and key findings</p>
+            
+            <div class="score-card">
+                <div class="overall-score">73/100</div>
+                <div class="score-label">Overall Website Score</div>
+                <div class="score-description">
+                    Your website demonstrates good foundational elements but has significant opportunities for improvement in performance, accessibility, and SEO optimization.
+                </div>
+            </div>
+            
+            <p>
+                This comprehensive audit evaluated www.acmecorporation.com across six key dimensions: performance, SEO, accessibility, user experience, content quality, and mobile responsiveness. Our analysis included automated testing tools, manual expert review, and competitive benchmarking.
+            </p>
+            
+            <p>
+                The website shows strong branding and visual design but faces challenges with page load speed, mobile optimization, and search engine visibility. Implementation of the recommendations in this report is projected to improve overall performance by 40% and increase organic search traffic by 60% within 90 days.
+            </p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">4.8s</div>
+                    <div class="metric-label">Page Load Time</div>
+                    <div class="metric-status status-warning">Needs Improvement</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">68%</div>
+                    <div class="metric-label">Mobile Friendliness</div>
+                    <div class="metric-status status-warning">Below Target</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">82%</div>
+                    <div class="metric-label">Content Quality</div>
+                    <div class="metric-status status-good">Good</div>
+                </div>
+            </div>
+            
+            <h2>Category Scores</h2>
+            
+            <div class="category-scores">
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">Performance</span>
+                        <span class="category-score">65/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 65%;"></div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">SEO Optimization</span>
+                        <span class="category-score">71/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 71%;"></div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">Accessibility</span>
+                        <span class="category-score">78/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 78%;"></div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">User Experience</span>
+                        <span class="category-score">76/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 76%;"></div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">Mobile Responsiveness</span>
+                        <span class="category-score">68/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 68%;"></div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header">
+                        <span class="category-name">Content Quality</span>
+                        <span class="category-score">82/100</span>
+                    </div>
+                    <div class="category-bar">
+                        <div class="category-bar-fill" style="width: 82%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance Analysis -->
+        <div class="content-page">
+            <h1 class="page-title">Performance Analysis</h1>
+            <p class="page-subtitle">Speed, optimization, and technical metrics</p>
+            
+            <h2>Speed Metrics</h2>
+            
+            <p>
+                Page load speed significantly impacts user experience and search engine rankings. Our analysis reveals several performance bottlenecks that are affecting overall site speed.
+            </p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Current</th>
+                        <th>Target</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>First Contentful Paint</strong></td>
+                        <td>2.1s</td>
+                        <td>&lt; 1.8s</td>
+                        <td>Needs Work</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Largest Contentful Paint</strong></td>
+                        <td>4.8s</td>
+                        <td>&lt; 2.5s</td>
+                        <td>Poor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time to Interactive</strong></td>
+                        <td>6.2s</td>
+                        <td>&lt; 3.8s</td>
+                        <td>Poor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total Blocking Time</strong></td>
+                        <td>850ms</td>
+                        <td>&lt; 200ms</td>
+                        <td>Poor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cumulative Layout Shift</strong></td>
+                        <td>0.08</td>
+                        <td>&lt; 0.1</td>
+                        <td>Good</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Critical Performance Issues</h3>
+            
+            <div class="issues-section">
+                <div class="issue-item critical">
+                    <div class="issue-header">
+                        <div class="issue-title">Unoptimized Images</div>
+                        <div class="issue-severity severity-critical">Critical</div>
+                    </div>
+                    <div class="issue-description">
+                        Multiple large images (>500KB) are slowing page load significantly. Homepage hero image is 2.4MB uncompressed.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Implement responsive images with srcset, compress all images to WebP format, and use lazy loading for below-fold images. Expected improvement: 2.5s faster load time.
+                    </div>
+                </div>
+                
+                <div class="issue-item critical">
+                    <div class="issue-header">
+                        <div class="issue-title">Render-Blocking JavaScript</div>
+                        <div class="issue-severity severity-critical">Critical</div>
+                    </div>
+                    <div class="issue-description">
+                        7 JavaScript files (total 843KB) are blocking page rendering. Scripts loaded synchronously delay content display.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Defer non-critical JavaScript, minify and bundle scripts, implement code splitting, and use async/defer attributes. Expected improvement: 1.8s faster time to interactive.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Inefficient CSS Delivery</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        Multiple CSS files total 256KB, with significant unused styles (62% unused on homepage).
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Inline critical CSS, remove unused styles, minify CSS files, and implement CSS modules for component-specific styles.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">No Content Delivery Network (CDN)</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        All assets served from single origin server, increasing latency for geographically distributed users.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Implement CDN (Cloudflare or AWS CloudFront) for global asset distribution. Expected improvement: 40% faster load times for international users.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-title">Performance Waterfall Analysis</div>
+                <div class="screenshot-placeholder">
+                    [Performance Waterfall Chart - Resource Loading Timeline]
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEO Analysis -->
+        <div class="content-page">
+            <h1 class="page-title">SEO Analysis</h1>
+            <p class="page-subtitle">Search engine optimization and visibility</p>
+            
+            <h2>On-Page SEO</h2>
+            
+            <p>
+                Search engine optimization directly impacts organic traffic and discoverability. Our analysis identified several technical and content-related SEO issues affecting your search rankings.
+            </p>
+            
+            <h3>Technical SEO Issues</h3>
+            
+            <div class="issues-section">
+                <div class="issue-item critical">
+                    <div class="issue-header">
+                        <div class="issue-title">Missing or Duplicate Meta Descriptions</div>
+                        <div class="issue-severity severity-critical">Critical</div>
+                    </div>
+                    <div class="issue-description">
+                        18 of 42 pages lack meta descriptions, and 6 pages have duplicate descriptions reducing click-through rates.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Write unique, compelling meta descriptions (150-160 characters) for all pages incorporating target keywords and clear value propositions.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Suboptimal Header Tag Structure</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        Inconsistent use of H1-H6 tags, with some pages having multiple H1s and others skipping heading levels.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Implement proper heading hierarchy with single H1 per page, logical H2-H6 structure, and keyword-optimized headings.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Missing Alt Text on Images</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        47 images across the site lack descriptive alt text, hurting accessibility and image search rankings.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Add descriptive, keyword-relevant alt text to all images. Be specific and natural, avoiding keyword stuffing.
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Content Optimization</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Keyword Targeting</strong></td>
+                        <td>Needs Work</td>
+                        <td>Insufficient keyword density on key pages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internal Linking</strong></td>
+                        <td>Fair</td>
+                        <td>Opportunities to strengthen topical authority</td>
+                    </tr>
+                    <tr>
+                        <td><strong>URL Structure</strong></td>
+                        <td>Good</td>
+                        <td>Clean, descriptive URLs with keywords</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Schema Markup</strong></td>
+                        <td>Poor</td>
+                        <td>No structured data implemented</td>
+                    </tr>
+                    <tr>
+                        <td><strong>XML Sitemap</strong></td>
+                        <td>Good</td>
+                        <td>Present and properly configured</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Robots.txt</strong></td>
+                        <td>Good</td>
+                        <td>Properly configured</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Backlink Profile</h3>
+            
+            <p>
+                Current domain authority: 42/100. The site has 287 referring domains with 3,421 total backlinks. Backlink profile is relatively healthy but could benefit from targeted link building to high-authority domains in your industry.
+            </p>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-title">Keyword Rankings Overview</div>
+                <div class="screenshot-placeholder">
+                    [Table: Top 20 Keyword Rankings with Position Changes]
+                </div>
+            </div>
+        </div>
+        
+        <!-- User Experience -->
+        <div class="content-page">
+            <h1 class="page-title">User Experience Analysis</h1>
+            <p class="page-subtitle">Navigation, usability, and interaction design</p>
+            
+            <h2>Navigation & Information Architecture</h2>
+            
+            <p>
+                Effective navigation is crucial for user engagement and conversion. Our UX audit evaluated site structure, menu organization, and user flow through key conversion paths.
+            </p>
+            
+            <h3>Strengths</h3>
+            
+            <ul>
+                <li>Clear primary navigation with well-organized menu categories</li>
+                <li>Persistent header with logo and main navigation on all pages</li>
+                <li>Breadcrumb navigation on product and article pages</li>
+                <li>Search functionality prominently placed in header</li>
+                <li>Footer contains comprehensive links to key pages and resources</li>
+            </ul>
+            
+            <h3>UX Issues & Recommendations</h3>
+            
+            <div class="issues-section">
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Mobile Menu Usability</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        Mobile hamburger menu requires excessive taps to access subcategories. Users testing showed 68% struggled to find specific product pages.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Implement accordion-style mobile menu with all categories visible by default. Add visual indicators for expandable sections.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Inconsistent Call-to-Action Buttons</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        CTA buttons vary in size, color, and placement across pages, creating confusion about primary actions.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Standardize CTA button design with consistent styling, sizing, and placement. Use color to indicate hierarchy (primary vs. secondary actions).
+                    </div>
+                </div>
+                
+                <div class="issue-item info">
+                    <div class="issue-header">
+                        <div class="issue-title">Form Field Labels</div>
+                        <div class="issue-severity severity-info">Info</div>
+                    </div>
+                    <div class="issue-description">
+                        Contact and registration forms use placeholder text instead of proper labels, reducing accessibility and usability.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Add visible labels above form fields. Keep placeholder text for additional guidance but don't rely on it exclusively.
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Conversion Path Analysis</h3>
+            
+            <p>
+                We analyzed three critical user journeys: homepage to product purchase, contact form submission, and newsletter signup. Key findings:
+            </p>
+            
+            <ul>
+                <li><strong>Purchase Path:</strong> Average 4.2 clicks to complete purchase (industry standard: 3.5). Streamlining checkout could increase conversion by 15%</li>
+                <li><strong>Contact Form:</strong> 32% abandonment rate. Reducing form fields from 12 to 6 could improve completion rate by 25%</li>
+                <li><strong>Newsletter Signup:</strong> Well-optimized with clear value proposition and single-field form</li>
+            </ul>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-title">User Flow Visualization</div>
+                <div class="screenshot-placeholder">
+                    [Diagram: Homepage → Product → Cart → Checkout Flow]
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Responsiveness -->
+        <div class="content-page">
+            <h1 class="page-title">Mobile Responsiveness</h1>
+            <p class="page-subtitle">Mobile-first design and cross-device compatibility</p>
+            
+            <h2>Mobile Performance</h2>
+            
+            <p>
+                With 64% of your traffic coming from mobile devices, mobile optimization is critical. Our testing covered iPhone, Android, iPad, and various screen sizes.
+            </p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Device Type</th>
+                        <th>Score</th>
+                        <th>Key Issues</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mobile Phone</strong></td>
+                        <td>68/100</td>
+                        <td>Touch targets too small, text sizing issues</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tablet</strong></td>
+                        <td>75/100</td>
+                        <td>Inefficient use of screen space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desktop</strong></td>
+                        <td>84/100</td>
+                        <td>Minor layout inconsistencies at 1440px+</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Mobile-Specific Issues</h3>
+            
+            <div class="issues-section">
+                <div class="issue-item critical">
+                    <div class="issue-header">
+                        <div class="issue-title">Touch Target Size</div>
+                        <div class="issue-severity severity-critical">Critical</div>
+                    </div>
+                    <div class="issue-description">
+                        47 interactive elements smaller than 44x44px minimum touch target size, causing accidental taps and user frustration.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Increase button and link sizes to minimum 44x44px with adequate spacing. Add padding around clickable elements.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Horizontal Scrolling on Small Screens</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        Product comparison tables and some content sections trigger horizontal scrolling on screens below 375px width.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Implement responsive tables with card-style layout on mobile. Use CSS overflow scrolling for data-heavy sections.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="screenshot-container">
+                <div class="screenshot-title">Mobile Homepage Preview</div>
+                <div class="screenshot-placeholder">
+                    [Screenshot: Mobile view of homepage highlighting issues]
+                </div>
+            </div>
+        </div>
+        
+        <!-- Accessibility -->
+        <div class="content-page">
+            <h1 class="page-title">Accessibility Analysis</h1>
+            <p class="page-subtitle">WCAG compliance and inclusive design</p>
+            
+            <h2>Accessibility Score: 78/100</h2>
+            
+            <p>
+                Website accessibility ensures all users, including those with disabilities, can access and use your site. Our audit tested against WCAG 2.1 Level AA standards.
+            </p>
+            
+            <h3>WCAG Compliance Checklist</h3>
+            
+            <ul class="checklist">
+                <li>Proper heading hierarchy (H1-H6)</li>
+                <li>Keyboard navigation support</li>
+                <li>Focus indicators on interactive elements</li>
+                <li class="incomplete">Sufficient color contrast (14 violations found)</li>
+                <li class="incomplete">Alt text for all images (47 missing)</li>
+                <li>Skip navigation links</li>
+                <li class="incomplete">Form labels and error messages</li>
+                <li>Descriptive link text (no "click here")</li>
+                <li class="incomplete">ARIA labels for complex components</li>
+                <li>Responsive text sizing</li>
+            </ul>
+            
+            <h3>Critical Accessibility Issues</h3>
+            
+            <div class="issues-section">
+                <div class="issue-item critical">
+                    <div class="issue-header">
+                        <div class="issue-title">Color Contrast Failures</div>
+                        <div class="issue-severity severity-critical">Critical</div>
+                    </div>
+                    <div class="issue-description">
+                        14 instances of insufficient color contrast (below 4.5:1 ratio), particularly with gray text on white backgrounds.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Adjust text colors to meet WCAG AA standards. Use tools like Contrast Checker to verify all text meets minimum ratios.
+                    </div>
+                </div>
+                
+                <div class="issue-item warning">
+                    <div class="issue-header">
+                        <div class="issue-title">Missing Form Labels</div>
+                        <div class="issue-severity severity-warning">Warning</div>
+                    </div>
+                    <div class="issue-description">
+                        8 form fields lack associated label elements, making forms difficult to navigate with screen readers.
+                    </div>
+                    <div class="issue-recommendation">
+                        <strong>Recommendation:</strong> Add explicit <label> elements for all form inputs. Use aria-label or aria-labelledby for complex form patterns.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Priority Recommendations -->
+        <div class="content-page">
+            <h1 class="page-title">Priority Recommendations</h1>
+            <p class="page-subtitle">Actionable steps for immediate improvement</p>
+            
+            <p>
+                Based on our comprehensive analysis, we recommend focusing on these high-impact improvements that will deliver the greatest benefit to your website performance, user experience, and business goals.
+            </p>
+            
+            <div class="recommendations">
+                <div class="recommendations-title">Top 10 Recommendations</div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">1</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Image Optimization & Compression</div>
+                        <div class="recommendation-description">
+                            Convert all images to WebP format, implement responsive images with srcset, and enable lazy loading. This single change will reduce page load time by 2.5 seconds. <strong>Estimated effort: 8 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">2</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Implement Content Delivery Network</div>
+                        <div class="recommendation-description">
+                            Deploy CDN for global asset distribution, reducing latency by 40% for international users. Recommend Cloudflare or AWS CloudFront. <strong>Estimated effort: 4 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">3</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">JavaScript Optimization</div>
+                        <div class="recommendation-description">
+                            Defer non-critical JavaScript, implement code splitting, and minify all scripts. Will improve Time to Interactive by 1.8 seconds. <strong>Estimated effort: 12 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">4</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Add Meta Descriptions to All Pages</div>
+                        <div class="recommendation-description">
+                            Write unique, compelling meta descriptions for 18 pages currently missing them. Expected to improve click-through rate by 15-20%. <strong>Estimated effort: 6 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">5</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Fix Color Contrast Issues</div>
+                        <div class="recommendation-description">
+                            Adjust 14 instances of insufficient color contrast to meet WCAG AA standards, improving accessibility for users with visual impairments. <strong>Estimated effort: 3 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">6</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Improve Mobile Touch Targets</div>
+                        <div class="recommendation-description">
+                            Increase size of 47 interactive elements to minimum 44x44px. Critical for mobile UX where 64% of your traffic originates. <strong>Estimated effort: 5 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">7</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Implement Schema Markup</div>
+                        <div class="recommendation-description">
+                            Add structured data for products, articles, and organization information. Will enhance search appearance with rich snippets. <strong>Estimated effort: 8 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">8</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Streamline Contact Forms</div>
+                        <div class="recommendation-description">
+                            Reduce form fields from 12 to 6 essential fields, add proper labels, and improve error messaging. Expected to improve completion rate by 25%. <strong>Estimated effort: 4 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">9</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Add Alt Text to All Images</div>
+                        <div class="recommendation-description">
+                            Write descriptive alt text for 47 images currently missing this critical accessibility and SEO element. <strong>Estimated effort: 4 hours</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recommendation-item">
+                    <span class="recommendation-number">10</span>
+                    <div class="recommendation-content">
+                        <div class="recommendation-title">Standardize CTA Button Design</div>
+                        <div class="recommendation-description">
+                            Create consistent styling for all call-to-action buttons with clear visual hierarchy. Will improve conversion rate by reducing decision fatigue. <strong>Estimated effort: 3 hours</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Implementation Timeline</h2>
+            
+            <p>
+                We recommend implementing these improvements in three phases over 6 weeks:
+            </p>
+            
+            <ul>
+                <li><strong>Phase 1 (Weeks 1-2):</strong> Quick wins - Meta descriptions, alt text, color contrast, form optimization (17 hours)</li>
+                <li><strong>Phase 2 (Weeks 3-4):</strong> Performance improvements - Image optimization, CDN, JavaScript optimization (24 hours)</li>
+                <li><strong>Phase 3 (Weeks 5-6):</strong> UX enhancements - Mobile touch targets, CTA standardization, schema markup (16 hours)</li>
+            </ul>
+            
+            <p>
+                <strong>Total estimated effort: 57 hours</strong> over 6 weeks, which can be handled by a single developer working part-time or split across your team.
+            </p>
+        </div>
+        
+        <!-- Conclusion -->
+        <div class="content-page">
+            <h1 class="page-title">Conclusion</h1>
+            <p class="page-subtitle">Summary and next steps</p>
+            
+            <p>
+                This comprehensive audit reveals that www.acmecorporation.com has a solid foundation with strong branding and good content quality. However, significant opportunities exist to improve performance, mobile experience, and search visibility.
+            </p>
+            
+            <p>
+                The identified issues are highly addressable through focused development effort. By implementing the prioritized recommendations in this report, you can expect:
+            </p>
+            
+            <ul>
+                <li><strong>40% improvement</strong> in page load speed (from 4.8s to 2.9s)</li>
+                <li><strong>60% increase</strong> in organic search traffic within 90 days</li>
+                <li><strong>25% improvement</strong> in form completion rates</li>
+                <li><strong>15% increase</strong> in mobile conversion rates</li>
+                <li><strong>Full WCAG 2.1 Level AA compliance</strong> for accessibility</li>
+            </ul>
+            
+            <p>
+                The recommended improvements represent an investment of approximately 57 development hours spread over 6 weeks. Given your current traffic levels and conversion rates, these optimizations project an ROI of 320% within the first 6 months through improved conversion rates and increased organic traffic.
+            </p>
+            
+            <h2>Next Steps</h2>
+            
+            <ol>
+                <li>Review this report with your development team and stakeholders</li>
+                <li>Prioritize recommendations based on business impact and available resources</li>
+                <li>Create detailed technical specifications for each improvement</li>
+                <li>Establish baseline metrics for measuring improvement</li>
+                <li>Begin implementation with Phase 1 quick wins</li>
+                <li>Schedule follow-up audit in 90 days to measure progress</li>
+            </ol>
+            
+            <p>
+                Our team is available to discuss these findings in detail, provide technical guidance during implementation, or conduct a follow-up audit to measure improvement. Please contact us to schedule a consultation.
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="report-footer">
+            <div class="footer-company">Digital Solutions Team</div>
+            <div>Confidential Website Audit Report • © 2025 All Rights Reserved</div>
+            <div style="margin-top: 10px;">Contact: audit@digitalsolutions.com | +1 (555) 123-4567</div>
+        </div>
+    </div>
+</body>
+</html>

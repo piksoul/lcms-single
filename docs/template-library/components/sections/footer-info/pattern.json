@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "id": "footer-info",
+    "name": "Page Footer Information",
+    "category": "section",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["footer", "metadata", "status", "timestamp"]
+  },
+
+  "description": {
+    "summary": "Simple footer section with project/page status and last updated information",
+    "use_cases": [
+      "Page footers",
+      "Status information",
+      "Last updated timestamps",
+      "Document metadata"
+    ],
+    "visual_weight": "minimal",
+    "content_density": "minimal",
+    "typical_position": "Last section on page"
+  },
+
+  "partial_call": {
+    "name": "column",
+    "namespace": "pro-sites",
+    "function": "partial('column', [...], 'pro-sites');"
+  },
+
+  "structure": {
+    "settings": {
+      "custom_css": "padding: 30px 0;"
+    },
+    "content": "Centered text with status and date"
+  },
+
+  "php_template": "partial('column', [\n    'settings' => [\n        'custom_css' => 'padding: 30px 0;'\n    ],\n    'content' => [\n        'type' => 'html',\n        'html' => '\n            <div class=\"text-center text-muted\" style=\"display: flex; flex-direction: column; gap: 16px;\">\n                <p><strong>Project Status:</strong> {{STATUS_TEXT}}</p>\n                <p><strong>Last Updated:</strong> {{LAST_UPDATED}}</p>\n            </div>\n        ',\n    ],\n], 'pro-sites');",
+
+  "placeholders": {
+    "STATUS_TEXT": {
+      "type": "text",
+      "required": true,
+      "description": "Project or page status description",
+      "example": "Seeking Funding & Development Partners"
+    },
+    "LAST_UPDATED": {
+      "type": "date",
+      "required": true,
+      "description": "Last update date",
+      "example": "November 18, 2025"
+    }
+  },
+
+  "ai_instructions": "Use as the final section on a page for metadata. Keep text brief and informative. STATUS_TEXT should describe current state. LAST_UPDATED should be actual date.",
+
+  "related_components": [
+    "cta-with-buttons"
+  ]
+}

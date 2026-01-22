@@ -1,0 +1,95 @@
+/**
+ * Column Layout Component
+ *
+ * Flexible column layouts for side-by-side content.
+ * Used by 2-column-section.php and other multi-column layouts.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-column.css
+ */
+
+/* ============================================
+   BLOCK: Column Layout
+   ============================================ */
+
+.lcms-column-layout {
+    display: flex;
+    gap: var(--column-gap, 40px);
+    align-items: start;
+    width: 100%;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-column-layout__column {
+    flex-shrink: 0; /* Prevent columns from shrinking below specified width */
+}
+
+/* ============================================
+   MODIFIERS: Alignment
+   ============================================ */
+
+.lcms-column-layout--align-top {
+    align-items: flex-start;
+}
+
+.lcms-column-layout--align-center {
+    align-items: center;
+}
+
+.lcms-column-layout--align-bottom {
+    align-items: flex-end;
+}
+
+.lcms-column-layout--align-stretch {
+    align-items: stretch;
+}
+
+/* ============================================
+   MODIFIERS: Gap Sizes
+   ============================================ */
+
+.lcms-column-layout--gap-small {
+    gap: 20px;
+}
+
+.lcms-column-layout--gap-medium {
+    gap: 40px;
+}
+
+.lcms-column-layout--gap-large {
+    gap: 60px;
+}
+
+/* ============================================
+   MODIFIERS: Mobile Behavior
+   ============================================ */
+
+.lcms-column-layout--reverse-mobile {
+    /* Reversed via media query below */
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-column-layout {
+        flex-direction: column;
+        gap: var(--column-gap-mobile, 30px);
+    }
+
+    /* Reverse column order on mobile if specified */
+    .lcms-column-layout--reverse-mobile {
+        flex-direction: column-reverse;
+    }
+
+    /* Columns take full width on mobile */
+    .lcms-column-layout__column {
+        flex-basis: 100% !important;
+        flex-grow: 1;
+    }
+}

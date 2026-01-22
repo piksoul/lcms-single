@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "id": "badge",
+    "name": "Status Badge",
+    "category": "widget",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["badge", "label", "status", "tag", "indicator"]
+  },
+
+  "description": {
+    "summary": "Small colored badge for status indicators, labels, and tags",
+    "use_cases": [
+      "Status indicators (Planning, In Progress, Complete)",
+      "Category labels",
+      "Feature tags",
+      "Alert types (warning, info, success)"
+    ],
+    "visual_weight": "light",
+    "content_density": "minimal"
+  },
+
+  "bem": {
+    "block": "lcms-badge",
+    "modifiers": ["--primary", "--success", "--warning", "--info", "--danger"],
+    "elements": [],
+    "full_classes": [
+      "lcms-badge",
+      "lcms-badge--primary",
+      "lcms-badge--success",
+      "lcms-badge--warning",
+      "lcms-badge--info",
+      "lcms-badge--danger"
+    ]
+  },
+
+  "html_structure": "<span class=\"lcms-badge lcms-badge--{{MODIFIER}}\">{{TEXT}}</span>",
+
+  "placeholders": {
+    "TEXT": {
+      "type": "text",
+      "required": true,
+      "description": "Badge label text",
+      "example": "Planning Phase",
+      "max_length": 30
+    },
+    "MODIFIER": {
+      "type": "select",
+      "required": false,
+      "default": "primary",
+      "options": ["primary", "success", "warning", "info", "danger"],
+      "description": "Badge color variant based on semantic meaning"
+    }
+  },
+
+  "modifier_semantics": {
+    "primary": "Default state, neutral information",
+    "success": "Completed, approved, positive status",
+    "warning": "In progress, attention needed, caution",
+    "info": "Informational, neutral notice",
+    "danger": "Error, blocked, critical issue"
+  },
+
+  "styling_notes": {
+    "display": "inline-block",
+    "text_transform": "uppercase",
+    "letter_spacing": "1px",
+    "padding": "8px 20px",
+    "border_radius": "20px",
+    "font_size": "14px"
+  },
+
+  "usage_in_partial": {
+    "type": "inline_html",
+    "note": "Often used in pre_html parameter of page-header or within column content",
+    "example": "Used in hero-with-badge component"
+  },
+
+  "ai_instructions": "Use for short status labels or tags. Choose modifier based on semantic meaning: success (complete/positive), warning (in-progress/caution), info (neutral note), danger (error/blocked), primary (default). Keep text concise (2-4 words max).",
+
+  "related_components": [
+    "hero-with-badge",
+    "progress-bar-large"
+  ]
+}

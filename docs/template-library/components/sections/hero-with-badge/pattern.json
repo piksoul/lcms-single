@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "id": "hero-with-badge",
+    "name": "Hero Section with Status Badge",
+    "category": "section",
+    "tier": 1,
+    "version": "1.0",
+    "updated": "2025-11-18",
+    "tags": ["hero", "header", "badge", "title", "opening"]
+  },
+
+  "description": {
+    "summary": "Page header section with optional status badge, main title, and subtitle",
+    "use_cases": [
+      "Project pages opening section",
+      "Product page headers",
+      "Landing page heroes",
+      "Documentation page titles"
+    ],
+    "visual_weight": "heavy",
+    "content_density": "low",
+    "position": "Page start (always first section)"
+  },
+
+  "partial_call": {
+    "name": "page-header",
+    "namespace": "top-section",
+    "function": "partial('page-header', [...], 'top-section');"
+  },
+
+  "structure": {
+    "pre_html": "Optional HTML for badge or other elements above title",
+    "title": "Main page heading (H1)",
+    "subtitle": "Optional subheading or tagline"
+  },
+
+  "parameters": {
+    "pre_html": {
+      "type": "html",
+      "required": false,
+      "description": "HTML content to display above title (typically badge)",
+      "example": "<div style=\"text-align: center;\">\n    <span class=\"lcms-badge lcms-badge--warning\">Planning Phase</span>\n</div>"
+    },
+    "title": {
+      "type": "text",
+      "required": true,
+      "description": "Main page title",
+      "placeholder": "{{PAGE_TITLE}}",
+      "example": "AI-Driven Character Sprite System"
+    },
+    "subtitle": {
+      "type": "text",
+      "required": false,
+      "description": "Page subtitle or tagline",
+      "placeholder": "{{PAGE_SUBTITLE}}",
+      "example": "Revolutionizing breakdance animation production"
+    }
+  },
+
+  "php_template": "partial('page-header', [\n    'pre_html' => '<div style=\"text-align: center;\">\n        <span class=\"lcms-badge lcms-badge--{{BADGE_MODIFIER}}\">{{BADGE_TEXT}}</span>\n    </div>',\n    'title' => '{{PAGE_TITLE}}',\n    'subtitle' => '{{PAGE_SUBTITLE}}',\n], 'top-section');",
+
+  "placeholders": {
+    "BADGE_TEXT": {
+      "type": "text",
+      "required": false,
+      "description": "Badge label (if using badge)",
+      "example": "Planning Phase"
+    },
+    "BADGE_MODIFIER": {
+      "type": "select",
+      "required": false,
+      "default": "warning",
+      "options": ["primary", "success", "warning", "info", "danger"],
+      "description": "Badge color variant"
+    },
+    "PAGE_TITLE": {
+      "type": "text",
+      "required": true,
+      "description": "Main page heading",
+      "example": "Project Name"
+    },
+    "PAGE_SUBTITLE": {
+      "type": "text",
+      "required": false,
+      "description": "Supporting tagline",
+      "example": "Brief project description"
+    }
+  },
+
+  "variations": {
+    "with_badge": "Includes status badge above title",
+    "title_only": "Title with no badge or subtitle",
+    "full": "Badge, title, and subtitle"
+  },
+
+  "styling_notes": {
+    "alignment": "Center-aligned by default",
+    "spacing": "Page-header partial handles padding/margins",
+    "badge_position": "Centered above title",
+    "responsive": "Handled by top-section namespace"
+  },
+
+  "ai_instructions": "Use as the opening section of every page. Include badge for status indication (project phase, product status, etc.). Title should be concise and descriptive. Subtitle provides additional context or value proposition. Always use 'top-section' namespace.",
+
+  "required_components": [
+    "badge (optional)"
+  ],
+
+  "related_components": [
+    "badge",
+    "cta-with-buttons"
+  ]
+}

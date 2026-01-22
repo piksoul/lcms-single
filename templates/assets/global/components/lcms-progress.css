@@ -1,0 +1,226 @@
+/**
+ * Progress Component
+ *
+ * Progress bars and indicators for showing completion status.
+ * Supports various styles, sizes, and color variants.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-progress.css
+ */
+
+/* ============================================
+   BLOCK: Progress
+   ============================================ */
+
+.lcms-progress {
+    width: 100%;
+    background: var(--color-background-medium, #e0e0e0);
+    border-radius: var(--border-radius, 8px);
+    overflow: hidden;
+    position: relative;
+    height: 20px;
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-progress__bar {
+    height: 100%;
+    background: var(--color-brand-accent, #0066cc);
+    border-radius: var(--border-radius, 8px);
+    transition: width 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+.lcms-progress__label {
+    color: var(--color-text-light, #ffffff);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.lcms-progress__text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--color-text-secondary, #666666);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lcms-progress__text-label {
+    flex: 1;
+}
+
+.lcms-progress__text-value {
+    font-weight: 600;
+    color: var(--color-brand-accent, #0066cc);
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-progress--small {
+    height: 12px;
+}
+
+.lcms-progress--small .lcms-progress__bar {
+    padding-right: 6px;
+}
+
+.lcms-progress--small .lcms-progress__label {
+    font-size: 10px;
+}
+
+.lcms-progress--medium {
+    height: 20px;
+}
+
+.lcms-progress--large {
+    height: 30px;
+}
+
+.lcms-progress--large .lcms-progress__bar {
+    padding-right: 15px;
+}
+
+.lcms-progress--large .lcms-progress__label {
+    font-size: 14px;
+}
+
+/* ============================================
+   MODIFIERS: Color Variants
+   ============================================ */
+
+.lcms-progress--primary .lcms-progress__bar {
+    background: var(--color-brand-primary, #161617);
+}
+
+.lcms-progress--secondary .lcms-progress__bar {
+    background: var(--color-brand-secondary, #444);
+}
+
+.lcms-progress--accent .lcms-progress__bar {
+    background: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-progress--success .lcms-progress__bar {
+    background: var(--color-success, #4CAF50);
+}
+
+.lcms-progress--warning .lcms-progress__bar {
+    background: var(--color-warning, #FFA726);
+}
+
+.lcms-progress--danger .lcms-progress__bar {
+    background: var(--color-danger, #EF5350);
+}
+
+/* ============================================
+   MODIFIERS: Striped
+   ============================================ */
+
+.lcms-progress--striped .lcms-progress__bar {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 20px 20px;
+}
+
+/* ============================================
+   MODIFIERS: Animated
+   ============================================ */
+
+.lcms-progress--animated .lcms-progress__bar {
+    animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+    0% {
+        background-position: 20px 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* ============================================
+   MODIFIERS: Style Variants
+   ============================================ */
+
+.lcms-progress--rounded {
+    border-radius: 50px;
+}
+
+.lcms-progress--rounded .lcms-progress__bar {
+    border-radius: 50px;
+}
+
+.lcms-progress--square {
+    border-radius: 0;
+}
+
+.lcms-progress--square .lcms-progress__bar {
+    border-radius: 0;
+}
+
+/* ============================================
+   MODIFIERS: With Shadow
+   ============================================ */
+
+.lcms-progress--shadow {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lcms-progress--shadow .lcms-progress__bar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   MODIFIERS: Indeterminate (Loading)
+   ============================================ */
+
+.lcms-progress--indeterminate .lcms-progress__bar {
+    width: 100% !important;
+    animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-indeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-progress__text {
+        font-size: 13px;
+    }
+
+    .lcms-progress__label {
+        font-size: 11px;
+    }
+
+    .lcms-progress--large {
+        height: 25px;
+    }
+}

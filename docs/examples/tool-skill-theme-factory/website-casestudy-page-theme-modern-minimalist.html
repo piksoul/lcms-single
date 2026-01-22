@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise AI Transformation - Case Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DejaVu Sans', 'Segoe UI', Arial, sans-serif;
+            color: #36454f;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #ffffff;
+            padding: 20px 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #36454f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #36454f;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #708090;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 180px 60px 100px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Overview */
+        .overview-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 60px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #708090;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 25px;
+        }
+
+        .section-description {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #708090;
+            max-width: 900px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .overview-card {
+            background: #f8f8f8;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid #d3d3d3;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            border-color: #708090;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .overview-card h3 {
+            font-size: 18px;
+            color: #36454f;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .overview-card p {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.7;
+        }
+
+        /* Challenge */
+        .challenge-section {
+            background: #f8f8f8;
+            padding: 100px 60px;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .challenge-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 40px;
+        }
+
+        .challenge-text ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .challenge-text li {
+            padding: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #708090;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .challenge-text li:before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+
+        .challenge-stats {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid #d3d3d3;
+        }
+
+        .stat-item {
+            padding: 30px 0;
+            border-bottom: 1px solid #d3d3d3;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #708090;
+        }
+
+        /* Solution */
+        .solution-section {
+            padding: 100px 60px;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .solution-card {
+            background: white;
+            border: 2px solid #d3d3d3;
+            border-radius: 10px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #36454f;
+        }
+
+        .solution-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .solution-card p {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.7;
+        }
+
+        /* Before/After */
+        .before-after-section {
+            background: #36454f;
+            color: white;
+            padding: 100px 60px;
+        }
+
+        .before-after-section .section-title {
+            color: white;
+        }
+
+        .before-after-section .section-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .comparison-side {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-side h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-side ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-side li {
+            padding: 20px 0;
+            font-size: 18px;
+            line-height: 1.7;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-side li:last-child {
+            border-bottom: none;
+        }
+
+        /* Results */
+        .results-section {
+            padding: 100px 60px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .result-card {
+            text-align: center;
+            background: #f8f8f8;
+            padding: 50px 30px;
+            border-radius: 10px;
+            border: 2px solid #d3d3d3;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-10px);
+            border-color: #36454f;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-number {
+            font-size: 56px;
+            font-weight: bold;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .result-label {
+            font-size: 18px;
+            color: #708090;
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial-section {
+            background: #f8f8f8;
+            padding: 100px 60px;
+        }
+
+        .testimonial-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 48px;
+            color: #708090;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 24px;
+            line-height: 1.8;
+            color: #36454f;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            font-size: 20px;
+            color: #36454f;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 16px;
+            color: #708090;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: 100px 60px;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d3d3d3;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            grid-column: 1;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #36454f;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #d3d3d3;
+        }
+
+        .timeline-date {
+            text-align: right;
+            padding-right: 40px;
+        }
+
+        .timeline-date h4 {
+            font-size: 24px;
+            color: #36454f;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date p {
+            font-size: 14px;
+            color: #708090;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-content {
+            padding-left: 40px;
+        }
+
+        .timeline-content h3 {
+            font-size: 22px;
+            color: #36454f;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content p {
+            font-size: 16px;
+            color: #708090;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #36454f 0%, #708090 100%);
+            color: white;
+            padding: 100px 60px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .cta-section p {
+            font-size: 22px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #36454f;
+            padding: 18px 45px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #36454f;
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .challenge-content,
+            .comparison-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-date {
+                grid-column: 1;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-date {
+                text-align: left;
+                padding-right: 0;
+                padding-left: 70px;
+            }
+
+            .timeline-content {
+                padding-left: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 140px 30px 80px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .overview-grid,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar,
+            .overview-section,
+            .challenge-section,
+            .solution-section,
+            .before-after-section,
+            .results-section,
+            .testimonial-section,
+            .timeline-section,
+            .cta-section {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">TechFlow Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#">Work</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">Case Study</div>
+        <h1>Enterprise AI Transformation</h1>
+        <p class="hero-subtitle">How we helped Global Manufacturing Corp reduce operational costs by 45% and increase productivity by 60% through AI-powered automation</p>
+        <div class="hero-meta">
+            <div class="meta-item">Client: Global Manufacturing Corp</div>
+            <div class="meta-item">Industry: Manufacturing</div>
+            <div class="meta-item">Duration: 9 months</div>
+            <div class="meta-item">Team Size: 12 specialists</div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview-section">
+        <div class="section-label">Project Overview</div>
+        <h2 class="section-title">Transforming Operations at Scale</h2>
+        <p class="section-description">
+            Global Manufacturing Corp, a Fortune 500 company with 15,000 employees across 30 facilities, needed to modernize their operations to remain competitive in an increasingly automated industry.
+        </p>
+
+        <div class="overview-grid">
+            <div class="overview-card">
+                <h3>Industry</h3>
+                <p>Manufacturing & Industrial Automation</p>
+            </div>
+            <div class="overview-card">
+                <h3>Company Size</h3>
+                <p>15,000+ employees globally</p>
+            </div>
+            <div class="overview-card">
+                <h3>Project Scope</h3>
+                <p>AI-powered process automation & predictive maintenance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="challenge-section">
+        <div class="content-container">
+            <div class="section-label">The Challenge</div>
+            <h2 class="section-title">Complex Problems Requiring Innovation</h2>
+            
+            <div class="challenge-content">
+                <div class="challenge-text">
+                    <p class="section-description">
+                        Global Manufacturing Corp faced significant operational inefficiencies that were impacting their bottom line and competitiveness.
+                    </p>
+                    <ul>
+                        <li>Manual quality control processes leading to 12% defect rate</li>
+                        <li>Unplanned equipment downtime costing $2M+ monthly</li>
+                        <li>Inefficient inventory management causing $15M in excess stock</li>
+                        <li>Disconnected legacy systems across 30 facilities</li>
+                        <li>Limited real-time visibility into production metrics</li>
+                    </ul>
+                </div>
+
+                <div class="challenge-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">12%</div>
+                        <div class="stat-label">Product Defect Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$2M+</div>
+                        <div class="stat-label">Monthly Downtime Costs</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$15M</div>
+                        <div class="stat-label">Excess Inventory</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution-section">
+        <div class="content-container">
+            <div class="section-label">Our Solution</div>
+            <h2 class="section-title">Comprehensive AI Integration Strategy</h2>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🤖</div>
+                    <h3>Computer Vision QC</h3>
+                    <p>Implemented AI-powered visual inspection systems to automatically detect defects in real-time, reducing manual inspection time by 85%.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🔮</div>
+                    <h3>Predictive Maintenance</h3>
+                    <p>Deployed machine learning models to predict equipment failures before they occur, reducing unplanned downtime by 73%.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3>Intelligent Inventory</h3>
+                    <p>Created AI-driven demand forecasting and inventory optimization systems, reducing excess stock by $12M annually.</p>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🔗</div>
+                    <h3>Unified Platform</h3>
+                    <p>Integrated all facilities into a single AI-powered operations platform with real-time dashboards and alerts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After -->
+    <section class="before-after-section">
+        <div class="content-container">
+            <div class="section-label">Transformation</div>
+            <h2 class="section-title">Before & After Comparison</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-side">
+                    <h3>Before Implementation</h3>
+                    <ul>
+                        <li>✗ Manual quality inspections taking 4 hours per batch</li>
+                        <li>✗ Equipment failures causing unexpected 48+ hour shutdowns</li>
+                        <li>✗ Inventory accuracy at 78% leading to stockouts</li>
+                        <li>✗ Production data delayed by 24-48 hours</li>
+                        <li>✗ 12% defect rate in shipped products</li>
+                        <li>✗ Limited ability to predict demand fluctuations</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-side">
+                    <h3>After Implementation</h3>
+                    <ul>
+                        <li>✓ Automated inspections completed in 20 minutes</li>
+                        <li>✓ Predictive alerts preventing 90% of equipment failures</li>
+                        <li>✓ Inventory accuracy improved to 99.2%</li>
+                        <li>✓ Real-time production dashboards and alerts</li>
+                        <li>✓ Defect rate reduced to 1.8%</li>
+                        <li>✓ AI forecasting with 94% accuracy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div class="content-container">
+            <div class="section-label">Impact & Results</div>
+            <h2 class="section-title">Measurable Business Outcomes</h2>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">45%</div>
+                    <div class="result-label">Operational Cost Reduction</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">60%</div>
+                    <div class="result-label">Productivity Increase</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">73%</div>
+                    <div class="result-label">Downtime Reduction</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">85%</div>
+                    <div class="result-label">Defect Rate Improvement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <p class="testimonial-text">
+                The transformation has been remarkable. We're now operating at a level of efficiency we never thought possible. The AI systems have not only reduced costs but have fundamentally changed how we approach manufacturing.
+            </p>
+            <div class="testimonial-author">
+                <div class="author-avatar">JT</div>
+                <div class="author-info">
+                    <h4>James Thompson</h4>
+                    <p>Chief Operations Officer, Global Manufacturing Corp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <div class="content-container">
+            <div class="section-label">Implementation Journey</div>
+            <h2 class="section-title">9-Month Transformation Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <h4>Month 1-2</h4>
+                        <p>Discovery Phase</p>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Assessment & Planning</h3>
+                        <p>Conducted comprehensive operational assessment across all 30 facilities. Identified key pain points and developed detailed implementation roadmap.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <h4>Month 3-5</h4>
+                        <p>Development Phase</p>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>AI Model Development</h3>
+                        <p>Built and trained custom machine learning models for computer vision QC and predictive maintenance. Integrated with existing systems.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <h4>Month 6-7</h4>
+                        <p>Deployment Phase</p>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Pilot & Rollout</h3>
+                        <p>Launched pilot program at 3 facilities, refined based on feedback, then rolled out to all locations with comprehensive training.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">
+                        <h4>Month 8-9</h4>
+                        <p>Optimization Phase</p>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Performance Tuning</h3>
+                        <p>Optimized AI models based on production data. Achieved target KPIs and established ongoing support structure.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Operations?</h2>
+        <p>Let's discuss how AI can drive similar results for your organization.</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn-primary">Schedule Consultation</a>
+            <a href="#" class="btn-secondary">View More Case Studies</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 TechFlow Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/**
+ * Color Swatch Component
+ *
+ * Displays brand colors with their hex/RGB values.
+ * Used primarily in brand guide color palette sections.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Assets/Components
+ * @filepath   templates/assets/global/components/lcms-color-swatch.css
+ */
+
+/* ============================================
+   BLOCK: Color Swatch
+   ============================================ */
+
+.lcms-color-swatch {
+    background: var(--color-background-light, #ffffff);
+    border-radius: var(--border-radius, 10px);
+    overflow: hidden;
+    border: 2px solid var(--color-border-neutral, #e0e0e0);
+    transition: var(--transition-standard, all 0.3s ease);
+}
+
+/* ============================================
+   ELEMENTS
+   ============================================ */
+
+.lcms-color-swatch__display {
+    width: 100%;
+    height: 120px;
+    border-bottom: 2px solid var(--color-border-neutral, #e0e0e0);
+}
+
+.lcms-color-swatch__name {
+    font-family: var(--font-heading, inherit);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-brand-secondary, #161617);
+    text-transform: uppercase;
+    padding: 20px 20px 10px;
+}
+
+.lcms-color-swatch__values {
+    padding: 0 20px 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--color-text-primary, #666666);
+}
+
+.lcms-color-swatch__values div {
+    margin-bottom: 5px;
+}
+
+/* ============================================
+   MODIFIERS: Size Variants
+   ============================================ */
+
+.lcms-color-swatch--small .lcms-color-swatch__display {
+    height: 80px;
+}
+
+.lcms-color-swatch--small .lcms-color-swatch__name {
+    font-size: 16px;
+    padding: 15px 15px 8px;
+}
+
+.lcms-color-swatch--small .lcms-color-swatch__values {
+    padding: 0 15px 15px;
+    font-size: 13px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__display {
+    height: 160px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__name {
+    font-size: 20px;
+    padding: 25px 25px 12px;
+}
+
+.lcms-color-swatch--large .lcms-color-swatch__values {
+    padding: 0 25px 25px;
+    font-size: 15px;
+}
+
+/* ============================================
+   MODIFIERS: Interactive States
+   ============================================ */
+
+.lcms-color-swatch--interactive {
+    cursor: pointer;
+}
+
+.lcms-color-swatch--interactive:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium, 0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+/* ============================================
+   MODIFIERS: Featured/Primary
+   ============================================ */
+
+.lcms-color-swatch--featured {
+    border-width: 3px;
+    border-color: var(--color-brand-accent, #0066cc);
+}
+
+.lcms-color-swatch--featured .lcms-color-swatch__name {
+    color: var(--color-brand-accent, #0066cc);
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .lcms-color-swatch__display {
+        height: 100px;
+    }
+
+    .lcms-color-swatch__name {
+        font-size: 16px;
+        padding: 15px 15px 8px;
+    }
+
+    .lcms-color-swatch__values {
+        padding: 0 15px 15px;
+        font-size: 13px;
+    }
+
+    .lcms-color-swatch--large .lcms-color-swatch__display {
+        height: 120px;
+    }
+}

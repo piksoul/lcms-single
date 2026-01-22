@@ -1,0 +1,41 @@
+/**
+ * Top Section Partial Styles - Theming Only
+ *
+ * Brand-specific theming for top-section partials (hero, page-header, loader).
+ * Structural styles moved to lcms-design-system.css (lcms-hero component).
+ * Auto-loads when any top-section partial renders.
+ *
+ * @filepath templates/pages/_partials/top-section/top-section.css
+ * @since 1.4.4
+ * @updated 1.4.9 - Cleaned up for BEM migration (Phase 5 complete)
+ */
+
+/* ============================================
+   HERO SECTION - THEMING OVERRIDES
+   ============================================ */
+
+/**
+ * Note: All structural styles for hero sections are now in:
+ * templates/assets/global/components/lcms-hero.css
+ *
+ * Use BEM classes: .lcms-hero, .lcms-hero__logo, .lcms-hero__badge,
+ * .lcms-hero__title, .lcms-hero__subtitle
+ *
+ * This file is reserved for brand-specific color/spacing overrides only.
+ * Currently empty - add theming overrides as needed.
+ */
+
+/* Example theming override (commented out):
+.top-section .lcms-hero {
+    background: custom-gradient or brand-specific background;
+}
+
+.top-section .lcms-hero__title {
+    color: brand-specific-color;
+}
+*/
+
+section.lcms-top-section {
+  width: 100%;
+  padding: var(--spacing-section, 80px) var(--spacing-horizontal, 20px);
+}

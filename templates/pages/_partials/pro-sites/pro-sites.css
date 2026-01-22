@@ -1,0 +1,84 @@
+/**
+ * Pro-Sites Partial Styles - Theming Only
+ *
+ * Brand-specific theming for pro-sites partial system.
+ * Structural styles moved to lcms-design-system.css.
+ * Auto-loads when any pro-sites partial renders.
+ *
+ * @filepath templates/pages/_partials/pro-sites/pro-sites.css
+ * @since 1.2.0
+ * @updated 1.4.9 - Cleaned up for BEM migration (utilities and components moved to design system)
+ */
+
+/* ============================================
+   BEM COMPONENT USAGE NOTES
+   ============================================ */
+
+/**
+ * All structural styles moved to design system:
+ *
+ * UTILITIES (now in lcms-design-system.css):
+ * - Flex: .flex, .flex-row, .flex-column, .justify-center, .align-center
+ * - Grid: .grid-2col, .grid-3col, .grid-4col, .gap-16, .gap-32
+ * - Spacing: .mb-16, .mb-24, .mt-16, .pt-32, .pb-32
+ * - Text: .text-center, .text-lead, .text-large, .text-muted
+ *
+ * COMPONENTS (BEM classes in design system):
+ * - Section Heading: .lcms-section-heading, .lcms-section-heading__label, .lcms-section-heading__title
+ * - Buttons: .lcms-button, .lcms-button--primary, .lcms-button--secondary, .lcms-button-group
+ * - Cards: .lcms-card, .lcms-card__header, .lcms-card__body, .lcms-card--elevated, .lcms-card--bordered
+ * - Grid: .lcms-grid, .lcms-grid--2col, .lcms-grid--3col, .lcms-grid--4col
+ * - Column: .lcms-column-layout, .lcms-column-layout__column
+ * - Content: .lcms-content-stack, .lcms-content-row, .lcms-content-grid
+ * - Lists: .lcms-list, .lcms-list--check, .lcms-list--arrow
+ * - Metrics: .lcms-metric, .lcms-metric__value, .lcms-metric__label
+ * - Progress: .lcms-progress, .lcms-progress__bar, .lcms-progress__fill
+ * - Badges: .lcms-badge, .lcms-badge--success, .lcms-badge--warning
+ *
+ * This file contains ONLY pro-sites-specific theming overrides.
+ */
+
+/* ============================================
+   Pro-Sites Section Framework
+   ============================================ */
+
+section.lcms-pro-sites {
+    width: 100%;
+    padding: var(--spacing-section, 80px) var(--spacing-horizontal, 20px);
+}
+
+/* Container handled by global .lcms-container BEM utility (in design system) */
+
+/* ============================================
+   Pro-Sites Specific Theming Overrides
+   (Add custom styles as needed)
+   ============================================ */
+
+/**
+ * Example theming overrides (commented out):
+ *
+ * Override section heading colors for pro-sites:
+ * .lcms-pro-sites .lcms-section-heading__label {
+ *     color: brand-specific-color;
+ * }
+ *
+ * Override card styles for pro-sites:
+ * .lcms-pro-sites .lcms-card--elevated {
+ *     box-shadow: custom-shadow;
+ * }
+ *
+ * Override button styles for pro-sites:
+ * .lcms-pro-sites .lcms-button--primary {
+ *     background: brand-specific-gradient;
+ * }
+ */
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+@media (max-width: 768px) {
+    section.lcms-pro-sites {
+        padding: var(--spacing-section-mobile, 60px) var(--spacing-horizontal-mobile, 20px);
+    }
+}

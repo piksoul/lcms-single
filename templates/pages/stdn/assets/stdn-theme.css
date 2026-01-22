@@ -1,0 +1,12 @@
+/**
+ * St Denis School - Custom Theme Styles
+ *
+ * Client-specific CSS overrides and customizations.
+ * The config.php handles most styling via CSS variables.
+ * Use this file for unique CSS that can't be handled by variables.
+ *
+ * @package    LeanCMS_Plugin
+ * @subpackage Templates/Pages/STDN
+ */
+
+/* Add custom CSS here */
