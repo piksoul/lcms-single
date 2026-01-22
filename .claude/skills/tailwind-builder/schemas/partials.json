@@ -1,0 +1,465 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tailwind Partials Schema",
+  "description": "Schema for Tailwind + DaisyUI partials",
+  "version": "1.0.0",
+  "partials": {
+    "hero": {
+      "description": "Full-featured hero section with badge, title, subtitle, buttons, and optional image",
+      "file": "hero.php",
+      "usage": "partial('hero', $config, 'tailwind')",
+      "bestFor": [
+        "Landing page heroes",
+        "Page headers with CTAs",
+        "Welcome sections"
+      ],
+      "structure": {
+        "badge": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge text above title"
+        },
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "Main hero title"
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Subtitle text below title"
+        },
+        "buttons": {
+          "type": "array",
+          "required": false,
+          "description": "Array of button objects",
+          "items": {
+            "text": {"type": "string", "required": true},
+            "url": {"type": "string", "required": true},
+            "style": {
+              "type": "string",
+              "enum": ["primary", "secondary", "accent", "outline", "ghost"],
+              "default": "primary"
+            }
+          }
+        },
+        "image": {
+          "type": "string",
+          "required": false,
+          "description": "URL for optional hero image"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "centered": {
+          "type": "boolean",
+          "default": true,
+          "description": "Center content horizontally"
+        },
+        "min_height": {
+          "type": "string",
+          "default": "60vh",
+          "description": "Minimum section height"
+        }
+      },
+      "example": {
+        "badge": "Welcome",
+        "title": "Hero Title Here",
+        "subtitle": "Supporting text that explains the value proposition.",
+        "buttons": [
+          {"text": "Get Started", "url": "#", "style": "primary"},
+          {"text": "Learn More", "url": "#about", "style": "outline"}
+        ],
+        "min_height": "70vh"
+      }
+    },
+    "section": {
+      "description": "Generic flexible content section for text/HTML content",
+      "file": "section.php",
+      "usage": "partial('section', $config, 'tailwind')",
+      "bestFor": [
+        "Text-heavy content",
+        "About sections",
+        "HTML content blocks",
+        "Narrow prose content"
+      ],
+      "structure": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "HTML id attribute for the section"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge/label above title"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Section title"
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Subtitle below title"
+        },
+        "content": {
+          "type": "string",
+          "required": false,
+          "description": "HTML content (wp_kses_post filtered)"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "centered": {
+          "type": "boolean",
+          "default": true,
+          "description": "Center text content"
+        },
+        "narrow": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use narrow content width (max-w-3xl)"
+        }
+      },
+      "example": {
+        "id": "about",
+        "label": "About Us",
+        "title": "Our Story",
+        "content": "<p>Your HTML content here...</p>",
+        "centered": true,
+        "narrow": true
+      }
+    },
+    "card-grid": {
+      "description": "Responsive grid of cards with icons, titles, and descriptions",
+      "file": "card-grid.php",
+      "usage": "partial('card-grid', $config, 'tailwind')",
+      "bestFor": [
+        "Feature showcases",
+        "Service listings",
+        "Team members",
+        "Value propositions"
+      ],
+      "structure": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "HTML id attribute for the section"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge/label"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Section title"
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Section subtitle"
+        },
+        "columns": {
+          "type": "number",
+          "enum": [2, 3, 4],
+          "default": 3,
+          "description": "Number of columns"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "cards": {
+          "type": "array",
+          "required": true,
+          "description": "Array of card objects",
+          "items": {
+            "icon": {"type": "string", "description": "Emoji or icon HTML"},
+            "title": {"type": "string", "required": true},
+            "content": {"type": "string", "description": "Card description"},
+            "link": {
+              "type": "object",
+              "properties": {
+                "url": {"type": "string"},
+                "text": {"type": "string", "default": "Learn more"}
+              }
+            }
+          }
+        }
+      },
+      "example": {
+        "id": "features",
+        "label": "Features",
+        "title": "Why Choose Us",
+        "columns": 3,
+        "cards": [
+          {"icon": "⚡", "title": "Fast", "content": "Lightning quick performance"},
+          {"icon": "🔒", "title": "Secure", "content": "Enterprise-grade security"},
+          {"icon": "🎨", "title": "Beautiful", "content": "Stunning design out of the box"}
+        ]
+      }
+    },
+    "steps": {
+      "description": "Process/timeline steps display with DaisyUI steps component",
+      "file": "steps.php",
+      "usage": "partial('steps', $config, 'tailwind')",
+      "bestFor": [
+        "Process workflows",
+        "How-it-works sections",
+        "Onboarding flows",
+        "Tutorial steps"
+      ],
+      "structure": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "HTML id attribute"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge/label"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Section title"
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Section subtitle"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "vertical": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use vertical layout instead of horizontal"
+        },
+        "steps": {
+          "type": "array",
+          "required": true,
+          "description": "Array of step objects",
+          "items": {
+            "title": {"type": "string", "required": true},
+            "content": {"type": "string", "description": "Step description"},
+            "status": {
+              "type": "string",
+              "enum": ["primary", "secondary", "accent", "info", "success", "warning", "error", ""],
+              "default": "primary",
+              "description": "Step status/color"
+            }
+          }
+        }
+      },
+      "example": {
+        "id": "process",
+        "label": "How It Works",
+        "title": "Simple 3-Step Process",
+        "steps": [
+          {"title": "Sign Up", "content": "Create your account", "status": "primary"},
+          {"title": "Configure", "content": "Set your preferences", "status": "primary"},
+          {"title": "Launch", "content": "Go live!", "status": ""}
+        ]
+      }
+    },
+    "stats": {
+      "description": "Statistics/metrics display with DaisyUI stats component",
+      "file": "stats.php",
+      "usage": "partial('stats', $config, 'tailwind')",
+      "bestFor": [
+        "Social proof",
+        "Company metrics",
+        "Achievement displays",
+        "Key numbers"
+      ],
+      "structure": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "HTML id attribute"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge/label"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Section title"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "stats": {
+          "type": "array",
+          "required": true,
+          "description": "Array of stat objects",
+          "items": {
+            "value": {"type": "string", "required": true, "description": "The metric value (e.g., '10K+')"},
+            "label": {"type": "string", "required": true, "description": "What the metric measures"},
+            "desc": {"type": "string", "description": "Optional additional description"}
+          }
+        }
+      },
+      "example": {
+        "id": "stats",
+        "title": "By the Numbers",
+        "stats": [
+          {"value": "10K+", "label": "Users", "desc": "Since 2020"},
+          {"value": "99%", "label": "Uptime", "desc": "Last 12 months"},
+          {"value": "24/7", "label": "Support", "desc": "Always available"}
+        ]
+      }
+    },
+    "testimonials": {
+      "description": "Customer testimonial cards with avatars and ratings",
+      "file": "testimonials.php",
+      "usage": "partial('testimonials', $config, 'tailwind')",
+      "bestFor": [
+        "Customer reviews",
+        "Social proof",
+        "Case study quotes",
+        "User feedback"
+      ],
+      "structure": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "HTML id attribute"
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "description": "Optional badge/label"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Section title"
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Section subtitle"
+        },
+        "dark": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable dark mode styling"
+        },
+        "testimonials": {
+          "type": "array",
+          "required": true,
+          "description": "Array of testimonial objects",
+          "items": {
+            "quote": {"type": "string", "required": true, "description": "The testimonial text"},
+            "name": {"type": "string", "required": true, "description": "Person's name"},
+            "role": {"type": "string", "description": "Job title, company"},
+            "avatar": {"type": "string", "description": "URL to avatar image"},
+            "rating": {"type": "number", "min": 1, "max": 5, "description": "Star rating"}
+          }
+        }
+      },
+      "example": {
+        "id": "testimonials",
+        "label": "What People Say",
+        "title": "Customer Stories",
+        "testimonials": [
+          {
+            "quote": "This product changed how we work.",
+            "name": "Jane Smith",
+            "role": "CTO, TechCorp",
+            "avatar": "https://example.com/avatar.jpg",
+            "rating": 5
+          }
+        ]
+      }
+    },
+    "footer": {
+      "description": "Page footer with links and branding",
+      "file": "footer.php",
+      "usage": "partial('footer', $config, 'tailwind')",
+      "bestFor": [
+        "Page footers",
+        "Multi-column link sections"
+      ],
+      "structure": {
+        "brand": {
+          "type": "object",
+          "description": "Brand/logo section",
+          "properties": {
+            "name": {"type": "string"},
+            "tagline": {"type": "string"},
+            "logo": {"type": "string", "description": "URL to logo image"}
+          }
+        },
+        "columns": {
+          "type": "array",
+          "description": "Link columns",
+          "items": {
+            "title": {"type": "string"},
+            "links": {
+              "type": "array",
+              "items": {
+                "text": {"type": "string"},
+                "url": {"type": "string"}
+              }
+            }
+          }
+        },
+        "social": {
+          "type": "array",
+          "description": "Social media links",
+          "items": {
+            "platform": {"type": "string"},
+            "url": {"type": "string"}
+          }
+        },
+        "copyright": {
+          "type": "string",
+          "description": "Copyright text"
+        }
+      }
+    }
+  },
+  "buttonStyles": {
+    "description": "Available button styles for all partials",
+    "styles": {
+      "primary": "Main call-to-action (btn-primary)",
+      "secondary": "Secondary actions (btn-secondary)",
+      "accent": "Highlight actions (btn-accent)",
+      "outline": "Low-emphasis actions (btn-outline)",
+      "ghost": "Minimal emphasis (btn-ghost)"
+    }
+  },
+  "commonProperties": {
+    "id": "HTML id attribute for anchor links and JS targeting",
+    "label": "Small badge/label text displayed above title",
+    "title": "Main section heading",
+    "subtitle": "Supporting text below title",
+    "dark": "Enable dark background with light text"
+  },
+  "usageNotes": {
+    "theming": "Wrap content in <div data-theme=\"lcms\"> for proper DaisyUI theming",
+    "cssInclude": "Include tailwind.css from templates/assets/tailwind/",
+    "responsive": "All partials are mobile-responsive by default",
+    "fonts": "Include Inter font from Google Fonts for best results"
+  }
+}

@@ -3,202 +3,103 @@
  * About Page Template
  *
  * Information about the company/service.
- * Built with Pro-Sites partial system.
+ * Built with Tailwind + DaisyUI partials.
  *
  * @filepath templates/pages/slug-about.php
  */
 
 get_header();
-
-// Load CSS configurations
-$global_config = include(LEANCMS_PLUGIN_DIR . 'templates/assets/global/config.php');
-$css_vars = $global_config['css_variables'] ?? [];
 ?>
 
-<!-- LeanCMS Design System -->
-<link rel="stylesheet" href="<?php echo LEANCMS_PLUGIN_URL; ?>templates/assets/global/lcms-design-system.css">
+<!-- Tailwind CSS + DaisyUI -->
+<link rel="stylesheet" href="<?php echo LEANCMS_PLUGIN_URL; ?>templates/assets/tailwind/tailwind.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS Variables -->
-<style id="brand-css-variables">
-:root {
-<?php foreach ($css_vars as $key => $value): ?>
-    --<?php echo esc_attr($key); ?>: <?php echo esc_attr($value); ?>;
-<?php endforeach; ?>
-    --color-brand-primary: #2563eb;
-    --color-brand-secondary: #1e40af;
-    --color-brand-accent: #3b82f6;
-}
-</style>
-
-<!-- Hero Section -->
-<section class="lcms-hero" style="padding: 60px 24px;">
-    <h1 class="lcms-hero__title">About Us</h1>
-    <p class="lcms-hero__subtitle">Learn more about our mission and values.</p>
-</section>
+<!-- Set DaisyUI theme -->
+<div data-theme="lcms">
 
 <?php
+// ============================================
+// HERO SECTION
+// ============================================
+$hero = [
+    'title'      => 'About Us',
+    'subtitle'   => 'Learn more about our mission and values.',
+    'min_height' => '40vh',
+];
+
+partial('hero', $hero, 'tailwind');
+
 // ============================================
 // OUR STORY
 // ============================================
 $story_section = [
-    'header' => [
-        'heading' => [
-            'label' => 'Our Story',
-            'title' => 'Building Better Web Experiences',
-            'align' => 'center',
-        ],
-    ],
-    'content' => [
-        'type' => 'text',
-        'text' => '
-            <p>HelloCMS was born from a simple idea: content management should be straightforward, not complicated. We believe that creating and managing websites should be accessible to everyone, without sacrificing power or flexibility.</p>
-            <p>Our team has years of experience building web solutions, and we\'ve seen firsthand the frustrations that come with overly complex systems. That\'s why we created HelloCMS - a streamlined approach that puts simplicity first while maintaining the features professionals need.</p>
-        ',
-        'format' => 'lead',
-    ],
+    'id'       => 'story',
+    'label'    => 'Our Story',
+    'title'    => 'Building Better Web Experiences',
+    'content'  => '
+        <p class="text-lg">HelloCMS was born from a simple idea: content management should be straightforward, not complicated. We believe that creating and managing websites should be accessible to everyone, without sacrificing power or flexibility.</p>
+        <p class="text-lg">Our team has years of experience building web solutions, and we\'ve seen firsthand the frustrations that come with overly complex systems. That\'s why we created HelloCMS - a streamlined approach that puts simplicity first while maintaining the features professionals need.</p>
+    ',
+    'centered' => true,
+    'narrow'   => true,
 ];
 
-partial('column', $story_section, 'pro-sites');
+partial('section', $story_section, 'tailwind');
 
 // ============================================
 // VALUES
 // ============================================
-$values_intro = [
-    'settings' => [
-        'dark_mode' => true,
-    ],
-    'header' => [
-        'heading' => [
-            'label' => 'What We Believe',
-            'title' => 'Our Core Values',
-            'align' => 'center',
-        ],
-    ],
-];
-
-partial('column', $values_intro, 'pro-sites');
-
 $values_grid = [
-    'settings' => [
-        'dark_mode' => true,
-    ],
-    'content' => [
-        'items' => [
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 40px; margin-bottom: 16px;">✨</div>
-                                    <h3 style="margin: 0 0 12px;">Simplicity</h3>
-                                    <p style="margin: 0; opacity: 0.9;">We remove complexity wherever possible, making tools that are intuitive and easy to use.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '32px',
-                    'shadow' => true,
-                ],
-            ],
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 40px; margin-bottom: 16px;">🔧</div>
-                                    <h3 style="margin: 0 0 12px;">Quality</h3>
-                                    <p style="margin: 0; opacity: 0.9;">We build things right the first time, with clean code and thoughtful design.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '32px',
-                    'shadow' => true,
-                ],
-            ],
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 40px; margin-bottom: 16px;">🤝</div>
-                                    <h3 style="margin: 0 0 12px;">Trust</h3>
-                                    <p style="margin: 0; opacity: 0.9;">We\'re transparent in everything we do, building lasting relationships with our users.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '32px',
-                    'shadow' => true,
-                ],
-            ],
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 40px; margin-bottom: 16px;">🌱</div>
-                                    <h3 style="margin: 0 0 12px;">Growth</h3>
-                                    <p style="margin: 0; opacity: 0.9;">We continuously improve, learning from feedback and evolving with technology.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '32px',
-                    'shadow' => true,
-                ],
-            ],
+    'id'       => 'values',
+    'label'    => 'What We Believe',
+    'title'    => 'Our Core Values',
+    'columns'  => 4,
+    'dark'     => true,
+    'cards'    => [
+        [
+            'icon'    => '✨',
+            'title'   => 'Simplicity',
+            'content' => 'We remove complexity wherever possible, making tools that are intuitive and easy to use.',
         ],
-        'columns' => 4,
-        'gap' => '24px',
-    ],
-];
-
-partial('grid', $values_grid, 'pro-sites');
-
-// ============================================
-// CTA
-// ============================================
-$cta = [
-    'settings' => [
-        'spacing_top' => '80px',
-        'spacing_bottom' => '80px',
-    ],
-    'header' => [
-        'heading' => [
-            'title' => 'Want to Learn More?',
-            'subtitle' => 'Get in touch with us to discuss how we can help.',
-            'align' => 'center',
+        [
+            'icon'    => '🔧',
+            'title'   => 'Quality',
+            'content' => 'We build things right the first time, with clean code and thoughtful design.',
         ],
-    ],
-    'footer' => [
-        'buttons' => [
-            [
-                'text' => 'Contact Us',
-                'url' => '/contact',
-                'style' => 'primary',
-            ],
-            [
-                'text' => 'Back to Home',
-                'url' => '/home',
-                'style' => 'outline',
-            ],
+        [
+            'icon'    => '🤝',
+            'title'   => 'Trust',
+            'content' => 'We\'re transparent in everything we do, building lasting relationships with our users.',
+        ],
+        [
+            'icon'    => '🌱',
+            'title'   => 'Growth',
+            'content' => 'We continuously improve, learning from feedback and evolving with technology.',
         ],
     ],
 ];
 
-partial('column', $cta, 'pro-sites');
+partial('card-grid', $values_grid, 'tailwind');
+?>
 
-get_footer();
+<!-- CTA Section -->
+<section class="lcms-section bg-base-100">
+    <div class="lcms-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Want to Learn More?</h2>
+        <p class="text-lg opacity-70 mb-8 max-w-2xl mx-auto">
+            Get in touch with us to discuss how we can help.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/contact" class="btn btn-primary">Contact Us</a>
+            <a href="/home" class="btn btn-outline">Back to Home</a>
+        </div>
+    </div>
+</section>
+
+</div><!-- end data-theme -->
+
+<?php get_footer(); ?>
