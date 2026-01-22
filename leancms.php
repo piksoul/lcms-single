@@ -58,7 +58,6 @@ require_once LEANCMS_PLUGIN_DIR . 'includes/class-installer.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/utilities/class-helpers.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/settings/class-settings-page.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/content/class-page-renderer.php';
-require_once LEANCMS_PLUGIN_DIR . 'includes/content/class-template-subfolder-resolver.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/content/class-db-page-renderer.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/content/class-page-data-meta-box.php';
 require_once LEANCMS_PLUGIN_DIR . 'includes/content/class-partial-registry.php';
@@ -67,7 +66,6 @@ require_once LEANCMS_PLUGIN_DIR . 'includes/admin/class-bulk-pages.php';
 
 LeanCMS_Settings_Page::boot();
 LeanCMS_Content_Page_Renderer::boot();
-LeanCMS_Template_Subfolder_Resolver::boot();
 LeanCMS_DB_Page_Renderer::boot();
 LeanCMS_Page_Data_Meta_Box::boot();
 LeanCMS_Partial_Registry::boot();
