@@ -82,23 +82,27 @@ return [
     ],
 
     /**
-     * Global Footer Ad Panel
+     * Global Site Footer
      *
-     * Controls the global footer advertising panel that appears on all pages.
-     * Set 'enabled' => false to disable globally, or override in client config.
+     * Persistent footer that appears on all LeanCMS pages.
+     * Configure navigation links, branding, and copyright here.
      */
-    'global_footer' => [
-        'enabled' => true,  // Set to false to disable globally
+    'site_footer' => [
+        'enabled' => true,
         'content' => [
-            'heading'       => 'Powered by Brand Hub',
-            'description'   => 'Professional brand management made simple',
-            'button_text'   => 'Learn More',
-            'button_url'    => 'https://brandhub.example.com',
-            'button_target' => '_blank',
-            'logo_url'      => '',  // Optional: Add logo URL here
-            'logo_alt'      => 'Brand Hub',
-            'bg_color'      => '',  // Optional: Override gradient with solid color
-            'text_color'    => '',  // Optional: Override text color
+            'brand'         => 'HelloCMS',
+            'tagline'       => 'Simple, powerful content management.',
+            'links'         => [
+                ['text' => 'Home', 'url' => '/home'],
+                ['text' => 'About', 'url' => '/about'],
+                ['text' => 'Contact', 'url' => '/contact'],
+                ['text' => 'Privacy', 'url' => '/privacy-policy'],
+                ['text' => 'Terms', 'url' => '/terms-of-service'],
+            ],
+            'copyright'     => '',  // Leave empty for auto (Year + Brand)
+            'show_branding' => false,
+            'branding_text' => 'Powered by LeanCMS',
+            'branding_url'  => 'https://piksoul.com',
         ],
     ],
 

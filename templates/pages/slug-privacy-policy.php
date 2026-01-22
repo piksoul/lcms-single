@@ -96,27 +96,5 @@ $privacy_content = [
 ];
 
 partial('column', $privacy_content, 'pro-sites');
-?>
 
-<!-- Footer -->
-<footer class="lcms-cta-section" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);">
-    <div class="content-container">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
-            <div>
-                <h3 style="font-family: var(--font-heading); font-size: 24px; margin: 0 0 8px; font-weight: 700;">HelloCMS</h3>
-                <p style="margin: 0; opacity: 0.7; font-size: 14px;">Simple, powerful content management.</p>
-            </div>
-            <div style="display: flex; gap: 24px; font-size: 14px;">
-                <a href="/about" style="color: white; opacity: 0.8; text-decoration: none;">About</a>
-                <a href="/contact" style="color: white; opacity: 0.8; text-decoration: none;">Contact</a>
-                <a href="/privacy-policy" style="color: white; opacity: 0.8; text-decoration: none;">Privacy</a>
-                <a href="/terms-of-service" style="color: white; opacity: 0.8; text-decoration: none;">Terms</a>
-            </div>
-        </div>
-        <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 24px; padding-top: 24px;">
-            <p style="margin: 0; opacity: 0.5; font-size: 12px; text-align: center;">&copy; <?php echo date('Y'); ?> HelloCMS. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<?php get_footer(); ?>
+get_footer();

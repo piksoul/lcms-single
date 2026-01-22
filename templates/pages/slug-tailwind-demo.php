@@ -107,23 +107,6 @@ partial(\'hero\', $config, \'tailwind\');   // Tailwind + DaisyUI</code></pre>
 ];
 
 partial('section', $about, 'tailwind');
-
-// ============================================
-// FOOTER
-// ============================================
-$footer = [
-    'brand'   => 'HelloCMS',
-    'tagline' => 'Simple, powerful content management.',
-    'links'   => [
-        ['text' => 'Home', 'url' => '/home'],
-        ['text' => 'About', 'url' => '/about'],
-        ['text' => 'Contact', 'url' => '/contact'],
-        ['text' => 'Privacy', 'url' => '/privacy-policy'],
-        ['text' => 'Terms', 'url' => '/terms-of-service'],
-    ],
-];
-
-partial('footer', $footer, 'tailwind');
 ?>
 
 </div><!-- end data-theme -->
