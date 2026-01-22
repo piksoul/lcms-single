@@ -195,7 +195,7 @@ if ( ! class_exists( 'LeanCMS_DB_Page_Renderer' ) ) {
 		 * @return string Complete PHP template code.
 		 */
 		private function build_template_code( int $page_id, $page_data, string $layout_code ): string {
-			$client_code = LeanCMS_Client_Code_Meta_Box::get_client_code( $page_id );
+			$client_code = get_post_meta( $page_id, '_leancms_client_code', true ) ?: null;
 
 			// Ensure page_data is an array.
 			if ( ! is_array( $page_data ) ) {
