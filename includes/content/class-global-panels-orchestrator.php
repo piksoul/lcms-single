@@ -127,23 +127,17 @@ if ( ! class_exists( 'LeanCMS_Global_Panels_Orchestrator' ) ) {
 
 			// Panel types registry - add new panel types here
 			$panel_types = array(
-				'footer_ad' => array(
-					'partial'      => 'global-panels/footer-ad/footer-ad',
-					'folder'       => '',
-					'config_key'   => 'global_footer',
+				'site_footer' => array(
+					'partial'         => 'global-panels/site-footer/site-footer',
+					'folder'          => '',
+					'config_key'      => 'site_footer',
 					'default_enabled' => true,
 				),
 				// Future panel types can be added here:
 				// 'notification_bar' => array(
-				//     'partial'      => 'notification-bar',
-				//     'folder'       => 'global-panels',
-				//     'config_key'   => 'notification_bar',
-				//     'default_enabled' => false,
-				// ),
-				// 'cookie_consent' => array(
-				//     'partial'      => 'cookie-consent',
-				//     'folder'       => 'global-panels',
-				//     'config_key'   => 'cookie_consent',
+				//     'partial'         => 'global-panels/notification-bar/notification-bar',
+				//     'folder'          => '',
+				//     'config_key'      => 'notification_bar',
 				//     'default_enabled' => false,
 				// ),
 			);

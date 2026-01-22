@@ -3,7 +3,7 @@
  * Plugin Name: LeanCMS Single
  * Plugin URI: https://github.com/piksoul/lcms-single
  * Description: Streamlined CMS for single-client Brand Hub installations.
- * Version: 1.0.7
+ * Version: 1.0.9
  * Author: Piksoul
  * Author URI: https://piksoul.com
  * License: GPL v2 or later
@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'LEANCMS_VERSION', '1.0.7' );
+define( 'LEANCMS_VERSION', '1.0.9' );
 
 /**
  * Plugin directory path.
