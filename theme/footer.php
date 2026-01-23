@@ -22,8 +22,14 @@
     </aside>
 </footer>
 
-</div><!-- end data-theme -->
+<!-- Thin imprint bar -->
+<div class="bg-neutral/90 text-neutral-content/40 text-xs text-center py-2">
+    Powered by WordPress &amp; LeanCMS
+</div>
 
 <?php wp_footer(); ?>
+
+</div><!-- end data-theme -->
+
 </body>
 </html>
