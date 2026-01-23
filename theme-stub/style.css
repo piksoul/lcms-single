@@ -1,0 +1,18 @@
+/*
+Theme Name: LeanCMS Starter
+Theme URI: https://github.com/piksoul/lcms-single
+Author: Piksoul
+Author URI: https://piksoul.com
+Description: Stub theme for LeanCMS Single. All logic is handled by the LeanCMS plugin - this theme simply delegates to the plugin's theme directory.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lcms-starter
+
+This theme contains no styles or logic.
+All functionality is provided by the LeanCMS Single plugin.
+Install once, then manage everything via plugin updates.
+*/
