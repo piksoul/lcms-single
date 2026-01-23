@@ -3,215 +3,108 @@
  * Home Page Template
  *
  * Main landing page with hero, features, about section, and CTA.
- * Built with Pro-Sites partial system.
+ * Built with Tailwind + DaisyUI partials.
  *
  * @filepath templates/pages/slug-home.php
  */
 
 get_header();
 
-// Load CSS configurations
-$global_config = include(LEANCMS_PLUGIN_DIR . 'templates/assets/global/config.php');
-$css_vars = $global_config['css_variables'] ?? [];
-?>
+// ============================================
+// HERO SECTION
+// ============================================
+$hero = [
+    'badge'      => 'Welcome to HelloCMS',
+    'title'      => 'Simple, Powerful Content Management',
+    'subtitle'   => 'Build beautiful websites with ease. A streamlined CMS designed for simplicity and performance.',
+    'buttons'    => [
+        ['text' => 'Learn More', 'url' => '/about', 'style' => 'primary'],
+        ['text' => 'Get in Touch', 'url' => '/contact', 'style' => 'outline'],
+    ],
+    'min_height' => '70vh',
+];
 
-<!-- LeanCMS Design System -->
-<link rel="stylesheet" href="<?php echo LEANCMS_PLUGIN_URL; ?>templates/assets/global/lcms-design-system.css">
+partial('hero', $hero, 'tailwind');
 
-<!-- CSS Variables -->
-<style id="brand-css-variables">
-:root {
-<?php foreach ($css_vars as $key => $value): ?>
-    --<?php echo esc_attr($key); ?>: <?php echo esc_attr($value); ?>;
-<?php endforeach; ?>
-    --color-brand-primary: #2563eb;
-    --color-brand-secondary: #1e40af;
-    --color-brand-accent: #3b82f6;
-}
-</style>
-
-<!-- Hero Section -->
-<section class="lcms-hero">
-    <div class="lcms-hero__badge">Welcome to HelloCMS</div>
-    <h1 class="lcms-hero__title">Simple, Powerful Content Management</h1>
-    <p class="lcms-hero__subtitle">Build beautiful websites with ease. A streamlined CMS designed for simplicity and performance.</p>
-    <div class="lcms-button-group lcms-button-group--align-center" style="margin-top: 32px;">
-        <a href="/about" class="lcms-button lcms-button--primary">Learn More</a>
-        <a href="/contact" class="lcms-button lcms-button--outline">Get in Touch</a>
-    </div>
-</section>
-
-<?php
 // ============================================
 // FEATURES SECTION
 // ============================================
-$features_intro = [
-    'settings' => [
-        'custom_id' => 'features',
-    ],
-    'header' => [
-        'heading' => [
-            'label' => 'Why Choose Us',
-            'title' => 'Everything You Need',
-            'subtitle' => 'Powerful features wrapped in simplicity',
-            'align' => 'center',
-        ],
-    ],
-];
-
-partial('column', $features_intro, 'pro-sites');
-
-// Features Grid
 $features_grid = [
-    'content' => [
-        'items' => [
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 48px; margin-bottom: 20px;">🚀</div>
-                                    <h3 style="color: var(--color-brand-primary); margin: 0 0 16px;">Fast & Lightweight</h3>
-                                    <p>Optimized for speed with minimal overhead. Your pages load instantly.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '40px',
-                    'border' => true,
-                    'shadow' => true,
-                ],
-            ],
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 48px; margin-bottom: 20px;">🎨</div>
-                                    <h3 style="color: var(--color-brand-primary); margin: 0 0 16px;">Flexible Design</h3>
-                                    <p>Customize every aspect with CSS variables and modular components.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '40px',
-                    'border' => true,
-                    'shadow' => true,
-                ],
-            ],
-            [
-                'type' => 'card',
-                'content' => [
-                    'body' => [
-                        'type' => 'html',
-                        'content' => [
-                            'html' => '
-                                <div style="text-align: center;">
-                                    <div style="font-size: 48px; margin-bottom: 20px;">📱</div>
-                                    <h3 style="color: var(--color-brand-primary); margin: 0 0 16px;">Mobile Ready</h3>
-                                    <p>Responsive layouts that look great on any device, from phone to desktop.</p>
-                                </div>
-                            ',
-                        ],
-                    ],
-                    'padding' => '40px',
-                    'border' => true,
-                    'shadow' => true,
-                ],
-            ],
+    'id'       => 'features',
+    'label'    => 'Why Choose Us',
+    'title'    => 'Everything You Need',
+    'subtitle' => 'Powerful features wrapped in simplicity',
+    'columns'  => 3,
+    'cards'    => [
+        [
+            'icon'    => '🚀',
+            'title'   => 'Fast & Lightweight',
+            'content' => 'Optimized for speed with minimal overhead. Your pages load instantly.',
         ],
-        'columns' => 3,
-        'gap' => '32px',
-    ],
-];
-
-partial('grid', $features_grid, 'pro-sites');
-
-// ============================================
-// ABOUT SECTION
-// ============================================
-$about_section = [
-    'settings' => [
-        'dark_mode' => true,
-        'custom_id' => 'about',
-    ],
-    'content' => [
-        'columns' => [
-            [
-                'type' => 'text',
-                'content' => [
-                    'text' => '
-                        <h2>Built for Modern Websites</h2>
-                        <p>HelloCMS combines the power of WordPress with a streamlined, developer-friendly approach. No bloat, no complexity - just the tools you need to build beautiful websites.</p>
-                        <ul class="lcms-list">
-                            <li><strong>Template-based pages</strong> - Full control over your layouts</li>
-                            <li><strong>Partial system</strong> - Reusable, composable components</li>
-                            <li><strong>CSS variables</strong> - Easy theming and customization</li>
-                            <li><strong>BEM methodology</strong> - Clean, maintainable styles</li>
-                        </ul>
-                    ',
-                    'format' => 'standard',
-                ],
-                'width' => '55%',
-            ],
-            [
-                'type' => 'html',
-                'content' => [
-                    'html' => '
-                        <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; text-align: center;">
-                            <div style="font-size: 64px; margin-bottom: 16px;">💡</div>
-                            <p style="font-size: 18px; margin: 0;">Simple by design.<br>Powerful when you need it.</p>
-                        </div>
-                    ',
-                ],
-                'width' => '45%',
-            ],
+        [
+            'icon'    => '🎨',
+            'title'   => 'Flexible Design',
+            'content' => 'Customize every aspect with CSS variables and modular components.',
         ],
-        'gap' => '60px',
-    ],
-];
-
-partial('2-column', $about_section, 'pro-sites');
-
-// ============================================
-// CTA SECTION
-// ============================================
-$cta_section = [
-    'settings' => [
-        'custom_id' => 'cta',
-        'custom_css' => 'background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-brand-secondary) 100%); color: white;',
-        'spacing_top' => '80px',
-        'spacing_bottom' => '80px',
-    ],
-    'header' => [
-        'heading' => [
-            'title' => 'Ready to Get Started?',
-            'subtitle' => 'Join us and experience a better way to manage content.',
-            'align' => 'center',
-        ],
-    ],
-    'footer' => [
-        'buttons' => [
-            [
-                'text' => 'Contact Us',
-                'url' => '/contact',
-                'style' => 'secondary',
-            ],
-            [
-                'text' => 'Learn More',
-                'url' => '/about',
-                'style' => 'outline',
-            ],
+        [
+            'icon'    => '📱',
+            'title'   => 'Mobile Ready',
+            'content' => 'Responsive layouts that look great on any device, from phone to desktop.',
         ],
     ],
 ];
 
-partial('column', $cta_section, 'pro-sites');
+partial('card-grid', $features_grid, 'tailwind');
+?>
 
-get_footer();
+<!-- About Section (Two-column layout) -->
+<section id="about" class="lcms-section bg-neutral text-neutral-content">
+    <div class="lcms-container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Built for Modern Websites</h2>
+                <p class="text-lg opacity-90 mb-6">HelloCMS combines the power of WordPress with a streamlined, developer-friendly approach. No bloat, no complexity - just the tools you need to build beautiful websites.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <span class="text-primary">✓</span>
+                        <span><strong>Template-based pages</strong> - Full control over your layouts</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-primary">✓</span>
+                        <span><strong>Partial system</strong> - Reusable, composable components</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-primary">✓</span>
+                        <span><strong>CSS variables</strong> - Easy theming and customization</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-primary">✓</span>
+                        <span><strong>Tailwind + DaisyUI</strong> - Modern, utility-first styling</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex justify-center">
+                <div class="bg-base-100/10 rounded-2xl p-10 text-center">
+                    <div class="text-6xl mb-4">💡</div>
+                    <p class="text-xl">Simple by design.<br>Powerful when you need it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta" class="lcms-section bg-primary text-primary-content">
+    <div class="lcms-container text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+        <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+            Join us and experience a better way to manage content.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/contact" class="btn btn-secondary">Contact Us</a>
+            <a href="/about" class="btn btn-outline btn-secondary">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<?php get_footer(); ?>

@@ -1,0 +1,210 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tailwind Partial Examples",
+  "description": "Common patterns and complete examples for Tailwind + DaisyUI partials",
+  "version": "1.0.0",
+  "pageTemplates": {
+    "landingPage": {
+      "description": "Marketing landing page with hero, features, and CTA",
+      "sections": ["hero", "stats", "card-grid", "testimonials", "section (CTA)"],
+      "example": "See templates/pages/slug-tailwind-demo.php"
+    },
+    "aboutPage": {
+      "description": "Company/product about page",
+      "sections": ["hero (compact)", "section (story)", "card-grid (values)", "section (CTA)"],
+      "heroConfig": {
+        "min_height": "40vh"
+      }
+    },
+    "contactPage": {
+      "description": "Contact information page",
+      "sections": ["hero (compact)", "section (contact info)", "card-grid (FAQ)"],
+      "notes": "Use custom HTML within section for contact forms"
+    },
+    "legalPage": {
+      "description": "Terms, privacy, and other legal pages",
+      "sections": ["hero (compact)", "section (narrow content)"],
+      "sectionConfig": {
+        "narrow": true,
+        "centered": false
+      }
+    }
+  },
+  "sectionExamples": {
+    "heroCompact": {
+      "description": "Smaller hero for interior pages",
+      "config": {
+        "title": "Page Title",
+        "subtitle": "Brief description of the page.",
+        "min_height": "40vh",
+        "dark": false
+      }
+    },
+    "heroWithImage": {
+      "description": "Hero with side image",
+      "config": {
+        "badge": "New",
+        "title": "Product Launch",
+        "subtitle": "Discover our latest innovation.",
+        "image": "https://example.com/hero-image.jpg",
+        "buttons": [
+          {"text": "Learn More", "url": "#features", "style": "primary"}
+        ],
+        "min_height": "80vh"
+      }
+    },
+    "heroDark": {
+      "description": "Dark mode hero section",
+      "config": {
+        "badge": "Welcome",
+        "title": "Dark Hero Section",
+        "subtitle": "With light text on dark background.",
+        "dark": true,
+        "buttons": [
+          {"text": "Get Started", "url": "#", "style": "primary"},
+          {"text": "Learn More", "url": "#", "style": "ghost"}
+        ]
+      }
+    },
+    "featureGrid3Col": {
+      "description": "Standard 3-column feature grid",
+      "config": {
+        "id": "features",
+        "label": "Features",
+        "title": "Why Choose Us",
+        "subtitle": "Everything you need to succeed.",
+        "columns": 3,
+        "cards": [
+          {"icon": "⚡", "title": "Fast", "content": "Lightning quick performance"},
+          {"icon": "🔒", "title": "Secure", "content": "Enterprise-grade security"},
+          {"icon": "🎨", "title": "Beautiful", "content": "Stunning design"}
+        ]
+      }
+    },
+    "valuesGrid4Col": {
+      "description": "4-column values/principles grid",
+      "config": {
+        "id": "values",
+        "label": "Our Values",
+        "title": "What We Believe",
+        "columns": 4,
+        "dark": true,
+        "cards": [
+          {"icon": "✨", "title": "Simplicity", "content": "We keep things simple"},
+          {"icon": "🔧", "title": "Quality", "content": "We build things right"},
+          {"icon": "🤝", "title": "Trust", "content": "We're transparent"},
+          {"icon": "🌱", "title": "Growth", "content": "We continuously improve"}
+        ]
+      }
+    },
+    "processSteps": {
+      "description": "How-it-works process steps",
+      "config": {
+        "id": "process",
+        "label": "How It Works",
+        "title": "Get Started in 3 Steps",
+        "steps": [
+          {"title": "Sign Up", "content": "Create your free account", "status": "primary"},
+          {"title": "Configure", "content": "Set up your preferences", "status": "primary"},
+          {"title": "Launch", "content": "Go live in minutes", "status": ""}
+        ]
+      }
+    },
+    "companyStats": {
+      "description": "Company metrics/social proof",
+      "config": {
+        "id": "stats",
+        "label": "By the Numbers",
+        "title": "Our Impact",
+        "stats": [
+          {"value": "10K+", "label": "Customers", "desc": "Worldwide"},
+          {"value": "99.9%", "label": "Uptime", "desc": "Guaranteed"},
+          {"value": "24/7", "label": "Support", "desc": "Always here"},
+          {"value": "50+", "label": "Countries", "desc": "And growing"}
+        ]
+      }
+    },
+    "customerTestimonials": {
+      "description": "Customer testimonial section",
+      "config": {
+        "id": "testimonials",
+        "label": "Testimonials",
+        "title": "What Our Customers Say",
+        "subtitle": "Join thousands of satisfied users.",
+        "testimonials": [
+          {
+            "quote": "This product completely transformed how we work. Highly recommended!",
+            "name": "Sarah Johnson",
+            "role": "CEO, TechStart",
+            "rating": 5
+          },
+          {
+            "quote": "Best investment we've made this year. The team is incredibly responsive.",
+            "name": "Michael Chen",
+            "role": "CTO, DataFlow",
+            "rating": 5
+          },
+          {
+            "quote": "Simple to use yet incredibly powerful. Exactly what we needed.",
+            "name": "Emily Rodriguez",
+            "role": "Product Manager, InnovateCo",
+            "rating": 5
+          }
+        ]
+      }
+    },
+    "contentSection": {
+      "description": "Long-form content section (narrow, left-aligned)",
+      "config": {
+        "id": "content",
+        "title": "Our Story",
+        "content": "<p>Your long-form HTML content here. This section supports full HTML with proper prose styling.</p><p>Multiple paragraphs, lists, links, and other HTML elements work great.</p>",
+        "narrow": true,
+        "centered": false
+      }
+    },
+    "ctaSection": {
+      "description": "Call-to-action section",
+      "notes": "Use custom markup for gradient CTAs",
+      "customMarkup": "<section class=\"lcms-section bg-primary text-primary-content\">\n    <div class=\"lcms-container text-center\">\n        <h2 class=\"text-3xl md:text-4xl font-bold mb-4\">Ready to Get Started?</h2>\n        <p class=\"text-lg opacity-90 mb-8 max-w-2xl mx-auto\">\n            Join thousands of satisfied customers today.\n        </p>\n        <div class=\"flex flex-wrap justify-center gap-4\">\n            <a href=\"/contact\" class=\"btn btn-secondary\">Contact Us</a>\n            <a href=\"/about\" class=\"btn btn-outline btn-secondary\">Learn More</a>\n        </div>\n    </div>\n</section>"
+    },
+    "faqGrid": {
+      "description": "FAQ cards in a grid",
+      "config": {
+        "id": "faq",
+        "label": "FAQ",
+        "title": "Frequently Asked Questions",
+        "columns": 3,
+        "dark": true,
+        "cards": [
+          {
+            "title": "How do I get started?",
+            "content": "Simply sign up for a free account and follow our quick start guide."
+          },
+          {
+            "title": "Is there a free trial?",
+            "content": "Yes! We offer a 14-day free trial with full access to all features."
+          },
+          {
+            "title": "Can I cancel anytime?",
+            "content": "Absolutely. No contracts, no commitments. Cancel whenever you want."
+          }
+        ]
+      }
+    }
+  },
+  "customMarkupPatterns": {
+    "gradientCTA": {
+      "description": "CTA section with gradient background",
+      "code": "<section class=\"lcms-section bg-primary text-primary-content\">\n    <div class=\"lcms-container text-center\">\n        <h2 class=\"text-3xl md:text-4xl font-bold mb-4\">Your CTA Title</h2>\n        <p class=\"text-lg opacity-90 mb-8 max-w-2xl mx-auto\">Supporting text.</p>\n        <div class=\"flex flex-wrap justify-center gap-4\">\n            <a href=\"#\" class=\"btn btn-secondary\">Primary Action</a>\n            <a href=\"#\" class=\"btn btn-outline btn-secondary\">Secondary</a>\n        </div>\n    </div>\n</section>"
+    },
+    "twoColumnLayout": {
+      "description": "Custom two-column section",
+      "code": "<section class=\"lcms-section\">\n    <div class=\"lcms-container\">\n        <div class=\"grid grid-cols-1 lg:grid-cols-2 gap-12 items-center\">\n            <div>\n                <h2 class=\"text-3xl font-bold mb-4\">Left Column</h2>\n                <p class=\"text-lg opacity-80\">Content here...</p>\n            </div>\n            <div>\n                <img src=\"image.jpg\" alt=\"\" class=\"rounded-lg shadow-xl\" />\n            </div>\n        </div>\n    </div>\n</section>"
+    },
+    "contactForm": {
+      "description": "Section with contact form placeholder",
+      "code": "<section class=\"lcms-section\">\n    <div class=\"lcms-container\">\n        <div class=\"grid grid-cols-1 lg:grid-cols-2 gap-12\">\n            <div>\n                <h2 class=\"text-3xl font-bold mb-4\">Get in Touch</h2>\n                <p class=\"mb-6\">Contact info and details...</p>\n            </div>\n            <div class=\"card bg-base-200\">\n                <div class=\"card-body\">\n                    <h3 class=\"card-title\">Send a Message</h3>\n                    <?php echo do_shortcode('[gravityform id=\"1\"]'); ?>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>"
+    }
+  }
+}

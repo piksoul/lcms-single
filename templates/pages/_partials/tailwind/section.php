@@ -61,7 +61,7 @@ $content_classes = $narrow ? 'max-w-3xl mx-auto' : '';
         <?php endif; ?>
 
         <?php if ($content): ?>
-            <div class="prose <?php echo $dark ? 'prose-invert' : ''; ?> <?php echo $centered ? 'mx-auto text-center' : ''; ?> <?php echo esc_attr($content_classes); ?>">
+            <div class="prose prose-lg <?php echo $dark ? 'prose-invert' : ''; ?> <?php echo $narrow ? 'max-w-none' : ''; ?> <?php echo $centered ? 'mx-auto text-center' : ''; ?> <?php echo esc_attr($content_classes); ?>">
                 <?php echo wp_kses_post($content); ?>
             </div>
         <?php endif; ?>

@@ -24,6 +24,19 @@
     @apply border border-current bg-transparent;
   }
 
+  /* Prose link colors - match DaisyUI primary */
+  .prose a {
+    @apply text-primary no-underline hover:underline;
+  }
+  .prose-invert a {
+    @apply text-primary-content opacity-90 hover:opacity-100;
+  }
+
+  /* Prose list markers */
+  .prose ul > li::marker {
+    @apply text-primary;
+  }
+
   /* Prose text centering support */
   .prose.text-center {
     text-align: center;

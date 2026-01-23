@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./templates/pages/**/*.php",
     "./templates/pages/_partials/tailwind/**/*.php",
+    "./theme/**/*.php",
   ],
   theme: {
     extend: {
@@ -13,6 +14,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
     require('daisyui'),
   ],
   daisyui: {
