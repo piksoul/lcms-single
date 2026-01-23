@@ -103,12 +103,17 @@ add_filter( 'body_class', 'lcms_starter_body_classes' );
 /**
  * Navigation fallback when no menu is assigned.
  *
- * Displays placeholder links for demo/development purposes.
+ * Accepts wp_nav_menu $args so the correct classes are applied
+ * in both desktop and mobile (dropdown) contexts.
  */
-function lcms_starter_nav_fallback() {
-    echo '<ul class="menu menu-horizontal px-1 gap-1">';
-    echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contact</a></li>';
-    echo '</ul>';
+function lcms_starter_nav_fallback( $args = array() ) {
+    $menu_class = ! empty( $args['menu_class'] ) ? $args['menu_class'] : 'menu menu-horizontal px-1 gap-1';
+    $items_wrap = ! empty( $args['items_wrap'] ) ? $args['items_wrap'] : '<ul class="%2$s">%3$s</ul>';
+
+    $items  = '<li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
+    $items .= '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+    $items .= '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contact</a></li>';
+
+    $output = sprintf( $items_wrap, '', esc_attr( $menu_class ), $items );
+    echo $output;
 }
