@@ -22,7 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'LEANCMS_VERSION', '1.0.17' );
+define( 'LEANCMS_VERSION', '1.0.18' );
 
 /**
  * Plugin directory path.
