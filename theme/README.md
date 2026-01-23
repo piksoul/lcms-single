@@ -1,78 +1,71 @@
 # LeanCMS Starter Theme
 
-A minimal, unopinionated WordPress starter theme designed for use with the LeanCMS plugin and Tailwind CSS.
+A minimal WordPress theme designed for use with the LeanCMS plugin, Tailwind CSS, and DaisyUI.
 
-## Philosophy
+## Architecture
 
-This theme does **nothing** by design. No CSS resets, no opinionated styles, no conflicts. It's a clean shell that:
+The theme lives in the plugin repo at `/theme/` and is deployed via a **theme-stub** pattern:
 
-- Outputs proper HTML5 doctype and structure
-- Calls `wp_head()` and `wp_footer()` correctly
-- Gets out of the way
+```
+Plugin repo:
+├── theme/              # Actual theme logic (header, footer, functions)
+└── theme-stub/         # Minimal stub for wp-content/themes/
 
-All styling is handled by the LeanCMS plugin and Tailwind CSS.
+WordPress:
+└── wp-content/themes/lcms-starter/   # Copy of theme-stub/
+    └── Each file includes from LEANCMS_PLUGIN_DIR . 'theme/'
+```
 
-## Installation
-
-1. Copy the `theme` folder to `/wp-content/themes/`
-2. Rename to `lcms-starter` (or your preferred name)
-3. Activate in WordPress admin
+This keeps all theme logic version-controlled alongside the plugin, while the stub just delegates via `include`.
 
 ## Files
 
 ```
-lcms-starter/
-├── style.css       # Theme metadata (no actual styles)
-├── functions.php   # Minimal theme setup
-├── header.php      # Clean HTML head + body open
-├── footer.php      # wp_footer + body/html close
+theme/
+├── functions.php   # Theme setup, Tailwind enqueue, nav fallback
+├── header.php      # DaisyUI responsive navbar with wp_nav_menu()
+├── footer.php      # Structural close (wp_footer + HTML close)
 ├── index.php       # Fallback template
 ├── 404.php         # 404 page
 └── README.md       # This file
 ```
 
+## Header
+
+Uses DaisyUI navbar component with:
+- Mobile dropdown menu (CSS-based toggle via `:focus-within`)
+- Desktop horizontal nav
+- `wp_nav_menu()` integration with fallback callback
+- Site title as home link
+
+## Footer
+
+The theme footer is structural only — just fires `wp_footer()` and closes HTML. The visible footer is rendered by the plugin's page template partials, giving full design control to the template system.
+
 ## What's Removed
 
 The theme cleans up WordPress output:
-
 - Emoji scripts/styles
 - Generator meta tag
-- WLW manifest link
-- RSD link
-- Shortlink
-- Adjacent posts links
-- Block library CSS (comment out in functions.php if you use Gutenberg)
+- WLW manifest / RSD / Shortlink
+- Block library CSS (re-enable in functions.php if using Gutenberg)
 
-## Usage with LeanCMS
+## Nav Menu
 
-When using LeanCMS page templates, the theme just provides the HTML shell. Your templates handle everything inside `<body>`.
+Register menus in `functions.php`:
+- `primary` — Header navigation
+- `footer` — Footer links (rendered by plugin template partial)
 
-```php
-// Your LeanCMS template
-get_header();  // Outputs <!DOCTYPE html> through <body>
-?>
+When no menu is assigned, the fallback renders placeholder links (Home, About, Contact) with correct DaisyUI classes for both mobile and desktop contexts.
 
-<!-- Your Tailwind-styled content here -->
+## Tailwind CSS
 
-<?php
-get_footer();  // Outputs wp_footer() and closes body/html
+Loaded from the plugin directory:
+```
+LEANCMS_PLUGIN_URL . 'templates/assets/tailwind/tailwind.css'
 ```
 
-## Customization
-
-### Adding Global Styles
-
-If you want the theme to load Tailwind globally (instead of per-template), uncomment the enqueue in `functions.php`:
-
-```php
-function lcms_starter_scripts() {
-    wp_enqueue_style( 'lcms-tailwind', get_template_directory_uri() . '/assets/tailwind.css', array(), '1.0.0' );
-}
-```
-
-### Re-enabling Block Styles
-
-If you use Gutenberg blocks, comment out the `lcms_starter_remove_block_css()` function in `functions.php`.
+Compiled via `npm run build` in the plugin repo root. The CSS covers all Tailwind/DaisyUI classes used across templates, partials, and theme files.
 
 ## License
 
