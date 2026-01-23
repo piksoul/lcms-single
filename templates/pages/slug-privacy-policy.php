@@ -9,35 +9,7 @@
  */
 
 get_header();
-?>
 
-<!-- Tailwind CSS + DaisyUI -->
-<link rel="stylesheet" href="<?php echo LEANCMS_PLUGIN_URL; ?>templates/assets/tailwind/tailwind.css">
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Set DaisyUI theme -->
-<div data-theme="lcms">
-
-<!-- Demo Navigation -->
-<div class="navbar bg-base-200 px-6">
-    <div class="flex-1">
-        <a href="/home" class="btn btn-ghost text-lg font-bold">HelloCMS</a>
-    </div>
-    <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 gap-1">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/terms-of-service">Terms</a></li>
-            <li><a href="/privacy-policy">Privacy</a></li>
-        </ul>
-    </div>
-</div>
-
-<?php
 // ============================================
 // HERO SECTION
 // ============================================
@@ -106,8 +78,5 @@ $privacy_content = [
 ];
 
 partial('section', $privacy_content, 'tailwind');
-?>
 
-</div><!-- end data-theme -->
-
-<?php get_footer(); ?>
+get_footer();
