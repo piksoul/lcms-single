@@ -44,13 +44,18 @@ add_action( 'after_setup_theme', 'lcms_starter_setup' );
 /**
  * Enqueue theme styles/scripts.
  *
- * Note: Tailwind CSS is loaded by the LeanCMS plugin or individual templates.
- * This theme intentionally loads nothing to avoid conflicts.
+ * Loads Tailwind CSS from the LeanCMS plugin directory.
  */
 function lcms_starter_scripts() {
-    // Intentionally empty - LeanCMS plugin handles all styles
-    // Uncomment below if you want the theme to load Tailwind globally:
-    // wp_enqueue_style( 'lcms-tailwind', get_template_directory_uri() . '/assets/tailwind.css', array(), '1.0.0' );
+    // Load Tailwind CSS from the LeanCMS plugin
+    if ( defined( 'LEANCMS_PLUGIN_URL' ) ) {
+        wp_enqueue_style(
+            'lcms-tailwind',
+            LEANCMS_PLUGIN_URL . 'templates/assets/tailwind/tailwind.css',
+            array(),
+            defined( 'LEANCMS_VERSION' ) ? LEANCMS_VERSION : '1.0.0'
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'lcms_starter_scripts' );
 
@@ -94,3 +99,16 @@ function lcms_starter_body_classes( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'lcms_starter_body_classes' );
+
+/**
+ * Navigation fallback when no menu is assigned.
+ *
+ * Displays placeholder links for demo/development purposes.
+ */
+function lcms_starter_nav_fallback() {
+    echo '<ul class="menu menu-horizontal px-1 gap-1">';
+    echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/contact' ) ) . '">Contact</a></li>';
+    echo '</ul>';
+}

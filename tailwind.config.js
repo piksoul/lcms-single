@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./templates/pages/**/*.php",
     "./templates/pages/_partials/tailwind/**/*.php",
+    "./theme/**/*.php",
   ],
   theme: {
     extend: {

@@ -9,19 +9,7 @@
  */
 
 get_header();
-?>
 
-<!-- Tailwind CSS + DaisyUI -->
-<link rel="stylesheet" href="<?php echo LEANCMS_PLUGIN_URL; ?>templates/assets/tailwind/tailwind.css">
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Set DaisyUI theme -->
-<div data-theme="lcms">
-
-<?php
 // ============================================
 // HERO SECTION
 // ============================================
@@ -99,7 +87,5 @@ partial('card-grid', $values_grid, 'tailwind');
         </div>
     </div>
 </section>
-
-</div><!-- end data-theme -->
 
 <?php get_footer(); ?>
